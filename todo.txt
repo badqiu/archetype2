@@ -1,0 +1,89 @@
+﻿框架增加加载 framework_spring/*.xml的配置文件
+抛出 HumanReadableMsgException直接展示在 Web
+# service层使用jmock测试
+考虑将 ClassName => ClassNameDO,并且引用DTO: ClassName作为领域隔离使用
+将系统改造成SOA系统,使用 hessian or webservice
+自动化部署
+	run build
+	run deploy
+生成默认的配置文件: /data/apps/demoproject/application.properties
+	
+---------------------------------------------
+ftp upload:
+---------------------------------------------
+ftp://dev.game.yy.com:1980
+username: ciftp 
+passpowrt: !@#!QAZ@WSX#EDC
+
+
+
+
+
+
+
+---------------------------------------------
+archetype-catalog.xml	
+---------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?> 
+<archetype-catalog xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-catalog/1.0.0 http://maven.apache.org/xsd/archetype-catalog-1.0.0.xsd"
+    xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-catalog/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> 
+  <archetypes> 
+    <archetype> 
+      <groupId>com.duowan.archetype</groupId> 
+      <artifactId>duowan-mvc-archetype</artifactId> 
+      <version>1.0</version> 
+      <description>duowan-mvc-archetype</description> 
+      <repository>http://dev.game.yy.com/nexus/content/repositories/releases/</repository> 
+    </archetype> 
+    <archetype> 
+      <groupId>com.duowan.archetype</groupId> 
+      <artifactId>duowan-mvc-archetype</artifactId> 
+      <version>2.0</version> 
+      <description>duowan-mvc-archetype</description> 
+      <repository>http://dev.game.yy.com/nexus/content/repositories/releases/</repository> 
+    </archetype> 
+  </archetypes> 
+</archetype-catalog> 
+
+
+
+
+
+
+---------------------------------------------
+run.sh
+---------------------------------------------
+
+# for support cmd
+	1. run.sh build
+	2. run.sh deploy
+
+# required config variable
+# RESIN_HOME
+# JAVA_HOME
+# WEBAPPS_HOME=/data/
+# ENV=prod,dev,test,perf
+
+
+get_source:
+	1. input project name
+	2. input svn url
+	3. checkout from svn into: /data/source/project
+
+update_source:
+	svn up source 
+
+build:
+	1. run  /data/source/project/run.sh build
+		mvn -Dmaven.skip.true=true package
+
+deploy:
+	1. copy all war:/data/source/project/target/project.war into $WEBAPPS_HOME/webapps/domain.company.com/project
+	2. conf:
+		1). config $RESIN_HOME/resin.conf or 引用我们的自定义resin.conf
+		2). copy /data/source/project/src/main/config/$ENV$/application.properties into /data/apps/application.properties (if not exist)
+		3). nginx conf
+	3. killall -9 java or kill -9 `cat /var/run/resin.pid`
+	4. start resin server and save pid to /var/run/resin.pid
+	5. start nginx

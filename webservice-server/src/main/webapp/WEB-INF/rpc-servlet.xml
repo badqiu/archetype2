@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd"    default-autowire="byName" default-lazy-init="false">
+	
+	<import resource="classpath:/webservice/**/*WebService-rpc-servlet.xml"/>
+	
+	<!-- rpc service -->
+	<bean id="helloWorldWebService" class="com.company.project.webservice.impl.HelloWorldWebServiceImpl"/>
+	
+	<!-- 调用示例: http://localhost:6060/rpc/HelloWorldWebService/hello?name=badqiu  -->
+	<bean class="com.github.rapid.common.rpc.server.RPCServiceExporter">
+	  <property name="serviceInterface" value="com.company.project.webservice.HelloWorldWebService" />
+	  <property name="service" ref="helloWorldWebService"/>
+	</bean>
+	
+</beans>

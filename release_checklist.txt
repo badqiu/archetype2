@@ -1,0 +1,36 @@
+﻿delete 
+	src/main/java 
+		com.company.project
+	src/test/java
+		com.company.project
+	src/main/webapp
+		pages/
+
+modify dialect=MysqlDialect
+modify datasource=MysqlDataSource
+
+modify pom-archetype.xml version
+
+archetype生成项目命令:
+	mvn archetype:generate -Dfilter=rapid-mvc-archetype -DarchetypeCatalog=remote	--远程
+		see: https://maven.apache.org/archetype/maven-archetype-plugin/generate-mojo.html
+		config by setttings.xml
+			  <repository>
+				<id>archetype</id>
+				<url>https://repository.domain.com/path/to/repo/</url>
+			  </repository>
+			  
+			  <!-- in case of a repository with authentication -->
+			  <server>
+				<id>archetype</id>
+				<username>user.name</username>
+				<password>s3cr3t</password>
+			  </server>
+
+	新版本mvn已经不支持下列属性
+		mvn archetype:generate -Dfilter=rapid-mvc-archetype -DarchetypeCatalog=http://nexus.qinha.com:8081/nexus/content/repositories/public/	--远程
+		mvn archetype:generate -Dfilter=rapid-mvc-archetype -DarchetypeCatalog=http://nexus.qinha.com:8081/nexus/content/repositories/releases/	--远程
+		mvn archetype:generate -Dfilter=rapid-mvc-archetype -DarchetypeCatalog=http://nexus.qinha.com:8081/nexus/content/repositories/snapshots/  --远程
+		mvn archetype:generate -Dfilter=rapid-mvc-archetype -DarchetypeCatalog=local						--本地
+
+
