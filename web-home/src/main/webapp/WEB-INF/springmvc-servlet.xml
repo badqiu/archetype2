@@ -41,11 +41,6 @@
 	<bean class="com.github.rapid.common.web.mvc.ConventionRequestMappingHandlerMapping">
 		<property name="interceptors">
 			<list>
-				<bean class="com.company.project.common.springmvc.interceptor.SharedRenderVariableInterceptor"/>
-				<!-- 识别用户的设备类型 -->
-				<bean class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor" />
-				<!-- 可以通过site_preference=mobile指定访问移动设备的网页 -->
-				<bean class="org.springframework.mobile.device.site.SitePreferenceHandlerInterceptor" />
 			</list>
 		</property>
 	</bean>
