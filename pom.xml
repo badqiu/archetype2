@@ -12,7 +12,6 @@
     <module>web-admin</module>
 	<module>web-home</module>
 	<module>webservice-server</module>
-	<module>webservice-client</module>
 	<module>webservice-api</module>
   </modules>
 
