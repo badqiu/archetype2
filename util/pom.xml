@@ -224,7 +224,11 @@
 		<groupId>org.apache.velocity</groupId>
 		<artifactId>velocity</artifactId>
 	</dependency>
-														
+
+	<dependency>
+		<groupId>com.alibaba</groupId>
+		<artifactId>druid-spring-boot-starter</artifactId>
+	</dependency>														
 	
 	<!-- excel 2003 -->
 	<!--
@@ -242,6 +246,7 @@
 	 -->
 	
 	<!-- JSR303 bean validation begin -->
+	<!-- 
 	<dependency>
 	    <groupId>javax.validation</groupId>
 	    <artifactId>validation-api</artifactId>
@@ -250,6 +255,7 @@
 	    <groupId>org.hibernate</groupId>
 	    <artifactId>hibernate-validator</artifactId>
 	</dependency>
+	 -->
 	<!-- JSR303 bean validation end -->
 	
 	<!-- json -->
