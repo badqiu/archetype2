@@ -518,6 +518,7 @@
 			</plugin>
 			
 			<!-- eclipse plugin -->
+			<!--
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-eclipse-plugin</artifactId>
@@ -527,18 +528,10 @@
 						<sourceExclude>**/.svn/</sourceExclude>
 					</sourceExcludes>
 					<downloadSources>true</downloadSources>
-					<additionalConfig>
-					  <file>
-						<name>.settings/org.eclipse.core.resources.prefs</name>
-						<content>
-						  <![CDATA[
-						  encoding/<project>=${project.build.sourceEncoding}
-						  ]]>
-						</content>
-					  </file>
-				    </additionalConfig>
+
 				</configuration>
 			</plugin>
+			-->
 
 			<!-- war plugin-->
 			<plugin>
