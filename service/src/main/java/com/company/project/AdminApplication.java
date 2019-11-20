@@ -1,6 +1,5 @@
-package com.company.project.admin;
+package com.company.project;
 
-import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,11 +14,10 @@ public class AdminApplication {
 	/**
 	 * 测试 RUN
 	 * 1、http://localhost:8080/user/test1
-	 * 2、http://localhost:8080/user/test2
 	 */
 	public static void main(String[] args) {
 		SpringApplication app = new SpringApplication(AdminApplication.class);
-		app.setBannerMode(Banner.Mode.OFF);
+//		app.setBannerMode(Banner.Mode.OFF);
 		app.run(args);
 	}
 

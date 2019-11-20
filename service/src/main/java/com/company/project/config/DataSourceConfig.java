@@ -15,7 +15,7 @@ public class DataSourceConfig {
 	
 	private static Logger logger = LoggerFactory.getLogger(DataSourceConfig.class);
 	
-    @Bean(value = "demoprojectDataSource",initMethod = "init")
+    @Bean(name = "demoprojectDataSource",initMethod = "init")
     @ConfigurationProperties("datasource.demoproject")
     public DataSource hiveDataSource(){
         logger.info("Init demoprojectDataSource");
