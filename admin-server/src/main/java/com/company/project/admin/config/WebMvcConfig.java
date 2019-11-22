@@ -96,6 +96,9 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
         super.addResourceHandlers(registry);
     }
 	
+	/*
+	 * 不需要每个方法 都需要映射 
+	 */
 	class CustomRequestMappingHandlerMapping extends RequestMappingHandlerMapping {  
 		  
 	    private boolean useSuffixPatternMatch = true;  
