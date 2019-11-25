@@ -13,7 +13,7 @@ import {
 NProgress.configure({ showSpinner: false })
 
 function toLoginPage(fromUrl) {
-  location.href = 'https://dcauth.xoyo.com/sso.do?redirectURL=http://localhost:9528' + fromUrl
+  location.href = '/login?from=' + fromUrl
 }
 
 const whiteList = ['/404', '/401']
@@ -32,7 +32,7 @@ router.beforeEach((to, from, next) => {
       next()
     } else {
       NProgress.done()
-      toLoginPage(to.fullPath)
+      //toLoginPage(to.fullPath)
     }
   }
 })
