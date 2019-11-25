@@ -13,7 +13,7 @@ import {
 NProgress.configure({ showSpinner: false })
 
 function toLoginPage(fromUrl) {
-  location.href = '/login?from=' + fromUrl
+  location.href = '/ztree?from=' + fromUrl
 }
 
 const whiteList = ['/404', '/401']
@@ -28,12 +28,15 @@ router.beforeEach((to, from, next) => {
   if (whiteList.indexOf(to.path) !== -1) {
     next()
   } else {
+	next();
+	/*
     if (getPassport() && getSsoValidTime() && getSsoValidKey()) {
-      next()
+    	next()
     } else {
       NProgress.done()
-      //toLoginPage(to.fullPath)
+      toLoginPage(to.fullPath)
     }
+    */
   }
 })
 
