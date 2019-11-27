@@ -6,8 +6,14 @@ import javax.servlet.http.HttpServletRequest;
 
 public class ActionSecurityUtil {
 
+	/**
+	 * 检查读写权限,没有权限抛出 SecurityException
+	 * 
+	 * @param actionType 动作分类
+	 * @param permission 增删修改=w(写权限), 查=r(读权限)
+	 */
 	public static void checkActionPermission(HttpServletRequest request,Class<?> actionType,String permission) {
-		checkActionPermission(request,actionType.getSimpleName(),permission);
+		checkActionPermission(request,actionType.getSimpleName().toLowerCase(),permission);
 	}
 
 	public static void checkActionPermission(HttpServletRequest request, String actionType,String permission) {
