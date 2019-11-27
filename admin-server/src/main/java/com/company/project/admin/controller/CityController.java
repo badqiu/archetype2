@@ -8,7 +8,6 @@ package com.company.project.admin.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -23,7 +22,7 @@ import com.company.project.service.CityService;
 import com.github.rapid.common.util.page.Page;
 
 /**
- * [City] 的前端用户  Controller
+ * [City] 用户前台  Controller
  * 
  * @author badqiu
  * @version 1.0
@@ -32,7 +31,7 @@ import com.github.rapid.common.util.page.Page;
  */
 
 @Controller
-@RequestMapping("/admin/city")
+@RequestMapping("/city")
 public class CityController extends BaseController {
 
     @Autowired
@@ -44,45 +43,43 @@ public class CityController extends BaseController {
 	
 	@PostMapping
 	public void create(@RequestBody City city,HttpServletRequest request) {
-		cityService.checkPermission(getLoginUserId(request),city,"w");
+		checkEntityPermission(request,city,"w");
 		
 		cityService.create(city);
 	}
 	
 	@PostMapping
 	public void update(@RequestBody City city,HttpServletRequest request) {
-		cityService.checkPermission(getLoginUserId(request),city,"w");
+		checkEntityPermission(request,city,"w");
 		
-		Integer id = city.getId();
-
-		//不可以让客户端可以更新所有属性
-		City fromDb = cityService.getById(id);
-		BeanUtils.copyProperties(city, fromDb,"createTime"); //ignore some copy property
-		
-		cityService.update(fromDb);
+		cityService.update(city);
 	}
 	
 	@PostMapping
 	public void removeById(City city,int id,HttpServletRequest request) {
-		cityService.checkPermission(getLoginUserId(request),city,"w");
+		checkEntityPermission(request,city,"w");
 		
 		cityService.removeById(id);
 	}
 
 	@GetMapping
 	public ResponseEntity<?> getById(boolean join,int id,City city,HttpServletRequest request) {
-		cityService.checkPermission(getLoginUserId(request),city,"r");
+		checkEntityPermission(request,city,"r");
 		
 		City result = cityService.getById(id);
+		if(join) cityService.join(result);
+		
 		return ResponseEntity.ok(result);
 	}
 	
 	@GetMapping
 	public ResponseEntity<?> findPage(boolean join,CityQuery query,City city,HttpServletRequest request){
-		cityService.checkPermission(getLoginUserId(request),city,"r");
+		checkEntityPermission(request,city,"r");
 		
-		Page<City> page = cityService.findPage(query);
-		return ResponseEntity.ok(page);
+		Page<City> result = cityService.findPage(query);
+		if(join) result.forEach(cityService::join);
+		
+		return ResponseEntity.ok(result);
 	}
 	
 }
