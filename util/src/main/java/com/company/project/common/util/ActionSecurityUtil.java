@@ -6,11 +6,11 @@ import javax.servlet.http.HttpServletRequest;
 
 public class ActionSecurityUtil {
 
-	public static void checkAction(HttpServletRequest request,Class<?> actionType,String permission) {
-		checkAction(request,actionType.getSimpleName(),permission);
+	public static void checkActionPermission(HttpServletRequest request,Class<?> actionType,String permission) {
+		checkActionPermission(request,actionType.getSimpleName(),permission);
 	}
 
-	public static void checkAction(HttpServletRequest request, String actionType,String permission) {
+	public static void checkActionPermission(HttpServletRequest request, String actionType,String permission) {
 		long userId = getUserId(request);
 		Set userPermissionSet = getUserPermissionSet(userId,request);
 		
