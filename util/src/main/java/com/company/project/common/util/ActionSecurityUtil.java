@@ -29,7 +29,7 @@ public class ActionSecurityUtil {
 	}
 
 	public static void checkActionPermission(HttpServletRequest request, String actionType,String permission) {
-		long userId = getUserId(request);
+		long userId = getLoginUserId(request);
 		Set userPermissionSet = getUserPermissionSet(userId,request);
 		
 		if(userPermissionSet.contains(actionType+":"+permission)) {
@@ -46,7 +46,7 @@ public class ActionSecurityUtil {
 		return (Set)request.getSession().getAttribute(LOGIN_USER_PERMISSION);
 	}
 
-	private static long getUserId(HttpServletRequest request) {
+	public static long getLoginUserId(HttpServletRequest request) {
 		return (Long)request.getSession().getAttribute(LOGIN_USER_ID);
 	}
 	

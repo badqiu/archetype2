@@ -16,4 +16,7 @@ public class BaseController {
 		ActionSecurityUtil.checkActionPermission(request, actionType, permission);
 	}
 	
+	protected long getLoginUserId(HttpServletRequest request) {
+		return ActionSecurityUtil.getLoginUserId(request);
+	}
 }
