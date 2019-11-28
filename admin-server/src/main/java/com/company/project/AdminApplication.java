@@ -1,5 +1,6 @@
 package com.company.project;
 
+import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
@@ -32,7 +33,7 @@ public class AdminApplication {
 	 */
 	public static void main(String[] args) {
 		SpringApplication app = new SpringApplication(AdminApplication.class);
-//		app.setBannerMode(Banner.Mode.OFF);
+		app.setBannerMode(Banner.Mode.OFF);
 		app.run(args);
 	}
 

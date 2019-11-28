@@ -1,7 +1,7 @@
 package com.company.project.common.util;
 
+import java.util.HashSet;
 import java.util.Set;
-
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -43,11 +43,13 @@ public class ActionSecurityUtil {
 	 *  得到用户拥有的权限集合 
 	 **/
 	private static Set getUserPermissionSet(long userId,HttpServletRequest request) {
-		return (Set)request.getSession().getAttribute(LOGIN_USER_PERMISSION);
+		Set set = (Set)request.getSession().getAttribute(LOGIN_USER_PERMISSION);
+		return set == null ? new HashSet() : set;
 	}
 
 	public static long getLoginUserId(HttpServletRequest request) {
-		return (Long)request.getSession().getAttribute(LOGIN_USER_ID);
+		Long userId = (Long)request.getSession().getAttribute(LOGIN_USER_ID);
+		return userId == null ? -1 : userId;
 	}
 	
 	/** 

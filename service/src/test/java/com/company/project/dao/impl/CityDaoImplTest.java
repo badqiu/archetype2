@@ -6,35 +6,21 @@
  */
 package com.company.project.dao.impl;
 
-import com.company.project.CityDataFactory;
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNotNull;
 
-import com.company.project.dao.DaoTestConfig;
-import com.github.rapid.common.util.page.Page;
+import java.util.List;
 
-import java.util.*;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestName;
-import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 
-
-
-
-
-
-
-import static junit.framework.Assert.*;
-import com.company.project.model.*;
-import com.company.project.query.*;
-import com.company.project.dao.*;
+import com.company.project.CityDataFactory;
+import com.company.project.dao.CityDao;
+import com.company.project.query.CityQuery;
+import com.github.rapid.common.util.page.Page;
 
 
 /**
@@ -43,11 +29,7 @@ import com.company.project.dao.*;
  * @since 1.0 
  * created: 2019-11-28
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest
-@ContextConfiguration(classes = {DaoTestConfig.class})
-@Transactional
-public class CityDaoImplTest {
+public class CityDaoImplTest extends BaseDaoTestCase {
 	
 	@Rule public TestName testName = new TestName();
 	
