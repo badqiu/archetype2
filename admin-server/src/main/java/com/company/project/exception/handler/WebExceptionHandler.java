@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+/**
+ * 统一异常处理
+ * 
+ * @author badqiu
+ */
 @ControllerAdvice
 @ResponseBody
 public class WebExceptionHandler {
@@ -19,16 +24,17 @@ public class WebExceptionHandler {
     @ExceptionHandler
     public ResponseEntity unknownException(Exception e) {
         log.error("unknownException", e);
-        Map result = new HashMap();
+        
+        Map<String,String> result = new HashMap<String,String>();
         result.put("errCode", e.getClass().getSimpleName());
         result.put("errMsg", e.getMessage());
-        // 发送邮件通知技术人员.
+        
         return ResponseEntity.ok(result);
     }
     
     @ExceptionHandler
     public ResponseEntity securityException(SecurityException e) {
-        log.error("error on SecurityException", e);
+//        log.error("error on SecurityException", e);
         return unknownException(e);
     }
 }
