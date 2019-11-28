@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- DBUnit flatXml DataFile -->
+<dataset>
+
+
+	  <city 
+			id='304' 
+			province_id='731' 
+			city_name='CityName782' 
+			description='Description900' 
+	  />	
+  
+</dataset>

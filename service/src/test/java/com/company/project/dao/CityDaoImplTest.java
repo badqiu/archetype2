@@ -18,7 +18,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.company.project.model.City;
-import com.company.project.model.CityDataFactory;
 import com.github.rapid.common.jdbc.sqlgenerator.CacheSqlGenerator;
 import com.github.rapid.common.jdbc.sqlgenerator.SpringNamedSqlGenerator;
 import com.github.rapid.common.jdbc.sqlgenerator.metadata.MetadataCreateUtils;
@@ -38,40 +37,7 @@ import com.github.rapid.common.jdbc.sqlgenerator.metadata.Table;
 public class CityDaoImplTest {
 	
 	@Rule public TestName testName = new TestName();
-	
-	private CityDao dao;
-	
-	@Before
-	public void before() {
-		System.out.println("\n------------------ "+testName.getMethodName()+" ----------------------\n");
-	}
-	
-	@Autowired
-	public void setCityDao(CityDao dao) {
-		this.dao = dao;
-	}
 
-	
-	@Test
-	public void test_insert() {
-		dao.insert(CityDataFactory.newCity());
-	}
-	
-	@Test
-	public void test_update() {
-		dao.update(CityDataFactory.newCity());
-	}
-	
-	@Test
-	public void test_delete() {
-		dao.deleteById(new Integer("1"));
-	}
-	
-	@Test
-	public void test_getById() {
-		dao.getById(new Integer("1"));
-	}
-	
 	private CacheSqlGenerator sqlGenerator = null;
 	private Table table;
 	@Test

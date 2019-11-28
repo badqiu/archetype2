@@ -6,19 +6,20 @@
  */
 package com.company.project.dao;
 
-import java.util.List;
+import com.company.project.model.*;
+import com.company.project.query.*;
 
-import com.company.project.model.City;
+import java.util.*;
 import com.github.rapid.common.util.page.Page;
 
 /**
  * tableName: city
  * [City] 的Dao操作
  * 
- * @author 
+ * @author badqiu
  * @version 1.0
  * @since 1.0 
- * created: 2019-11-18
+ * created: 2019-11-28
 */
 public interface CityDao {
 	
@@ -26,9 +27,13 @@ public interface CityDao {
 	
 	public int update(City entity);
 
-	public int deleteById(int id);
+	public int deleteById(int id, int provinceId);
 	
-	public City getById(int id);
+	public City getById(int id, int provinceId);
 	
+
+	public Page<City> findPage(CityQuery query);	
+	
+	public List<City> findList(CityQuery query);
 	
 }
