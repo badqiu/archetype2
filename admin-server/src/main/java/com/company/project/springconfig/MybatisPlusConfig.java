@@ -1,4 +1,4 @@
-package com.company.project.config;
+package com.company.project.springconfig;
 
 import javax.sql.DataSource;
 import org.apache.ibatis.plugin.Interceptor;

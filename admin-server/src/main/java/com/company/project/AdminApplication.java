@@ -1,4 +1,4 @@
-package com.company.project.admin;
+package com.company.project;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

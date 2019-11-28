@@ -1,4 +1,4 @@
-package com.company.project.admin.config;
+package com.company.project.springconfig;
 
 import org.apache.catalina.connector.Connector;
 import org.springframework.boot.web.embedded.tomcat.TomcatConnectorCustomizer;

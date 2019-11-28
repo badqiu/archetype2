@@ -1,4 +1,4 @@
-package com.company.project.admin.config;
+package com.company.project.springconfig;
 
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Method;
