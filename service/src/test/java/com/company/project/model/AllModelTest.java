@@ -31,7 +31,7 @@ public class AllModelTest {
 				continue;
 			}
 			Class clazz = Class.forName(clazzString);
-			System.out.println("test get() set() for bean class:" + clazz);
+			System.out.println("test get() set() for " + clazz);
 			
 			try {
 				BeanAssert.testPropertiesAndCommonMethod(clazz);
