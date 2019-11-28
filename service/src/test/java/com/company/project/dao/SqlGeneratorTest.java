@@ -34,7 +34,7 @@ import com.github.rapid.common.jdbc.sqlgenerator.metadata.Table;
 @SpringBootTest
 //@ContextConfiguration(classes = {DaoTestConfig.class})
 @Transactional
-public class CityDaoImplTest {
+public class SqlGeneratorTest {
 	
 	@Rule public TestName testName = new TestName();
 
