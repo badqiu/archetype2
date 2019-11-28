@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * 
  * @author badqiu
  */
+
 @ControllerAdvice
 @ResponseBody
 public class WebExceptionHandler {
@@ -34,7 +35,8 @@ public class WebExceptionHandler {
     
     @ExceptionHandler
     public ResponseEntity securityException(SecurityException e) {
-//        log.error("error on SecurityException", e);
         return unknownException(e);
     }
+    
 }
+

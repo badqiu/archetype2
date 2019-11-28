@@ -13,7 +13,7 @@ public class BaseController {
 	 * @param permission 增删修改=w(写权限), 查=r(读权限)
 	 */
 	protected void checkActionPermission(HttpServletRequest request,Class<?> actionType, String permission) {
-		ActionSecurityUtil.checkActionPermission(request, actionType, permission);
+//		ActionSecurityUtil.checkActionPermission(request, actionType, permission);
 	}
 	
 	/**
