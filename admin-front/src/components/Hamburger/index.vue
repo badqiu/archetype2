@@ -30,13 +30,13 @@ export default {
 </script>
 
 <style scoped>
-.hamburger {
-  display: inline-block;
-  cursor: pointer;
-  width: 20px;
-  height: 20px;
-}
-.hamburger.is-active {
-  transform: rotate(180deg);
-}
+	.hamburger {
+	  display: inline-block;
+	  cursor: pointer;
+	  width: 20px;
+	  height: 20px;
+	}
+	.hamburger.is-active {
+	  transform: rotate(180deg);
+	}
 </style>

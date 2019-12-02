@@ -61,27 +61,27 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-.side-menu{
-  float:left;
-  background: none;
-  .ivu-menu-item{
-    color:#fff;
-    padding:0 20px;
-    display: inline-block;
-    font-size:14px;
-    border-bottom:none;
-    margin-right:1px;
-    height:50px;
-    line-height: 50px;
-    &.is-active,
-    &:hover{
-      background: rgba(255, 255, 255, 0.2);
-      color:#fff;
-    }
-    a{
-      line-height: 50px;
-      display: block;
-    }
-  }
-}
+	.side-menu{
+	  float:left;
+	  background: none;
+	  .ivu-menu-item{
+	    color:#fff;
+	    padding:0 20px;
+	    display: inline-block;
+	    font-size:14px;
+	    border-bottom:none;
+	    margin-right:1px;
+	    height:50px;
+	    line-height: 50px;
+	    &.is-active,
+	    &:hover{
+	      background: rgba(255, 255, 255, 0.2);
+	      color:#fff;
+	    }
+	    a{
+	      line-height: 50px;
+	      display: block;
+	    }
+	  }
+	}
 </style>
