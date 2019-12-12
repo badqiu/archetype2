@@ -133,8 +133,11 @@ public class CityDaoImpl extends BaseSpringJdbcDao implements CityDao{
 
 	@Cacheable(key="#id+'/'+#provinceId")
 	public City getById(int id, int provinceId) {
-		String sql = sqlGenerator.getSelectByPkSql();
-		return (City)DataAccessUtils.singleResult(getJdbcTemplate().query(sql, getEntityRowMapper(),id,provinceId));
+//		String sql = sqlGenerator.getSelectByPkSql();
+//		return (City)DataAccessUtils.singleResult(getJdbcTemplate().query(sql, getEntityRowMapper(),id,provinceId));
+		String sql = "show tables";
+		System.out.println(getJdbcTemplate().queryForList(sql));
+		return null;
 	}
 	
 
