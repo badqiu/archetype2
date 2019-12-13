@@ -6,21 +6,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/admin/echo")
-public class EchoController {
+@RequestMapping("/admin/ping")
+public class AdminPingController {
 
 	@RequestMapping
 	@ResponseBody
-	public String echo(String name) {
-		System.out.println("echo name:"+name);
-		return "success";
-	}
-	
-	@GetMapping
-	@ResponseBody
-	public String echo2(String name) {
-		System.out.println("echo2 name:"+name);
-		return "success";
+	public String ping() {
+		System.out.println("ping");
+		return "PONG";
 	}
 	
 	@GetMapping
