@@ -19,7 +19,7 @@ import com.github.rapid.common.util.page.Page;
  * @author badqiu
  * @version 1.0
  * @since 1.0 
- * created: 2019-11-28
+ * created: 2019-12-13
 */
 public interface CityDao {
 	
@@ -27,9 +27,9 @@ public interface CityDao {
 	
 	public int update(City entity);
 
-	public int deleteById(int id, int provinceId);
+	public int deleteById(City entity);
 	
-	public City getById(int id, int provinceId);
+	public City getById(City entity);
 	
 
 	public Page<City> findPage(CityQuery query);	

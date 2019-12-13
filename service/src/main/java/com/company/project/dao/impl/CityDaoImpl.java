@@ -60,7 +60,7 @@ import com.github.rapid.common.jdbc.sqlgenerator.metadata.Table;
  * @author badqiu
  * @version 1.0
  * @since 1.0 
- * created: 2019-11-28
+ * created: 2019-12-13
 */
 @Repository("cityDao")
 @CacheConfig(cacheNames="city")
@@ -79,7 +79,6 @@ public class CityDaoImpl extends BaseSpringJdbcDao implements CityDao{
 	
 	private CacheSqlGenerator sqlGenerator = null; //增删改查sql生成工具
 	private Table table;
-	protected String columns = null; // 表的列，如:  age,sex
 	protected String selectFromSql = null; // SQL: select age,sex from demo_table  
 	
 	@Override
@@ -89,7 +88,6 @@ public class CityDaoImpl extends BaseSpringJdbcDao implements CityDao{
 		
 		table = MetadataCreateUtils.createTable(getEntityClass());
 		sqlGenerator = new CacheSqlGenerator(new SpringNamedSqlGenerator(table));
-		columns = sqlGenerator.getColumnsSql();
 		selectFromSql = "select "+sqlGenerator.getColumnsSql()+" from " + table.getTableName()+" ";
 	}
 	
@@ -107,7 +105,7 @@ public class CityDaoImpl extends BaseSpringJdbcDao implements CityDao{
 		return entityRowMapper;
 	}
 	
-	@CacheEvict(key="#entity.id+'/'+#entity.provinceId")
+	//@CacheEvict(key="#entity.id")
 	public void insert(City entity) {
 		String sql = sqlGenerator.getInsertSql();
 		insertWithGeneratedKey(entity,sql); //for sqlserver:identity and mysql:auto_increment
@@ -119,25 +117,22 @@ public class CityDaoImpl extends BaseSpringJdbcDao implements CityDao{
 		//insertWithAssigned(entity,sql); //手工分配
 	}
 	
-	@CacheEvict(key="#entity.id+'/'+#entity.provinceId")
+	@CacheEvict(key="#entity.id")
 	public int update(City entity) {
 		String sql = sqlGenerator.getUpdateByPkSql();
-		return getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(entity));
+		return getExtNamedJdbcTemplate().update(sql, entity);
 	}
 	
-	@CacheEvict(key="#id+'/'+#provinceId")
-	public int deleteById(int id, int provinceId) {
+	@CacheEvict(key="#entity.id")
+	public int deleteById(City entity) {
 		String sql = sqlGenerator.getDeleteByPkSql();
-		return  getJdbcTemplate().update(sql,  id,provinceId);
+		return  getExtNamedJdbcTemplate().update(sql,entity);
 	}
 
-	@Cacheable(key="#id+'/'+#provinceId")
-	public City getById(int id, int provinceId) {
+	@Cacheable(key="#entity.id")
+	public City getById(City entity) {
 		String sql = sqlGenerator.getSelectByPkSql();
-		return (City)DataAccessUtils.singleResult(getJdbcTemplate().query(sql, getEntityRowMapper(),id,provinceId));
-//		String sql = "show tables";
-//		System.out.println(getJdbcTemplate().queryForList(sql));
-//		return null;
+		return getExtNamedJdbcTemplate().queryOne(sql, entity,getEntityRowMapper());
 	}
 	
 
@@ -152,7 +147,7 @@ public class CityDaoImpl extends BaseSpringJdbcDao implements CityDao{
 	
 	public List<City> findList(CityQuery query) {
 		StringBuilder sql = getQuerySql(query);
-		return getNamedParameterJdbcTemplate().query(sql.toString(),new BeanPropertySqlParameterSource(query),getEntityRowMapper());
+		return getExtNamedJdbcTemplate().query(sql.toString(),query,getEntityRowMapper());
 	}
 	
 	public StringBuilder getQuerySql(CityQuery query) {

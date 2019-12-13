@@ -20,7 +20,7 @@ import com.github.rapid.common.util.page.PageQuery;
  * @author badqiu
  * @version 1.0
  * @since 1.0 
- * created: 2019-11-28
+ * created: 2019-12-13
  */
 public class CityQuery extends PageQuery implements Serializable {
     private static final long serialVersionUID = 3148176768559230877L;

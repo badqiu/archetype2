@@ -25,7 +25,7 @@ import javax.persistence.Id;
  * @author badqiu
  * @version 1.0
  * @since 1.0 
- * created: 2019-11-28
+ * created: 2019-12-13
  */
 public class City  implements java.io.Serializable{
 	private static final long serialVersionUID = 5454155825314635342L;
@@ -43,7 +43,7 @@ public class City  implements java.io.Serializable{
     /**
      * 省份编号       db_column: province_id 
      */ 	
-	@Max(9999999999L)
+	@NotNull @Max(9999999999L)
 	private Integer provinceId;
 	
     /**
@@ -64,11 +64,9 @@ public class City  implements java.io.Serializable{
 	}
 
 	public City(
-		Integer id,
-		Integer provinceId
+		Integer id
 	){
 		this.id = id;
-		this.provinceId = provinceId;
 	}
 
 	/**
@@ -86,7 +84,6 @@ public class City  implements java.io.Serializable{
 	/**
      * 省份编号
      */ 
-	@Id
 	public Integer getProvinceId() {
 		return this.provinceId;
 	}
@@ -125,7 +122,6 @@ public class City  implements java.io.Serializable{
 	public int hashCode() {
 		return new HashCodeBuilder()
 			.append(getId())
-			.append(getProvinceId())
 			.toHashCode();
 	}
 	
@@ -135,7 +131,6 @@ public class City  implements java.io.Serializable{
 		City other = (City)obj;
 		return new EqualsBuilder()
 			.append(getId(),other.getId())
-			.append(getProvinceId(),other.getProvinceId())
 			.isEquals();
 	}
 }

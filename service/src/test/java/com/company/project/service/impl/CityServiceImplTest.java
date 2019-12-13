@@ -26,7 +26,7 @@ import com.company.project.dao.*;
  * @author badqiu
  * @version 1.0
  * @since 1.0 
- * created: 2019-11-28
+ * created: 2019-12-13
  */
 public class CityServiceImplTest {
 
@@ -37,6 +37,8 @@ public class CityServiceImplTest {
 	
 	@Rule public TestName testName = new TestName();
 	
+	private City id = new City(new Integer("1"));
+	
 	@Before
 	public void before() {
 		System.out.println("\n------------------ "+testName.getMethodName()+" ----------------------\n");
@@ -44,7 +46,7 @@ public class CityServiceImplTest {
 	}
 	
 	@Test
-	public void test_create() {
+	public void create() {
 		City obj = CityDataFactory.newCity();
 		service.create(obj);
 		
@@ -52,8 +54,8 @@ public class CityServiceImplTest {
 	}
 	
 	@Test
-	public void test_update() {
-		when(cityDao.getById(new Integer("1"),new Integer("1"))).thenReturn(CityDataFactory.newCity()); // mock方法调用
+	public void update() {
+		when(cityDao.getById(id)).thenReturn(CityDataFactory.newCity()); // mock方法调用
 		
 		City obj = CityDataFactory.newCity();
 		service.update(obj);
@@ -62,19 +64,19 @@ public class CityServiceImplTest {
 	}
 	
 	@Test
-	public void test_removeById() {
-		service.removeById(new Integer("1"),new Integer("1"));
+	public void removeById() {
+		service.removeById(id);
 		
-		verify(cityDao).deleteById(new Integer("1"),new Integer("1")); //验证执行了该语句
+		verify(cityDao).deleteById(id); //验证执行了该语句
 	}
 	
 	@Test
-	public void test_getById() {
-		when(cityDao.getById(new Integer("1"),new Integer("1"))).thenReturn(CityDataFactory.newCity()); // mock方法调用
+	public void getById() {
+		when(cityDao.getById(id)).thenReturn(CityDataFactory.newCity()); // mock方法调用
 		
-		City city = service.getById(new Integer("1"),new Integer("1"));
+		City city = service.getById(id);
 		
-		verify(cityDao).getById(new Integer("1"),new Integer("1")); //验证执行了该语句
+		verify(cityDao).getById(id); //验证执行了该语句
 		assertNotNull(city);
 	}
 	

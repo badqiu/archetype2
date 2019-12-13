@@ -25,7 +25,7 @@ import java.util.List;
  * @author badqiu
  * @version 1.0
  * @since 1.0 
- * created: 2019-11-28
+ * created: 2019-12-13
  */
 public interface CityService {
 
@@ -47,17 +47,17 @@ public interface CityService {
 	/** 
 	 * 删除City
 	 **/
-    public void removeById(int id, int provinceId);
+    public void removeById(City city);
     
 	/** 
 	 * 根据ID得到City
 	 **/    
-    public City getById(int id, int provinceId);
+    public City getById(City city);
     
     /** 
 	 * 根据ID得到City,找不到抛异常
 	 **/ 
-    public City getRequiredById(int id, int provinceId);
+    public City getRequiredById(City city);
     
 	/** 
 	 * 分页查询: City

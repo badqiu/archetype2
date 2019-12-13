@@ -6,9 +6,6 @@
  */
 package com.company.project.service.impl;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -18,12 +15,18 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
-import com.company.project.dao.CityDao;
-import com.company.project.model.City;
-import com.company.project.query.CityQuery;
 import com.company.project.service.CityService;
+
 import com.github.rapid.common.util.holder.BeanValidatorHolder;
 import com.github.rapid.common.util.page.Page;
+
+import com.company.project.model.*;
+import com.company.project.dao.*;
+import com.company.project.query.*;
+
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
 /**
  * [City] 的Service接口实现
@@ -31,7 +34,7 @@ import com.github.rapid.common.util.page.Page;
  * @author badqiu
  * @version 1.0
  * @since 1.0 
- * created: 2019-11-28
+ * created: 2019-12-13
  */
 @Service("cityService")
 public class CityServiceImpl extends BaseService implements CityService {
@@ -44,7 +47,6 @@ public class CityServiceImpl extends BaseService implements CityService {
 	@Autowired
 	private CityDao cityDao;
 	
-	/**增加setXXXX()方法,spring就可以通过autowire自动设置对象属性,请注意大小写*/
 	public void setCityDao(CityDao dao) {
 		this.cityDao = dao;
 	}
@@ -78,11 +80,8 @@ public class CityServiceImpl extends BaseService implements CityService {
         Assert.notNull(city,"'city' must be not null");
         checkCity(city);
         
-		Integer id = city.getId();
-		Integer provinceId = city.getProvinceId();
-		
 		//不可以让客户端可以更新所有属性
-		City fromDb = getById(id,provinceId);
+		City fromDb = getById(city);
 		BeanUtils.copyProperties(city, fromDb,"createTime"); //ignore some copy property
 		
 		cityDao.update(fromDb);
@@ -102,26 +101,26 @@ public class CityServiceImpl extends BaseService implements CityService {
 	 * 删除City
 	 **/
     @Override
-    public void removeById(int id, int provinceId) {
-        cityDao.deleteById(id,provinceId);
+    public void removeById(City city) {
+        cityDao.deleteById(city);
     }
     
 	/** 
 	 * 根据ID得到City
 	 **/
     @Override
-    public City getById(int id, int provinceId) {
-        return cityDao.getById(id,provinceId);
+    public City getById(City city) {
+        return cityDao.getById(city);
     }
     
     /** 
 	 * 根据ID得到City,找不到抛异常
 	 **/
     @Override
-    public City getRequiredById(int id, int provinceId) {
-    	City r = getById(id,provinceId);
+    public City getRequiredById(City city) {
+    	City r = getById(city);
     	if(r == null) {
-    		throw new IllegalArgumentException("required City not found by id:"+Arrays.asList(id,provinceId));
+    		throw new IllegalArgumentException("required City not found by id:"+city);
     	}
     	return r;
     }
