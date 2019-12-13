@@ -24,7 +24,7 @@ public class WebExceptionHandler {
 
     @ExceptionHandler
     public ResponseEntity exception(Exception e) {
-        log.error("unknownException", e);
+        log.error("exception", e);
         
         Map<String,String> result = new HashMap<String,String>();
         result.put("errCode", e.getClass().getSimpleName());
