@@ -6,52 +6,28 @@
  */
 package com.company.project.dao.impl;
 
-import com.company.project.model.*;
-import com.company.project.query.*;
-import com.company.project.dao.CityDao;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-import java.io.Serializable;
 import java.util.List;
-import java.util.Date;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.dao.support.DataAccessUtils;
-import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
-
-
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 
-import com.github.rapid.common.util.page.Page;
-import com.github.rapid.common.util.ObjectUtil;
-import com.github.rapid.common.jdbc.dao.support.BaseSpringJdbcDao;
+import com.company.project.dao.CityDao;
+import com.company.project.model.City;
+import com.company.project.query.CityQuery;
 import com.github.rapid.common.jdbc.sqlgenerator.CacheSqlGenerator;
 import com.github.rapid.common.jdbc.sqlgenerator.SpringNamedSqlGenerator;
 import com.github.rapid.common.jdbc.sqlgenerator.metadata.MetadataCreateUtils;
 import com.github.rapid.common.jdbc.sqlgenerator.metadata.Table;
+import com.github.rapid.common.util.page.Page;
 
 /**
  * tableName: city
@@ -64,7 +40,7 @@ import com.github.rapid.common.jdbc.sqlgenerator.metadata.Table;
 */
 @Repository("cityDao")
 @CacheConfig(cacheNames="city")
-public class CityDaoImpl extends BaseSpringJdbcDao implements CityDao{
+public class CityDaoImpl extends BaseDao implements CityDao{
 
 	protected static final Logger logger = LoggerFactory.getLogger(CityDaoImpl.class);
 	
@@ -77,8 +53,8 @@ public class CityDaoImpl extends BaseSpringJdbcDao implements CityDao{
 	
 	private RowMapper<City> entityRowMapper = new BeanPropertyRowMapper<City>(getEntityClass());
 	
-	private CacheSqlGenerator sqlGenerator = null; //增删改查sql生成工具
-	private Table table;
+	protected CacheSqlGenerator sqlGenerator = null; //增删改查sql生成工具
+	protected Table table;
 	protected String selectFromSql = null; // SQL: select age,sex from demo_table  
 	
 	@Override

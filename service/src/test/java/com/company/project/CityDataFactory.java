@@ -37,7 +37,7 @@ public class CityDataFactory {
 	public static City newCity() {
 		City obj = new City();
 		
-	  	obj.setId(new Integer("1"));
+	  	obj.setId(new Integer("5"));
 	  	obj.setProvinceId(new Integer("1"));
 	  	obj.setCityName(new String("1"));
 	  	obj.setDescription(new String("1"));
