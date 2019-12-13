@@ -7,7 +7,6 @@
 package com.company.project.dao.impl;
 
 import com.company.project.CityDataFactory;
-
 import com.github.rapid.common.util.page.Page;
 
 import java.util.*;
@@ -22,7 +21,10 @@ import org.junit.runner.RunWith;
 
 
 
+
+
 import static junit.framework.Assert.*;
+
 import com.company.project.model.*;
 import com.company.project.query.*;
 import com.company.project.dao.*;
