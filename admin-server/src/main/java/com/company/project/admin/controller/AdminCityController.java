@@ -67,7 +67,7 @@ public class AdminCityController extends BaseController {
 		checkActionPermission(request,City.class,"r");
 		
 		City result = cityService.getById(id,provinceId);
-		return ResponseEntity.ok("success");
+		return ResponseEntity.ok(result);
 	}
 	
 	@GetMapping

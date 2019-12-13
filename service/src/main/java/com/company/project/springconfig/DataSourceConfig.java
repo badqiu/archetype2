@@ -27,9 +27,9 @@ public class DataSourceConfig {
         return DruidDataSourceBuilder.create().build();
     }
     
-    @Bean
-    public DataSourceProperties dataSourceProperties() {
-    	return new DataSourceProperties();
-    }
+//    @Bean
+//    public DataSourceProperties dataSourceProperties() {
+//    	return new DataSourceProperties();
+//    }
     
 }

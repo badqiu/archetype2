@@ -6,6 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.company.project.ServiceTestApplication;
 import com.company.project.springconfig.CacheConfig;
 import com.company.project.springconfig.DaoConfig;
 import com.company.project.springconfig.DataSourceConfig;
@@ -18,12 +19,13 @@ import com.company.project.springconfig.ValidatorConfig;
 import com.company.project.springconfig.WebMvcConfig;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes={
-		CacheConfig.class,DataSourceConfig.class,
-		I18nConfig.class,MybatisPlusConfig.class,RedisConfig.class,
-		TomcatConfig.class,ValidatorConfig.class,WebMvcConfig.class,
-		DaoConfig.class,ServiceConfig.class,
-})
+//@SpringBootTest(classes={
+//		CacheConfig.class,DataSourceConfig.class,
+//		I18nConfig.class,MybatisPlusConfig.class,RedisConfig.class,
+//		TomcatConfig.class,ValidatorConfig.class,WebMvcConfig.class,
+//		DaoConfig.class,ServiceConfig.class,
+//})
+@SpringBootTest(classes={ServiceTestApplication.class})
 
 //@EnableAutoConfiguration
 //@SpringBootApplication
