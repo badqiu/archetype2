@@ -19,7 +19,7 @@ public class DataSourceConfig {
 	private static Logger logger = LoggerFactory.getLogger(DataSourceConfig.class);
 	
     @Bean(name = "demoprojectDataSource",initMethod = "init")
-    @AliasFor("dataSource")
+//    @AliasFor("dataSource")
     @Primary
     @ConfigurationProperties("datasource.demoproject")
     public DataSource demoprojectDataSource(){

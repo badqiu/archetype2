@@ -17,12 +17,12 @@ import com.github.rapid.common.jdbc.dialect.MySQLDialect;
 public class DaoConfig {
 
 	
-	@Bean
-	public PlatformTransactionManager transactionManager(DataSource dataSource) {
-		DataSourceTransactionManager tm = new DataSourceTransactionManager();
-		tm.setDataSource(dataSource);
-		return tm;
-	}
+//	@Bean
+//	public PlatformTransactionManager transactionManager(DataSource dataSource) {
+//		DataSourceTransactionManager tm = new DataSourceTransactionManager();
+//		tm.setDataSource(dataSource);
+//		return tm;
+//	}
 	
 	public Dialect dialect() {
 		return new MySQLDialect();

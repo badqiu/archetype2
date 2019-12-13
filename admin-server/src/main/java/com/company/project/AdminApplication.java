@@ -20,11 +20,13 @@ import com.company.project.springconfig.WebMvcConfig;
 @EnableAutoConfiguration
 @SpringBootApplication
 @ServletComponentScan
+/*
 @ImportAutoConfiguration({
 	CacheConfig.class,DataSourceConfig.class,
 	I18nConfig.class,MybatisPlusConfig.class,RedisConfig.class,
 	TomcatConfig.class,ValidatorConfig.class,WebMvcConfig.class
 })
+*/
 public class AdminApplication {
 
 	/**
