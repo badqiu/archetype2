@@ -30,6 +30,10 @@ public class ActionSecurityUtil {
 
 	public static void checkActionPermission(HttpServletRequest request, String actionType,String permission) {
 		long userId = getLoginUserId(request);
+		if(isSuperAdminUser(userId)) {
+			return;
+		}
+		
 		Set userPermissionSet = getUserPermissionSet(userId,request);
 		
 		if(userPermissionSet.contains(actionType+":"+permission)) {
@@ -39,6 +43,10 @@ public class ActionSecurityUtil {
 		}
 	}
 	
+	private static boolean isSuperAdminUser(long userId) {
+		return false;
+	}
+
 	/** 请自行实现
 	 *  得到用户拥有的权限集合 
 	 **/
