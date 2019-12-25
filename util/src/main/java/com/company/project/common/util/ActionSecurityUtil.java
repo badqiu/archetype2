@@ -36,11 +36,15 @@ public class ActionSecurityUtil {
 		
 		Set userPermissionSet = getUserPermissionSet(userId,request);
 		
+		if(userPermissionSet.contains(actionType)){
+			return;
+		}
+		
 		if(userPermissionSet.contains(actionType+":"+permission)) {
 			return;
-		}else {
-			throw new SecurityException("not permission,actionType:"+actionType+" permission:"+permission+" userId:"+userId);
 		}
+		
+		throw new SecurityException("not permission,actionType:"+actionType+" permission:"+permission+" userId:"+userId);
 	}
 	
 	private static boolean isSuperAdminUser(long userId) {
