@@ -26,11 +26,17 @@ archetype生成项目命令:
 				<username>user.name</username>
 				<password>s3cr3t</password>
 			  </server>
+	
+	更新local catalog
+		mvn archetype:crawl
+		#mvn archetype:update-local-catalog
 
 	新版本mvn已经不支持下列属性
 		mvn archetype:generate -Dfilter=rapid-mvc-archetype -DarchetypeCatalog=http://nexus.qinha.com:8081/nexus/content/repositories/public/	--远程
 		mvn archetype:generate -Dfilter=rapid-mvc-archetype -DarchetypeCatalog=http://nexus.qinha.com:8081/nexus/content/repositories/releases/	--远程
 		mvn archetype:generate -Dfilter=rapid-mvc-archetype -DarchetypeCatalog=http://nexus.qinha.com:8081/nexus/content/repositories/snapshots/  --远程
-		mvn archetype:generate -Dfilter=rapid-mvc-archetype -DarchetypeCatalog=local						--本地
+		mvn archetype:generate -Dfilter=rapid-mvc-archetype -DarchetypeCatalog=local						--本地,需mvn archetype:crawl
+		mvn archetype:generate -Dfilter=rapid-vue-springboot-springjdbc-archetype -DarchetypeCatalog=local  --本地,需mvn archetype:crawl
+		mvn archetype:generate -DarchetypeCatalog=local  --本地,需mvn archetype:crawl
 
 

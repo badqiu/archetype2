@@ -8,6 +8,7 @@
 	<packaging>maven-archetype</packaging>
 
 	<!-- deploy path -->
+	<!--
 	<distributionManagement>
 		<repository>
 			<id>releases</id>
@@ -20,6 +21,7 @@
 			<url>http://nexus.qinha.com:8081/nexus/content/repositories/snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
+	-->
 	
 	<build>
 		<extensions>
