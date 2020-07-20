@@ -2,23 +2,23 @@ package com.company.project.springconfig;
 
 import javax.sql.DataSource;
 
-import org.apache.ibatis.plugin.Interceptor;
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.util.ObjectUtils;
-import org.springframework.util.StringUtils;
-
-import com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties;
-import com.baomidou.mybatisplus.core.MybatisConfiguration;
-import com.baomidou.mybatisplus.core.MybatisXMLLanguageDriver;
-import com.baomidou.mybatisplus.extension.MybatisMapWrapperFactory;
-import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
-import com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor;
-import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
+//import org.apache.ibatis.plugin.Interceptor;
+//import org.mybatis.spring.annotation.MapperScan;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.boot.context.properties.EnableConfigurationProperties;
+//import org.springframework.context.annotation.Bean;
+//import org.springframework.context.annotation.ComponentScan;
+//import org.springframework.context.annotation.Configuration;
+//import org.springframework.util.ObjectUtils;
+//import org.springframework.util.StringUtils;
+//
+//import com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties;
+//import com.baomidou.mybatisplus.core.MybatisConfiguration;
+//import com.baomidou.mybatisplus.core.MybatisXMLLanguageDriver;
+//import com.baomidou.mybatisplus.extension.MybatisMapWrapperFactory;
+//import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
+//import com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor;
+//import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 
 /**
 * 
@@ -27,7 +27,7 @@ import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 * @since 2019-11-06
 *
 */
-@Configuration
+//@Configuration
 //@MapperScan(basePackages="com.company.project.dao*")
 //@ComponentScan(basePackages="com.company.project.service*")
 //@EnableConfigurationProperties(MybatisPlusProperties.class)
