@@ -19,17 +19,12 @@ public class DataSourceConfig {
 	private static Logger logger = LoggerFactory.getLogger(DataSourceConfig.class);
 	
     @Bean(name = "demoprojectDataSource",initMethod = "init")
-//    @AliasFor("dataSource")
+    //@AliasFor("dataSource")
     @Primary
     @ConfigurationProperties("datasource.demoproject")
     public DataSource demoprojectDataSource(){
         logger.info("Init demoprojectDataSource");
         return DruidDataSourceBuilder.create().build();
     }
-    
-//    @Bean
-//    public DataSourceProperties dataSourceProperties() {
-//    	return new DataSourceProperties();
-//    }
     
 }

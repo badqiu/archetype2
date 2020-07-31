@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
  * 
  * r: 读权限
  * w: 写权限(增删修改)
+ * e: 执行权限
  * 
  * @author badqiu
  *
