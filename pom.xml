@@ -29,7 +29,6 @@
 		<!-- versions -->
 		<h2.version>1.4.189</h2.version>
 		<slf4j.version>1.7.12</slf4j.version>
-		<hibernate.validator.version>5.2.1.Final</hibernate.validator.version>
 		<shiro.version>1.2.4</shiro.version>
 		<guava.version>18.0</guava.version>
 		<powermock.version>1.6.6</powermock.version>
@@ -46,6 +45,21 @@
  
 	<dependencyManagement>
 	  <dependencies>
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid-spring-boot-starter</artifactId>
+			<version>1.1.21</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<version>2.2.2.RELEASE</version>
+		</dependency>
+
+
+		
 		<dependency>
 			<groupId>com.github.rapid.common</groupId>
 			<artifactId>rapid-common-util</artifactId>
@@ -79,7 +93,7 @@
 		<dependency>
 			<groupId>com.github.rapid.common</groupId>
 			<artifactId>rapid-common-rest</artifactId>
-			<version>1.0.10</version>        
+			<version>1.0.13</version>        
 		</dependency>
 		
 		<dependency>
@@ -168,9 +182,9 @@
 			<version>1.4</version>
 		</dependency>
 		<dependency>
-			  <groupId>commons-fileupload</groupId>
-			  <artifactId>commons-fileupload</artifactId>
-			  <version>1.3.1</version>
+		  <groupId>commons-fileupload</groupId>
+		  <artifactId>commons-fileupload</artifactId>
+		  <version>1.3.1</version>
 		</dependency>
 		<!--  apache-commons END -->
 
@@ -186,18 +200,6 @@
 			<artifactId>dbunit</artifactId>
 			<version>2.4.7</version>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-		  <groupId>org.mockito</groupId>
-		  <artifactId>mockito-core</artifactId>
-		  <version>3.4.4</version>
-		  <scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.assertj</groupId>
@@ -221,118 +223,7 @@
 	   </dependency>
 		<!-- test END -->
 
-		<!-- logging BEGIN-->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>${slf4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.16</version>
-			<exclusions>
-				<exclusion>
-					<groupId>javax.mail</groupId>
-					<artifactId>mail</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>javax.jms</groupId>
-					<artifactId>jms</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>com.sun.jdmk</groupId>
-					<artifactId>jmxtools</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>com.sun.jmx</groupId>
-					<artifactId>jmxri</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>oro</groupId>
-					<artifactId>oro</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>net.sf.log4jdbc</groupId>
-			<artifactId>log4jdbc4</artifactId>
-			<version>1.2.1</version>	
-		</dependency>	
-		<!-- logging end-->
-		
-		<!-- j2ee web spec -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
-			<!--
-			<scope>provided</scope>
-			-->
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jsp-api</artifactId>
-			<version>2.0</version>
-		</dependency>
-		<!-- for test HibernateValidator -->
-		<dependency>
-		   <groupId>javax.el</groupId>
-		   <artifactId>javax.el-api</artifactId>
-		   <version>3.0.0</version>
-		</dependency>
 
-		<!-- email begin -->
-		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>mail</artifactId>
-			<version>1.4.3</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.activation</groupId>
-			<artifactId>activation</artifactId>
-			<version>1.1.1</version>
-		</dependency>
-		<!-- email end -->
-
-		<!-- xml begin -->
-		<dependency>
-			<groupId>com.sun.xml.bind</groupId>
-			<artifactId>jaxb-impl</artifactId>
-			<version>2.2.1</version>
-		</dependency>
-		<dependency>
-			<groupId>dom4j</groupId>
-			<artifactId>dom4j</artifactId>
-			<version>1.6.1</version>
-		</dependency>
-		<dependency>
-			<groupId>jaxen</groupId>
-			<artifactId>jaxen</artifactId>
-			<version>1.1.1</version>
-			<exclusions>
-				<exclusion>
-					<groupId>com.ibm.icu</groupId>
-					<artifactId>icu4j</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>xerces</groupId>
-			<artifactId>xercesImpl</artifactId>
-			<version>2.9.1</version>
-		</dependency>
 		<dependency>
 			<groupId>com.thoughtworks.xstream</groupId>
 			<artifactId>xstream</artifactId>
@@ -341,36 +232,13 @@
 		<!-- xml  end -->
 
 		<!-- template engine -->
+		<!--
 		<dependency>
 			<groupId>org.freemarker</groupId>
 			<artifactId>freemarker</artifactId>
 			<version>2.3.30</version>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.velocity</groupId>
-			<artifactId>velocity</artifactId>
-			<version>1.7</version>
-		</dependency>
-																	
-		<!-- hibernate BEGIN-->
-		<!--
-		<dependency>
-			<groupId>javassist</groupId>
-			<artifactId>javassist</artifactId>
-			<version>3.11.0.GA</version>
-		</dependency>
-		<dependency>
-			<groupId>net.sf.ehcache</groupId>
-			<artifactId>ehcache</artifactId>
-			<version>1.6.2</version>
-		</dependency>
-		<dependency>
-			<groupId>asm</groupId>
-			<artifactId>asm</artifactId>
-			<version>3.2</version>
-		</dependency>						
 		-->
-		<!-- hibernate END-->
 
 		<!-- excel 2003 -->
 		<dependency>
@@ -385,35 +253,6 @@
 			<version>3.13</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>druid-spring-boot-starter</artifactId>
-			<version>1.1.21</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-			<version>2.2.2.RELEASE</version>
-		</dependency>
-		
-		<!-- JSR303 bean validation begin -->
-		<!--
-		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>1.1.0.Final</version>
-		</dependency>			
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>${hibernate.validator.version}</version>
-		</dependency>
-		-->
-		<!-- JSR303 bean validation end -->
-		
-
-		
 
 		<!-- jdbc drivers begin -->	
 		<!-- 
@@ -460,14 +299,7 @@
 			<version>${shiro.version}</version>	
 		</dependency>
 		<!-- shiro security end -->
-								
 
-		<dependency>
-			<groupId>javax.annotation</groupId>
-			<artifactId>javax.annotation-api</artifactId>
-			<version>1.3.1</version>
-		</dependency>
-	
 	  </dependencies>
 	</dependencyManagement>
 
@@ -491,61 +323,6 @@
 	<build>
 		
 		<plugins>
-
-
-			<!-- test plugin -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.18</version>
-				<configuration>
-					<includes>
-						<include>**/*Test.java</include>
-						<include>**/Test*.java</include>
-					</includes>
-				</configuration>
-			</plugin>
-
-			
-			<!-- javadoc plugin -->
-			<plugin>
-			  <groupId>org.apache.maven.plugins</groupId>
-			  <artifactId>maven-javadoc-plugin</artifactId>
-			  <version>2.9.1</version>
-			  <configuration>
-					<reportOutputDirectory>./web-admin/src/main/webapp/javadoc</reportOutputDirectory>
-			        <destDir>all</destDir>
-			        <aggregate>true</aggregate>
-			        <failOnError>false</failOnError>
-                    <doclint>none</doclint>
-			  </configuration>
-			</plugin>				
-
-
-
-
-
-
-
-		   
-			<!-- jetty plugin -->
-			<plugin>
-			  	<groupId>org.eclipse.jetty</groupId>
-    			<artifactId>jetty-maven-plugin</artifactId>
-    			<version>9.0.5.v20130815</version>
-    			<configuration>
-    				<scanIntervalSeconds>10</scanIntervalSeconds>
-                	<stopKey>foo</stopKey>
-                	<stopPort>9999</stopPort>
-                	<!-- 
-                	<httpConnector>
-                		<port>80</port>
-                	</httpConnector>
-                	 -->
-    			</configuration>
-			</plugin>
-
-			
 
 
 			<!-- archetype plugin-->

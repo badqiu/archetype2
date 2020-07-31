@@ -1,46 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <parent>
-    <artifactId>demoproject</artifactId>
-    <groupId>com.company.project</groupId>
-    <version>1.0-SNAPSHOT</version>
-  </parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+		<artifactId>demoproject</artifactId>
+		<groupId>com.company.project</groupId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
 
-  <modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.company.project</groupId>
-  <artifactId>demoproject-util</artifactId>
-  <version>1.0-SNAPSHOT</version>
+	<groupId>com.company.project</groupId>
+	<artifactId>demoproject-util</artifactId>
+	<version>1.0-SNAPSHOT</version>
 
-  <packaging>jar</packaging>
+	<packaging>jar</packaging>
 
-  <dependencies>
-  
-	<dependency>
-		<groupId>com.github.rapid.common</groupId>
-		<artifactId>rapid-common-util</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>com.github.rapid.common</groupId>
-		<artifactId>rapid-common-web</artifactId>
-	</dependency>	
-	<dependency>
-		<groupId>com.github.rapid.common</groupId>
-		<artifactId>rapid-common-jdbc</artifactId>
-	</dependency>	
-	<dependency>
-		<groupId>com.github.rapid.common</groupId>
-		<artifactId>rapid-common-test</artifactId>
-	</dependency>	
-	<dependency>
-		<groupId>com.github.rapid.common</groupId>
-		<artifactId>rapid-common-mvc</artifactId>
-	</dependency>
-	
+	<dependencies>
 
-	
-    
+		<dependency>
+			<groupId>com.github.rapid.common</groupId>
+			<artifactId>rapid-common-util</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.rapid.common</groupId>
+			<artifactId>rapid-common-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.rapid.common</groupId>
+			<artifactId>rapid-common-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.rapid.common</groupId>
+			<artifactId>rapid-common-test</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.rapid.common</groupId>
+			<artifactId>rapid-common-mvc</artifactId>
+		</dependency>
+
+
+
+
 		<dependency>
 			<groupId>com.baomidou</groupId>
 			<artifactId>mybatis-plus-boot-starter</artifactId>
@@ -50,7 +51,7 @@
 			<groupId>com.baomidou</groupId>
 			<artifactId>mybatis-plus-generator</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
@@ -71,242 +72,111 @@
 			<artifactId>spring-boot-starter-freemarker</artifactId>
 		</dependency>
 
-	  <!-- dataSource -->
-	  <dependency>
-	    <groupId>com.alibaba</groupId>
-	    <artifactId>druid-spring-boot-starter</artifactId>
-	  </dependency>   
-  	
-    <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <scope>runtime</scope>
-    </dependency>
-    	    	    
-    <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-      <scope>runtime</scope>
-    </dependency>
- 
-	<!--  apache-commons BEGIN -->
-	<dependency>
-		<groupId>commons-beanutils</groupId>
-		<artifactId>commons-beanutils</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>commons-lang</groupId>
-		<artifactId>commons-lang</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>org.apache.commons</groupId>
-		<artifactId>commons-lang3</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>commons-collections</groupId>
-		<artifactId>commons-collections</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>commons-codec</groupId>
-		<artifactId>commons-codec</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>commons-io</groupId>
-		<artifactId>commons-io</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>commons-logging</groupId>
-		<artifactId>commons-logging</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>commons-configuration</groupId>
-		<artifactId>commons-configuration</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>commons-digester</groupId>
-		<artifactId>commons-digester</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>commons-pool</groupId>
-		<artifactId>commons-pool</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>commons-dbcp</groupId>
-		<artifactId>commons-dbcp</artifactId>
-	</dependency>
-	<!--  apache-commons END -->
+		<!-- dataSource -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid-spring-boot-starter</artifactId>
+		</dependency>
 
-	<dependency>
-	    <groupId>com.google.guava</groupId>
-	    <artifactId>guava</artifactId>
-	</dependency>
-	
-	<!-- test BEGIN -->
-	<dependency>
-		<groupId>junit</groupId>
-		<artifactId>junit</artifactId>
-		<scope>test</scope>
-	</dependency>
-	<dependency>
-		<groupId>org.mockito</groupId>
-	  	<artifactId>mockito-core</artifactId>
-	  	<scope>test</scope>
-  	</dependency>
-	<dependency>
-		<groupId>org.assertj</groupId>
-		<artifactId>assertj-core</artifactId>
-		<scope>test</scope>
-	</dependency>  		
-	<!-- test END -->
+		<!-- apache-commons BEGIN -->
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-configuration</groupId>
+			<artifactId>commons-configuration</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-digester</groupId>
+			<artifactId>commons-digester</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-pool</groupId>
+			<artifactId>commons-pool</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+		</dependency>
+		<!-- apache-commons END -->
 
-	<!-- logging BEGIN-->
-	<!-- 
-	<dependency>
-		<groupId>org.slf4j</groupId>
-		<artifactId>slf4j-api</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>org.slf4j</groupId>
-		<artifactId>slf4j-log4j12</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>log4j</groupId>
-		<artifactId>log4j</artifactId>
-	</dependency>
-	 -->
-	<!-- 
-	<dependency>
-		<groupId>net.sf.log4jdbc</groupId>
-		<artifactId>log4jdbc4</artifactId>
-	</dependency>	
-	 -->
-	<!-- logging end-->
-	
-	<!-- email begin -->
-	<!-- 
-	<dependency>
-		<groupId>javax.mail</groupId>
-		<artifactId>mail</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>javax.activation</groupId>
-		<artifactId>activation</artifactId>
-	</dependency>
-	 -->
-	<!-- email end -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+		</dependency>
 
-	<!-- xml begin -->
-	<!-- 
-	<dependency>
-		<groupId>com.sun.xml.bind</groupId>
-		<artifactId>jaxb-impl</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>dom4j</groupId>
-		<artifactId>dom4j</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>jaxen</groupId>
-		<artifactId>jaxen</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>xerces</groupId>
-		<artifactId>xercesImpl</artifactId>
-	</dependency>
-	 -->
-	<dependency>
-		<groupId>com.thoughtworks.xstream</groupId>
-		<artifactId>xstream</artifactId>
-	</dependency>
-	<!-- xml  end -->
+		<!-- test BEGIN -->
+		<!-- 
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<scope>test</scope>
+		</dependency>
+		 -->
+		<!-- test END -->
 
-	<!-- template engine -->
-	<dependency>
-		<groupId>org.freemarker</groupId>
-		<artifactId>freemarker</artifactId>
-	</dependency>
+		<!-- xml begin -->
+		<dependency>
+			<groupId>com.thoughtworks.xstream</groupId>
+			<artifactId>xstream</artifactId>
+		</dependency>
+		<!-- xml end -->
 
-												
-	
-	<!-- excel 2003 -->
-	<!--
-	<dependency>
-		<groupId>org.apache.poi</groupId>
-		<artifactId>poi</artifactId>
-	</dependency>
-	-->
-	<!-- excel 2007 -->
-	<!--
-	<dependency>
-		<groupId>org.apache.poi</groupId>
-		<artifactId>poi-ooxml</artifactId>
-	</dependency>
-	 -->
-	
-	<!-- JSR303 bean validation begin -->
-	<!-- 
-	<dependency>
-	    <groupId>javax.validation</groupId>
-	    <artifactId>validation-api</artifactId>
-	</dependency>			
-	<dependency>
-	    <groupId>org.hibernate</groupId>
-	    <artifactId>hibernate-validator</artifactId>
-	</dependency>
-	 -->
-	<!-- JSR303 bean validation end -->
-	
-	<!-- json -->
+		<!-- template engine -->
+		<!-- <dependency> <groupId>org.freemarker</groupId> <artifactId>freemarker</artifactId> 
+			</dependency> -->
 
-	
-	<!-- jdbc drivers begin -->	
-	<!-- 
-	<dependency>
-		<groupId>com.h2database</groupId>
-		<artifactId>h2</artifactId>
-		<scope>test</scope>
-	</dependency>			
-	<dependency>
-	    <groupId>hsqldb</groupId>
-	    <artifactId>hsqldb</artifactId>
-	</dependency>
-	 -->		
-	<dependency>
-	    <groupId>mysql</groupId>
-	    <artifactId>mysql-connector-java</artifactId>
-	</dependency>
-	<!-- 
-	<dependency>
-		<groupId>com.oracle</groupId>
-		<artifactId>ojdbc14</artifactId>
-		<version>10.2.0.2.0</version>
-	</dependency>			
-	 -->
-	<!-- jdbc drivers end -->	
+		<!-- excel 2003 -->
+		<!-- <dependency> <groupId>org.apache.poi</groupId> <artifactId>poi</artifactId> 
+			</dependency> -->
+		<!-- excel 2007 -->
+		<!-- <dependency> <groupId>org.apache.poi</groupId> <artifactId>poi-ooxml</artifactId> 
+			</dependency> -->
 
-	<!-- shiro security begin -->
-	<!-- 
-	<dependency>
-		<groupId>org.apache.shiro</groupId>
-		<artifactId>shiro-core</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>org.apache.shiro</groupId>
-		<artifactId>shiro-spring</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>org.apache.shiro</groupId>
-		<artifactId>shiro-web</artifactId>
-	</dependency>
-	 -->
-	<!-- shiro security end -->
 
-  <!-- 
-	<dependency>
-		<groupId>javax.annotation</groupId>
-		<artifactId>javax.annotation-api</artifactId>
-	</dependency>
-   -->
-			
-  </dependencies>
+		<!-- jdbc drivers begin -->
+		<!-- <dependency> <groupId>com.h2database</groupId> <artifactId>h2</artifactId> 
+			<scope>test</scope> </dependency> <dependency> <groupId>hsqldb</groupId> 
+			<artifactId>hsqldb</artifactId> </dependency> -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<!-- <dependency> <groupId>com.oracle</groupId> <artifactId>ojdbc14</artifactId> 
+			</dependency> -->
+		<!-- jdbc drivers end -->
+
+		<!-- shiro security begin -->
+		<!-- <dependency> <groupId>org.apache.shiro</groupId> <artifactId>shiro-core</artifactId> 
+			</dependency> <dependency> <groupId>org.apache.shiro</groupId> <artifactId>shiro-spring</artifactId> 
+			</dependency> <dependency> <groupId>org.apache.shiro</groupId> <artifactId>shiro-web</artifactId> 
+			</dependency> -->
+		<!-- shiro security end -->
+
+	</dependencies>
 </project>
