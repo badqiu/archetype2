@@ -18,7 +18,7 @@
 
 	<build>
 		<finalName>${project.name}</finalName>
-		
+
 		<plugins>
 
 			<plugin>
@@ -27,7 +27,7 @@
 			</plugin>
 
 		</plugins>
-		
+
 	</build>
 
 	<dependencies>
@@ -46,7 +46,7 @@
 			<groupId>com.baomidou</groupId>
 			<artifactId>mybatis-plus-generator</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
@@ -67,37 +67,98 @@
 			<artifactId>spring-boot-starter-freemarker</artifactId>
 		</dependency>
 
-
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 
-		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-data-redis</artifactId> 
-			</dependency> <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-log4j</artifactId> 
-			</dependency> -->
+    <!-- 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-log4j</artifactId>
+		</dependency> 
+     -->
 
 	</dependencies>
-
-	<!-- <build> <defaultGoal>compile</defaultGoal> <plugins> <plugin> <groupId>org.apache.maven.plugins</groupId> 
-		<artifactId>maven-compiler-plugin</artifactId> <version>3.8.1</version> <configuration> 
-		<source>1.8</source> <target>1.8</target> </configuration> </plugin> <plugin> 
-		<groupId>org.springframework.boot</groupId> <artifactId>spring-boot-maven-plugin</artifactId> 
-		<executions> <execution> <goals> <goal>repackage</goal> </goals> </execution> 
-		</executions> </plugin> <plugin> <artifactId>maven-resources-plugin</artifactId> 
-		<executions> <execution> <id>copy Vue.js frontend content</id> <phase>generate-resources</phase> 
-		<goals> <goal>copy-resources</goal> </goals> <configuration> <outputDirectory>src/main/resources/public</outputDirectory> 
-		<overwrite>true</overwrite> <resources> <resource> <directory>${project.parent.basedir}/generator-frontend/dist</directory> 
-		<includes> <include>static/</include> <include>index.html</include> </includes> 
-		</resource> </resources> </configuration> </execution> </executions> </plugin> 
-		<plugin> <artifactId>maven-clean-plugin</artifactId> <version>3.1.0</version> 
-		<executions> <execution> <id>auto-clean</id> <phase>validate</phase> <goals> 
-		<goal>clean</goal> </goals> <configuration> <filesets> <fileset> <directory>src/main/resources/public</directory> 
-		</fileset> </filesets> </configuration> </execution> </executions> </plugin> 
-		</plugins> </build> -->
-
+  
+  <!--  
+	<build>
+		<defaultGoal>compile</defaultGoal>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy Vue.js frontend content</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>src/main/resources/public</outputDirectory>
+							<overwrite>true</overwrite>
+							<resources>
+								<resource>
+									<directory>${project.parent.basedir}/generator-frontend/dist</directory>
+									<includes>
+										<include>static/</include>
+										<include>index.html</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<id>auto-clean</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+						<configuration>
+							<filesets>
+								<fileset>
+									<directory>src/main/resources/public</directory>
+								</fileset>
+							</filesets>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+  -->
 
 
 </project>

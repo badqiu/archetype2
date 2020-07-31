@@ -71,7 +71,12 @@
 			<artifactId>spring-boot-starter-freemarker</artifactId>
 		</dependency>
 
-	
+	  <!-- dataSource -->
+	  <dependency>
+	    <groupId>com.alibaba</groupId>
+	    <artifactId>druid-spring-boot-starter</artifactId>
+	  </dependency>   
+  	
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
@@ -155,6 +160,7 @@
 	<!-- test END -->
 
 	<!-- logging BEGIN-->
+	<!-- 
 	<dependency>
 		<groupId>org.slf4j</groupId>
 		<artifactId>slf4j-api</artifactId>
@@ -167,6 +173,7 @@
 		<groupId>log4j</groupId>
 		<artifactId>log4j</artifactId>
 	</dependency>
+	 -->
 	<!-- 
 	<dependency>
 		<groupId>net.sf.log4jdbc</groupId>
@@ -176,6 +183,7 @@
 	<!-- logging end-->
 	
 	<!-- email begin -->
+	<!-- 
 	<dependency>
 		<groupId>javax.mail</groupId>
 		<artifactId>mail</artifactId>
@@ -184,9 +192,11 @@
 		<groupId>javax.activation</groupId>
 		<artifactId>activation</artifactId>
 	</dependency>
+	 -->
 	<!-- email end -->
 
 	<!-- xml begin -->
+	<!-- 
 	<dependency>
 		<groupId>com.sun.xml.bind</groupId>
 		<artifactId>jaxb-impl</artifactId>
@@ -203,6 +213,7 @@
 		<groupId>xerces</groupId>
 		<artifactId>xercesImpl</artifactId>
 	</dependency>
+	 -->
 	<dependency>
 		<groupId>com.thoughtworks.xstream</groupId>
 		<artifactId>xstream</artifactId>
@@ -214,16 +225,8 @@
 		<groupId>org.freemarker</groupId>
 		<artifactId>freemarker</artifactId>
 	</dependency>
-	<dependency>
-		<groupId>org.apache.velocity</groupId>
-		<artifactId>velocity</artifactId>
-	</dependency>
 
-	<!-- dataSource -->
-	<dependency>
-		<groupId>com.alibaba</groupId>
-		<artifactId>druid-spring-boot-starter</artifactId>
-	</dependency>														
+												
 	
 	<!-- excel 2003 -->
 	<!--
@@ -282,6 +285,7 @@
 	<!-- jdbc drivers end -->	
 
 	<!-- shiro security begin -->
+	<!-- 
 	<dependency>
 		<groupId>org.apache.shiro</groupId>
 		<artifactId>shiro-core</artifactId>
@@ -294,12 +298,15 @@
 		<groupId>org.apache.shiro</groupId>
 		<artifactId>shiro-web</artifactId>
 	</dependency>
+	 -->
 	<!-- shiro security end -->
 
+  <!-- 
 	<dependency>
 		<groupId>javax.annotation</groupId>
 		<artifactId>javax.annotation-api</artifactId>
 	</dependency>
+   -->
 			
   </dependencies>
 </project>
