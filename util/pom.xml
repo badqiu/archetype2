@@ -59,6 +59,19 @@
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-logging</artifactId>
+			<!-- 
+			<exclusions>
+				<exclusion>
+					<groupId>ch.qos.logback</groupId>
+					<artifactId>logback-classic</artifactId>
+				</exclusion>
+			</exclusions> 
+			 -->
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
@@ -104,10 +117,6 @@
 			<artifactId>commons-io</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>commons-configuration</groupId>
 			<artifactId>commons-configuration</artifactId>
 		</dependency>
@@ -123,7 +132,8 @@
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
 		</dependency>
-		<!-- apache-commons END -->
+
+
 
 		<dependency>
 			<groupId>com.google.guava</groupId>
@@ -131,13 +141,8 @@
 		</dependency>
 
 		<!-- test BEGIN -->
-		<!-- 
-		<dependency>
-			<groupId>org.assertj</groupId>
-			<artifactId>assertj-core</artifactId>
-			<scope>test</scope>
-		</dependency>
-		 -->
+		<!-- <dependency> <groupId>org.assertj</groupId> <artifactId>assertj-core</artifactId> 
+			<scope>test</scope> </dependency> -->
 		<!-- test END -->
 
 		<!-- xml begin -->
@@ -147,35 +152,58 @@
 		</dependency>
 		<!-- xml end -->
 
-		<!-- template engine -->
-		<!-- <dependency> <groupId>org.freemarker</groupId> <artifactId>freemarker</artifactId> 
-			</dependency> -->
 
-		<!-- excel 2003 -->
-		<!-- <dependency> <groupId>org.apache.poi</groupId> <artifactId>poi</artifactId> 
-			</dependency> -->
-		<!-- excel 2007 -->
-		<!-- <dependency> <groupId>org.apache.poi</groupId> <artifactId>poi-ooxml</artifactId> 
-			</dependency> -->
+		<!-- excel 2003 and 2007 -->
+		<!-- 
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+		</dependency>
+		 -->
 
 
 		<!-- jdbc drivers begin -->
-		<!-- <dependency> <groupId>com.h2database</groupId> <artifactId>h2</artifactId> 
-			<scope>test</scope> </dependency> <dependency> <groupId>hsqldb</groupId> 
-			<artifactId>hsqldb</artifactId> </dependency> -->
+		<!-- 
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+		</dependency>
+    <dependency>
+      <groupId>com.oracle</groupId>
+      <artifactId>ojdbc14</artifactId>
+    </dependency>		
+		 -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
-		<!-- <dependency> <groupId>com.oracle</groupId> <artifactId>ojdbc14</artifactId> 
-			</dependency> -->
+
 		<!-- jdbc drivers end -->
 
 		<!-- shiro security begin -->
-		<!-- <dependency> <groupId>org.apache.shiro</groupId> <artifactId>shiro-core</artifactId> 
-			</dependency> <dependency> <groupId>org.apache.shiro</groupId> <artifactId>shiro-spring</artifactId> 
-			</dependency> <dependency> <groupId>org.apache.shiro</groupId> <artifactId>shiro-web</artifactId> 
-			</dependency> -->
+		<!-- 
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-web</artifactId>
+		</dependency>
+		 -->
 		<!-- shiro security end -->
 
 	</dependencies>
