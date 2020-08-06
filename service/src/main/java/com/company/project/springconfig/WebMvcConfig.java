@@ -36,12 +36,16 @@ import com.fasterxml.jackson.databind.SerializationConfig;
 
 
 /**
+ * 主要功能:  约定大于配置的URL映射。 
+ * 自动映射: 
+ * @RequestMapping  stop()  => /stop
  * 
- * @RequestMapping的value为空时默认以方法名为匹配路径
+ * 
  * SpringBoot升级到2.0以后配置文件继承的WebMvcConfigurerAdapter已废除，需要改为WebMvcConfigurationSupport
  * addInterceptors()方法覆写不变，但getRequestMappingHandlerMapping() 需要改为createRequestMappingHandlerMapping(), 自定义的RequestMappingHandlerMapping才能生效
  *    参考：https://deeplyloving.iteye.com/blog/2173927
- * @author liuchaohong
+ *    
+ * @author badqiu
  * @date 2019年7月11日
  *
  */
