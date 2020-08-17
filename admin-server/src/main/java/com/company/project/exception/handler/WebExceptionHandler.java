@@ -26,23 +26,23 @@ public class WebExceptionHandler {
 
     private static final Logger log = LoggerFactory.getLogger(WebExceptionHandler.class);
 
-    @ExceptionHandler
-    public Map exception(Exception e) {
-        log.error("exception", e);
-        return errorMap(e, e.getMessage());
-    }
-
-	private Map errorMap(Exception e, String errMsg) {
+	private static Map errorMap(Exception e, String errMsg) {
 		return errorMap(e.getClass().getSimpleName(),errMsg);
 	}
 	
-	private Map errorMap(String errCode, String errMsg) {
+	private static  Map errorMap(String errCode, String errMsg) {
 		Map<String,String> result = new HashMap<String,String>();
 		result.put("errCode", errCode);
 		result.put("errMsg", errMsg);
         
         return result;
 	}
+	
+    @ExceptionHandler
+    public Map exception(Exception e) {
+        log.error("exception", e);
+        return errorMap(e, e.getMessage());
+    }
     
     @ExceptionHandler
     public Map securityException(SecurityException e) {

@@ -1,0 +1,17 @@
+
+
+Srping Bean Config for
+
+  <!-- 
+     激活缓存: @Cacheable,@CachePut,@CacheEvict,@CacheConfig 及
+   JSR-107 @CacheResult,@CachePut,@CacheRemove,@CacheRemoveAll,@CacheDefaults 
+   -->
+  <cache:annotation-driven />
+
+  <!--  激活 @Required @Autowired,JSR 250's @PostConstruct, @PreDestroy and @Resource 等标注 -->
+  <context:annotation-config />
+  
+  <!--  激活 @Scheduled @Async等annotation -->
+  <task:annotation-driven/>
+  
+  
