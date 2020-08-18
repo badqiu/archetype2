@@ -2,6 +2,7 @@ package com.company.project.web.springconf;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.CommonsRequestLoggingFilter;
 
 /**
@@ -21,12 +22,11 @@ import org.springframework.web.filter.CommonsRequestLoggingFilter;
  *
  */
 @Configuration
-public class RequestLoggingFilterConfig {
+public class WebFilterConfig {
  
     @Bean
     public CommonsRequestLoggingFilter logFilter() {
-        CommonsRequestLoggingFilter filter
-          = new CommonsRequestLoggingFilter();
+        CommonsRequestLoggingFilter filter = new CommonsRequestLoggingFilter();
         filter.setIncludeQueryString(true);
         filter.setIncludePayload(false);
         filter.setMaxPayloadLength(10000);
@@ -34,5 +34,11 @@ public class RequestLoggingFilterConfig {
         filter.setAfterMessagePrefix("REQUEST DATA : ");
         return filter;
     }
+    
+	@Bean
+    public CharacterEncodingFilter characterEncodingFilter() {
+		return new CharacterEncodingFilter("UTF-8",true);
+    }
+	
     
 }

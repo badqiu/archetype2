@@ -14,4 +14,5 @@ Srping Bean Config for
   <!--  激活 @Scheduled @Async等annotation -->
   <task:annotation-driven/>
   
+  使用@JdbcTest 可以减少类加载范围
   
