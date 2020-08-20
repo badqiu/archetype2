@@ -14,7 +14,7 @@ export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:${JAVA_
 export APP_ENV=prod
 #项目名
 export APP_NAME=demoproject
-export LOG_ROOT="/data/log/${APP_NAME}/"
+export LOG_PATH="/data/log/${APP_NAME}/"
 export PID_FILE="${PROJECT_PATH}/app.pid"
 
 # 只允许某用户运行
@@ -38,7 +38,7 @@ if [ $USER = $VALID_USER ];then
 					-Dspring.profiles.active=${APP_ENV} \
 					-Dapp.name=$APP_NAME \
 					-Dproject.path=$PROJECT_PATH \
-					-DloggerRoot=${LOG_ROOT} \
+					-DLOG_PATH=${LOG_PATH} \
 					-Djava.net.preferIPv4Stack=true \
 					-Xloggc:/dev/shm/${APP_NAME}_gc.log \
 					-XX:+PrintReferenceGC \
