@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
 #项目路径
-export PROJECT_PATH=$(cd $(dirname "$0");pwd)
-source ${PROJECT_PATH}/env.sh
+export SHELL_PATH=$(cd $(dirname "$0");pwd)
+export PROJECT_PATH=$(cd $SHELL_PATH;cd ..;pwd)
+source ${SHELL_PATH}/env.sh
 
 export VALID_USER='ubuntu'
 
@@ -13,7 +14,7 @@ export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:${JAVA_
 export APP_ENV=prod
 #项目名
 export APP_NAME=demoproject
-export LOG_ROOT="/data/log/${APP_NAME}"
+export LOG_ROOT="/data/log/${APP_NAME}/"
 export PID_FILE="${PROJECT_PATH}/app.pid"
 
 # 只允许某用户运行
@@ -32,8 +33,8 @@ if [ $USER = $VALID_USER ];then
         # 需要填写启动命令和定义服务域
         
 		########请按需要修改DOMIAN########
-		DOMAIN="-jar lib/demoproject-admin-server-1.0-SNAPSHOT.jar"
-		SERVER_CLASS="${DOMAIN}"
+		DOMAIN="lib/demoproject-admin-server-1.0-SNAPSHOT.jar"
+		SERVER_CLASS="-jar ${DOMAIN}"
 
 		########请按需要修改java启动命令#######
 		${JAVA_HOME}/bin/java \
