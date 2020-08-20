@@ -21,17 +21,13 @@ export PID_FILE="${PROJECT_PATH}/app.pid"
 if [ $USER = $VALID_USER ];then
 
     cd $PROJECT_PATH
-    [ -f ./var ]  &&  source  ./var
-    [ -f ./spk.log.rotate ]  &&  chmod +x  ./spk.log.rotate 
+    
    
-
     if [ ! -f ${PID_FILE} ];then
         libs="`ls -1 ${PROJECT_PATH}/lib/*.jar | awk '{printf ":"$1}'`"
         # 加载lib包
         export CLASSPATH=${PROJECT_PATH}/conf:$CLASSPATH:$libs
 
-        # 需要填写启动命令和定义服务域
-        
 		########请按需要修改DOMIAN########
 		DOMAIN="lib/demoproject-admin-server-1.0-SNAPSHOT.jar"
 		SERVER_CLASS="-jar ${DOMAIN}"
@@ -65,8 +61,7 @@ if [ $USER = $VALID_USER ];then
 					-XX:ConcGCThreads=4 \
 					-XX:+PrintGCApplicationStoppedTime \
 					-XX:+PrintGCApplicationConcurrentTime \
-					${SERVER_CLASS} 2>&1 | spk.log.rotate ${LOG_ROOT}/server_stdout.%Y-%M-%D.log 1  &              
-    
+					${SERVER_CLASS} &
       
         sleep 2
          [  !  -f   ${PID_FILE} ]  && echo `ps -ef|grep "${DOMAIN}"|grep -v grep|awk '{print $2}'` > ${PID_FILE}
