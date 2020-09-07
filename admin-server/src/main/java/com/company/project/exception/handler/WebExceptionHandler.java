@@ -8,8 +8,10 @@ import java.util.stream.Collectors;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,28 +28,38 @@ public class WebExceptionHandler {
 
     private static final Logger log = LoggerFactory.getLogger(WebExceptionHandler.class);
 
-	private static Map errorMap(Exception e, String errMsg) {
-		return errorMap(e.getClass().getSimpleName(),errMsg);
-	}
-	
-	private static  Map errorMap(String errCode, String errMsg) {
-		Map<String,String> result = new HashMap<String,String>();
-		result.put("errCode", errCode);
-		result.put("errMsg", errMsg);
-        
-        return result;
-	}
-	
     @ExceptionHandler
     public Map exception(Exception e) {
         log.error("exception", e);
         return errorMap(e, e.getMessage());
     }
+
+	private Map errorMap(Exception e, String errMsg) {
+		return errorMap(e.getClass().getSimpleName(),errMsg,ExceptionUtils.getStackTrace(e));
+	}
+	
+	private Map errorMap(String errCode, String errMsg,String stackTrace) {
+		Map<String,String> result = new HashMap<String,String>();
+		result.put("errCode", errCode);
+		result.put("errMsg", errMsg);
+		
+		if(stackTrace != null) {
+			result.put("stackTrace", stackTrace);
+		}
+        
+        return result;
+	}
     
     @ExceptionHandler
     public Map securityException(SecurityException e) {
         return exception(e);
     }
+    
+    @ExceptionHandler
+    public Map duplicateKeyException(DuplicateKeyException e) {
+        return errorMap(e,"数据出现重复,"+e.getMessage());
+    }
+    
     
     @ExceptionHandler
     public Map constraintViolationException(ConstraintViolationException e) {
