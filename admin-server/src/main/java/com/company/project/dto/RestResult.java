@@ -11,9 +11,10 @@ public class RestResult {
 	String SUCCESS_CODE = "success";
 	String FAIL_CODE = "fail";
 	
-	private String code;
+	private String code; //成功，失败标识
 	
-	private String msg;
+	private String msg; //消息
+	private String errCode; //错误码
 	
 	private Object result;
 	
@@ -37,8 +38,14 @@ public class RestResult {
 		return this;
 	}
 	
+	public RestResult errCode(String errCode) {
+		this.errCode = errCode;
+		return this;
+	}
+	
 	public RestResult fail(Exception error) {
 		this.code = FAIL_CODE;
+		errCode(error.getClass().getSimpleName());
 		this.msg = error.getMessage();
 		return this;
 	}
@@ -49,6 +56,10 @@ public class RestResult {
 
 	public String getMsg() {
 		return msg;
+	}
+	
+	public String getErrCode() {
+		return errCode;
 	}
 
 	public Object getResult() {

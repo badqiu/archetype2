@@ -8,12 +8,10 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import com.company.project.dto.RestResult;
 
-@EnableWebMvc
 @Configuration
 public class WebMvcGlobalReturnConfig {
 
@@ -41,8 +39,8 @@ public class WebMvcGlobalReturnConfig {
 	            }
             }
             
-            RestResult resultMap = new RestResult().success().result(body);
-			return ResponseEntity.ok(resultMap);
+            RestResult r = new RestResult().success().result(body);
+			return r;
         }
         
         

@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.company.project.dto.RestResult;
+
 /**
  * 统一异常处理
  * 
@@ -29,40 +31,42 @@ public class WebExceptionHandler {
     private static final Logger log = LoggerFactory.getLogger(WebExceptionHandler.class);
 
     @ExceptionHandler
-    public Map exception(Exception e) {
+    public RestResult exception(Exception e) {
         log.error("exception", e);
         return errorMap(e, e.getMessage());
     }
 
-	private Map errorMap(Exception e, String errMsg) {
+	private RestResult errorMap(Exception e, String errMsg) {
 		return errorMap(e.getClass().getSimpleName(),errMsg,ExceptionUtils.getStackTrace(e));
 	}
 	
-	private Map errorMap(String errCode, String errMsg,String stackTrace) {
-		Map<String,String> result = new HashMap<String,String>();
-		result.put("errCode", errCode);
-		result.put("errMsg", errMsg);
+	private RestResult errorMap(String errCode, String errMsg,String stackTrace) {
+		RestResult result = new RestResult();
+		result.fail(errMsg);
+		result.errCode(errCode);
 		
 		if(stackTrace != null) {
-			result.put("stackTrace", stackTrace);
+			Map other = new HashMap();
+			other.put("stackTrace", stackTrace);
+			result.result(other);
 		}
         
         return result;
 	}
     
     @ExceptionHandler
-    public Map securityException(SecurityException e) {
+    public RestResult securityException(SecurityException e) {
         return exception(e);
     }
     
     @ExceptionHandler
-    public Map duplicateKeyException(DuplicateKeyException e) {
+    public RestResult duplicateKeyException(DuplicateKeyException e) {
         return errorMap(e,"数据出现重复,"+e.getMessage());
     }
     
     
     @ExceptionHandler
-    public Map constraintViolationException(ConstraintViolationException e) {
+    public RestResult constraintViolationException(ConstraintViolationException e) {
     	Set<ConstraintViolation<?>> constraintViolations = e.getConstraintViolations();
     	if(constraintViolations == null) {
     		return errorMap(e,e.getMessage());
@@ -77,9 +81,9 @@ public class WebExceptionHandler {
 			errMap.put(row.getPropertyPath(), row.getMessage());
 		});
 		
-		Map map =  errorMap(e,errMsg);
-		map.put("errMap",errMap);
-		return map;
+		RestResult r =  errorMap(e,errMsg);
+		r.result(errMap);
+		return r;
     }
     
 }

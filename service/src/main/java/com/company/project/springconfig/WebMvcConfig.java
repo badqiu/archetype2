@@ -18,6 +18,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.util.AntPathMatcher;
 import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -58,17 +59,17 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
 		// 解决返回结果中午乱码问题
 		super.configureMessageConverters(converters);
-		converters.add(responseBodyConverter());
+//		converters.add(responseBodyConverter());
 		converters.add(responseJsonBodyConverter());
 	}
 
-	@Bean
-	public HttpMessageConverter<String> responseBodyConverter() {
-		StringHttpMessageConverter converter = new StringHttpMessageConverter(Charset.forName("UTF-8"));
-		List<MediaType> mediaTypes = getMediaTypes();
-		converter.setSupportedMediaTypes(mediaTypes);
-		return converter;
-	}
+//	@Bean
+//	public HttpMessageConverter<String> responseBodyConverter() {
+//		StringHttpMessageConverter converter = new StringHttpMessageConverter(Charset.forName("UTF-8"));
+//		List<MediaType> mediaTypes = getMediaTypes();
+//		converter.setSupportedMediaTypes(mediaTypes);
+//		return converter;
+//	}
 
 	@Bean
 	public MappingJackson2HttpMessageConverter responseJsonBodyConverter() {
@@ -112,7 +113,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 	/*
 	 * 不需要每个方法 都需要映射 
 	 */
-	class CustomRequestMappingHandlerMapping extends RequestMappingHandlerMapping {  
+	static class CustomRequestMappingHandlerMapping extends RequestMappingHandlerMapping {  
 		  
 	    private boolean useSuffixPatternMatch = true;  
 	  
@@ -128,7 +129,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 	    	RequestMappingInfo info = createRequestMappingInfo(method);
 	    	
 	    	if (info == null) {
-				return info;
+				return null;
 			}
 	    	
 	    	// 获取方法的匹配路径
@@ -153,9 +154,10 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 	    }  
 	    
 	    String excludePackage = "springfox*"; //swagger-ui
+	    AntPathMatcher antPathMatcher = new AntPathMatcher();
 		private boolean isExcludeHandlerPackage(Class<?> handlerType) {
 			String className = handlerType.getTypeName();
-			if(mvcPathMatcher().match(excludePackage, className)) {
+			if(antPathMatcher.match(excludePackage, className)) {
 				return true;
 			}
 			
