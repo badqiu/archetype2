@@ -1,10 +1,10 @@
-package com.company.project.web.springconf;
+package com.company.project.web.springconfig;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 
-import com.company.project.binder.CustomWebBindingInitializer;
+import com.company.project.web.binder.CustomWebBindingInitializer;
 
 
 @Configuration

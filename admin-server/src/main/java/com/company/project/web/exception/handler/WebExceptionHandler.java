@@ -1,4 +1,4 @@
-package com.company.project.exception.handler;
+package com.company.project.web.exception.handler;
 
 import java.util.HashMap;
 import java.util.Map;

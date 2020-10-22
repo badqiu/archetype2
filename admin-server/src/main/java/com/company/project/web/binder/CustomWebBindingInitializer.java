@@ -1,4 +1,4 @@
-package com.company.project.binder;
+package com.company.project.web.binder;
 
 import java.beans.PropertyEditorSupport;
 import java.util.Date;
