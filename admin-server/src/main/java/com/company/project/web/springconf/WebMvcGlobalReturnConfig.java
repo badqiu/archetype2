@@ -34,6 +34,13 @@ public class WebMvcGlobalReturnConfig {
                 return (ResponseEntity)body;
             }
             
+            if(body != null) {
+	            String className = body.getClass().toString();
+	            if(className.contains("springfox")) { //swagger-ui
+	            	return body;
+	            }
+            }
+            
             RestResult resultMap = new RestResult().success().result(body);
 			return ResponseEntity.ok(resultMap);
         }
@@ -48,7 +55,7 @@ public class WebMvcGlobalReturnConfig {
 			if (body instanceof ResponseEntity) {
                 return (ResponseEntity)body;
             }
-            
+                        
 			return ResponseEntity.ok(body);
 		}
     }
