@@ -96,9 +96,16 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		// 访问静态资源
         registry.addResourceHandler("/**")
+        
+		      	//swagger-ui
+				.addResourceLocations("classpath:/META-INF/resources/webjars/")
+				.addResourceLocations("classpath:/META-INF/resources/")
+				
+				//project
                 .addResourceLocations("classpath:/resources/")
                 .addResourceLocations("classpath:/public/")
                 .addResourceLocations("classpath:/static/");
+        
         super.addResourceHandlers(registry);
     }
 	
@@ -126,7 +133,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 	    	
 	    	// 获取方法的匹配路径
 	        Set<String> methodPatterns = info.getPatternsCondition().getPatterns();
-	        if (CollectionUtils.isNotEmpty(methodPatterns)) { 
+	        if (CollectionUtils.isNotEmpty(methodPatterns) || isExcludeHandlerPackage(handlerType)) { 
 				info = super.getMappingForMethod(method, handlerType); // 走原来的方法
 			} else { 
 				RequestMapping methodAnnotation = AnnotationUtils.findAnnotation(method, RequestMapping.class);  
@@ -144,6 +151,17 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 	        WebMvcConfig.logger.info("class={}, requestMethod={}, methodName={}, methodPatterns={}", handlerType.getTypeName(), info.getMethodsCondition(), method.getName(), info.getPatternsCondition().getPatterns());
 	    	return info;
 	    }  
+	    
+	    String excludePackage = "springfox*"; //swagger-ui
+		private boolean isExcludeHandlerPackage(Class<?> handlerType) {
+			String className = handlerType.getTypeName();
+			if(mvcPathMatcher().match(excludePackage, className)) {
+				return true;
+			}
+			
+			return false;
+		}  
+		
 
 		private RequestMappingInfo createRequestMappingInfo(AnnotatedElement element) {
 			RequestMapping requestMapping = AnnotatedElementUtils.findMergedAnnotation(element, RequestMapping.class);
