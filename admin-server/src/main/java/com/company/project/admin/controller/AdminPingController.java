@@ -25,6 +25,17 @@ public class AdminPingController {
 	}
 	
 	@RequestMapping
+	public String echo(String msg) {
+		return "hello:"+msg;
+	}
+	
+	@RequestMapping
+	@ResponseBody
+	public String returnBody() {
+		return "body";
+	}
+	
+	@RequestMapping
 	public String exception() {
 		throw new IllegalStateException("test_error_message");
 	}

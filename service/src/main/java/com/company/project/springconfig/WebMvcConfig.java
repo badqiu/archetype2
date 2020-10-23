@@ -59,33 +59,28 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
 		// 解决返回结果中午乱码问题
 		super.configureMessageConverters(converters);
-//		converters.add(responseBodyConverter());
+		converters.add(responseBodyConverter());
 		converters.add(responseJsonBodyConverter());
 	}
 
-//	@Bean
-//	public HttpMessageConverter<String> responseBodyConverter() {
-//		StringHttpMessageConverter converter = new StringHttpMessageConverter(Charset.forName("UTF-8"));
-//		List<MediaType> mediaTypes = getMediaTypes();
-//		converter.setSupportedMediaTypes(mediaTypes);
-//		return converter;
-//	}
+	public HttpMessageConverter<String> responseBodyConverter() {
+		StringHttpMessageConverter converter = new StringHttpMessageConverter(Charset.forName("UTF-8"));
+		List<MediaType> mediaTypes = new ArrayList<MediaType>();
+		mediaTypes.add(MediaType.TEXT_HTML);
+		mediaTypes.add(MediaType.TEXT_PLAIN);
+		converter.setSupportedMediaTypes(mediaTypes);
+		return converter;
+	}
 
-	@Bean
 	public MappingJackson2HttpMessageConverter responseJsonBodyConverter() {
 		MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-		List<MediaType> mediaTypes = getMediaTypes();
+		List<MediaType> mediaTypes = new ArrayList<MediaType>();
+		mediaTypes.add(MediaType.APPLICATION_JSON_UTF8);
 		converter.setSupportedMediaTypes(mediaTypes);
 		return converter;
 	}
 	
-	private List<MediaType> getMediaTypes() {
-		List<MediaType> mediaTypes = new ArrayList<MediaType>();
-		mediaTypes.add(MediaType.APPLICATION_JSON_UTF8);
-		mediaTypes.add(MediaType.TEXT_HTML);
-		mediaTypes.add(MediaType.TEXT_PLAIN);
-		return mediaTypes;
-	}
+
 	
 	@Override
 	protected RequestMappingHandlerMapping createRequestMappingHandlerMapping() {

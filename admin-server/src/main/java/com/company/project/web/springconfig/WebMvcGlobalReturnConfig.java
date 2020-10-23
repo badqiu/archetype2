@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
@@ -19,6 +20,9 @@ public class WebMvcGlobalReturnConfig {
     static class ResultResponseAdvice implements ResponseBodyAdvice<Object> {
         @Override
         public boolean supports(MethodParameter methodParameter, Class<? extends HttpMessageConverter<?>> aClass) {
+        	if(methodParameter.hasMethodAnnotation(ResponseBody.class)) {
+        		return false;
+        	}
             return true;
         }
 
@@ -32,6 +36,11 @@ public class WebMvcGlobalReturnConfig {
                 return (ResponseEntity)body;
             }
             
+            //字符串，不处理会发生 ClassCastException
+            if(methodParameter.getMethod().getReturnType() == String.class) {
+            	return body;
+            }
+            
             if(body != null) {
 	            String className = body.getClass().toString();
 	            if(className.contains("springfox")) { //swagger-ui
@@ -40,6 +49,8 @@ public class WebMvcGlobalReturnConfig {
             }
             
             RestResult r = new RestResult().success().result(body);
+            
+            
 			return r;
         }
         
