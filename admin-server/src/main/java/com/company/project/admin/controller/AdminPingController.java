@@ -1,6 +1,5 @@
 package com.company.project.admin.controller;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/admin/ping")
 public class AdminPingController {
 
-	@RequestMapping
+	@GetMapping
 	public String ping() {
 		//可以添加执行，查询数据
 		
@@ -24,18 +23,18 @@ public class AdminPingController {
 		return "PONG";
 	}
 	
-	@RequestMapping
+	@GetMapping
 	public String echo(String msg) {
 		return "hello:"+msg;
 	}
 	
-	@RequestMapping
+	@GetMapping
 	@ResponseBody
 	public String returnBody() {
 		return "body";
 	}
 	
-	@RequestMapping
+	@GetMapping
 	public String exception() {
 		throw new IllegalStateException("test_error_message");
 	}
