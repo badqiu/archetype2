@@ -1,5 +1,6 @@
 package com.company.project.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
@@ -21,7 +22,8 @@ public class AllModelTest {
 		testBeansByPackage("com.company.project.query");
 	}
 
-	public static void testBeansByPackage(String javaPackage) throws Exception {
+	public static List<Exception> testBeansByPackage(String javaPackage) throws Exception {
+		List<Exception> exceptions = new ArrayList<Exception>();
 		List<String> classList = ScanClassUtil.scanPackages(javaPackage);
 		for (String clazzString : classList) {
 			if (clazzString.endsWith("package-info")) {
@@ -36,8 +38,10 @@ public class AllModelTest {
 			try {
 				BeanAssert.testPropertiesAndCommonMethod(clazz);
 			}catch(Throwable e) {
-				throw new RuntimeException("test error on class:"+clazz,e);
+				e.printStackTrace();
+				exceptions.add(new RuntimeException("test error on class:"+clazz,e));
 			}
 		}
+		return exceptions;
 	}
 }
