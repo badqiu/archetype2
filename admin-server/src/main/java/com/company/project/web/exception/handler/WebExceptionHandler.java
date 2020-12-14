@@ -1,5 +1,6 @@
 package com.company.project.web.exception.handler;
 
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.company.project.dto.RestResult;
+
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * 统一异常处理
@@ -73,12 +76,12 @@ public class WebExceptionHandler {
     	}
     	
 		String errMsg =  constraintViolations.stream()
-		.map( cv -> cv == null ? "null" : cv.getPropertyPath() + ": " + cv.getMessage() )
+		.map( cv -> cv == null ? "null" : ConstraintViolationUtil.getPropertyPathName(cv) + ": " + cv.getMessage() )
 		.collect( Collectors.joining( ", " ) );
 		
 		Map errMap = new HashMap();
 		constraintViolations.forEach( row -> { 
-			errMap.put(row.getPropertyPath(), row.getMessage());
+			errMap.put(ConstraintViolationUtil.getPropertyPathName(row), row.getMessage());
 		});
 		
 		RestResult r =  errorMap(e,errMsg);
@@ -86,5 +89,29 @@ public class WebExceptionHandler {
 		return r;
     }
     
+    static class ConstraintViolationUtil {
+	    private static String getPropertyPathName(ConstraintViolation<?> row) {
+	    	ApiModelProperty amp = getFieldApiModelPropertyAnnotation(row);
+	    	if(amp == null) {
+	    		return row.getPropertyPath().toString();
+	    	}
+	    	return amp.value();
+		}
+	    
+		private static ApiModelProperty getFieldApiModelPropertyAnnotation(ConstraintViolation<?> row) {
+			Field field = null;
+			try {
+				field = row.getRootBeanClass().getDeclaredField(row.getPropertyPath().toString());
+			} catch (NoSuchFieldException e1) {
+				e1.printStackTrace();
+				return null;
+			} catch (SecurityException e1) {
+				e1.printStackTrace();
+				return null;
+			}
+			ApiModelProperty amp = field.getAnnotation(ApiModelProperty.class);
+			return amp;
+		}
+    }
 }
 
