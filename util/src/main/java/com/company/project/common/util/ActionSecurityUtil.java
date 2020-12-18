@@ -30,6 +30,10 @@ public class ActionSecurityUtil {
 	}
 
 	public static void checkActionPermission(HttpServletRequest request, String actionType,String permission) {
+		if(isIgnoreCheck(actionType,permission)) {
+			return;
+		}
+				
 		long userId = getLoginUserId(request);
 		if(isSuperAdminUser(userId)) {
 			return;
@@ -48,6 +52,19 @@ public class ActionSecurityUtil {
 		throw new SecurityException("not permission,actionType:"+actionType+" permission:"+permission+" userId:"+userId);
 	}
 	
+	static Set<String> ignoreCheckActinoTypeList = new HashSet<String>();
+	private static boolean isIgnoreCheck(String actionType, String permission) {
+		//检查读权限
+		if("r".equals(permission)){
+			return true;
+		}
+		if(ignoreCheckActinoTypeList.contains(actionType)) {
+			return true;
+		}
+		
+		return false;
+	}
+
 	private static boolean isSuperAdminUser(long userId) {
 		return false;
 	}
