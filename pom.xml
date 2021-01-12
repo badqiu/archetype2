@@ -11,7 +11,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.6.RELEASE</version>
+		<version>2.4.1</version>
 		<relativePath />
 	</parent>
 
@@ -273,7 +273,7 @@
 
 	<repositories>
 		<repository>
-			<name>华为maven仓库</name>
+			<name>huawei_repo</name>
 			<id>huawei</id>
 			<url>https://mirrors.huaweicloud.com/repository/maven/</url>
 		</repository>
@@ -281,7 +281,7 @@
 
 	<pluginRepositories>
 		<pluginRepository>
-			<name>华为maven插件仓库</name>
+			<name>huawei_plugin_repo</name>
 			<id>huawei_plugin</id>
 			<url>https://mirrors.huaweicloud.com/repository/maven/</url>
 		</pluginRepository>
