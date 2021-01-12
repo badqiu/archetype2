@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
@@ -129,7 +130,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 	    	
 	    	// 获取方法的匹配路径
 	        Set<String> methodPatterns = info.getPatternsCondition().getPatterns();
-	        if (CollectionUtils.isNotEmpty(methodPatterns) || isExcludeHandlerPackage(handlerType)) { 
+	        if (isNotEmpty(methodPatterns) || isExcludeHandlerPackage(handlerType)) { 
 				info = super.getMappingForMethod(method, handlerType); // 走原来的方法
 			} else { 
 				RequestMapping methodAnnotation = AnnotationUtils.findAnnotation(method, RequestMapping.class);  
@@ -146,7 +147,23 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 	        
 	        WebMvcConfig.logger.info("class={}, requestMethod={}, methodName={}, methodPatterns={}", handlerType.getTypeName(), info.getMethodsCondition(), method.getName(), info.getPatternsCondition().getPatterns());
 	    	return info;
-	    }  
+	    }
+
+
+		private boolean isNotEmpty(Set<String> set) {
+			if(set == null) return false;
+			
+			if(set.size() == 1) {
+				String str = set.iterator().next();
+				if(StringUtils.isBlank(str)) {
+					return false;
+				}
+			}
+			if(set.isEmpty()) {
+				return false;
+			}
+			return true;
+		}  
 	    
 	    String excludePackage = "springfox*"; //swagger-ui
 	    AntPathMatcher antPathMatcher = new AntPathMatcher();
