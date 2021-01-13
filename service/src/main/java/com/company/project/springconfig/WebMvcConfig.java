@@ -153,15 +153,14 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 		private boolean isNotEmpty(Set<String> set) {
 			if(set == null) return false;
 			
-			if(set.size() == 1) {
-				String str = set.iterator().next();
-				if(StringUtils.isBlank(str)) {
-					return false;
-				}
-			}
 			if(set.isEmpty()) {
 				return false;
 			}
+			
+			if("[]".equals(set.toString())) {
+				return false;
+			}
+			
 			return true;
 		}  
 	    
