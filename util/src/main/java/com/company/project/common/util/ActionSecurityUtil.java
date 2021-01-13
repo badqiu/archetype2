@@ -50,6 +50,10 @@ public class ActionSecurityUtil {
 			return;
 		}
 		
+		if(userPermissionSet.contains(actionType+":"+ADMIN)) {
+			return;
+		}
+		
 		if(userPermissionSet.contains(actionType+":"+permission)) {
 			return;
 		}
