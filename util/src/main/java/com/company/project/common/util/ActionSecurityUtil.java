@@ -31,34 +31,49 @@ public class ActionSecurityUtil {
 	 * @param permission 增删修改=w(写权限), 查=r(读权限)
 	 */
 	public static void checkActionPermission(HttpServletRequest request,Class<?> actionType,String permission) {
-		checkActionPermission(request,actionType.getSimpleName().toLowerCase(),permission);
+		checkActionPermission(request,toActionTypeString(actionType),permission);
+	}
+
+	private static String toActionTypeString(Class<?> actionType) {
+		return actionType.getSimpleName().toLowerCase();
 	}
 
 	public static void checkActionPermission(HttpServletRequest request, String actionType,String permission) {
+		boolean hasActionPermission = hasActionPermission(request, actionType, permission);
+		if(!hasActionPermission) {
+			throw new SecurityException("not permission,actionType:"+actionType+" permission:"+permission);
+		}
+	}
+
+	public static boolean hasActionPermission(HttpServletRequest request, Class<?> actionType, String permission) {
+		return hasActionPermission(request,toActionTypeString(actionType),permission);
+	}
+	
+	public static boolean hasActionPermission(HttpServletRequest request, String actionType, String permission) {
 		if(isIgnoreCheck(actionType,permission)) {
-			return;
+			return true;
 		}
 				
 		long userId = getLoginUserId(request);
 		if(isSuperAdminUser(userId)) {
-			return;
+			return true;
 		}
 		
 		Set userPermissionSet = getUserPermissionSet(userId,request);
 		
 		if(userPermissionSet.contains(actionType)){
-			return;
+			return true;
 		}
 		
 		if(userPermissionSet.contains(actionType+":"+ADMIN)) {
-			return;
+			return true;
 		}
 		
 		if(userPermissionSet.contains(actionType+":"+permission)) {
-			return;
+			return true;
 		}
 		
-		throw new SecurityException("not permission,actionType:"+actionType+" permission:"+permission+" userId:"+userId);
+		return false;
 	}
 	
 	static Set<String> ignoreCheckActinoTypeList = new HashSet<String>();
