@@ -54,19 +54,6 @@ public class WebMvcGlobalReturnConfig {
 			return r;
         }
         
-        
-//        @Override
-//        public Object beforeBodyWrite(Object body, MethodParameter methodParameter, MediaType mediaType, Class<? extends HttpMessageConverter<?>> aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
-//            return beforeBodyWrite0(body);
-//        }
-
-		private ResponseEntity beforeBodyWrite0(Object body) {
-			if (body instanceof ResponseEntity) {
-                return (ResponseEntity)body;
-            }
-                        
-			return ResponseEntity.ok(body);
-		}
     }
     
 }
