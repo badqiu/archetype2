@@ -34,10 +34,6 @@ public class ActionSecurityUtil {
 		checkActionPermission(request,toActionTypeString(actionType),permission);
 	}
 
-	private static String toActionTypeString(Class<?> actionType) {
-		return actionType.getSimpleName().toLowerCase();
-	}
-
 	public static void checkActionPermission(HttpServletRequest request, String actionType,String permission) {
 		boolean hasActionPermission = hasActionPermission(request, actionType, permission);
 		if(!hasActionPermission) {
@@ -93,6 +89,10 @@ public class ActionSecurityUtil {
 		return false;
 	}
 
+	private static String toActionTypeString(Class<?> actionType) {
+		return actionType.getSimpleName().toLowerCase();
+	}
+	
 	/** 请自行实现
 	 *  得到用户拥有的权限集合 
 	 **/
