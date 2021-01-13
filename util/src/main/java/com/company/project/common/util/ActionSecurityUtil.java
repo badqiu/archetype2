@@ -10,12 +10,17 @@ import javax.servlet.http.HttpServletRequest;
  * 
  * r: 读权限
  * w: 写权限(增删修改)
- * e: 执行权限
+ * a: 管理权限
  * 
  * @author badqiu
  *
  */
 public class ActionSecurityUtil {
+	public static String READ = "r"; //读权限
+	public static String WRITE = "w"; //写权限
+	public static String ADMIN = "a"; //管理权限
+	
+	
 	private static String LOGIN_USER_PERMISSION = "LOGIN_USER_PERMISSION";
 	private static String LOGIN_USER_ID = "LOGIN_USER_ID";
 	
@@ -55,7 +60,7 @@ public class ActionSecurityUtil {
 	static Set<String> ignoreCheckActinoTypeList = new HashSet<String>();
 	private static boolean isIgnoreCheck(String actionType, String permission) {
 		//检查读权限
-		if("r".equals(permission)){
+		if(READ.equals(permission)){
 			return true;
 		}
 		if(ignoreCheckActinoTypeList.contains(actionType)) {

@@ -6,6 +6,10 @@ import com.company.project.common.util.ActionSecurityUtil;
 
 public class BaseController {
 
+	public static String READ = ActionSecurityUtil.READ; //读权限
+	public static String WRITE = ActionSecurityUtil.WRITE; //写权限
+	public static String ADMIN = ActionSecurityUtil.ADMIN; //管理权限
+	
 	/**
 	 * 检查动作读写权限(表读写权限),没有权限抛出 SecurityException
 	 * 
@@ -24,15 +28,15 @@ public class BaseController {
 	 */
 	protected void checkEntityPermission(HttpServletRequest request,Object entity, String permission) {
 		//检查读权限
-		if("r".equals(permission)){
+		if(READ.equals(permission)){
 			return;
 		}
 		
 		//检查写权限
-		if("w".equals(permission)){
+		if(WRITE.equals(permission)){
 			/*
 			示例代码,如发现创建人 == userId
-		 	 if("w".equals(permission)) {
+		 	 if(WRITE.equals(permission)) {
 				 if(entity.getUserId() == userId) {
 				 	return;
 				 }
