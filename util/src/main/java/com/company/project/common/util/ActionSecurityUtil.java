@@ -50,10 +50,6 @@ public class ActionSecurityUtil {
 		}
 				
 		LoginUser loginUser = getLoginUser(request);
-		if(isSuperAdminUser(loginUser)) {
-			return true;
-		}
-		
 		return loginUser.hasPermission(actionType, permission);
 	}
 	
@@ -72,10 +68,6 @@ public class ActionSecurityUtil {
 		}
 		
 		return false;
-	}
-
-	private static boolean isSuperAdminUser(LoginUser loginUser) {
-		return loginUser.isSuperAdmin();
 	}
 
 	public static String toActionTypeString(Class<?> actionType) {

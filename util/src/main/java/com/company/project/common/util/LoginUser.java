@@ -63,6 +63,8 @@ public class LoginUser implements Serializable {
 	}
 	
 	public boolean hasPermission(String actionType,String permission) {
+		if(superAdmin) return true;
+		
 		if(userPermissionSet.contains(actionType)){
 			return true;
 		}
