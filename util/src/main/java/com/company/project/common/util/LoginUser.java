@@ -2,6 +2,7 @@ package com.company.project.common.util;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 /** 登录用户信息 */
@@ -11,7 +12,7 @@ public class LoginUser implements Serializable {
 	private Long userId;
 	private String username;
 	private boolean superAdmin; // 是否超级管理员
-	private Set<String> userPermissionSet; // 用户拥有的权限
+	private Set<String> userPermissionSet = new HashSet(); // 用户拥有的权限
 	private Date loginTime = new Date();
 //		private Set<String> userRoleSet; //用户拥有的角色
 

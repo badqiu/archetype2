@@ -112,9 +112,6 @@ public class ActionSecurityUtil {
 	
 	/** 
 	 *  用户登录成功,设置登录成功信息
-	 *  @param userId 登录用户ID
-	 *  @param superAdmin 是否超级管理员
-	 *  @param userPermissionSet 登录用户的权限集合,格式示例为:  sometype:w , sometype:r
 	 **/
 	public static void setLoginUser(HttpServletRequest request,LoginUser loginUser) {
 		request.getSession().setAttribute(LOGIN_USER,loginUser);
