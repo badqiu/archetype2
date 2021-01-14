@@ -7,6 +7,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.company.project.common.util.ActionSecurityUtil;
+import com.company.project.common.util.ActionSecurityUtil.LoginUser;
 
 public class BaseController {
 
@@ -55,8 +56,8 @@ public class BaseController {
 //		}
 	}
 	
-	protected long getLoginUserId(HttpServletRequest request) {
-		return ActionSecurityUtil.getLoginUserId(request);
+	public static LoginUser getLoginUser(HttpServletRequest request) {
+		return ActionSecurityUtil.getLoginUser(request);
 	}
 	
 	public static HttpServletRequest getRequest() {
