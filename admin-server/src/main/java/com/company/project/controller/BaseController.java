@@ -7,7 +7,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.company.project.common.util.ActionSecurityUtil;
-import com.company.project.common.util.ActionSecurityUtil.LoginUser;
+import com.company.project.common.util.LoginUser;
 
 public class BaseController {
 
