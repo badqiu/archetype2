@@ -1,5 +1,6 @@
 package com.company.project.common.util;
 
+import java.security.AccessControlException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -35,7 +36,7 @@ public class ActionSecurityUtil {
 	public static void checkActionPermission(HttpServletRequest request, String actionType,String permission) {
 		boolean hasActionPermission = hasActionPermission(request, actionType, permission);
 		if(!hasActionPermission) {
-			throw new SecurityException("not permission,actionType:"+actionType+" permission:"+permission);
+			throw new AccessControlException("not permission,actionType:"+actionType+" permission:"+permission);
 		}
 	}
 
