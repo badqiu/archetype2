@@ -31,26 +31,28 @@ public class BaseController {
 	 * @param permission 增删修改=w(写权限), 查=r(读权限)
 	 */
 	protected void checkEntityPermission(HttpServletRequest request,Object entity, String permission) {
-		//检查读权限
-		if(READ.equals(permission)){
-			return;
-		}
+		ActionSecurityUtil.checkActionPermission(request, entity.getClass(), permission);
 		
-		//检查写权限
-		if(WRITE.equals(permission)){
-			/*
-			示例代码,如发现创建人 == userId
-		 	 if(WRITE.equals(permission)) {
-				 if(entity.getUserId() == userId) {
-				 	return;
-				 }
-				 
-				 throw new SecurityException("you cannot admin ${className}:"+${classNameLower});
-			 }
-			 */
-			
-			return;
-		}
+//		//检查读权限
+//		if(READ.equals(permission)){
+//			return;
+//		}
+//		
+//		//检查写权限
+//		if(WRITE.equals(permission)){
+//			/*
+//			示例代码,如发现创建人 == userId
+//		 	 if(WRITE.equals(permission)) {
+//				 if(entity.getUserId() == userId) {
+//				 	return;
+//				 }
+//				 
+//				 throw new SecurityException("you cannot admin ${className}:"+${classNameLower});
+//			 }
+//			 */
+//			
+//			return;
+//		}
 	}
 	
 	protected long getLoginUserId(HttpServletRequest request) {
@@ -65,7 +67,7 @@ public class BaseController {
 		return getContextServletRequestAttributes().getResponse();
 	}
 
-	private static ServletRequestAttributes getContextServletRequestAttributes() {
+	public static ServletRequestAttributes getContextServletRequestAttributes() {
 		ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 		return servletRequestAttributes;
 	}
