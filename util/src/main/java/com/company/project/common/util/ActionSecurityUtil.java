@@ -73,6 +73,10 @@ public class ActionSecurityUtil {
 	}
 	
 	static Set<String> ignoreCheckActinoTypeList = new HashSet<String>();
+	static {
+		//增加忽略权限检查的对象
+		//ignoreCheckActinoTypeList.add(toActionTypeString(TableDef.class));
+	}
 	private static boolean isIgnoreCheck(String actionType, String permission) {
 		//检查读权限
 		if(READ.equals(permission)){
