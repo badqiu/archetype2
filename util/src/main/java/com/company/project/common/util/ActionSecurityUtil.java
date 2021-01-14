@@ -1,5 +1,6 @@
 package com.company.project.common.util;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,10 +21,7 @@ public class ActionSecurityUtil {
 	public static String WRITE = "w"; //写权限
 	public static String ADMIN = "a"; //管理权限
 	
-	
-	private static String LOGIN_USER_PERMISSION = "LOGIN_USER_PERMISSION";
-	private static String LOGIN_USER_ID = "LOGIN_USER_ID";
-	private static String LOGIN_USER_IS_SUPER_ADMIN = "LOGIN_USER_IS_SUPER_ADMIN";
+	private static String LOGIN_USER = "LOGIN_USER";
 	
 	/**
 	 * 检查读写权限,没有权限抛出 SecurityException
@@ -51,12 +49,12 @@ public class ActionSecurityUtil {
 			return true;
 		}
 				
-		long userId = getLoginUserId(request);
-		if(isSuperAdminUser(userId,request)) {
+		LoginUser loginUser = getLoginUser(request);
+		if(isSuperAdminUser(loginUser)) {
 			return true;
 		}
 		
-		Set userPermissionSet = getUserPermissionSet(userId,request);
+		Set userPermissionSet = getUserPermissionSet(loginUser);
 		
 		if(userPermissionSet.contains(actionType)){
 			return true;
@@ -90,10 +88,8 @@ public class ActionSecurityUtil {
 		return false;
 	}
 
-	private static boolean isSuperAdminUser(long userId,HttpServletRequest request) {
-		if(request.getSession().getAttribute(LOGIN_USER_IS_SUPER_ADMIN) != null) {
-			return true;
-		}
+	private static boolean isSuperAdminUser(LoginUser loginUser) {
+		if(loginUser.isSuperAdmin()) return true;
 		return false;
 	}
 
@@ -101,17 +97,17 @@ public class ActionSecurityUtil {
 		return actionType.getSimpleName().toLowerCase();
 	}
 	
-	/** 请自行实现
+	/** 
 	 *  得到用户拥有的权限集合 
 	 **/
-	private static Set getUserPermissionSet(long userId,HttpServletRequest request) {
-		Set set = (Set)request.getSession().getAttribute(LOGIN_USER_PERMISSION);
+	private static Set getUserPermissionSet(LoginUser loginUser) {
+		Set set = (Set)loginUser.getUserPermissionSet();
 		return set == null ? new HashSet() : set;
 	}
 
-	public static long getLoginUserId(HttpServletRequest request) {
-		Long userId = (Long)request.getSession().getAttribute(LOGIN_USER_ID);
-		return userId == null ? -1 : userId;
+	public static LoginUser getLoginUser(HttpServletRequest request) {
+		LoginUser user = (LoginUser)request.getSession().getAttribute(LOGIN_USER);
+		return user;
 	}
 	
 	/** 
@@ -120,12 +116,50 @@ public class ActionSecurityUtil {
 	 *  @param superAdmin 是否超级管理员
 	 *  @param userPermissionSet 登录用户的权限集合,格式示例为:  sometype:w , sometype:r
 	 **/
-	public static void setLoginUserInfo(HttpServletRequest request,long userId,boolean superAdmin,Set userPermissionSet) {
-		request.getSession().setAttribute(LOGIN_USER_ID,userId);
-		request.getSession().setAttribute(LOGIN_USER_PERMISSION,userPermissionSet);
-		if(superAdmin) {
-			request.getSession().setAttribute(LOGIN_USER_IS_SUPER_ADMIN,true);
-		}
+	public static void setLoginUser(HttpServletRequest request,LoginUser loginUser) {
+		request.getSession().setAttribute(LOGIN_USER,loginUser);
 	}
 	
+	/** 登录用户信息 */
+	public static class LoginUser implements Serializable {
+		private static final long serialVersionUID = 1L;
+		
+		private Long userId; 
+		private String username;
+		private boolean superAdmin; //是否超级管理员
+		private Set<String> userPermissionSet; //用户拥有的权限
+//		private Set<String> userRoleSet; //用户拥有的角色
+		
+		public Long getUserId() {
+			return userId;
+		}
+		public void setUserId(Long userId) {
+			this.userId = userId;
+		}
+		public String getUsername() {
+			return username;
+		}
+		public void setUsername(String username) {
+			this.username = username;
+		}
+		public boolean isSuperAdmin() {
+			return superAdmin;
+		}
+		public void setSuperAdmin(boolean superAdmin) {
+			this.superAdmin = superAdmin;
+		}
+		public Set<String> getUserPermissionSet() {
+			return userPermissionSet;
+		}
+		public void setUserPermissionSet(Set<String> userPermissionSet) {
+			this.userPermissionSet = userPermissionSet;
+		}
+//		public Set<String> getUserRoleSet() {
+//			return userRoleSet;
+//		}
+//		public void setUserRoleSet(Set<String> userRoleSet) {
+//			this.userRoleSet = userRoleSet;
+//		}
+		
+	}
 }
