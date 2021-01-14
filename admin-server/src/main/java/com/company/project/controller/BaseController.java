@@ -1,6 +1,10 @@
 package com.company.project.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.company.project.common.util.ActionSecurityUtil;
 
@@ -52,4 +56,18 @@ public class BaseController {
 	protected long getLoginUserId(HttpServletRequest request) {
 		return ActionSecurityUtil.getLoginUserId(request);
 	}
+	
+	public static HttpServletRequest getRequest() {
+		return getContextServletRequestAttributes().getRequest();
+	}
+	
+	public static HttpServletResponse getResponse() {
+		return getContextServletRequestAttributes().getResponse();
+	}
+
+	private static ServletRequestAttributes getContextServletRequestAttributes() {
+		ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+		return servletRequestAttributes;
+	}
+	
 }

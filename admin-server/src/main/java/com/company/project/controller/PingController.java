@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/ping")
-public class PingController {
+public class PingController extends BaseController {
 
 	@GetMapping
 	public String ping() {
 		//可以添加执行，查询数据
 		
-		System.out.println("ping");
+		System.out.println("ping " + getRequest().getParameter("name"));
 		return "PONG";
 	}
 	
