@@ -19,7 +19,7 @@ public class PingController extends BaseController {
 	public String ping() {
 		//可以添加执行，查询数据
 		
-		System.out.println("ping " + getRequest().getParameter("name"));
+		System.out.println("ping");
 		return "PONG";
 	}
 	
