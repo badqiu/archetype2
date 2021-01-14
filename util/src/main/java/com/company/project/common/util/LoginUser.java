@@ -12,7 +12,7 @@ public class LoginUser implements Serializable {
 	private Long userId;
 	private String username;
 	private boolean superAdmin; // 是否超级管理员
-	private Set<String> userPermissionSet = new HashSet(); // 用户拥有的权限
+	private Set<String> userPermissionSet = new HashSet<String>(); // 用户拥有的权限
 	private Date loginTime = new Date();
 //		private Set<String> userRoleSet; //用户拥有的角色
 
@@ -46,6 +46,35 @@ public class LoginUser implements Serializable {
 
 	public void setUserPermissionSet(Set<String> userPermissionSet) {
 		this.userPermissionSet = userPermissionSet;
+	}
+	
+	public LoginUser addPermission(Class<?> actionType,String permission) {
+		addPermission(ActionSecurityUtil.toActionTypeString(actionType),permission);
+		return this;
+	}
+	
+	public LoginUser addPermission(String actionType,String permission) {
+		userPermissionSet.add(actionType+":"+permission);
+		return this;
+	}
+	
+	public boolean hasPermission(Class<?> actionType,String permission) {
+		return hasPermission(ActionSecurityUtil.toActionTypeString(actionType),permission);
+	}
+	
+	public boolean hasPermission(String actionType,String permission) {
+		if(userPermissionSet.contains(actionType)){
+			return true;
+		}
+		
+		if(userPermissionSet.contains(actionType+":"+ActionSecurityUtil.ADMIN)) {
+			return true;
+		}
+		
+		if(userPermissionSet.contains(actionType+":"+permission)) {
+			return true;
+		}
+		return false;
 	}
 
 	public Date getLoginTime() {

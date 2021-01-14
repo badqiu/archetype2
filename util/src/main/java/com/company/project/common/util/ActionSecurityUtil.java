@@ -1,6 +1,5 @@
 package com.company.project.common.util;
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -54,21 +53,7 @@ public class ActionSecurityUtil {
 			return true;
 		}
 		
-		Set userPermissionSet = getUserPermissionSet(loginUser);
-		
-		if(userPermissionSet.contains(actionType)){
-			return true;
-		}
-		
-		if(userPermissionSet.contains(actionType+":"+ADMIN)) {
-			return true;
-		}
-		
-		if(userPermissionSet.contains(actionType+":"+permission)) {
-			return true;
-		}
-		
-		return false;
+		return loginUser.hasPermission(actionType, permission);
 	}
 	
 	static Set<String> ignoreCheckActinoTypeList = new HashSet<String>();
@@ -89,22 +74,13 @@ public class ActionSecurityUtil {
 	}
 
 	private static boolean isSuperAdminUser(LoginUser loginUser) {
-		if(loginUser.isSuperAdmin()) return true;
-		return false;
+		return loginUser.isSuperAdmin();
 	}
 
-	private static String toActionTypeString(Class<?> actionType) {
+	public static String toActionTypeString(Class<?> actionType) {
 		return actionType.getSimpleName().toLowerCase();
 	}
 	
-	/** 
-	 *  得到用户拥有的权限集合 
-	 **/
-	private static Set getUserPermissionSet(LoginUser loginUser) {
-		Set set = (Set)loginUser.getUserPermissionSet();
-		return set == null ? new HashSet() : set;
-	}
-
 	public static LoginUser getLoginUser(HttpServletRequest request) {
 		LoginUser user = (LoginUser)request.getSession().getAttribute(LOGIN_USER);
 		return user;
