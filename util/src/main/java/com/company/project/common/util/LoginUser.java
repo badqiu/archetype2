@@ -6,8 +6,6 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.servlet.http.HttpServletRequest;
-
 /** 登录用户信息 */
 public class LoginUser implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -15,9 +13,12 @@ public class LoginUser implements Serializable {
 	private Long userId;
 	private String username;
 	private boolean superAdmin; // 是否超级管理员
-	private Set<String> userPermissionSet = new HashSet<String>(); // 用户拥有的权限
 	private Date loginTime = new Date();
-//		private Set<String> userRoleSet; //用户拥有的角色
+	
+	
+	private Set<String> userPermissionSet = new HashSet<String>(0); // 用户拥有的权限
+	private Set<String> userRoleSet = new HashSet<String>(0); //用户拥有的角色
+	private Set<String> userDeptSet = new HashSet<String>(0); //用户拥有的部门
 
 	public Long getUserId() {
 		return userId;
@@ -86,6 +87,26 @@ public class LoginUser implements Serializable {
 			return true;
 		}
 		return false;
+	}
+	
+	public boolean hasRole(String role) {
+		return userRoleSet.contains(role);
+	}
+	
+	public boolean hasDept(String dept) {
+		return userDeptSet.contains(dept);
+	}
+	
+	public void checkRole(String role) {
+		if(!hasRole(role)) {
+			throw new AccessControlException("not permission,must be has role:"+role);
+		}
+	}
+	
+	public void checkDept(String dept) {
+		if(!hasRole(dept)) {
+			throw new AccessControlException("not permission,must be has dept:"+dept);
+		}
 	}
 	
 	/**
