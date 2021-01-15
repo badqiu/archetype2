@@ -127,11 +127,11 @@ public class LoginUser implements Serializable {
 		}
 	}
 
-	public static String toActionTypeString(Class<?> actionType) {
+	public String toActionTypeString(Class<?> actionType) {
 		return actionType.getSimpleName().toLowerCase();
 	}
 	
-	protected String toPermissionString(String actionType, String permission) {
+	public String toPermissionString(String actionType, String permission) {
 		return actionType+":"+permission;
 	}
 	
@@ -147,7 +147,8 @@ public class LoginUser implements Serializable {
 		//增加忽略权限检查的对象
 		//ignoreCheckActinoTypeList.add(toActionTypeString(TableDef.class));
 	}
-	private static boolean isIgnoreCheck(String actionType, String permission) {
+	
+	protected boolean isIgnoreCheck(String actionType, String permission) {
 		//检查读权限
 		if(ActionSecurityUtil.READ.equals(permission)){
 			return true;
