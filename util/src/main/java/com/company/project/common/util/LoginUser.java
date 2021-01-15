@@ -74,7 +74,6 @@ public class LoginUser implements Serializable {
 		if(superAdmin) return true;
 		if(isIgnoreCheck(actionType, permission)) return true;
 		
-		
 		if(userPermissionSet.contains(actionType)){
 			return true;
 		}
@@ -90,10 +89,12 @@ public class LoginUser implements Serializable {
 	}
 	
 	public boolean hasRole(String role) {
+		if(superAdmin) return true;
 		return userRoleSet.contains(role);
 	}
 	
 	public boolean hasDept(String dept) {
+		if(superAdmin) return true;
 		return userDeptSet.contains(dept);
 	}
 	
