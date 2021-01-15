@@ -1,9 +1,5 @@
 package com.company.project.common.util;
 
-import java.security.AccessControlException;
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -31,23 +27,31 @@ public class ActionSecurityUtil {
 	 * @param permission 增删修改=w(写权限), 查=r(读权限)
 	 */
 	public static void checkActionPermission(HttpServletRequest request,Class<?> actionType,String permission) {
-		LoginUser loginUser = getLoginUser(request);
+		LoginUser loginUser = getRequiredLoginUser(request);
 		loginUser.checkPermission(actionType, permission);
 	}
 
 	public static void checkActionPermission(HttpServletRequest request, String actionType,String permission) {
-		LoginUser loginUser = getLoginUser(request);
+		LoginUser loginUser = getRequiredLoginUser(request);
 		loginUser.checkPermission(actionType, permission);
 	}
 
 	public static boolean hasActionPermission(HttpServletRequest request, Class<?> actionType, String permission) {
 		LoginUser loginUser = getLoginUser(request);
-		return loginUser.hasPermission(actionType, permission);
+		return loginUser == null ? false : loginUser.hasPermission(actionType, permission);
 	}
 	
 	public static boolean hasActionPermission(HttpServletRequest request, String actionType, String permission) {
 		LoginUser loginUser = getLoginUser(request);
-		return loginUser.hasPermission(actionType, permission);
+		return loginUser == null ? false : loginUser.hasPermission(actionType, permission);
+	}
+	
+	public static LoginUser getRequiredLoginUser(HttpServletRequest request) {
+		LoginUser user = getLoginUser(request);
+		if(user == null) {
+			throw new NeedLoginException("not yet login");
+		}
+		return user;
 	}
 	
 	public static LoginUser getLoginUser(HttpServletRequest request) {
