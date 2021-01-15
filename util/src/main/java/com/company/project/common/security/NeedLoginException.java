@@ -1,4 +1,4 @@
-package com.company.project.common.util;
+package com.company.project.common.security;
 
 public class NeedLoginException extends SecurityException {
 

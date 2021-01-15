@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.company.project.common.util.ActionSecurityUtil;
-import com.company.project.common.util.LoginUser;
+import com.company.project.common.security.ActionSecurityUtil;
+import com.company.project.common.security.LoginUser;
 
 public class BaseController {
 

@@ -35,8 +35,8 @@ archetype生成项目命令:
 		mvn archetype:generate -Dfilter=rapid-mvc-archetype -DarchetypeCatalog=http://nexus.qinha.com:8081/nexus/content/repositories/public/	--远程
 		mvn archetype:generate -Dfilter=rapid-mvc-archetype -DarchetypeCatalog=http://nexus.qinha.com:8081/nexus/content/repositories/releases/	--远程
 		mvn archetype:generate -Dfilter=rapid-mvc-archetype -DarchetypeCatalog=http://nexus.qinha.com:8081/nexus/content/repositories/snapshots/  --远程
-		mvn archetype:generate -Dfilter=rapid-mvc-archetype -DarchetypeCatalog=local						--本地,需mvn archetype:crawl
-		mvn archetype:generate -Dfilter=rapid-vue-springboot-springjdbc-archetype -DarchetypeCatalog=local  --本地,需mvn archetype:crawl
-		mvn archetype:generate -DarchetypeCatalog=local  --本地,需mvn archetype:crawl
+		mvn archetype:generate -Dfilter=rapid-mvc-archetype -DarchetypeCatalog=local						--本地运行前,需mvn archetype:crawl
+		mvn archetype:generate -Dfilter=rapid-vue-springboot-springjdbc-archetype -DarchetypeCatalog=local  --本地运行前,需mvn archetype:crawl
+		mvn archetype:generate -DarchetypeCatalog=local  --本地运行前,需mvn archetype:crawl
 
 

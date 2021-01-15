@@ -1,4 +1,4 @@
-package com.company.project.common.util;
+package com.company.project.common.security;
 
 import java.io.Serializable;
 import java.security.AccessControlException;

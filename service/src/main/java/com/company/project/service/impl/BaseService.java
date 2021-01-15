@@ -1,6 +1,6 @@
 package com.company.project.service.impl;
 
-import com.company.project.common.util.ActionSecurityUtil;
+import com.company.project.common.security.ActionSecurityUtil;
 
 public class BaseService {
 
