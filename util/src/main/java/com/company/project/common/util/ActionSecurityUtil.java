@@ -31,48 +31,23 @@ public class ActionSecurityUtil {
 	 * @param permission 增删修改=w(写权限), 查=r(读权限)
 	 */
 	public static void checkActionPermission(HttpServletRequest request,Class<?> actionType,String permission) {
-		checkActionPermission(request,toActionTypeString(actionType),permission);
+		LoginUser loginUser = getLoginUser(request);
+		loginUser.checkPermission(actionType, permission);
 	}
 
 	public static void checkActionPermission(HttpServletRequest request, String actionType,String permission) {
-		boolean hasActionPermission = hasActionPermission(request, actionType, permission);
-		if(!hasActionPermission) {
-			throw new AccessControlException("not permission,actionType:"+actionType+" permission:"+permission);
-		}
+		LoginUser loginUser = getLoginUser(request);
+		loginUser.checkPermission(actionType, permission);
 	}
 
 	public static boolean hasActionPermission(HttpServletRequest request, Class<?> actionType, String permission) {
-		return hasActionPermission(request,toActionTypeString(actionType),permission);
-	}
-	
-	public static boolean hasActionPermission(HttpServletRequest request, String actionType, String permission) {
-		if(isIgnoreCheck(actionType,permission)) {
-			return true;
-		}
-				
 		LoginUser loginUser = getLoginUser(request);
 		return loginUser.hasPermission(actionType, permission);
 	}
 	
-	public static Set<String> ignoreCheckActinoTypeList = new HashSet<String>();
-	static {
-		//增加忽略权限检查的对象
-		//ignoreCheckActinoTypeList.add(toActionTypeString(TableDef.class));
-	}
-	private static boolean isIgnoreCheck(String actionType, String permission) {
-		//检查读权限
-		if(READ.equals(permission)){
-			return true;
-		}
-		if(ignoreCheckActinoTypeList.contains(actionType)) {
-			return true;
-		}
-		
-		return false;
-	}
-
-	public static String toActionTypeString(Class<?> actionType) {
-		return actionType.getSimpleName().toLowerCase();
+	public static boolean hasActionPermission(HttpServletRequest request, String actionType, String permission) {
+		LoginUser loginUser = getLoginUser(request);
+		return loginUser.hasPermission(actionType, permission);
 	}
 	
 	public static LoginUser getLoginUser(HttpServletRequest request) {
