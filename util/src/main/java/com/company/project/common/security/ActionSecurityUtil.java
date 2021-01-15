@@ -63,6 +63,7 @@ public class ActionSecurityUtil {
 	 *  用户登录成功,设置登录成功信息
 	 **/
 	public static void setLoginUser(HttpServletRequest request,LoginUser loginUser) {
+		loginUser.setLogin(true);
 		request.getSession().setAttribute(LOGIN_USER,loginUser);
 	}
 	

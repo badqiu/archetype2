@@ -14,6 +14,7 @@ public class LoginUser <USERID> implements Serializable {
 	private String username;
 	private boolean superAdmin; // 是否超级管理员
 	private Date loginTime = new Date();
+	private boolean login = false; //是否登录
 	
 	private Set<String> userPermissionSet = new HashSet<String>(0); // 用户拥有的权限
 	private Set<String> userRoleSet = new HashSet<String>(0); //用户拥有的角色
@@ -55,6 +56,14 @@ public class LoginUser <USERID> implements Serializable {
 		return loginTime;
 	}
 	
+	public boolean isLogin() {
+		return login;
+	}
+
+	public void setLogin(boolean login) {
+		this.login = login;
+	}
+
 	public LoginUser addPermission(Class<?> actionType,String permission) {
 		addPermission(toActionTypeString(actionType),permission);
 		return this;
