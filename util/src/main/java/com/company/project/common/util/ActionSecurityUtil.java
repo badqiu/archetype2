@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * 用户管理权限检查，检查某类动作的读写权限
@@ -53,7 +54,7 @@ public class ActionSecurityUtil {
 		return loginUser.hasPermission(actionType, permission);
 	}
 	
-	static Set<String> ignoreCheckActinoTypeList = new HashSet<String>();
+	public static Set<String> ignoreCheckActinoTypeList = new HashSet<String>();
 	static {
 		//增加忽略权限检查的对象
 		//ignoreCheckActinoTypeList.add(toActionTypeString(TableDef.class));
@@ -84,6 +85,13 @@ public class ActionSecurityUtil {
 	 **/
 	public static void setLoginUser(HttpServletRequest request,LoginUser loginUser) {
 		request.getSession().setAttribute(LOGIN_USER,loginUser);
+	}
+	
+	public static void logout(HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		if(session != null) {
+			session.removeAttribute(LOGIN_USER);
+		}
 	}
 	
 }
