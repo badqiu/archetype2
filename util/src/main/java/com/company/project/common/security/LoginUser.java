@@ -7,24 +7,23 @@ import java.util.HashSet;
 import java.util.Set;
 
 /** 登录用户信息 */
-public class LoginUser implements Serializable {
+public class LoginUser <USERID> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private Long userId;
+	private USERID userId;
 	private String username;
 	private boolean superAdmin; // 是否超级管理员
 	private Date loginTime = new Date();
-	
 	
 	private Set<String> userPermissionSet = new HashSet<String>(0); // 用户拥有的权限
 	private Set<String> userRoleSet = new HashSet<String>(0); //用户拥有的角色
 	private Set<String> userDeptSet = new HashSet<String>(0); //用户拥有的部门
 
-	public Long getUserId() {
+	public USERID getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Long userId) {
+	public void setUserId(USERID userId) {
 		this.userId = userId;
 	}
 
