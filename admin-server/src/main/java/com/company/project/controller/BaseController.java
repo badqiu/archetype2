@@ -1,5 +1,9 @@
 package com.company.project.controller;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.naming.event.ObjectChangeListener;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -32,30 +36,24 @@ public class BaseController {
 	 * @param permission 增删修改=w(写权限), 查=r(读权限)
 	 */
 	protected void checkEntityPermission(HttpServletRequest request,Object entity, String permission) {
-		ActionSecurityUtil.checkActionPermission(request, entity.getClass(), permission);
-		
-//		//检查读权限
-//		if(READ.equals(permission)){
-//			return;
-//		}
-//		
-//		//检查写权限
-//		if(WRITE.equals(permission)){
-//			/*
-//			示例代码,如发现创建人 == userId
-//		 	 if(WRITE.equals(permission)) {
-//				 if(entity.getUserId() == userId) {
-//				 	return;
-//				 }
-//				 
-//				 throw new SecurityException("you cannot admin ${className}:"+${classNameLower});
-//			 }
-//			 */
-//			
-//			return;
-//		}
+		if(isEntityPermissionCheck(entity,permission)) {
+			checkEntityPermission0(request,entity,permission);
+		}else {
+			ActionSecurityUtil.checkActionPermission(request, entity.getClass(), permission);
+		}
 	}
 	
+	private void checkEntityPermission0(HttpServletRequest request, Object entity, String permission) {
+	}
+
+	Set entityPermissionCheck = new HashSet();
+	{
+		entityPermissionCheck.add(ObjectChangeListener.class);
+	}
+	private boolean isEntityPermissionCheck(Object entity, String permission) {
+		return entityPermissionCheck.contains(entity.getClass());
+	}
+
 	public static LoginUser getLoginUser(HttpServletRequest request) {
 		return ActionSecurityUtil.getLoginUser(request);
 	}
