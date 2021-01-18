@@ -46,7 +46,7 @@ public class BaseController {
 	private void checkEntityPermission0(HttpServletRequest request, Object entity, String permission) {
 	}
 
-	Set entityPermissionCheck = new HashSet();
+	Set<Class> entityPermissionCheck = new HashSet<Class>();
 	{
 		entityPermissionCheck.add(ObjectChangeListener.class);
 	}
