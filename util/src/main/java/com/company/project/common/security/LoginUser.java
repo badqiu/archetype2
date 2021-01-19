@@ -10,10 +10,10 @@ import java.util.Set;
 public class LoginUser <USERID> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private USERID userId;
-	private String username;
+	private USERID userId; //登录用户ID
+	private String username; //登录用户名
 	private boolean superAdmin; // 是否超级管理员
-	private Date loginTime = new Date();
+	private Date loginTime = new Date(); //登录时间
 //	private boolean login = false; //是否登录
 	
 	private Set<String> userPermissionSet = new HashSet<String>(0); // 用户拥有的权限
