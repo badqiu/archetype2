@@ -1,7 +1,6 @@
 package com.company.project.service.impl;
 
-public class BaseService {
+public abstract class BaseService {
 
-	
 }
 

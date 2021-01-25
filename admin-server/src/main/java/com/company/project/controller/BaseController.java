@@ -13,7 +13,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import com.company.project.common.security.ActionSecurityUtil;
 import com.company.project.common.security.LoginUser;
 
-public class BaseController {
+public abstract class BaseController {
 
 	public static String READ = ActionSecurityUtil.READ; //读权限
 	public static String WRITE = ActionSecurityUtil.WRITE; //写权限
