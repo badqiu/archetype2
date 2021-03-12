@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.CommonsRequestLoggingFilter;
 
+import com.github.rapid.common.web.filter.PerformanceFilter;
+
 /**
  * 
  * 用于打印请求日志
@@ -24,20 +26,29 @@ import org.springframework.web.filter.CommonsRequestLoggingFilter;
 @Configuration
 public class WebFilterConfig {
  
-    @Bean
-    public CommonsRequestLoggingFilter logFilter() {
-        CommonsRequestLoggingFilter filter = new CommonsRequestLoggingFilter();
-        filter.setIncludeQueryString(true);
-        filter.setIncludePayload(false);
-        filter.setMaxPayloadLength(10000);
-        filter.setIncludeHeaders(false);
-        filter.setAfterMessagePrefix("REQUEST DATA : ");
-        return filter;
-    }
+//    @Bean
+//    public CommonsRequestLoggingFilter logFilter() {
+//        CommonsRequestLoggingFilter filter = new CommonsRequestLoggingFilter();
+//        filter.setIncludeQueryString(true);
+//        filter.setIncludePayload(false);
+//        filter.setMaxPayloadLength(10000);
+//        filter.setIncludeHeaders(false);
+//        filter.setAfterMessagePrefix("REQUEST DATA : ");
+//        return filter;
+//    }
     
 	@Bean
     public CharacterEncodingFilter characterEncodingFilter() {
 		return new CharacterEncodingFilter("UTF-8",true);
+    }
+	
+	/**
+	 * 性能及slowlog filter
+	 *  */
+	@Bean
+    public PerformanceFilter performanceFilter() {
+		PerformanceFilter r = new PerformanceFilter();
+		return r;
     }
 	
     

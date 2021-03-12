@@ -86,8 +86,12 @@
 			<artifactId>spring-boot-starter-log4j</artifactId>
 		</dependency> 
      -->
-      
-
+     
+    <!-- jvm等监控  -->
+		<dependency>  
+		    <groupId>org.springframework.boot</groupId>  
+		    <artifactId>spring-boot-starter-actuator</artifactId>  
+		</dependency> 
         
 	</dependencies>
   

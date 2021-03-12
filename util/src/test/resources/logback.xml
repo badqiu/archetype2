@@ -85,7 +85,12 @@
     </appender>
 
     <!-- Logger START -->
-    
+    <!-- 
+    <logger name="com.github.rapid.common.web.filter.PerformanceFilter" level="warn" additivity="false">
+        <appender-ref ref="asyncServerAppender"/>
+    </logger>
+     -->
+     
     <logger name="slowlog" level="info" additivity="false">
         <appender-ref ref="asyncSlowlogAppender"/>
     </logger>

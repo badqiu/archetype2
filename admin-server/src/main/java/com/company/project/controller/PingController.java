@@ -39,4 +39,10 @@ public class PingController extends BaseController {
 		throw new IllegalStateException("test_error_message");
 	}
 	
+	@GetMapping
+	public String slow() throws InterruptedException {
+		Thread.sleep(1000 * 5);
+		return "slow";
+	}
+	
 }
