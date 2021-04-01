@@ -17,9 +17,8 @@ import com.company.project.springconfig.ValidatorConfig;
 import com.company.project.springconfig.WebMvcConfig;
 
 
-@EnableAutoConfiguration
 @SpringBootApplication
-@ServletComponentScan
+@ServletComponentScan // @WebServlet、@WebFilter、@WebListener等生效
 /*
 @ImportAutoConfiguration({
 	CacheConfig.class,DataSourceConfig.class,
