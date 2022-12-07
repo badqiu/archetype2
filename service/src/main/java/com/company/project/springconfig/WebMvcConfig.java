@@ -58,7 +58,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 
 	@Override
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-		// 解决返回结果中午乱码问题
+		// 解决返回结果乱码问题
 		super.configureMessageConverters(converters);
 		converters.add(responseBodyConverter());
 		converters.add(responseJsonBodyConverter());
