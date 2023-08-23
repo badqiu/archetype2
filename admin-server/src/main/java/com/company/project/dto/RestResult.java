@@ -18,6 +18,11 @@ public class RestResult {
 	
 	private Object result;
 	
+	
+	private String traceId;
+	private String errorLog;
+	private boolean success;
+	
 	public RestResult() {
 		success();
 	}
@@ -29,11 +34,13 @@ public class RestResult {
 	
 	public RestResult success() {
 		this.code = SUCCESS_CODE;
+		this.success = true;
 		return this;
 	}
 	
 	public RestResult fail(String msg) {
 		this.code = FAIL_CODE;
+		this.success = false;
 		this.msg = msg;
 		return this;
 	}
@@ -45,6 +52,7 @@ public class RestResult {
 	
 	public RestResult fail(Exception error) {
 		this.code = FAIL_CODE;
+		this.success = false;
 		errCode(error.getClass().getSimpleName());
 		this.msg = error.getMessage();
 		return this;
@@ -64,6 +72,30 @@ public class RestResult {
 
 	public Object getResult() {
 		return result;
+	}
+
+	public String getTraceId() {
+		return traceId;
+	}
+
+	public void setTraceId(String traceId) {
+		this.traceId = traceId;
+	}
+
+	public String getErrorLog() {
+		return errorLog;
+	}
+
+	public void setErrorLog(String errorLog) {
+		this.errorLog = errorLog;
+	}
+
+	public boolean isSuccess() {
+		return success;
+	}
+
+	public void setSuccess(boolean success) {
+		this.success = success;
 	}
 	
 }
