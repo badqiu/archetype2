@@ -27,7 +27,7 @@ public class WebMvcGlobalReturnConfig {
         }
 
         @Override
-        public Object beforeBodyWrite(Object body, MethodParameter methodParameter, MediaType mediaType, Class<? extends HttpMessageConverter<?>> aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
+        public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType mediaType, Class<? extends HttpMessageConverter<?>> aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
             if (body instanceof RestResult) {
                 return body;
             }
@@ -37,7 +37,7 @@ public class WebMvcGlobalReturnConfig {
             }
             
             //字符串，不处理会发生 ClassCastException
-            if(methodParameter.getMethod().getReturnType() == String.class) {
+            if(returnType.getMethod().getReturnType() == String.class) {
             	return body;
             }
             
