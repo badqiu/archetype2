@@ -55,14 +55,6 @@ public class LoginUser <USERID> implements Serializable {
 		return loginTime;
 	}
 	
-//	public boolean isLogin() {
-//		return login;
-//	}
-//
-//	public void setLogin(boolean login) {
-//		this.login = login;
-//	}
-
 	public LoginUser addPermission(Class<?> actionType,String permission) {
 		addPermission(toActionTypeString(actionType),permission);
 		return this;
