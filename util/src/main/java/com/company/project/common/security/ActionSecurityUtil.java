@@ -14,9 +14,35 @@ import javax.servlet.http.HttpSession;
  *
  */
 public class ActionSecurityUtil {
-	public static String READ = "r"; //读权限
-	public static String WRITE = "w"; //写权限
-	public static String ADMIN = "a"; //管理权限
+	
+	/**
+	 *	权限类型
+	 */
+	public static enum PermissionType {
+		READ("r","读权限"), 
+		WRITE("w","写权限"),
+		ADMIN("a","管理权限");
+		
+		private final String shortName;
+		private final String remarks;
+		
+		PermissionType(String shortName,String remarks) {
+			this.shortName = shortName;
+			this.remarks = remarks;
+		}
+
+		public String getShortName() {
+			return shortName;
+		}
+		
+		public String getRemarks() {
+			return remarks;
+		}
+	}
+	
+	public static String READ = PermissionType.READ.getShortName(); 
+	public static String WRITE = PermissionType.WRITE.getShortName(); 
+	public static String ADMIN = PermissionType.ADMIN.getShortName(); 
 	
 	private static String LOGIN_USER = "LOGIN_USER";
 	
