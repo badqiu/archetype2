@@ -38,6 +38,16 @@ public class ActionSecurityUtil {
 		public String getRemarks() {
 			return remarks;
 		}
+		
+		public boolean hasPermission(PermissionType p) {
+			if(p == PermissionType.ADMIN) {
+				return true;
+			}
+			if(p == this) {
+				return true;
+			}
+			return false;
+		}
 	}
 	
 	public static String READ = PermissionType.READ.getShortName(); 
