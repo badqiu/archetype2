@@ -40,6 +40,10 @@ public class ActionSecurityUtil {
 		}
 		
 		public boolean hasPermission(PermissionType p) {
+			if(p == null) {
+				return false;
+			}
+			
 			if(p == PermissionType.ADMIN) {
 				return true;
 			}
