@@ -20,8 +20,8 @@ public class ActionSecurityUtil {
 	 */
 	public static enum PermissionType {
 		READ("r","读权限"),  // 等同于read,access,get,query,search,receive
-		WRITE("w","写权限"), // 等同于update,create,delete,edit,change,set,write,modify,clear,add,remove
-		ADMIN("a","管理权限"); // 等同于admin,manage,all,其它权限也可以包含进来(execute,connect,listen)
+		WRITE("w","写权限"), // 等同于update,create,delete,edit,change,set,write,modify,clear,add,remove,copy
+		ADMIN("a","管理权限"); // 等同于admin,manage,all,其它权限也可以包含进来(execute,run,deploy,stop,force_stop,rollback,connect,listen)
 		
 		private final String shortName;
 		private final String remarks;
