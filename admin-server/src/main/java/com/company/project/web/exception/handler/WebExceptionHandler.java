@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,12 +48,7 @@ public class WebExceptionHandler {
 		RestResult result = new RestResult();
 		result.fail(errMsg);
 		result.errCode(errCode);
-		
-		if(stackTrace != null) {
-			Map other = new HashMap();
-			other.put("stackTrace", stackTrace);
-			result.result(other);
-		}
+		result.setErrorLog(stackTrace);
         
         return result;
 	}
