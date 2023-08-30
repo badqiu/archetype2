@@ -33,28 +33,12 @@ import com.github.rapid.common.beanutils.converter.StringConverter;
  */
 public class ConvertRegisterHelper implements InitializingBean {
 
+	static String[] datePattern = new String[] {"yyyy-MM-dd","yyyy-MM-dd HH:mm:ss","yyyy-MM-dd HH:mm:ss.SSS","HH:mm:ss"};
+
 	public static void registerConverters(String... datePatterns) {
-		
 		registerConverters(BeanUtilsBean.getInstance().getConvertUtils(),datePatterns);
-		
-//		ConvertUtils.register(new StringConverter(), String.class);
-//		//date 
-//		ConvertUtils.register(ConvertRegisterHelper.setPatterns(new DateConverter(null),datePatterns),java.util.Date.class);
-//		ConvertUtils.register(ConvertRegisterHelper.setPatterns(new SqlDateConverter(null),datePatterns),java.sql.Date.class);
-//		ConvertUtils.register(ConvertRegisterHelper.setPatterns(new SqlTimeConverter(null),datePatterns),Time.class);
-//		ConvertUtils.register(ConvertRegisterHelper.setPatterns(new SqlTimestampConverter(null),datePatterns),Timestamp.class);
-//		//number
-//		ConvertUtils.register(new BooleanConverter(null), Boolean.class);
-//		ConvertUtils.register(new ShortConverter(null), Short.class);
-//		ConvertUtils.register(new IntegerConverter(null), Integer.class);
-//		ConvertUtils.register(new LongConverter(null), Long.class);
-//		ConvertUtils.register(new FloatConverter(null), Float.class);
-//		ConvertUtils.register(new DoubleConverter(null), Double.class);
-//		ConvertUtils.register(new BigDecimalConverter(null), BigDecimal.class); 
-//		ConvertUtils.register(new BigIntegerConverter(null), BigInteger.class);	
 	}
 	
-	static String[] datePattern = new String[] {"yyyy-MM-dd","yyyy-MM-dd HH:mm:ss","yyyy-MM-dd HH:mm:ss.SSS","HH:mm:ss"};
 	public static void registerConverters(ConvertUtilsBean convertUtils) {
 		registerConverters(convertUtils,datePattern);
 	}
