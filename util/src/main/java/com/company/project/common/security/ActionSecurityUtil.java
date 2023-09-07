@@ -15,44 +15,6 @@ import javax.servlet.http.HttpSession;
  */
 public class ActionSecurityUtil {
 	
-	/**
-	 *	权限类型
-	 */
-	public static enum PermissionType {
-		READ("r","读权限"),  // 等同于read,access,get,query,search,receive
-		WRITE("w","写权限"), // 等同于update,create,delete,edit,change,set,write,modify,clear,add,remove,copy
-		ADMIN("a","管理权限"); // 等同于admin,manage,all,其它权限也可以包含进来(execute,run,deploy,stop,force_stop,rollback,connect,listen)
-		
-		private final String shortName;
-		private final String remarks;
-		
-		PermissionType(String shortName,String remarks) {
-			this.shortName = shortName;
-			this.remarks = remarks;
-		}
-
-		public String getShortName() {
-			return shortName;
-		}
-		
-		public String getRemarks() {
-			return remarks;
-		}
-		
-		public boolean hasPermission(PermissionType p) {
-			if(p == null) {
-				return false;
-			}
-			
-			if(p == PermissionType.ADMIN) {
-				return true;
-			}
-			if(p == this) {
-				return true;
-			}
-			return false;
-		}
-	}
 	
 	public static String READ = PermissionType.READ.getShortName(); 
 	public static String WRITE = PermissionType.WRITE.getShortName(); 
