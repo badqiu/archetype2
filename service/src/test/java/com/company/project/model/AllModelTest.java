@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.github.rapid.common.test.util.BeanAssert;
+import com.github.rapid.common.test.BeanAssert;
 import com.github.rapid.common.util.ScanClassUtil;
 
 /**
