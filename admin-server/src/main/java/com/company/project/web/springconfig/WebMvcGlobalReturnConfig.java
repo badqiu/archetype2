@@ -13,10 +13,11 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import com.company.project.dto.RestResult;
 
+/** MVC统一返回值处理 */
 @Configuration
 public class WebMvcGlobalReturnConfig {
 
-    @RestControllerAdvice
+    @RestControllerAdvice(basePackages = "com.company.project")
     static class ResultResponseAdvice implements ResponseBodyAdvice<Object> {
         @Override
         public boolean supports(MethodParameter methodParameter, Class<? extends HttpMessageConverter<?>> aClass) {
