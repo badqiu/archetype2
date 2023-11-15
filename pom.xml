@@ -19,19 +19,17 @@
 		<module>service</module>
 		<module>admin-front</module>
 		<module>admin-server</module>
-		<!-- <module>user-front</module> <module>user-server</module> -->
-    <module>bigdata-ai</module>
   </modules>
 
 	<properties>
 		<!-- versions -->
 		<h2.version>1.4.189</h2.version>
-		<slf4j.version>1.7.12</slf4j.version>
-		<shiro.version>1.2.4</shiro.version>
+		<slf4j.version>2.0.9</slf4j.version>
+		<shiro.version>1.13.0</shiro.version>
 		<guava.version>18.0</guava.version>
 		<powermock.version>1.6.6</powermock.version>
 		<xstream.version>1.4.17</xstream.version>
-		<mybatisplus.version>3.1.2</mybatisplus.version>
+		<mybatisplus.version>3.5.4.1</mybatisplus.version>
 
 		<!-- propect properties -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -288,6 +286,17 @@
 				</configuration>
 			</plugin>
 
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<!-- 通过parameters参数，保留java方法的参数名称，可以避免使用mybatis plus使用@Param("userId")标注 -->
+					<compilerArgs>
+						<arg>-parameters</arg>
+					</compilerArgs>
+				</configuration>
+			</plugin>
+			
 		</plugins>
 	</build>
 
