@@ -1,6 +1,11 @@
 package com.company.project.springconfig;
 
-import javax.sql.DataSource;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.baomidou.mybatisplus.annotation.DbType;
+//import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
+//import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 
 //import org.apache.ibatis.plugin.Interceptor;
 //import org.mybatis.spring.annotation.MapperScan;
@@ -27,10 +32,9 @@ import javax.sql.DataSource;
 * @since 2019-11-06
 *
 */
-//@Configuration
 //@MapperScan(basePackages="com.company.project.dao*")
-//@ComponentScan(basePackages="com.company.project.service*")
 //@EnableConfigurationProperties(MybatisPlusProperties.class)
+@Configuration
 public class MybatisPlusConfig {
 //	
 //	@Autowired
@@ -49,17 +53,21 @@ public class MybatisPlusConfig {
 //    public PerformanceInterceptor performanceInterceptor() {
 //        return new PerformanceInterceptor();
 //    }
-//    
+//   
+	
 //	/**
 //	 *	 mybatis-plus分页插件
 //	 */
-//	@Bean
-//	public PaginationInterceptor paginationInterceptor() {
-//		PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
-////		paginationInterceptor.setLocalPage(true);// 开启 PageHelper 的支持
-//		return paginationInterceptor;
-//	}
+//    @Bean
+//    public MybatisPlusInterceptor mybatisPlusInterceptor() {
+//        MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
+//        interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));//如果配置多个插件,切记分页最后添加
+//        //interceptor.addInnerInterceptor(new PaginationInnerInterceptor()); 如果有多数据源可以不配具体类型 否则都建议配上具体的DbType
+//        return interceptor;
+//    }
 //	
+	
+	
 //	/**
 //	 * 这里全部使用mybatis-autoconfigure 已经自动加载的资源。不手动指定
 //	 * 配置文件和mybatis-boot的配置文件同步
