@@ -32,7 +32,7 @@ import com.baomidou.mybatisplus.annotation.DbType;
 * @since 2019-11-06
 *
 */
-//@MapperScan(basePackages="com.company.project.dao*")
+//@MapperScan(basePackages="com.company.project.mapper*")
 //@EnableConfigurationProperties(MybatisPlusProperties.class)
 @Configuration
 public class MybatisPlusConfig {
