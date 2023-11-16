@@ -12,6 +12,7 @@ public class RestResult {
 	String FAIL_CODE = "fail";
 	
 	private String code; //成功，失败标识
+	private boolean success;
 	
 	private String msg; //消息
 	private String errCode; //错误码
@@ -21,7 +22,6 @@ public class RestResult {
 	
 	private String traceId;
 	private String errorLog; //错误日志，测试，开发环境开启，方便查错
-	private boolean success;
 	
 	public RestResult() {
 		success();
