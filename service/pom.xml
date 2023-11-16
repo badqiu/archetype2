@@ -44,15 +44,6 @@
 			<scope>test</scope>
 		</dependency>		
 		
-		<!-- 
-		spring-boot-starter-mail
-		spring-boot-starter-data-redis
-		spring-boot-starter-data-elasticsearch
-		spring-boot-starter-jdbc
-		spring-boot-starter-websocket
-		spring-boot-starter-log4j2
-		 -->
-		
 
 		<!-- test BEGIN -->
 		<dependency>
@@ -78,6 +69,20 @@
 		<!-- for test HibernateValidator -->
 
 
+		<dependency>
+		    <groupId>com.baomidou</groupId>
+		    <artifactId>mybatis-plus-boot-starter</artifactId>
+		</dependency>
+		<!-- 处理mybatis-plus不支持联合主键的问题 -->
+		<dependency>
+	        <groupId>com.github.jeffreyning</groupId>
+	        <artifactId>mybatisplus-plus</artifactId>
+	        <version>1.7.4-RELEASE</version>
+	    </dependency>    
+	    
+	    
+	    
+	    
         <!-- swagger3 ui文档,访问: http://localhost:7070/swagger-ui/index.html -->
       	<dependency>
 		    <groupId>org.thingsboard</groupId>
@@ -85,9 +90,17 @@
 		    <version>3.0.1</version>
 		</dependency>
       
-      
 	  <!-- 
-	  
+
+		spring-boot-starter-mail
+		spring-boot-starter-data-redis
+		spring-boot-starter-data-elasticsearch
+		spring-boot-starter-jdbc
+		spring-boot-starter-websocket
+		spring-boot-starter-log4j2
+		
+		
+			  
 		Spring Boot application starters
 		spring-boot-starter-thymeleaf
 		使用Thymeleaf视图构建MVC Web应用程序
