@@ -20,7 +20,7 @@ public class RestResult {
 	
 	
 	private String traceId;
-	private String errorLog;
+	private String errorLog; //错误日志，测试，开发环境开启，方便查错
 	private boolean success;
 	
 	public RestResult() {
