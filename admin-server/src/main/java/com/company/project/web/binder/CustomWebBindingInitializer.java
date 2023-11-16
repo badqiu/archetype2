@@ -43,6 +43,8 @@ public class CustomWebBindingInitializer implements WebBindingInitializer {
         }
         
         public static String getDateFormat(String text) {
+        	if(text == null) return null;
+        	
         	if(text.contains("-")) {
     			if(text.contains(":")) {
     				//HH:mm
@@ -50,9 +52,9 @@ public class CustomWebBindingInitializer implements WebBindingInitializer {
     			}else {
     				return  "yyyy-MM-dd";
     			}
-    		}else {
-    			return null;
     		}
+        	
+        	return null;
         }
 
         /**
