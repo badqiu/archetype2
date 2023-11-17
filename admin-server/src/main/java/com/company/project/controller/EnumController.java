@@ -1,5 +1,7 @@
 package com.company.project.controller;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,6 +9,7 @@ import java.util.Map;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.company.project.enums.Constant;
 import com.github.rapid.common.util.ScanClassUtil;
 
 import io.swagger.annotations.Api;
@@ -17,12 +20,26 @@ public class EnumController {
 
 	Map allEnumMap;
 	@PostMapping
-	public Map<String,Map> getAllEnum() throws ClassNotFoundException {
+	public Map<String,Map> getAllEnum() throws ClassNotFoundException, IllegalArgumentException, IllegalAccessException {
 		if(allEnumMap == null) {
-			String basePackages = "com.bigdata.ai.enums";
+			String basePackages = Constant.class.getPackage().getName();
 			allEnumMap = scanAllEnum(basePackages);
+			
+			allEnumMap.put(Constant.class.getSimpleName(),getStaticFieldMap(Constant.class));
 		}
+		
 		return allEnumMap;
+	}
+
+	public static Object getStaticFieldMap(Class clazz) throws IllegalArgumentException, IllegalAccessException {
+		Field[] fields = Constant.class.getDeclaredFields();
+		Map map = new HashMap();
+		for(Field f : fields) {
+			if(Modifier.isStatic(f.getModifiers())){
+				map.put(f.getName(), f.get(clazz));
+			}
+		}
+		return map;
 	}
 
 	public static Map scanAllEnum(String basePackages) throws ClassNotFoundException {
@@ -46,7 +63,7 @@ public class EnumController {
 		Enum[] enumList = (Enum[])clazz.getEnumConstants();
 		Map map = new HashMap();
 		for(Enum e : enumList) {
-			map.put(e.name(), e);
+			map.put(e.name(), e.name());
 		}
 		return map;
 	}
