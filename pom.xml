@@ -264,6 +264,14 @@
 
 	<build>
 
+		<!-- 避免mvn eclipse:eclipse会过滤application.properties application.yaml 文件问题 -->
+		<resources>
+             <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+		
 		<plugins>
 
 			<!-- archetype plugin -->
