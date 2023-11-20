@@ -67,7 +67,7 @@ public class SwaggerDocConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("davinci api")
+                .title("demoproject api")
                 .version("1.0")
                 .build();
     }
