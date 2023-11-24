@@ -16,11 +16,20 @@ public class AopConfig {
 	
 	// 定义一个切入点(第一个*表示返回值，第二个*表示任意类，第三个*表示任意方法，(..)表示任意参数)
     @Pointcut("execution(* com.company.project.service.*.*(..))")
-    public void logPerf(){
+    public void logService(){
     }
     
-	// 环绕通知
-    @Around("logPerf()")
+    // 定义一个切入点(第一个*表示返回值，第二个*表示任意类，第三个*表示任意方法，(..)表示任意参数)
+    @Pointcut("execution(* com.company.project.dao.*.*(..))")
+    public void logDao(){
+    }
+    
+    @Pointcut("logService() || logDao()")
+    private void logAll(){}
+    
+    
+	// 环绕通知, 引用切入点方法名称
+    @Around("logAll()")
     public Object around(ProceedingJoinPoint pjp) throws Throwable {
         Signature signature = pjp.getSignature();
 		String methodName = signature.getName();
