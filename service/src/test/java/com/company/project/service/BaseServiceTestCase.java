@@ -30,7 +30,7 @@ import com.company.project.ServiceTestApplication;
 @SpringBootTest(classes={ServiceTestApplication.class})
 //@ComponentScan(basePackages="com.company.project.dao")
 @Transactional
-public class BaseServiceTestCase {
+public abstract class BaseServiceTestCase {
 
 }
 
