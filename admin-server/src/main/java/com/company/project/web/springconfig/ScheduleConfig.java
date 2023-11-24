@@ -1,4 +1,4 @@
-package com.company.project.springconfig;
+package com.company.project.web.springconfig;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;

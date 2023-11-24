@@ -12,9 +12,7 @@ import com.company.project.springconfig.DataSourceConfig;
 import com.company.project.springconfig.I18nConfig;
 import com.company.project.springconfig.MybatisPlusConfig;
 import com.company.project.springconfig.RedisConfig;
-import com.company.project.springconfig.TomcatConfig;
 import com.company.project.springconfig.ValidatorConfig;
-import com.company.project.springconfig.WebMvcConfig;
 
 
 @SpringBootApplication
