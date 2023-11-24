@@ -23,4 +23,5 @@ public class ScheduleConfig implements SchedulingConfigurer {
         return Executors.newScheduledThreadPool(15); //指定线程池大小
     }
     
+    
 }
