@@ -28,7 +28,7 @@ import com.company.project.ServiceTestApplication;
 */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes={ServiceTestApplication.class})
-//@ComponentScan(basePackages="com.company.project.dao")
+//@ComponentScan(basePackages="com.company.project.service")
 @Transactional
 public abstract class BaseServiceTestCase {
 
