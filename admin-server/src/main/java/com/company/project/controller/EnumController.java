@@ -32,6 +32,8 @@ public class EnumController {
 			allEnumMap = scanAllEnum(basePackages);
 			
 			allEnumMap.put(Constant.class.getSimpleName(),getStaticFieldMap(Constant.class));
+			allEnumMap.put("fields", getEntityAllInput());
+			allEnumMap.put("models", getAllEntity());
 		}
 		
 		return allEnumMap;
