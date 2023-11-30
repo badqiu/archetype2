@@ -40,7 +40,7 @@ public abstract class BaseController {
 		if(isEntityPermissionCheck(entity,permission)) {
 			checkEntityPermission0(request,entity,permission);
 		}else {
-//			ActionSecurityUtil.checkActionPermission(request, entity.getClass(), permission);
+			ActionSecurityUtil.checkActionPermission(request, entity.getClass(), permission);
 		}
 	}
 	
