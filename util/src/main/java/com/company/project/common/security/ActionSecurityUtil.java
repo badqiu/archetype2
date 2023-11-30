@@ -14,9 +14,12 @@ import javax.servlet.http.HttpSession;
  *
  */
 public class ActionSecurityUtil {
-	public static String READ = "r"; //读权限
-	public static String WRITE = "w"; //写权限
-	public static String ADMIN = "a"; //管理权限
+	
+	
+	public static String READ = PermissionType.READ.getShortName(); 
+	public static String WRITE = PermissionType.WRITE.getShortName(); 
+	public static String EXECUTE = PermissionType.EXECUTE.getShortName(); 
+	public static String ADMIN = PermissionType.ADMIN.getShortName(); 
 	
 	private static String LOGIN_USER = "LOGIN_USER";
 	
@@ -63,7 +66,6 @@ public class ActionSecurityUtil {
 	 *  用户登录成功,设置登录成功信息
 	 **/
 	public static void setLoginUser(HttpServletRequest request,LoginUser loginUser) {
-//		loginUser.setLogin(true);
 		request.getSession().setAttribute(LOGIN_USER,loginUser);
 	}
 	

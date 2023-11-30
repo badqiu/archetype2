@@ -13,10 +13,11 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import com.company.project.dto.RestResult;
 
+/** MVC统一返回值处理 */
 @Configuration
 public class WebMvcGlobalReturnConfig {
 
-    @RestControllerAdvice
+    @RestControllerAdvice(basePackages = "com.company.project")
     static class ResultResponseAdvice implements ResponseBodyAdvice<Object> {
         @Override
         public boolean supports(MethodParameter methodParameter, Class<? extends HttpMessageConverter<?>> aClass) {
@@ -27,7 +28,7 @@ public class WebMvcGlobalReturnConfig {
         }
 
         @Override
-        public Object beforeBodyWrite(Object body, MethodParameter methodParameter, MediaType mediaType, Class<? extends HttpMessageConverter<?>> aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
+        public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType mediaType, Class<? extends HttpMessageConverter<?>> aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
             if (body instanceof RestResult) {
                 return body;
             }
@@ -37,7 +38,7 @@ public class WebMvcGlobalReturnConfig {
             }
             
             //字符串，不处理会发生 ClassCastException
-            if(methodParameter.getMethod().getReturnType() == String.class) {
+            if(returnType.getMethod().getReturnType() == String.class) {
             	return body;
             }
             

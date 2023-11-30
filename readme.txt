@@ -25,16 +25,7 @@ admin-server	web管理后台UI-后端项目
 项目依赖结构
 ----------------------------------------
 	util
-	model
-		dao
-			core-service
-				service
-					web-home
-					web-admin
-					scheduler
-					webservice-server
-	webservice-api
-		webservice-server
-		webservice-client
+		service
+			web-admin
 
 		

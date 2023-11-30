@@ -1,6 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.company.project</groupId>
 	<artifactId>demoproject</artifactId>
@@ -12,7 +11,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.4.1</version>
-		<relativePath />
+		<relativePath/>
 	</parent>
 
 	<modules>
@@ -20,18 +19,17 @@
 		<module>service</module>
 		<module>admin-front</module>
 		<module>admin-server</module>
-		<!-- <module>user-front</module> <module>user-server</module> -->
-	</modules>
+  </modules>
 
 	<properties>
 		<!-- versions -->
 		<h2.version>1.4.189</h2.version>
-		<slf4j.version>1.7.12</slf4j.version>
-		<shiro.version>1.2.4</shiro.version>
+		<slf4j.version>2.0.9</slf4j.version>
+		<shiro.version>1.13.0</shiro.version>
 		<guava.version>18.0</guava.version>
 		<powermock.version>1.6.6</powermock.version>
 		<xstream.version>1.4.17</xstream.version>
-		<mybatisplus.version>3.1.2</mybatisplus.version>
+		<mybatisplus.version>3.5.4.1</mybatisplus.version>
 
 		<!-- propect properties -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -43,11 +41,12 @@
 
 	<dependencyManagement>
 		<dependencies>
+				
 
 			<dependency>
 				<groupId>com.alibaba</groupId>
 				<artifactId>druid-spring-boot-starter</artifactId>
-				<version>1.1.21</version>
+				<version>1.2.20</version>
 			</dependency>
 
 			<dependency>
@@ -219,7 +218,7 @@
 			<dependency>
 				<groupId>mysql</groupId>
 				<artifactId>mysql-connector-java</artifactId>
-				<version>5.1.18</version>
+				<version>8.0.15</version>
 			</dependency>
 			<!-- <dependency> <groupId>com.oracle</groupId> <artifactId>ojdbc14</artifactId> 
 				<version>10.2.0.2.0</version> </dependency> -->
@@ -265,6 +264,14 @@
 
 	<build>
 
+		<!-- 避免mvn eclipse:eclipse会过滤application.properties application.yaml 文件问题 -->
+		<resources>
+             <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+		
 		<plugins>
 
 			<!-- archetype plugin -->
@@ -288,6 +295,17 @@
 				</configuration>
 			</plugin>
 
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<!-- 通过parameters参数，保留java方法的参数名称，可以避免使用mybatis plus使用@Param("userId")标注 -->
+					<compilerArgs>
+						<arg>-parameters</arg>
+					</compilerArgs>
+				</configuration>
+			</plugin>
+			
 		</plugins>
 	</build>
 

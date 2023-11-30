@@ -1,4 +1,4 @@
-package com.company.project.springconfig;
+package com.company.project.web.springconfig;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -22,5 +22,6 @@ public class ScheduleConfig implements SchedulingConfigurer {
     public Executor taskExecutor() {
         return Executors.newScheduledThreadPool(15); //指定线程池大小
     }
+    
     
 }

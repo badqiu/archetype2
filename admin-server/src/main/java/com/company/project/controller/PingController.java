@@ -5,12 +5,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
+
 /**
  * 检查服务是否正常
  * 
  * @author dqiu
  *
  */
+@Api("系统测试 API")
 @RestController
 @RequestMapping("/ping")
 public class PingController extends BaseController {

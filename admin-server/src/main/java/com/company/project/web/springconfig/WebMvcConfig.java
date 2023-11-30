@@ -1,4 +1,4 @@
-package com.company.project.springconfig;
+package com.company.project.web.springconfig;
 
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Method;
@@ -93,15 +93,30 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		// 访问静态资源
         registry.addResourceHandler("/**")
-        
-		      	//swagger-ui
-				.addResourceLocations("classpath:/META-INF/resources/webjars/")
-				.addResourceLocations("classpath:/META-INF/resources/")
-				
 				//project
                 .addResourceLocations("classpath:/resources/")
                 .addResourceLocations("classpath:/public/")
                 .addResourceLocations("classpath:/static/");
+
+        
+        
+        /** swagger-ui 3 地址 */
+        registry.addResourceHandler("/swagger-ui/**")
+        .addResourceLocations("classpath:/META-INF/resources/webjars/springfox-swagger-ui/");
+        
+        
+        /** swagger-ui 2 地址 */
+ 	   // 解决静态资源无法访问
+// 	   registry.addResourceHandler("/**")
+// 	       .addResourceLocations("classpath:/static/");
+// 	   // 解决SWAGGER无法访问
+// 	   registry.addResourceHandler("/swagger-ui.html")
+// 	       .addResourceLocations("classpath:/META-INF/resources/");
+// 	   // 解决SWAGGER的JS文件无法访问
+// 	   registry.addResourceHandler("/webjars/**")
+// 	       .addResourceLocations("classpath:/META-INF/resources/webjars/");
+        
+        
         
         super.addResourceHandlers(registry);
     }
