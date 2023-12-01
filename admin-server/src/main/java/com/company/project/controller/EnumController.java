@@ -20,7 +20,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@Api("查询所有枚举 API")
+@Api(tags={"系统枚举"})
 @RequestMapping("/enum")
 @RestController
 public class EnumController {
@@ -79,7 +79,7 @@ public class EnumController {
 			Class clazz = Class.forName(cls);
 			ApiModel am = (ApiModel)clazz.getAnnotation(ApiModel.class);
 			if(am != null) {
-				result.put(clazz.getSimpleName(), am);
+				result.put(clazz.getSimpleName(), am.description());
 			}
 		}
 		return result;
@@ -90,7 +90,7 @@ public class EnumController {
 		Map result = new HashMap();
 		for(String cls : classList) {
 			Class clazz = Class.forName(cls);
-			for(Field field : clazz.getFields()) {
+			for(Field field : clazz.getDeclaredFields()) {
 				ApiModelProperty mp = field.getAnnotation(ApiModelProperty.class);
 				HtmlInput input = HtmlInput.from(mp,field);
 				if(input != null){ 

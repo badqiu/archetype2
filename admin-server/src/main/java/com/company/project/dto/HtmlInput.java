@@ -9,7 +9,8 @@ public class HtmlInput {
 	private String name;
 	private String label;
 	private String type;
-	private String placeholder;
+	private String helpText;
+	private String example; 
 	
 	public String getName() {
 		return name;
@@ -29,11 +30,24 @@ public class HtmlInput {
 	public void setLabel(String label) {
 		this.label = label;
 	}
-	public String getPlaceholder() {
-		return placeholder;
+	public String getHelpText() {
+		return helpText;
 	}
-	public void setPlaceholder(String placeholder) {
-		this.placeholder = placeholder;
+	public void setHelpText(String placeholder) {
+		this.helpText = placeholder;
+	}
+	
+	public String getExample() {
+		return example;
+	}
+	public void setExample(String example) {
+		this.example = example;
+	}
+	
+	@Override
+	public String toString() {
+		return "HtmlInput [name=" + name + ", label=" + label + ", type=" + type + ", helpText=" + helpText
+				+ ", example=" + example + "]";
 	}
 	
 	public static HtmlInput from(ApiModelProperty mp,Field field) {
@@ -41,9 +55,10 @@ public class HtmlInput {
 		
 		HtmlInput input = new HtmlInput();
 		input.setName(field.getName());
-		input.setType(mp.dataType());
-		input.setLabel(mp.name());
-		input.setPlaceholder(mp.value());
+		input.setType(field.getType().getSimpleName().toLowerCase());
+		input.setLabel(mp.value());
+		input.setHelpText(mp.notes());
+		input.setExample(mp.example());
 		return input;
 	}
 }
