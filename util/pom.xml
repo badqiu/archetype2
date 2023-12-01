@@ -40,11 +40,6 @@
 		</dependency>
 
 
-	    <dependency>
-	      <groupId>junit</groupId>
-	      <artifactId>junit</artifactId>
-	      <scope>test</scope>
-	    </dependency>
 
 		<dependency>
 			<groupId>com.baomidou</groupId>
@@ -118,17 +113,11 @@
 		</dependency>
 
 
-
-
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 		</dependency>
 
-		<!-- test BEGIN -->
-		<!-- <dependency> <groupId>org.assertj</groupId> <artifactId>assertj-core</artifactId> 
-			<scope>test</scope> </dependency> -->
-		<!-- test END -->
 
 		<!-- xml begin -->
 		<dependency>
@@ -162,10 +151,10 @@
 			<groupId>hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
 		</dependency>
-    <dependency>
-      <groupId>com.oracle</groupId>
-      <artifactId>ojdbc14</artifactId>
-    </dependency>		
+	    <dependency>
+	      <groupId>com.oracle</groupId>
+	      <artifactId>ojdbc14</artifactId>
+	    </dependency>		
 		 -->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -191,5 +180,14 @@
 		 -->
 		<!-- shiro security end -->
 
+
+		<!-- Test start -->
+	    <dependency>
+	      <groupId>junit</groupId>
+	      <artifactId>junit</artifactId>
+	      <scope>test</scope>
+	    </dependency>
+	    <!-- Test end -->
+	    
 	</dependencies>
 </project>
