@@ -11,6 +11,7 @@ public class HtmlInput {
 	private String type;
 	private String helpText;
 	private String example; 
+	private boolean required;
 	
 	public String getName() {
 		return name;
@@ -44,10 +45,18 @@ public class HtmlInput {
 		this.example = example;
 	}
 	
+	public boolean isRequired() {
+		return required;
+	}
+	
+	public void setRequired(boolean required) {
+		this.required = required;
+	}
+	
 	@Override
 	public String toString() {
 		return "HtmlInput [name=" + name + ", label=" + label + ", type=" + type + ", helpText=" + helpText
-				+ ", example=" + example + "]";
+				+ ", example=" + example + ", required=" + required + "]";
 	}
 	
 	public static HtmlInput from(ApiModelProperty mp,Field field) {
@@ -59,6 +68,7 @@ public class HtmlInput {
 		input.setLabel(mp.value());
 		input.setHelpText(mp.notes());
 		input.setExample(mp.example());
+		input.setRequired(mp.required());
 		return input;
 	}
 }
