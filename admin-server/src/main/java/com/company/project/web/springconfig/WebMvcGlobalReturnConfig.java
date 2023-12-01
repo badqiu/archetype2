@@ -1,5 +1,6 @@
 package com.company.project.web.springconfig;
 
+import org.slf4j.MDC;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import com.company.project.dto.RestResult;
+import com.github.rapid.common.util.LogTraceUtil;
 
 /** MVC统一返回值处理 */
 @Configuration
@@ -29,7 +31,16 @@ public class WebMvcGlobalReturnConfig {
 
         @Override
         public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType mediaType, Class<? extends HttpMessageConverter<?>> aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
-            if (body instanceof RestResult) {
+            Object r = beforeBodyWrite0(body, returnType);
+            if (r instanceof RestResult) {
+            	RestResult tmp = (RestResult)r;
+				tmp.setTraceId(MDC.get(LogTraceUtil.TRACE_ID_KEY));
+            }
+            return r;
+        }
+
+		private Object beforeBodyWrite0(Object body, MethodParameter returnType) {
+			if (body instanceof RestResult) {
                 return body;
             }
             
@@ -51,9 +62,8 @@ public class WebMvcGlobalReturnConfig {
             
             RestResult r = new RestResult().success().result(body);
             
-            
 			return r;
-        }
+		}
         
     }
     

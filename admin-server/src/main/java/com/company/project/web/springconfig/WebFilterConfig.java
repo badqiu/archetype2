@@ -3,8 +3,8 @@ package com.company.project.web.springconfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.filter.CharacterEncodingFilter;
-import org.springframework.web.filter.CommonsRequestLoggingFilter;
 
+import com.company.project.web.filter.TraceIdFilter;
 import com.github.rapid.common.web.filter.PerformanceFilter;
 
 /**
@@ -50,6 +50,11 @@ public class WebFilterConfig {
 		PerformanceFilter r = new PerformanceFilter();
 		return r;
     }
+	
+	@Bean
+	public TraceIdFilter traceIdFilter() {
+		return new TraceIdFilter();
+	}
 	
     
 }
