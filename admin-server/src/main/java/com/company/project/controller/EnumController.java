@@ -8,7 +8,9 @@ import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.company.project.dto.HtmlInput;
 import com.company.project.enums.Constant;
 import com.company.project.model.BaseEntity;
@@ -20,11 +22,13 @@ import io.swagger.annotations.ApiModelProperty;
 
 @Api("查询所有枚举 API")
 @RequestMapping("/enum")
+@RestController
 public class EnumController {
 
 	Map allEnumMap;
 	Map entityAllInputMap;
 	Map entityAllModelMap;
+	
 	@GetMapping
 	public Map<String,Map> getAllEnum() throws Exception {
 		if(allEnumMap == null) {
@@ -59,6 +63,15 @@ public class EnumController {
 		return entityAllModelMap;
 	}
 
+	//是否安全敏感数据
+	public static boolean isSecuritySensitiveData(String name) {
+		if(StringUtils.isBlank(name)) {
+			return false;
+		}
+		String lowerName = name.toLowerCase();
+		return lowerName.contains("access") || lowerName.contains("username") || lowerName.contains("password") || lowerName.contains("token");
+	}
+	
 	private Map scanAllEntity(String basePackages) throws ClassNotFoundException {
 		List<String> classList = ScanClassUtil.scanPackages(basePackages);
 		Map result = new HashMap();
@@ -93,7 +106,14 @@ public class EnumController {
 		Map map = new HashMap();
 		for(Field f : fields) {
 			if(Modifier.isStatic(f.getModifiers())){
-				map.put(f.getName(), f.get(clazz));
+				String name = f.getName();
+				Object value = f.get(clazz);
+
+				if(isSecuritySensitiveData(name)) {
+					continue;
+				}
+				
+				map.put(name, value);
 			}
 		}
 		return map;
