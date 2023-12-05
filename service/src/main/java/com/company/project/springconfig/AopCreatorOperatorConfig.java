@@ -29,11 +29,11 @@ import com.github.rapid.common.beanutils.BeanUtils;
 public class AopCreatorOperatorConfig {
 	private static Logger logger = LoggerFactory.getLogger(AopCreatorOperatorConfig.class);
 	
-    @Pointcut("execution(* com.bigdata.ai.service.*.updateByManual(..))")
+    @Pointcut("execution(* com.company.project.service.*.updateByManual(..))")
     public void serviceUpdate(){
     }
     
-    @Pointcut("execution(* com.bigdata.ai.service.*.create(..))")
+    @Pointcut("execution(* com.company.project.service.*.create(..))")
     public void serviceCreate(){
     }
     
