@@ -67,14 +67,12 @@ public class AopCreatorOperatorConfig {
         
 		if("create".equals(methodName)){
 			beanProps.put("creator", username);
-	        beanProps.put("operator",username);
 	        beanProps.put("createTime",new Date());
-	        beanProps.put("updateTime",new Date());
 	        beanProps.put("enabled",true);
-        }else {
-        	beanProps.put("operator",username);
-        	beanProps.put("updateTime",new Date());
         }
+		
+		beanProps.put("operator",username);
+    	beanProps.put("updateTime",new Date());
         
 		return beanProps;
 	}
