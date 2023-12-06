@@ -21,6 +21,22 @@ public class EnvironmentUtil implements InitializingBean{
 		return getEnvironment().acceptsProfiles(Profiles.of(profiles));
 	}
 	
+	public static boolean acceptsTestDevProfiles() {
+		return acceptsProfiles("test","dev");
+	}
+	
+	public static boolean acceptsProdProfiles() {
+		return acceptsProfiles("prod");
+	}
+	
+	public static boolean acceptsTestProfiles() {
+		return acceptsProfiles("test");
+	}
+	
+	public static boolean acceptsDevProfiles() {
+		return acceptsProfiles("dev");
+	}
+	
 	public static Environment getEnvironment() {
 		return staticEnvironment;
 	}
