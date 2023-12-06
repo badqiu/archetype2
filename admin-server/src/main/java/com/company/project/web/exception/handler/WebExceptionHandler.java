@@ -12,6 +12,7 @@ import javax.validation.ConstraintViolationException;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.DuplicateKeyException;
@@ -32,12 +33,13 @@ import io.swagger.annotations.ApiModelProperty;
 
 @ControllerAdvice
 @ResponseBody
-public class WebExceptionHandler {
+public class WebExceptionHandler implements InitializingBean{
 
     private static final Logger log = LoggerFactory.getLogger(WebExceptionHandler.class);
 
     @Autowired
 	private Environment environment;
+    boolean enabledShowErrorLog = false;
     
     @ExceptionHandler
     public RestResult exception(Exception e) {
@@ -50,11 +52,12 @@ public class WebExceptionHandler {
 	}
 	
 	private RestResult errorMap(String errCode, String errMsg,String stackTrace) {
+		
 		RestResult result = new RestResult();
 		result.fail(errMsg);
 		result.errCode(errCode);
 		
-		if(environment.acceptsProfiles(Constant.SHOW_ERROR_LOG_FOR_HTTP_RESPONSE)) {
+		if(enabledShowErrorLog) {
 			result.setErrorLog(stackTrace);
 		}
         
@@ -117,5 +120,11 @@ public class WebExceptionHandler {
 			return amp;
 		}
     }
+
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		enabledShowErrorLog = environment.acceptsProfiles(Constant.SHOW_ERROR_LOG_FOR_HTTP_RESPONSE);
+	}
+	
 }
 
