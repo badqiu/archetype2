@@ -9,16 +9,18 @@ import java.util.stream.Collectors;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.company.project.dto.RestResult;
+import com.company.project.enums.Constant;
 
 import io.swagger.annotations.ApiModelProperty;
 
@@ -34,6 +36,9 @@ public class WebExceptionHandler {
 
     private static final Logger log = LoggerFactory.getLogger(WebExceptionHandler.class);
 
+    @Autowired
+	private Environment environment;
+    
     @ExceptionHandler
     public RestResult exception(Exception e) {
         log.error("exception", e);
@@ -48,7 +53,10 @@ public class WebExceptionHandler {
 		RestResult result = new RestResult();
 		result.fail(errMsg);
 		result.errCode(errCode);
-		result.setErrorLog(stackTrace);
+		
+		if(environment.acceptsProfiles(Constant.SHOW_ERROR_LOG_FOR_HTTP_RESPONSE)) {
+			result.setErrorLog(stackTrace);
+		}
         
         return result;
 	}
