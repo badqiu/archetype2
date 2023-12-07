@@ -5,7 +5,7 @@ package com.company.project.common.security;
  */
 public enum PermissionType {
 	READ("r","读权限"),  // 等同于read,select,access,get,query,search,receive,consume
-	WRITE("w","写权限"), // 等同于update,create,delete,edit,change,set,write,modify,produce,clear,add,remove,copy
+	WRITE("w","写权限"), // 等同于create,add,insert,delete,remove,clear,update,edit,change,set,write,modify,produce,copy
 	EXECUTE("x","运行权限"), // 等同于execute,run,deploy,stop,force_stop
 	ADMIN("a","管理权限"); // 等同于admin,manage,all,其它权限也可以包含进来(rollback,connect,listen)
 	
