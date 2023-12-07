@@ -1,9 +1,15 @@
 package com.company.project.controller;
 
+import java.util.Map;
+import java.util.Properties;
+
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.company.project.util.EnvironmentUtil;
 
 import io.swagger.annotations.Api;
 
@@ -28,7 +34,18 @@ public class PingController extends BaseController {
 	
 	@GetMapping
 	public String echo(String msg) {
-		return "hello:"+msg;
+		String[] profiels = EnvironmentUtil.getEnvironment().getActiveProfiles();
+		return "hello:"+msg + " profiels:"+StringUtils.join(profiels,",");
+	}
+	
+	@GetMapping
+	public Properties systemProperties() {
+		return System.getProperties();
+	}
+	
+	@GetMapping
+	public Map<String,String> systemEnvVars() {
+		return System.getenv();
 	}
 	
 	@GetMapping
