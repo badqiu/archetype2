@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.company.project.common.security.LoginUser;
+import com.company.project.common.security.SpringActionSecurityUtil;
 import com.company.project.util.EnvironmentUtil;
 
 import io.swagger.annotations.Api;
@@ -46,6 +48,11 @@ public class PingController extends BaseController {
 	@GetMapping
 	public Map<String,String> systemEnvVars() {
 		return System.getenv();
+	}
+	
+	@GetMapping
+	public LoginUser loginUser() {
+		return SpringActionSecurityUtil.getLoginUser();
 	}
 	
 	@GetMapping
