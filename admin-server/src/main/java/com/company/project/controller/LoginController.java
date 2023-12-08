@@ -21,8 +21,18 @@ public class LoginController {
 	public boolean login(String username,String password) {
 		//可以添加执行，查询数据
 		
-		System.out.println("login success:"+username);
-		return true;
+		if(password.equals("pwd")) {
+			LoginUser<Long> loginUser = new LoginUser<Long>();
+			loginUser.setUsername(username);
+			loginUser.setSuperAdmin(true);
+			loginUser.setUserId(1L);
+			SpringActionSecurityUtil.setLoginUser(loginUser );
+			System.out.println("login success:"+username);
+			return true;
+		}
+		
+		return false;
+		
 	}
 	
 	@GetMapping
@@ -32,6 +42,7 @@ public class LoginController {
 	
 	@RequestMapping
 	public boolean logout(HttpServletRequest request) {
+		SpringActionSecurityUtil.logout(request);
 		request.getSession().invalidate();
 		return true;
 	}
