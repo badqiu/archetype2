@@ -36,8 +36,13 @@ public class PingController extends BaseController {
 	
 	@GetMapping
 	public String echo(String msg) {
+		return "hello:"+msg;
+	}
+	
+	@GetMapping
+	public String springActiveProfiles() {
 		String[] profiels = EnvironmentUtil.getEnvironment().getActiveProfiles();
-		return "hello:"+msg + " profiels:"+StringUtils.join(profiels,",");
+		return "spring active environment profiels:"+StringUtils.join(profiels,",");
 	}
 	
 	@GetMapping
