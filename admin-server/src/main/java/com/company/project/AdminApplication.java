@@ -2,21 +2,14 @@ package com.company.project;
 
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
-
-import com.company.project.springconfig.CacheConfig;
-import com.company.project.springconfig.DataSourceConfig;
-import com.company.project.springconfig.I18nConfig;
-import com.company.project.springconfig.MybatisPlusConfig;
-import com.company.project.springconfig.RedisConfig;
-import com.company.project.springconfig.ValidatorConfig;
+import org.springframework.context.annotation.ImportResource;
 
 
 @SpringBootApplication
 @ServletComponentScan // @WebServlet、@WebFilter、@WebListener等生效
+//@ImportResource(locations = {"classpath:demo_xxxxx.xml"})
 public class AdminApplication {
 
 	/**
