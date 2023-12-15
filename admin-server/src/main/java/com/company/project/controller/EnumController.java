@@ -2,7 +2,7 @@ package com.company.project.controller;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -74,7 +74,7 @@ public class EnumController {
 	
 	private Map scanAllEntity(String basePackages) throws ClassNotFoundException {
 		List<String> classList = ScanClassUtil.scanPackages(basePackages);
-		Map result = new HashMap();
+		Map result = new LinkedHashMap();
 		for(String cls : classList) {
 			Class clazz = Class.forName(cls);
 			ApiModel am = (ApiModel)clazz.getAnnotation(ApiModel.class);
@@ -87,7 +87,7 @@ public class EnumController {
 
 	private Map scanAllEntityForInput(String basePackages) throws ClassNotFoundException {
 		List<String> classList = ScanClassUtil.scanPackages(basePackages);
-		Map result = new HashMap();
+		Map result = new LinkedHashMap();
 		for(String cls : classList) {
 			Class clazz = Class.forName(cls);
 			for(Field field : clazz.getDeclaredFields()) {
@@ -103,7 +103,7 @@ public class EnumController {
 
 	public static Object getStaticFieldMap(Class clazz) throws IllegalArgumentException, IllegalAccessException {
 		Field[] fields = Constant.class.getDeclaredFields();
-		Map map = new HashMap();
+		Map map = new LinkedHashMap();
 		for(Field f : fields) {
 			if(Modifier.isStatic(f.getModifiers())){
 				String name = f.getName();
@@ -121,7 +121,7 @@ public class EnumController {
 
 	public static Map scanAllEnum(String basePackages) throws ClassNotFoundException {
 		List<String> classList = ScanClassUtil.scanPackages(basePackages);
-		Map allEnumMap = new HashMap();
+		Map allEnumMap = new LinkedHashMap();
 		for(String cls : classList) {
 			Class clazz = Class.forName(cls);
 			if(clazz.isEnum()) {
@@ -138,7 +138,7 @@ public class EnumController {
 		}
 		
 		Enum[] enumList = (Enum[])clazz.getEnumConstants();
-		Map map = new HashMap();
+		Map map = new LinkedHashMap();
 		for(Enum e : enumList) {
 			map.put(e.name(), e.name());
 		}
