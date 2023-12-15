@@ -17,6 +17,9 @@ public abstract class BaseController {
 
 	public static String READ = ActionSecurityUtil.READ; //读权限
 	public static String WRITE = ActionSecurityUtil.WRITE; //写权限
+	public static String CREATE = ActionSecurityUtil.CREATE; //创建权限
+	public static String UPDATE = ActionSecurityUtil.UPDATE; //更新权限
+	public static String DELETE = ActionSecurityUtil.DELETE; //删除权限
 	public static String EXECUTE = ActionSecurityUtil.EXECUTE; //运行权限
 	public static String ADMIN = ActionSecurityUtil.ADMIN; //管理权限
 	

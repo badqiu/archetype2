@@ -18,6 +18,9 @@ public class ActionSecurityUtil {
 	
 	public static String READ = PermissionType.READ.getShortName(); 
 	public static String WRITE = PermissionType.WRITE.getShortName(); 
+	public static String CREATE = PermissionType.CREATE.getShortName(); 
+	public static String UPDATE = PermissionType.UPDATE.getShortName(); 
+	public static String DELETE = PermissionType.DELETE.getShortName(); 
 	public static String EXECUTE = PermissionType.EXECUTE.getShortName(); 
 	public static String ADMIN = PermissionType.ADMIN.getShortName(); 
 	
