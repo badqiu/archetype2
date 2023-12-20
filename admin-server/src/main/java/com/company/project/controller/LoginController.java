@@ -40,7 +40,7 @@ public class LoginController {
 		return SpringActionSecurityUtil.getLoginUser();
 	}
 	
-	@RequestMapping
+	@GetMapping
 	public boolean logout(HttpServletRequest request) {
 		SpringActionSecurityUtil.logout(request);
 		request.getSession().invalidate();
