@@ -11,16 +11,24 @@ import com.company.project.common.security.LoginUser;
 import com.company.project.common.security.SpringActionSecurityUtil;
 
 public class BaseControllerTestCase {
-	private static Logger logger = LoggerFactory.getLogger(BaseControllerTestCase.class);
 	
-	public static void setLoginUser() {
-		RequestContextHolder.setRequestAttributes(new DispatcherServletWebRequest(new MockHttpServletRequest()));
+	protected static Logger logger = LoggerFactory.getLogger(BaseControllerTestCase.class);
+	
+	protected MockHttpServletRequest request = new MockHttpServletRequest();
+	
+	public void setLoginUser() {
+		setMockRequest();
+		
 		LoginUser loginUser = new LoginUser();
 		loginUser.setUsername("testuser");
 		loginUser.setSuperAdmin(true);
 		SpringActionSecurityUtil.setLoginUser(loginUser);
 
 		logger.info("setLoginUser() loginUser:"+loginUser);
+	}
+
+	protected void setMockRequest() {
+		RequestContextHolder.setRequestAttributes(new DispatcherServletWebRequest(request));
 	}
 	
 	@Before
