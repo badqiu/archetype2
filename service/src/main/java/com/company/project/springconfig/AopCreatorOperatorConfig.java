@@ -19,6 +19,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.company.project.common.security.ActionSecurityUtil;
+import com.company.project.common.security.LoginUser;
 import com.github.rapid.common.beanutils.BeanUtils;
 
 /**
@@ -63,7 +64,12 @@ public class AopCreatorOperatorConfig {
 
 	private Map<String,Object> newBeanProps(String methodName) {
 		Map<String,Object> beanProps = new HashMap<String,Object>();
-		String username = ActionSecurityUtil.getLoginUser(getRequest()).getUsername();
+		
+		String username = "system-cron";
+		LoginUser loginUser = ActionSecurityUtil.getLoginUser(getRequest());
+		if(loginUser != null) {
+			username = loginUser.getUsername();
+		}
         
 		if("create".equals(methodName)){
 			beanProps.put("creator", username);

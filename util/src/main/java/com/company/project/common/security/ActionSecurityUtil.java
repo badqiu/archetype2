@@ -61,6 +61,8 @@ public class ActionSecurityUtil {
 	}
 	
 	public static LoginUser getLoginUser(HttpServletRequest request) {
+		if(request == null) return null;
+		
 		LoginUser user = (LoginUser)request.getSession().getAttribute(LOGIN_USER);
 		return user;
 	}

@@ -2,6 +2,7 @@ package com.company.project.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,9 @@ public class LoginController {
 	
 	@PostMapping
 	public boolean login(String username,String password) {
+		Assert.hasText(username,"用户名不能为空");
+		Assert.hasText(password,"密码不能为空");
+		
 		//可以添加执行，查询数据
 		
 		if(password.equals("pwd")) {
