@@ -5,6 +5,8 @@ import com.github.rapid.common.util.page.PageQuery;
 public class BaseQuery extends PageQuery{
 
 	private static final long serialVersionUID = 1L;
+	
+	private String keyword;
 
 	public BaseQuery() {
 		super();
@@ -20,6 +22,14 @@ public class BaseQuery extends PageQuery{
 
 	public BaseQuery(PageQuery query) {
 		super(query);
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
 	}
 	
 }
