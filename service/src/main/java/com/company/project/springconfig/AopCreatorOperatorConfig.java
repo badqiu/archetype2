@@ -84,11 +84,17 @@ public class AopCreatorOperatorConfig {
 	}
 	
 	public static HttpServletRequest getRequest() {
-		return getContextServletRequestAttributes().getRequest();
+		ServletRequestAttributes contextServletRequestAttributes = getContextServletRequestAttributes();
+		if(contextServletRequestAttributes == null) return null;
+		
+		return contextServletRequestAttributes.getRequest();
 	}
 	
 	public static HttpServletResponse getResponse() {
-		return getContextServletRequestAttributes().getResponse();
+		ServletRequestAttributes contextServletRequestAttributes = getContextServletRequestAttributes();
+		if(contextServletRequestAttributes == null) return null;
+		
+		return contextServletRequestAttributes.getResponse();
 	}
 
 	public static ServletRequestAttributes getContextServletRequestAttributes() {
