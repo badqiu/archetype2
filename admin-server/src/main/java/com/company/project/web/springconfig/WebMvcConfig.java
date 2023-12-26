@@ -7,17 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.accept.ContentNegotiationManager;
@@ -34,7 +32,10 @@ import org.springframework.web.servlet.mvc.condition.RequestMethodsRequestCondit
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
-import com.fasterxml.jackson.databind.SerializationConfig;
+import com.company.project.util.BigintToStringSerializer;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 
 
 /**
@@ -74,13 +75,37 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 	}
 
 	public MappingJackson2HttpMessageConverter responseJsonBodyConverter() {
-		MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
+		MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter(objectMapper());
 		List<MediaType> mediaTypes = new ArrayList<MediaType>();
 		mediaTypes.add(MediaType.APPLICATION_JSON_UTF8);
 		converter.setSupportedMediaTypes(mediaTypes);
 		return converter;
 	}
 	
+
+	private ObjectMapper objectMapper() {
+//		ObjectMapper objectMapper2 = Jackson2ObjectMapperBuilder.json().build();
+	    ObjectMapper objectMapper = new ObjectMapper();
+	    
+	    // 不序列化null的属性
+//	    objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+//	    objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+//	    objectMapper.disable(DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE);
+//	    JavaTimeModule javaTimeModule = new JavaTimeModule();
+	    SimpleModule javaTimeModule = new SimpleModule();
+	    javaTimeModule.addSerializer(Long.class, BigintToStringSerializer.instance);
+	    javaTimeModule.addSerializer(Long.TYPE, BigintToStringSerializer.instance);
+	    
+//	    javaTimeModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(DateTimeFormatter.ofPattern(Constants.DEFAULT_DATE_TIME_FORMAT)));
+//	    javaTimeModule.addSerializer(LocalDate.class, new LocalDateSerializer(DateTimeFormatter.ofPattern(Constants.DEFAULT_DATE_FORMAT)));
+//	    javaTimeModule.addSerializer(LocalTime.class, new LocalTimeSerializer(DateTimeFormatter.ofPattern(Constants.DEFAULT_TIME_FORMAT)));
+//	    javaTimeModule.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer(DateTimeFormatter.ofPattern(Constants.DEFAULT_DATE_TIME_FORMAT)));
+//	    javaTimeModule.addDeserializer(LocalDate.class, new LocalDateDeserializer(DateTimeFormatter.ofPattern(Constants.DEFAULT_DATE_FORMAT)));
+//	    javaTimeModule.addDeserializer(LocalTime.class, new LocalTimeDeserializer(DateTimeFormatter.ofPattern(Constants.DEFAULT_TIME_FORMAT)));
+	    objectMapper.registerModule(javaTimeModule).registerModule(new ParameterNamesModule());
+//	    objectMapper.setDateFormat(new SimpleDateFormat(Constants.DEFAULT_DATE_TIME_FORMAT));
+	    return objectMapper;
+	}
 
 	
 	@Override
