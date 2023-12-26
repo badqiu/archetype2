@@ -13,7 +13,10 @@ public class SpringActionSecurityUtil extends ActionSecurityUtil {
 	}
 	
 	public static HttpServletRequest getRequest() {
-		return getContextServletRequestAttributes().getRequest();
+		ServletRequestAttributes attr = getContextServletRequestAttributes();
+		if(attr == null) return null;
+		
+		return attr.getRequest();
 	}
 	
 	/**
