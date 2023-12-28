@@ -41,6 +41,14 @@ public class EnvironmentUtil implements InitializingBean{
 		return staticEnvironment;
 	}
 
+	private static String activeProfile = null;
+	public static String getActiveProfile() {
+		if(activeProfile == null) {
+			activeProfile = getEnvironment().getActiveProfiles()[0];
+		}
+		return activeProfile;
+	}
+	
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		staticEnvironment = environment;
