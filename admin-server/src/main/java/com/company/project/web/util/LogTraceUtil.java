@@ -7,6 +7,8 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.slf4j.MDC;
 
+import com.company.project.util.EnvironmentUtil;
+
 /**
  * 系统运行时打印方便调试与追踪信息的工具类.
  * 
@@ -49,7 +51,7 @@ public class LogTraceUtil {
 	public static String newTraceId() {
 		String uuid = StringUtils.remove(UUID.randomUUID().toString(),'-');
 		String date = DateFormatUtils.format(new Date(), "MMddHHmmss");
-		return date + uuid;
+		return date + uuid + EnvironmentUtil.getActiveProfile();
 	}
 
 	/**
