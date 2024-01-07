@@ -8,14 +8,17 @@ import javax.validation.constraints.NotNull;
 
 import io.swagger.annotations.ApiModelProperty;
 
+/**
+ * 返回给前端的输入字段
+ */
 public class HtmlInput {
 
-	private String name;
-	private String label;
-	private String type;
-	private String helpText;
-	private String example; 
-	private boolean required;
+	private String name; //字段英文代号
+	private String label; //字段中文名称
+	private String type; //字段类型,string,int,long
+	private String helpText; //帮助文案
+	private String example; //示例值
+	private boolean required; 
 	
 	public String getName() {
 		return name;
