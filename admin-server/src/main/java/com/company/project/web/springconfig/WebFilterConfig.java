@@ -56,5 +56,18 @@ public class WebFilterConfig {
 		return new TraceIdFilter();
 	}
 	
+	
+//	@Bean
+//    public FilterRegistrationBean<UserSideFilter> userSideFilter() {
+//        FilterRegistrationBean<UserSideFilter> registrationBean = new FilterRegistrationBean<>();
+//        registrationBean.setFilter(newUserSideFilter());
+//        registrationBean.addUrlPatterns("/user/*");  // 配置过滤的URL模式
+//        return registrationBean;
+//    }
+//
+//	@Bean
+//	public UserSideFilter newUserSideFilter() {
+//		return new UserSideFilter();
+//	}
     
 }
