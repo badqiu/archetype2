@@ -18,7 +18,8 @@ public class HtmlInput {
 	private String type; //字段类型,string,int,long
 	private String helpText; //帮助文案
 	private String example; //示例值
-	private boolean required; 
+	private boolean required; //是否必填
+	private boolean hidden; //是否隐藏
 	
 	public String getName() {
 		return name;
@@ -60,6 +61,14 @@ public class HtmlInput {
 		this.required = required;
 	}
 	
+	
+	
+	public boolean isHidden() {
+		return hidden;
+	}
+	public void setHidden(boolean hidden) {
+		this.hidden = hidden;
+	}
 	@Override
 	public String toString() {
 		return "HtmlInput [name=" + name + ", label=" + label + ", type=" + type + ", helpText=" + helpText
@@ -75,6 +84,7 @@ public class HtmlInput {
 		input.setHelpText(mp.notes());
 		input.setExample(mp.example());
 		input.setRequired(mp.required());
+		input.setHidden(mp.hidden());
 		
 		fromField(field, input);
 		
