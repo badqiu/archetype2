@@ -12,6 +12,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.company.project.common.security.ActionSecurityUtil;
 import com.company.project.common.security.LoginUser;
+import com.company.project.common.security.NeedLoginException;
 
 public abstract class BaseController {
 
@@ -60,6 +61,30 @@ public abstract class BaseController {
 
 	public static LoginUser getLoginUser(HttpServletRequest request) {
 		return ActionSecurityUtil.getLoginUser(request);
+	}
+	
+	public static Long getLoginUserId(HttpServletRequest request) {
+		LoginUser<Long> loginUser = ActionSecurityUtil.getLoginUser(request);
+		if(loginUser == null) {
+			return null;
+		}
+		return loginUser.getUserId();
+	}
+	
+	public static Long getLoginUserId() {
+		return getLoginUserId(getRequest());
+	}
+	
+	public static Long getRequiredLoginUserId(HttpServletRequest request) {
+		LoginUser<Long> loginUser = ActionSecurityUtil.getLoginUser(request);
+		if(loginUser == null) {
+			throw new NeedLoginException();
+		}
+		return loginUser.getUserId();
+	}
+	
+	public static Long getRequiredLoginUserId() {
+		return getRequiredLoginUserId(getRequest());
 	}
 	
 	public static HttpServletRequest getRequest() {
