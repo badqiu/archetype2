@@ -70,17 +70,23 @@ public class HtmlInput {
 		if(mp == null) return null;
 		
 		HtmlInput input = new HtmlInput();
-		input.setName(field.getName());
-		input.setType(field.getType().getSimpleName().toLowerCase());
+		
+		fromField(field, input);
+		
 		input.setLabel(mp.value());
 		input.setHelpText(mp.notes());
 		input.setExample(mp.example());
-		
 		input.setRequired(mp.required());
+		
+		return input;
+	}
+	
+	private static void fromField(Field field, HtmlInput input) {
+		input.setName(field.getName());
+		input.setType(field.getType().getSimpleName().toLowerCase());
+		
 		if(field.isAnnotationPresent(NotNull.class) || field.isAnnotationPresent(NotBlank.class) || field.isAnnotationPresent(NotEmpty.class)) {
 			input.setRequired(true);
 		}
-		
-		return input;
 	}
 }
