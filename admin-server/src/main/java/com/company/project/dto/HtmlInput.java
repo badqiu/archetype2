@@ -71,12 +71,12 @@ public class HtmlInput {
 		
 		HtmlInput input = new HtmlInput();
 		
-		fromField(field, input);
-		
 		input.setLabel(mp.value());
 		input.setHelpText(mp.notes());
 		input.setExample(mp.example());
 		input.setRequired(mp.required());
+		
+		fromField(field, input);
 		
 		return input;
 	}
