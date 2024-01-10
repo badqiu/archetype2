@@ -44,7 +44,10 @@ public class EnvironmentUtil implements InitializingBean{
 	private static String activeProfile = null;
 	public static String getActiveProfile() {
 		if(activeProfile == null) {
-			activeProfile = getEnvironment().getActiveProfiles()[0];
+			Environment environment = getEnvironment();
+			if(environment != null) {
+				activeProfile = environment.getActiveProfiles()[0];
+			}
 		}
 		return activeProfile;
 	}
