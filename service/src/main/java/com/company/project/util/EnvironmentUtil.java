@@ -4,6 +4,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.Profiles;
+import org.springframework.core.env.StandardEnvironment;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -11,7 +12,7 @@ public class EnvironmentUtil implements InitializingBean{
 	@Autowired
 	Environment environment;
 	
-	private static Environment staticEnvironment;
+	private static Environment staticEnvironment = new StandardEnvironment();
 	
 	public static boolean acceptsProfiles(Profiles profiles) {
 		return getEnvironment().acceptsProfiles(profiles);
