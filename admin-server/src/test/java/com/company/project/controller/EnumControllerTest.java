@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import com.company.project.common.controller.EnumController;
+
 public class EnumControllerTest {
 
 	EnumController controller = new EnumController();

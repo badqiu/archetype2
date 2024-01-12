@@ -1,4 +1,4 @@
-package com.company.project.controller;
+package com.company.project.common.controller;
 
 import java.util.Map;
 import java.util.Properties;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.company.project.common.security.LoginUser;
 import com.company.project.common.security.SpringActionSecurityUtil;
+import com.company.project.controller.BaseController;
 import com.company.project.util.EnvironmentUtil;
 
 import io.swagger.annotations.Api;

@@ -1,4 +1,4 @@
-package com.company.project.controller;
+package com.company.project.common.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
