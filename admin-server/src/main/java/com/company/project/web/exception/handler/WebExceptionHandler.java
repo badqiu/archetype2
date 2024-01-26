@@ -43,7 +43,7 @@ public class WebExceptionHandler implements InitializingBean{
     
     @ExceptionHandler
     public RestResult exception(Exception e) {
-        log.error("exception", e);
+        log.warn("exception", e);
         return errorMap(e, e.getMessage());
     }
 
