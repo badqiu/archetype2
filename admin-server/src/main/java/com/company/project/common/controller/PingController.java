@@ -4,6 +4,8 @@ import java.util.Map;
 import java.util.Properties;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,7 +28,9 @@ import io.swagger.annotations.Api;
 @RestController
 @RequestMapping("/ping")
 public class PingController extends BaseController {
-
+	
+	private static Logger logger = LoggerFactory.getLogger(PingController.class);
+	
 	@GetMapping
 	public String ping() {
 		//可以添加执行，查询数据
@@ -70,6 +74,17 @@ public class PingController extends BaseController {
 	@GetMapping
 	public String exception() {
 		throw new IllegalStateException("test_error_message");
+	}
+	
+	@GetMapping
+	public String logException() {
+		try {
+			exception();
+		}catch(Exception e) {
+			logger.error("error from logException():"+e,e);
+		}
+		
+		return "error";
 	}
 	
 	@GetMapping
