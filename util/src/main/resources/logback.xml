@@ -95,7 +95,6 @@
     <appender name="emailAppender" class="ch.qos.logback.classic.net.SMTPAppender">
         <smtpHost>smtp.qiye.aliyun.com</smtpHost>
         <smtpPort>465</smtpPort>
-        <!--<STARTTLS>true</STARTTLS>-->
         <SSL>true</SSL>
         <asynchronousSending>false</asynchronousSending>
         <username>bigdata-alert@xmiles.cn</username>
