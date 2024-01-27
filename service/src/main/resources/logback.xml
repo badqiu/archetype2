@@ -96,7 +96,7 @@
         <smtpHost>smtp.qiye.aliyun.com</smtpHost>
         <smtpPort>465</smtpPort>
         <SSL>true</SSL>
-        <asynchronousSending>false</asynchronousSending>
+        <asynchronousSending>true</asynchronousSending>
         <username>bigdata-alert@xmiles.cn</username>
         <password></password>
         <to>qiubaichao@xmiles.cn</to>
