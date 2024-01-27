@@ -15,7 +15,6 @@
 	</parent>
 
 	<modules>
-		<module>doc</module>
 		<module>util</module>
 		<module>service</module>
 		<!--
