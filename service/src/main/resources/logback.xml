@@ -9,7 +9,7 @@
         <file>${LOG_PATH}/info.log</file>
         <append>true</append>
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %X{traceId} `%m%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %X{traceId} [%thread] level:%level logger:%logger{36} - %msg%n</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOG_PATH}/info.%d{yyyy-MM-dd_HH}.log</fileNamePattern>
@@ -24,7 +24,7 @@
         <file>${LOG_PATH}/access.log</file>
         <append>true</append>
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %X{traceId} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %X{traceId} [%thread] level:%level logger:%logger{36} - %msg%n</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOG_PATH}/access.%d{yyyy-MM-dd_HH}.log</fileNamePattern>
@@ -39,7 +39,7 @@
         <file>${LOG_PATH}/server.log</file>
         <append>true</append>
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %X{traceId} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %X{traceId} [%thread] level:%level logger:%logger{36} - %msg%n</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOG_PATH}/server.%d{yyyy-MM-dd_HH}.log</fileNamePattern>
@@ -54,7 +54,7 @@
         <file>${LOG_PATH}/slowlog.log</file>
         <append>true</append>
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %X{traceId} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %X{traceId} [%thread] level:%level logger:%logger{36} - %msg%n</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOG_PATH}/slowlog.%d{yyyy-MM-dd}.log</fileNamePattern>
@@ -72,7 +72,7 @@
         <file>${LOG_PATH}/warn.log</file>
         <append>true</append>
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %X{traceId} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %X{traceId} [%thread] level:%level logger:%logger{36} - %msg%n</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOG_PATH}/warn.%d{yyyy-MM-dd}.log</fileNamePattern>
@@ -86,7 +86,7 @@
         <file>${LOG_PATH}/error.log</file>
         <append>true</append>
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %X{traceId} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %X{traceId} [%thread] level:%level logger:%logger{36} - %msg%n</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOG_PATH}/error.%d{yyyy-MM-dd}.log</fileNamePattern>
@@ -104,7 +104,7 @@
         <from>bigdata-alert@xmiles.cn</from>
         <subject>demoproject-${spring.active.profiles}-错误报警: %logger{20} - %m</subject>
         <layout class="ch.qos.logback.classic.PatternLayout">
-            <pattern>demoproject %d{yyyy-MM-dd HH:mm:ss.SSS} %X{traceId} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>demoproject %d{yyyy-MM-dd HH:mm:ss.SSS} %X{traceId} [%thread] level:%level logger:%logger{36} - %msg%n</pattern>
         </layout>
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>ERROR</level>
@@ -114,7 +114,7 @@
 
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} %X{traceId} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%d{HH:mm:ss.SSS} %X{traceId} [%thread] level:%level logger:%logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 
