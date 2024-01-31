@@ -106,7 +106,7 @@
         <from>bigdata-alert@xmiles.cn</from>
         <subject>${LOG_APP_NAME}-${spring.active.profiles}-错误报警: %logger{20} - %m</subject>
         <layout class="ch.qos.logback.classic.PatternLayout">
-            <pattern>${LOG_APP_NAME} %d{yyyy-MM-dd HH:mm:ss.SSS} %X{traceId} [%thread] level_%level logger_%logger{36} - %msg%n</pattern>
+            <pattern>${LOG_APP_NAME} ${COMMON_PATTERN}</pattern>
         </layout>
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>ERROR</level>
