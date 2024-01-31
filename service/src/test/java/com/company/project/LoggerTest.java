@@ -10,10 +10,11 @@ public class LoggerTest {
 	
 	@Test
 	public void test() throws InterruptedException {
+		logger.trace("trace hello:{}","jane");
 		logger.debug("debug hello");
 		logger.info("info hello");
 		logger.warn("warn hello");
-		logger.error("error hello");
+		logger.error("error hello:{}","jane");
 		
 		Thread.sleep(1000 * 5);
 	}

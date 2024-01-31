@@ -2,14 +2,16 @@
 <configuration>
     
     <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径 -->
-    <property name="LOG_PATH" value="/logs/demoproject" />
+    <property name="LOG_APP_NAME" value="demoproject" />
+    <property name="LOG_PATH" value="/logs/${LOG_APP_NAME}" />
+    <property name="COMMON_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %X{traceId} [%thread] level_%level logger_%logger{36} - %msg%n" />
     <springProperty scope="context" name="spring.profiles.active" source="spring.profiles.active" defaultValue="default"/>
     
     <appender name="infoAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_PATH}/info.log</file>
         <append>true</append>
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %X{traceId} [%thread] level_%level logger_%logger{36} - %msg%n</pattern>
+            <pattern>${COMMON_PATTERN}</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOG_PATH}/info.%d{yyyy-MM-dd_HH}.log</fileNamePattern>
@@ -24,7 +26,7 @@
         <file>${LOG_PATH}/access.log</file>
         <append>true</append>
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %X{traceId} [%thread] level_%level logger_%logger{36} - %msg%n</pattern>
+            <pattern>${COMMON_PATTERN}</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOG_PATH}/access.%d{yyyy-MM-dd_HH}.log</fileNamePattern>
@@ -39,7 +41,7 @@
         <file>${LOG_PATH}/server.log</file>
         <append>true</append>
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %X{traceId} [%thread] level_%level logger_%logger{36} - %msg%n</pattern>
+            <pattern>${COMMON_PATTERN}</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOG_PATH}/server.%d{yyyy-MM-dd_HH}.log</fileNamePattern>
@@ -54,7 +56,7 @@
         <file>${LOG_PATH}/slowlog.log</file>
         <append>true</append>
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %X{traceId} [%thread] level_%level logger_%logger{36} - %msg%n</pattern>
+            <pattern>${COMMON_PATTERN}</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOG_PATH}/slowlog.%d{yyyy-MM-dd}.log</fileNamePattern>
@@ -72,7 +74,7 @@
         <file>${LOG_PATH}/warn.log</file>
         <append>true</append>
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %X{traceId} [%thread] level_%level logger_%logger{36} - %msg%n</pattern>
+            <pattern>${COMMON_PATTERN}</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOG_PATH}/warn.%d{yyyy-MM-dd}.log</fileNamePattern>
@@ -86,7 +88,7 @@
         <file>${LOG_PATH}/error.log</file>
         <append>true</append>
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %X{traceId} [%thread] level_%level logger_%logger{36} - %msg%n</pattern>
+            <pattern>${COMMON_PATTERN}</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOG_PATH}/error.%d{yyyy-MM-dd}.log</fileNamePattern>
@@ -102,9 +104,9 @@
         <password></password>
         <to>qiubaichao@xmiles.cn</to>
         <from>bigdata-alert@xmiles.cn</from>
-        <subject>demoproject-${spring.active.profiles}-错误报警: %logger{20} - %m</subject>
+        <subject>${LOG_APP_NAME}-${spring.active.profiles}-错误报警: %logger{20} - %m</subject>
         <layout class="ch.qos.logback.classic.PatternLayout">
-            <pattern>demoproject %d{yyyy-MM-dd HH:mm:ss.SSS} %X{traceId} [%thread] level_%level logger_%logger{36} - %msg%n</pattern>
+            <pattern>${LOG_APP_NAME} %d{yyyy-MM-dd HH:mm:ss.SSS} %X{traceId} [%thread] level_%level logger_%logger{36} - %msg%n</pattern>
         </layout>
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>ERROR</level>
@@ -114,7 +116,7 @@
 
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} %X{traceId} [%thread] level_%level logger_%logger{36} - %msg%n</pattern>
+            <pattern>${COMMON_PATTERN}</pattern>
         </encoder>
     </appender>
 
