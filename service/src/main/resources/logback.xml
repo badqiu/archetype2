@@ -5,7 +5,7 @@
     <property name="LOG_APP_NAME" value="demoproject" />
     <property name="LOG_PATH" value="/logs/${LOG_APP_NAME}" />
     <property name="COMMON_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %X{traceId} [%thread] level_%level logger_%logger{36} - %msg%n" />
-    <springProperty scope="context" name="spring.profiles.active" source="spring.profiles.active" defaultValue="default"/>
+    <springProperty name="spring.profiles.active" scope="context"  source="spring.profiles.active" defaultValue="default"/>
     
     <appender name="infoAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_PATH}/info.log</file>
