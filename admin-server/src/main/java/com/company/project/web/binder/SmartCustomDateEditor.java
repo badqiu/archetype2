@@ -28,9 +28,11 @@ public class SmartCustomDateEditor extends PropertyEditorSupport {
     
     public static String getDateFormat(String text) {
     	if(text == null) return null;
+    	if(text.isEmpty()) return null;
     	
-    	if(text.contains("-")) {
-			if(text.contains(":")) {
+    	
+    	if(text.indexOf('-') > -1) {
+			if(text.indexOf(':') > -1) {
 				//HH:mm
 				return  "yyyy-MM-dd HH:mm";
 			}else {
