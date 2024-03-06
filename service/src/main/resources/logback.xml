@@ -4,6 +4,7 @@
     <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径 -->
     <property name="LOG_APP_NAME" value="demoproject" />
     <property name="LOG_PATH" value="/logs/${LOG_APP_NAME}" />
+    <property name="LOG_MAX_HISTORY_DAYS" value="15" />
     <property name="COMMON_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %X{traceId} [%thread] level_%level logger_%logger{36} - %msg%n" />
     <springProperty name="spring.profiles.active" scope="context"  source="spring.profiles.active" defaultValue="default"/>
     
@@ -15,6 +16,7 @@
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOG_PATH}/info.%d{yyyy-MM-dd_HH}.log</fileNamePattern>
+            <maxHistory>${LOG_MAX_HISTORY_DAYS}</maxHistory>
         </rollingPolicy>
     </appender>
     <appender name="asyncInfoAppender" class="ch.qos.logback.classic.AsyncAppender">
@@ -30,6 +32,7 @@
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOG_PATH}/access.%d{yyyy-MM-dd_HH}.log</fileNamePattern>
+            <maxHistory>${LOG_MAX_HISTORY_DAYS}</maxHistory>
         </rollingPolicy>
     </appender>
     <appender name="asyncAccessAppender" class="ch.qos.logback.classic.AsyncAppender">
@@ -45,6 +48,7 @@
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOG_PATH}/server.%d{yyyy-MM-dd_HH}.log</fileNamePattern>
+            <maxHistory>${LOG_MAX_HISTORY_DAYS}</maxHistory>
         </rollingPolicy>
     </appender>
     <appender name="asyncServerAppender" class="ch.qos.logback.classic.AsyncAppender">
@@ -60,6 +64,7 @@
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOG_PATH}/slowlog.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>${LOG_MAX_HISTORY_DAYS}</maxHistory>
         </rollingPolicy>
     </appender>
     <appender name="asyncSlowlogAppender" class="ch.qos.logback.classic.AsyncAppender">
@@ -78,6 +83,7 @@
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOG_PATH}/warn.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>${LOG_MAX_HISTORY_DAYS}</maxHistory>
         </rollingPolicy>
     </appender>
     
@@ -92,6 +98,7 @@
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${LOG_PATH}/error.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>${LOG_MAX_HISTORY_DAYS}</maxHistory>
         </rollingPolicy>
     </appender>
     
