@@ -46,9 +46,12 @@ public class Constant {
 	}
 	
 	static {
-		
+		overrideConstantValuesByActiveProfile();
+	}
+	
+	private static void overrideConstantValuesByActiveProfile() {
 		//激活环境配置，用配置Constant配置
-		String msg = "激活常量配置: ReflectUtil.modifyAllStaticVariables(Constant.class) profile:"+EnvironmentUtil.getActiveProfile();
+		String msg = "覆盖常量配置: ReflectUtil.modifyAllStaticVariables(Constant.class) profile:"+EnvironmentUtil.getActiveProfile();
 		if(EnvironmentUtil.acceptsProdProfiles()) {
 			logger.info(msg);
 			ReflectUtil.modifyAllStaticVariables(Constant.class, prod.class);
@@ -59,7 +62,6 @@ public class Constant {
 			logger.info(msg);
 			ReflectUtil.modifyAllStaticVariables(Constant.class, dev.class);
 		}
-
 	}
 	
 }
