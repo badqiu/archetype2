@@ -54,37 +54,37 @@
 			<dependency>
 				<groupId>com.github.rapid.common</groupId>
 				<artifactId>rapid-common-util</artifactId>
-				<version>1.0.2-RELEASE</version>
+				<version>1.0.3-RELEASE</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.rapid.common</groupId>
 				<artifactId>rapid-common-web</artifactId>
-				<version>1.0.2-RELEASE</version>
+				<version>1.0.3-RELEASE</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.rapid.common</groupId>
 				<artifactId>rapid-common-jdbc</artifactId>
-				<version>1.0.2-RELEASE</version>
+				<version>1.0.3-RELEASE</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.rapid.common</groupId>
 				<artifactId>rapid-common-mvc</artifactId>
-				<version>1.0.2-RELEASE</version>
+				<version>1.0.3-RELEASE</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.rapid.common</groupId>
 				<artifactId>rapid-common-test</artifactId>
-				<version>1.0.2-RELEASE</version>
+				<version>1.0.3-RELEASE</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.rapid.common</groupId>
 				<artifactId>rapid-common-log</artifactId>
-				<version>1.0.2-RELEASE</version>
+				<version>1.0.3-RELEASE</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.rapid.common</groupId>
 				<artifactId>rapid-common-rest</artifactId>
-				<version>1.0.2-RELEASE</version>
+				<version>1.0.3-RELEASE</version>
 			</dependency>
 
 			<dependency>
