@@ -7,6 +7,11 @@ import org.springframework.core.env.Profiles;
 import com.company.project.util.EnvironmentUtil;
 import com.github.rapid.common.util.ReflectUtil;
 
+/**
+ * 常量配置
+ * 
+ * 可以配置环境修改的配置，不要配置final
+ */
 public class Constant {
 	private static Logger logger = LoggerFactory.getLogger(Constant.class);
 	
@@ -25,17 +30,17 @@ public class Constant {
 	
 	
 	
-	//生产环境配置
+	//生产环境配置,此处的配置会覆盖Constant的常量配置
 	private static class prod{
 		public static String APP_NAME = "prod " + Constant.APP_NAME;
 	}
 	
-	//测试环境配置
+	//测试环境配置,此处的配置会覆盖Constant的常量配置
 	private static class test{
 		public static String APP_NAME = "test " + Constant.APP_NAME;
 	}
 	
-	//开发环境配置
+	//开发环境配置,此处的配置会覆盖Constant的常量配置
 	private static class dev{
 		public static String APP_NAME = "dev " + Constant.APP_NAME;
 	}
