@@ -42,7 +42,7 @@ public class Constant {
 	
 	static {
 		
-		//激活环境配置，用生产环境配置Constant配置
+		//激活环境配置，用配置Constant配置
 		String msg = "激活常量配置: ReflectUtil.modifyAllStaticVariables(Constant.class) profile:"+EnvironmentUtil.getActiveProfile();
 		if(EnvironmentUtil.acceptsProdProfiles()) {
 			logger.info(msg);
