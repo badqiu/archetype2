@@ -105,7 +105,7 @@ public class EnumController {
 		Field[] fields = Constant.class.getDeclaredFields();
 		Map map = new LinkedHashMap();
 		for(Field f : fields) {
-			if(Modifier.isStatic(f.getModifiers())){
+			if(Modifier.isStatic(f.getModifiers()) && Modifier.isPublic(f.getModifiers())){
 				String name = f.getName();
 				Object value = f.get(clazz);
 
