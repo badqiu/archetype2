@@ -1,5 +1,8 @@
 package com.company.project.exception;
 
+/**
+ * 业务异常
+ */
 public class BizException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
