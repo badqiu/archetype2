@@ -56,7 +56,7 @@ public class Constant {
 	}
 
 	public static void overrideConstantValuesByActiveProfile(String activeProfile) {
-		String msg = "覆盖常量配置: ReflectUtil.modifyAllStaticVariables(Constant.class) profile:"+EnvironmentUtil.getActiveProfile();
+		String msg = "覆盖常量配置: ReflectUtil.modifyAllStaticVariables(Constant.class) profile:"+activeProfile;
 		if("prod".equals(activeProfile)) {
 			logger.info(msg);
 			ReflectUtil.modifyAllStaticVariables(Constant.class, prod.class);
