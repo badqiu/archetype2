@@ -119,7 +119,11 @@
             <level>ERROR</level>
         </filter>
     </appender>
-    
+    <appender name="asyncEmailAppender" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="emailAppender"/>
+        <queueSize>10000</queueSize>
+    </appender>    
+
 
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
@@ -148,7 +152,7 @@
     
     <root level="info">
         <appender-ref ref="asyncServerAppender"/>
-        <appender-ref ref="emailAppender"/>
+        <appender-ref ref="asyncEmailAppender"/>
         <appender-ref ref="errorAppender"/>
         <appender-ref ref="warnAppender"/>
         <appender-ref ref="stdout"/>
