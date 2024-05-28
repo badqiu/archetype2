@@ -1,4 +1,24 @@
 <?xml version="1.0"?>
+
+
+<!--  logger email 相关maven依赖
+      <dependency>
+        <groupId>jakarta.mail</groupId>
+        <artifactId>jakarta.mail-api</artifactId>
+        <version>1.6.5</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.mail</groupId>
+        <artifactId>javax.mail-api</artifactId>
+        <version>1.6.2</version>
+      </dependency>
+      <dependency>
+        <groupId>com.sun.mail</groupId>
+        <artifactId>jakarta.mail</artifactId>
+        <version>1.6.5</version>
+      </dependency> 
+ -->
+
 <configuration>
     
     <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径 -->
