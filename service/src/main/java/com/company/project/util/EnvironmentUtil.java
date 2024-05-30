@@ -1,16 +1,13 @@
 package com.company.project.util;
 
-import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.EnvironmentAware;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.Profiles;
 import org.springframework.core.env.StandardEnvironment;
 import org.springframework.stereotype.Component;
 
 @Component
-public class EnvironmentUtil implements InitializingBean{
-	@Autowired
-	Environment environment;
+public class EnvironmentUtil implements EnvironmentAware{
 	
 	private static Environment staticEnvironment = new StandardEnvironment();
 	
@@ -53,8 +50,9 @@ public class EnvironmentUtil implements InitializingBean{
 		return activeProfile;
 	}
 	
+
 	@Override
-	public void afterPropertiesSet() throws Exception {
+	public void setEnvironment(Environment environment) {
 		staticEnvironment = environment;
 	}
 	
