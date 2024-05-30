@@ -3,6 +3,7 @@ package com.company.project.enums;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.EnvironmentAware;
+import org.springframework.core.PriorityOrdered;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.Profiles;
 import org.springframework.stereotype.Component;
@@ -16,7 +17,7 @@ import com.github.rapid.common.util.ReflectUtil;
  * 可以配置环境修改的配置，不要配置final
  */
 @Component
-public class Constant implements EnvironmentAware{
+public class Constant implements EnvironmentAware,PriorityOrdered{
 	private static Logger logger = LoggerFactory.getLogger(Constant.class);
 	
 	
@@ -74,4 +75,8 @@ public class Constant implements EnvironmentAware{
 		overrideConstantValuesByActiveProfile(environment.getActiveProfiles()[0]);
 	}
 	
+	@Override
+	public int getOrder() {
+		return HIGHEST_PRECEDENCE;
+	}
 }
