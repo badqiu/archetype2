@@ -130,12 +130,10 @@
 
 
 		<!-- excel -->
-		<!-- 
 		<dependency>
 		    <groupId>com.alibaba</groupId>
 		    <artifactId>easyexcel</artifactId>
 		</dependency>
-		 -->
 
 
 		<!-- jdbc drivers begin -->
