@@ -17,10 +17,10 @@
 	<modules>
 		<module>util</module>
 		<module>service</module>
+		<module>admin-server</module>
 		<!--
 		<module>admin-front</module>
 		-->
-		<module>admin-server</module>
 	</modules>
 
 	<properties>
@@ -120,7 +120,7 @@
 			<dependency>
 				<groupId>commons-beanutils</groupId>
 				<artifactId>commons-beanutils</artifactId>
-				<version>1.9.2</version>
+				<version>1.9.4</version>
 			</dependency>
 			<dependency>
 				<groupId>commons-lang</groupId>
@@ -130,7 +130,7 @@
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-lang3</artifactId>
-				<version>3.11</version>
+				<version>3.14.0</version>
 			</dependency>
 			<dependency>
 				<groupId>commons-collections</groupId>
@@ -145,7 +145,7 @@
 			<dependency>
 				<groupId>commons-io</groupId>
 				<artifactId>commons-io</artifactId>
-				<version>2.15.1</version>
+				<version>2.16.1</version>
 			</dependency>
 			<dependency>
 				<groupId>commons-pool</groupId>
@@ -198,17 +198,11 @@
 			<!-- xml end -->
 
 
-			<!-- excel 2003 -->
+			<!-- excel -->
 			<dependency>
-				<groupId>org.apache.poi</groupId>
-				<artifactId>poi</artifactId>
-				<version>3.13</version>
-			</dependency>
-			<!-- excel 2007 -->
-			<dependency>
-				<groupId>org.apache.poi</groupId>
-				<artifactId>poi-ooxml</artifactId>
-				<version>3.13</version>
+				<groupId>com.alibaba</groupId>
+				<artifactId>easyexcel</artifactId>
+				<version>3.3.4</version>
 			</dependency>
 
 
