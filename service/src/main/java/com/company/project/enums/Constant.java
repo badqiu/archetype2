@@ -2,7 +2,10 @@ package com.company.project.enums;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.EnvironmentAware;
+import org.springframework.core.env.Environment;
 import org.springframework.core.env.Profiles;
+import org.springframework.stereotype.Component;
 
 import com.company.project.util.EnvironmentUtil;
 import com.github.rapid.common.util.ReflectUtil;
@@ -12,7 +15,8 @@ import com.github.rapid.common.util.ReflectUtil;
  * 
  * 可以配置环境修改的配置，不要配置final
  */
-public class Constant {
+@Component
+public class Constant implements EnvironmentAware{
 	private static Logger logger = LoggerFactory.getLogger(Constant.class);
 	
 	
@@ -45,10 +49,6 @@ public class Constant {
 		public static String APP_NAME = "dev " + Constant.APP_NAME;
 	}
 	
-	static {
-		overrideConstantValuesByActiveProfile();
-	}
-	
 	public static void overrideConstantValuesByActiveProfile() {
 		//激活环境配置，用配置Constant配置
 		String activeProfile = EnvironmentUtil.getActiveProfile();
@@ -67,6 +67,11 @@ public class Constant {
 			logger.info(msg);
 			ReflectUtil.modifyAllStaticVariables(Constant.class, dev.class);
 		}
+	}
+
+	@Override
+	public void setEnvironment(Environment environment) {
+		overrideConstantValuesByActiveProfile(environment.getActiveProfiles()[0]);
 	}
 	
 }
