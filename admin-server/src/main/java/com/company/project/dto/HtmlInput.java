@@ -15,7 +15,7 @@ public class HtmlInput {
 
 	private String name; //字段英文代号
 	private String label; //字段中文名称
-	private String type; //字段类型,string,int,long
+	private String dataType; //字段类型,string,int,long
 	private String helpText; //帮助文案
 	private String example; //示例值
 	private boolean required; //是否必填
@@ -27,11 +27,11 @@ public class HtmlInput {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getType() {
-		return type;
+	public String getDataType() {
+		return dataType;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setDataType(String type) {
+		this.dataType = type;
 	}
 	public String getLabel() {
 		return label;
@@ -71,7 +71,7 @@ public class HtmlInput {
 	}
 	@Override
 	public String toString() {
-		return "HtmlInput [name=" + name + ", label=" + label + ", type=" + type + ", helpText=" + helpText
+		return "HtmlInput [name=" + name + ", label=" + label + ", dataType=" + dataType + ", helpText=" + helpText
 				+ ", example=" + example + ", required=" + required + "]";
 	}
 	
@@ -93,7 +93,7 @@ public class HtmlInput {
 	
 	private static void fromField(Field field, HtmlInput input) {
 		input.setName(field.getName());
-		input.setType(field.getType().getSimpleName().toLowerCase());
+		input.setDataType(field.getType().getSimpleName().toLowerCase());
 		
 		if(field.isAnnotationPresent(NotNull.class) || field.isAnnotationPresent(NotBlank.class) || field.isAnnotationPresent(NotEmpty.class)) {
 			input.setRequired(true);
