@@ -1,7 +1,7 @@
 package com.company.project.exception;
 
 /**
- * 业务异常
+ * 业务异常: BusinessException
  */
 public class BizException extends RuntimeException {
 
