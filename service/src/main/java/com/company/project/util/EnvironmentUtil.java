@@ -1,13 +1,14 @@
 package com.company.project.util;
 
 import org.springframework.context.EnvironmentAware;
+import org.springframework.core.PriorityOrdered;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.Profiles;
 import org.springframework.core.env.StandardEnvironment;
 import org.springframework.stereotype.Component;
 
 @Component
-public class EnvironmentUtil implements EnvironmentAware{
+public class EnvironmentUtil implements EnvironmentAware,PriorityOrdered{
 	
 	private static Environment staticEnvironment = new StandardEnvironment();
 	
@@ -56,5 +57,9 @@ public class EnvironmentUtil implements EnvironmentAware{
 		staticEnvironment = environment;
 	}
 	
+	@Override
+	public int getOrder() {
+		return HIGHEST_PRECEDENCE;
+	}
 	
 }
