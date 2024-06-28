@@ -158,11 +158,11 @@
     </logger>
      -->
      
-    <logger name="slowlog" level="info" additivity="false">
+    <logger name="slowLog" level="info" additivity="false">
         <appender-ref ref="asyncSlowlogAppender"/>
     </logger>
     
-    <logger name="access_log" level="info" additivity="false">
+    <logger name="accessLog" level="info" additivity="false">
         <appender-ref ref="asyncAccessAppender"/>
     </logger>
     
