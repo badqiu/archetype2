@@ -60,7 +60,7 @@ public class WebMvcGlobalReturnConfig {
 	            }
             }
             
-            RestResult r = new RestResult().success().result(body);
+            RestResult r = new RestResult().success().data(body);
             
 			return r;
 		}

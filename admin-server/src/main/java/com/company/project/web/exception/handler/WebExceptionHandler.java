@@ -92,7 +92,7 @@ public class WebExceptionHandler implements InitializingBean{
 		});
 		
 		RestResult r =  errorMap(e,errMsg);
-		r.result(errMap);
+		r.data(errMap);
 		return r;
     }
     

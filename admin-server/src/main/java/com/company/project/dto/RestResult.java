@@ -8,27 +8,27 @@ package com.company.project.dto;
  */
 public class RestResult {
 
-	String SUCCESS_CODE = "success";
-	String FAIL_CODE = "fail";
+	int SUCCESS_CODE = 0;
+	int FAIL_CODE = -1;
 	
-	private String code; //成功，失败标识
-	private boolean success;
+	private int code; //成功，失败标识
 	
 	private String msg; //消息
 	private String errCode; //错误码
 	
-	private Object result;
+	private Object data;
 	
 	
 	private String traceId;
-	private String errorLog; //错误日志，测试，开发环境开启，方便查错
+	private String errorLog;
+	private boolean success;
 	
 	public RestResult() {
 		success();
 	}
 	
-	public RestResult result(Object object) {
-		this.result = object;
+	public RestResult data(Object object) {
+		this.data = object;
 		return this;
 	}
 	
@@ -58,7 +58,7 @@ public class RestResult {
 		return this;
 	}
 
-	public String getCode() {
+	public int getCode() {
 		return code;
 	}
 
@@ -70,8 +70,8 @@ public class RestResult {
 		return errCode;
 	}
 
-	public Object getResult() {
-		return result;
+	public Object getData() {
+		return data;
 	}
 
 	public String getTraceId() {
