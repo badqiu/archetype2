@@ -98,4 +98,8 @@ public class RestResult {
 		this.success = success;
 	}
 	
+	public static RestResult success(Object data) {
+		return new RestResult().data(data).success();
+	}
+	
 }
