@@ -49,9 +49,9 @@ public class WebMvcGlobalReturnConfig {
             }
             
             //字符串，不处理会发生 ClassCastException
-            if(returnType.getMethod().getReturnType() == String.class) {
-            	return body;
-            }
+//            if(returnType.getMethod().getReturnType() == String.class) {
+//            	return body;
+//            }
             
             if(body != null) {
 	            String className = body.getClass().toString();

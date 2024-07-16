@@ -61,7 +61,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
 		// 解决返回结果乱码问题
 		super.configureMessageConverters(converters);
-		converters.add(responseBodyConverter());
+//		converters.add(responseBodyConverter());
 		converters.add(responseJsonBodyConverter());
 	}
 
