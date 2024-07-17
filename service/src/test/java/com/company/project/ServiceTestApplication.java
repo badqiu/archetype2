@@ -16,7 +16,7 @@ import com.company.project.springconfig.ValidatorConfig;
 
 
 @EnableAutoConfiguration
-@SpringBootApplication
+@SpringBootApplication(exclude = {})
 @ServletComponentScan
 //@ImportAutoConfiguration({
 //	CacheConfig.class,DataSourceConfig.class,
@@ -29,10 +29,10 @@ public class ServiceTestApplication {
 	 * 测试 RUN
 	 * 1、http://localhost:8080/user/test1
 	 */
-	public static void main(String[] args) {
-		SpringApplication app = new SpringApplication(ServiceTestApplication.class);
-		app.setBannerMode(Banner.Mode.OFF);
-		app.run(args);
-	}
+//	public static void main(String[] args) {
+//		SpringApplication app = new SpringApplication(ServiceTestApplication.class);
+//		app.setBannerMode(Banner.Mode.OFF);
+//		app.run(args);
+//	}
 
 }
