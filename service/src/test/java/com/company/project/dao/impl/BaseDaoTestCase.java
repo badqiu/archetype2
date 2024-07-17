@@ -12,7 +12,7 @@ import com.company.project.ServiceTestApplication;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes={ServiceTestApplication.class})
-@JdbcTest
+//@JdbcTest
 @Transactional
 public abstract class BaseDaoTestCase {
 
