@@ -1,10 +1,12 @@
 package com.company.project;
 
+import java.sql.Timestamp;
+
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
-import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.ConfigurableApplicationContext;
 
 
 @SpringBootApplication
@@ -19,7 +21,8 @@ public class AdminApplication {
 	public static void main(String[] args) {
 		SpringApplication app = new SpringApplication(AdminApplication.class);
 		app.setBannerMode(Banner.Mode.OFF);
-		app.run(args);
+		ConfigurableApplicationContext context = app.run(args);
+		System.out.println("success: applicationName:"+context.getApplicationName() + " startupDate:" + new Timestamp(context.getStartupDate()));app.run(args);
 	}
 
 }
