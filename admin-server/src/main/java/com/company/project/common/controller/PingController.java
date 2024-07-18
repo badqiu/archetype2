@@ -15,6 +15,7 @@ import com.company.project.common.security.LoginUser;
 import com.company.project.common.security.SpringActionSecurityUtil;
 import com.company.project.controller.BaseController;
 import com.company.project.util.EnvironmentUtil;
+import com.github.rapid.common.util.ThreadUtil;
 
 import io.swagger.annotations.Api;
 
@@ -32,11 +33,19 @@ public class PingController extends BaseController {
 	private static Logger logger = LoggerFactory.getLogger(PingController.class);
 	
 	@GetMapping
-	public String ping() {
+	public String ping() throws InterruptedException {
 		//可以添加执行，查询数据
-		
+		testThreadStartJoin();
 		System.out.println("ping");
 		return "PONG";
+	}
+	
+	public static void testThreadStartJoin() throws InterruptedException {
+		Thread thread = new Thread(() -> {
+    		ThreadUtil.sleep(100);
+    	},"testThreadStartJoin");
+    	thread.start();
+    	thread.join();
 	}
 	
 	@GetMapping
