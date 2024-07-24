@@ -100,7 +100,12 @@
 	        <artifactId>mybatisplus-plus</artifactId>
 	        <version>1.7.4-RELEASE</version>
 	    </dependency>    
-	    
+	    <!-- mybatis支持多数据源: https://baomidou.com/guides/dynamic-datasource/ -->
+		<dependency>
+		    <groupId>com.baomidou</groupId>
+		    <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+		    <version>4.3.1</version>
+		</dependency>		    
 	    
 	    
 	    
