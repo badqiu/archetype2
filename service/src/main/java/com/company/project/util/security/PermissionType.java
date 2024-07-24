@@ -1,4 +1,4 @@
-package com.company.project.common.security;
+package com.company.project.util.security;
 
 /**
  *	权限类型

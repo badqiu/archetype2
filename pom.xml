@@ -15,7 +15,6 @@
 	</parent>
 
 	<modules>
-		<module>util</module>
 		<module>service</module>
 		<module>admin-server</module>
 		<!--

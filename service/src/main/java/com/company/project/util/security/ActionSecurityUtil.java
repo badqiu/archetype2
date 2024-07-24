@@ -1,4 +1,4 @@
-package com.company.project.common.security;
+package com.company.project.util.security;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;

@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.company.project.common.security.LoginUser;
-import com.company.project.common.security.SpringActionSecurityUtil;
 import com.company.project.controller.BaseController;
 import com.company.project.util.EnvironmentUtil;
+import com.company.project.util.security.LoginUser;
+import com.company.project.util.security.SpringActionSecurityUtil;
 import com.github.rapid.common.util.ThreadUtil;
 
 import io.swagger.annotations.Api;

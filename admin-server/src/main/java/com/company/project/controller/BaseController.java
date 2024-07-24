@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.company.project.common.security.ActionSecurityUtil;
-import com.company.project.common.security.LoginUser;
-import com.company.project.common.security.NeedLoginException;
+import com.company.project.util.security.ActionSecurityUtil;
+import com.company.project.util.security.LoginUser;
+import com.company.project.util.security.NeedLoginException;
 
 public abstract class BaseController {
 

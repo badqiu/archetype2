@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.company.project.common.security.LoginUser;
-import com.company.project.common.security.SpringActionSecurityUtil;
+import com.company.project.util.security.LoginUser;
+import com.company.project.util.security.SpringActionSecurityUtil;
 
 import io.swagger.annotations.Api;
 

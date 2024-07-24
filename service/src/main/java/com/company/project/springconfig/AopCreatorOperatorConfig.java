@@ -18,8 +18,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.company.project.common.security.ActionSecurityUtil;
-import com.company.project.common.security.LoginUser;
+import com.company.project.util.security.ActionSecurityUtil;
+import com.company.project.util.security.LoginUser;
 import com.github.rapid.common.beanutils.BeanUtils;
 
 /**

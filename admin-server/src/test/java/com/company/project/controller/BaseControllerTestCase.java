@@ -7,8 +7,8 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.servlet.handler.DispatcherServletWebRequest;
 
-import com.company.project.common.security.LoginUser;
-import com.company.project.common.security.SpringActionSecurityUtil;
+import com.company.project.util.security.LoginUser;
+import com.company.project.util.security.SpringActionSecurityUtil;
 
 public class BaseControllerTestCase {
 	
