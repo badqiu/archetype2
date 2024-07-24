@@ -107,7 +107,10 @@
 	        <artifactId>mybatisplus-plus</artifactId>
 	        <version>1.7.4-RELEASE</version>
 	    </dependency>    
-	    <!-- mybatis支持多数据源: https://baomidou.com/guides/dynamic-datasource/ -->
+	    <!-- 
+	    mybatis支持多数据源: https://baomidou.com/guides/dynamic-datasource/ 
+	    数据源配置建议在Mapper interface上 @DS("dataSourceName")
+	    -->
 		<dependency>
 		    <groupId>com.baomidou</groupId>
 		    <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
