@@ -82,16 +82,16 @@ public class WebExceptionHandler implements InitializingBean{
     		return errorMap(e,e.getMessage());
     	}
     	
-		String errMsg =  constraintViolations.stream()
-		.map( cv -> cv == null ? "null" : ConstraintViolationUtil.getPropertyPathName(cv) + ": " + cv.getMessage() )
-		.collect( Collectors.joining( ", " ) );
+//		String errMsg =  constraintViolations.stream()
+//		.map( cv -> cv == null ? "null" : ConstraintViolationUtil.getPropertyPathName(cv) + ": " + cv.getMessage() )
+//		.collect( Collectors.joining( ", " ) );
 		
 		Map errMap = new HashMap();
 		constraintViolations.forEach( row -> { 
 			errMap.put(ConstraintViolationUtil.getPropertyPathName(row), row.getPropertyPath().toString() + " " + row.getMessage());
 		});
 		
-		RestResult r =  errorMap(e,errMsg);
+		RestResult r =  errorMap(e,errMap.toString());
 		r.data(errMap);
 		return r;
     }
