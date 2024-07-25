@@ -9,7 +9,12 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.ConfigurableApplicationContext;
 
 
-@SpringBootApplication
+@SpringBootApplication(
+		//scanBasePackageClasses = 
+		//scanBasePackages = 
+		//exclude = 
+)
+
 @ServletComponentScan // @WebServlet、@WebFilter、@WebListener等生效
 //@ImportResource(locations = {"classpath:demo_xxxxx.xml"})
 public class AdminApplication {
