@@ -9,14 +9,6 @@ import com.github.rapid.common.jdbc.dialect.MySQLDialect;
 
 @Configuration
 public class DaoConfig {
-
-	
-//	@Bean
-//	public PlatformTransactionManager transactionManager(DataSource dataSource) {
-//		DataSourceTransactionManager tm = new DataSourceTransactionManager();
-//		tm.setDataSource(dataSource);
-//		return tm;
-//	}
 	
 	@Bean
 	public Dialect dialect() {
