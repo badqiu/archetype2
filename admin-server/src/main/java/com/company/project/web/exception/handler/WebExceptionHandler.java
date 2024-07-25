@@ -88,7 +88,7 @@ public class WebExceptionHandler implements InitializingBean{
 		
 		Map errMap = new HashMap();
 		constraintViolations.forEach( row -> { 
-			errMap.put(ConstraintViolationUtil.getPropertyPathName(row), row.getMessage());
+			errMap.put(ConstraintViolationUtil.getPropertyPathName(row), row.getPropertyPath().toString() + " " + row.getMessage());
 		});
 		
 		RestResult r =  errorMap(e,errMsg);
