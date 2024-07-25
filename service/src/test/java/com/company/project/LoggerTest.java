@@ -16,6 +16,6 @@ public class LoggerTest {
 		logger.warn("warn hello");
 		logger.error("error hello:{}","jane");
 		
-		Thread.sleep(1000 * 5);
+		Thread.sleep(1000 * 3);
 	}
 }
