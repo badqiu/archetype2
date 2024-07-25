@@ -8,11 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.ConfigurableApplicationContext;
 
-
 @SpringBootApplication(
-		//scanBasePackageClasses = 
-		//scanBasePackages = 
-		//exclude = 
+// scanBasePackageClasses =
+// scanBasePackages =
+// exclude =
 )
 
 @ServletComponentScan // @WebServlet、@WebFilter、@WebListener等生效
@@ -20,14 +19,13 @@ import org.springframework.context.ConfigurableApplicationContext;
 public class AdminApplication {
 
 	/**
-	 * 测试 RUN
-	 * 1、http://localhost:8080/user/test1
+	 * 测试 RUN 1、http://localhost:8080/user/test1
 	 */
 	public static void main(String[] args) {
 		SpringApplication app = new SpringApplication(AdminApplication.class);
 		app.setBannerMode(Banner.Mode.OFF);
 		ConfigurableApplicationContext context = app.run(args);
-		System.out.println("success: applicationName:"+context.getApplicationName() + " startupDate:" + new Timestamp(context.getStartupDate()));app.run(args);
+		System.out.println("start spring boot success: applicationName:" + context.getApplicationName() + " startupDate:"
+				+ new Timestamp(context.getStartupDate()));
 	}
-
 }
