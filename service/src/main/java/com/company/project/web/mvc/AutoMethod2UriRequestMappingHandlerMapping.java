@@ -65,8 +65,8 @@ public class AutoMethod2UriRequestMappingHandlerMapping extends RequestMappingHa
 			}
 		}
 
-		logger.info("class={}, requestMethod={}, methodName={}, methodPatterns={}",
-				handlerType.getTypeName(), info.getMethodsCondition(), method.getName(),
+		logger.info("url mapping: {}.{}()  =>\t {} {}",
+				handlerType.getTypeName(), method.getName(),info.getMethodsCondition(),
 				info.getPatternsCondition().getPatterns());
 		return info;
 	}
