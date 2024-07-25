@@ -11,6 +11,7 @@ import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import com.company.project.dto.RestResult;
 import com.github.rapid.common.util.LogTraceUtil;
@@ -46,6 +47,11 @@ public class WebMvcGlobalReturnConfig {
             
             if (body instanceof ResponseEntity) {
                 return (ResponseEntity)body;
+            }
+            
+            //SSE流式响应
+            if (body instanceof SseEmitter) {
+                return body;
             }
             
             //字符串，不处理会发生 ClassCastException
