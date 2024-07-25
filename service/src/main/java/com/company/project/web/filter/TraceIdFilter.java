@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.company.project.web.util.LogTraceUtil;
+import com.company.project.util.LogTraceUtil;
 
 /**
  * 性能filter。

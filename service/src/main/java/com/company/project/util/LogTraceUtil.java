@@ -1,4 +1,4 @@
-package com.company.project.web.util;
+package com.company.project.util;
 
 import java.util.Date;
 import java.util.UUID;
