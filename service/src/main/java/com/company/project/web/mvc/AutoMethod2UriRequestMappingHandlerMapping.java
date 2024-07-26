@@ -39,6 +39,34 @@ public class AutoMethod2UriRequestMappingHandlerMapping extends RequestMappingHa
 
 	private final List<String> fileExtensions = new ArrayList<String>();
 
+	private String[] excludePackages = new String[]{"springfox*"}; // swagger-ui
+	private AntPathMatcher antPathMatcher = new AntPathMatcher();
+	
+	
+	public boolean isUseSuffixPatternMatch() {
+		return useSuffixPatternMatch;
+	}
+
+	public void setUseSuffixPatternMatch(boolean useSuffixPatternMatch) {
+		this.useSuffixPatternMatch = useSuffixPatternMatch;
+	}
+
+	public boolean isUseTrailingSlashMatch() {
+		return useTrailingSlashMatch;
+	}
+
+	public void setUseTrailingSlashMatch(boolean useTrailingSlashMatch) {
+		this.useTrailingSlashMatch = useTrailingSlashMatch;
+	}
+
+	public String[] getExcludePackages() {
+		return excludePackages;
+	}
+
+	public void setExcludePackages(String[] excludePackages) {
+		this.excludePackages = excludePackages;
+	}
+
 	@Override
 	protected RequestMappingInfo getMappingForMethod(Method method, Class<?> handlerType) {
 
@@ -86,13 +114,12 @@ public class AutoMethod2UriRequestMappingHandlerMapping extends RequestMappingHa
 		return true;
 	}
 
-	String excludePackage = "springfox*"; // swagger-ui
-	AntPathMatcher antPathMatcher = new AntPathMatcher();
-
 	private boolean isExcludeHandlerPackage(Class<?> handlerType) {
 		String className = handlerType.getTypeName();
-		if (antPathMatcher.match(excludePackage, className)) {
-			return true;
+		for(String excludePackage : excludePackages) {
+			if (antPathMatcher.match(excludePackage, className)) {
+				return true;
+			}
 		}
 
 		return false;
@@ -107,17 +134,25 @@ public class AutoMethod2UriRequestMappingHandlerMapping extends RequestMappingHa
 
 	private RequestMappingInfo createRequestMappingInfo(RequestMapping annotation, RequestCondition<?> customCondition,
 			Method method) {
-		String[] patterns = resolveEmbeddedValuesInPatterns(annotation.value());
-		if (patterns != null && (patterns.length == 0)) {
-			patterns = new String[] { method.getName() };
+		String[] strPatterns = resolveEmbeddedValuesInPatterns(annotation.value());
+		if (strPatterns != null && (strPatterns.length == 0)) {
+			strPatterns = new String[] { method.getName() };
 		}
+		
+		RequestMethodsRequestCondition methods = new RequestMethodsRequestCondition(annotation.method());
+		ParamsRequestCondition params = new ParamsRequestCondition(annotation.params());
+		HeadersRequestCondition headers = new HeadersRequestCondition(annotation.headers());
+		ConsumesRequestCondition consumes = new ConsumesRequestCondition(annotation.consumes(), annotation.headers());
+		ProducesRequestCondition produces = new ProducesRequestCondition(
+				annotation.produces(), annotation.headers(), this.contentNegotiationManager);
+		PatternsRequestCondition patterns = new PatternsRequestCondition(strPatterns, getUrlPathHelper(), getPathMatcher(), this.useSuffixPatternMatch,
+				this.useTrailingSlashMatch, this.fileExtensions);
+		
 		return new RequestMappingInfo(
-				new PatternsRequestCondition(patterns, getUrlPathHelper(), getPathMatcher(), this.useSuffixPatternMatch,
-						this.useTrailingSlashMatch, this.fileExtensions),
-				new RequestMethodsRequestCondition(annotation.method()),
-				new ParamsRequestCondition(annotation.params()), new HeadersRequestCondition(annotation.headers()),
-				new ConsumesRequestCondition(annotation.consumes(), annotation.headers()), new ProducesRequestCondition(
-						annotation.produces(), annotation.headers(), this.contentNegotiationManager),
+				patterns,
+				methods,
+				params, headers,
+				consumes, produces,
 				customCondition);
 	}
 
