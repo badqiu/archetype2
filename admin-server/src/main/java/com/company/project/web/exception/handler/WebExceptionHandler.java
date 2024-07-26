@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import javax.validation.Path;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
@@ -108,7 +109,9 @@ public class WebExceptionHandler implements InitializingBean{
 		private static ApiModelProperty getFieldApiModelPropertyAnnotation(ConstraintViolation<?> row) {
 			Field field = null;
 			try {
-				field = row.getRootBeanClass().getDeclaredField(row.getPropertyPath().toString());
+				Path propertyPath = row.getPropertyPath();
+				String fieldName = propertyPath.toString();
+				field = row.getRootBeanClass().getDeclaredField(fieldName);
 			} catch (NoSuchFieldException e1) {
 				e1.printStackTrace();
 				return null;
