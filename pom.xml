@@ -43,7 +43,13 @@
 	<dependencyManagement>
 		<dependencies>
 				
-
+			<!-- log 指定slf4j可以解决Ignoring binding错误, SLF4J: Ignoring binding found at [jar:file:/org/slf4j/impl/StaticLoggerBinder.class] -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>1.7.36</version>
+			</dependency>
+			
 			<dependency>
 				<groupId>com.alibaba</groupId>
 				<artifactId>druid-spring-boot-starter</artifactId>
