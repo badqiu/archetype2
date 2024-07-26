@@ -42,7 +42,7 @@ public class ResultResponseAdvice implements ResponseBodyAdvice<Object> {
             }
             
             if (body instanceof ResponseEntity) {
-                return (ResponseEntity)body;
+                return body;
             }
             
             //SSE流式响应
@@ -56,7 +56,7 @@ public class ResultResponseAdvice implements ResponseBodyAdvice<Object> {
 //            }
             
             if(body != null) {
-	            String className = body.getClass().toString();
+	            String className = body.getClass().getName();
 	            if(className.contains("springfox")) { //swagger-ui
 	            	return body;
 	            }
