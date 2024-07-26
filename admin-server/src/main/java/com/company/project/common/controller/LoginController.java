@@ -30,7 +30,7 @@ public class LoginController {
 			loginUser.setUsername(username);
 			loginUser.setSuperAdmin(true);
 			loginUser.setUserId(1L);
-			SpringActionSecurityUtil.setLoginUser(loginUser );
+//			SpringActionSecurityUtil.setLoginUser(loginUser );
 			System.out.println("login success:"+username);
 			return true;
 		}
