@@ -1,5 +1,10 @@
 package com.company.project.common.controller;
 
+import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
@@ -100,6 +105,19 @@ public class PingController extends BaseController {
 	public String slow() throws InterruptedException {
 		Thread.sleep(1000 * 5);
 		return "slow";
+	}
+	
+	@GetMapping
+	public Map showMethodParameterNames() throws InterruptedException {
+		Map map = new HashMap();
+		for(Method method : getClass().getDeclaredMethods()) {
+			List<String> params = new ArrayList<String>();
+			for(Parameter p : method.getParameters()) {
+				params.add(p.getName());
+			}
+			map.put(method.getName(), params);
+		}
+		return map;
 	}
 	
 }

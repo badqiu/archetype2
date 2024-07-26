@@ -28,4 +28,5 @@ public class AdminApplication {
 		System.out.println("start spring boot success: applicationName:" + context.getApplicationName() + " startupDate:"
 				+ new Timestamp(context.getStartupDate()));
 	}
+	
 }
