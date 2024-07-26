@@ -9,7 +9,7 @@ package com.company.project.dto;
 public class RestResult {
 
 	int SUCCESS_CODE = 0;
-	int FAIL_CODE = -1;
+	int FAIL_CODE = 500;
 	
 	private int code; //成功，失败标识
 	
