@@ -66,16 +66,21 @@ public class PingController extends BaseController {
 	
 	@GetMapping
 	public Properties systemProperties() {
+		assertOnlyRunOnTestDevEnv();
 		return System.getProperties();
 	}
 	
+
+
 	@GetMapping
 	public Map<String,String> systemEnvVars() {
+		assertOnlyRunOnTestDevEnv();
 		return System.getenv();
 	}
 	
 	@GetMapping
 	public LoginUser loginUser() {
+		assertOnlyRunOnTestDevEnv();
 		return SpringActionSecurityUtil.getLoginUser();
 	}
 	
@@ -103,6 +108,7 @@ public class PingController extends BaseController {
 	
 	@GetMapping
 	public String slow() throws InterruptedException {
+		assertOnlyRunOnTestDevEnv();
 		Thread.sleep(1000 * 5);
 		return "slow";
 	}
@@ -118,6 +124,13 @@ public class PingController extends BaseController {
 			map.put(method.getName(), params);
 		}
 		return map;
+	}
+	
+	private void assertOnlyRunOnTestDevEnv() {
+		if(EnvironmentUtil.acceptsTestDevProfiles()) {
+			return;
+		}
+		throw new RuntimeException("only allow test or dev run");
 	}
 	
 }
