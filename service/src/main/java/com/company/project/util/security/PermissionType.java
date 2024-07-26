@@ -35,12 +35,23 @@ public enum PermissionType {
 			return false;
 		}
 		
-		if(p == PermissionType.ADMIN) {
+		if(p == ADMIN) {
 			return true;
 		}
+		
+		if(this == PermissionType.WRITE) {
+			if(isWritePermission(p)) {
+				return true;
+			}
+		}
+		
 		if(p == this) {
 			return true;
 		}
 		return false;
+	}
+
+	public static boolean isWritePermission(PermissionType p) {
+		return p == CREATE || p == DELETE || p == UPDATE || p == WRITE;
 	}
 }
