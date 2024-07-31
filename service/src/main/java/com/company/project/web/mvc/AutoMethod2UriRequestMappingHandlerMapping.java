@@ -39,7 +39,11 @@ public class AutoMethod2UriRequestMappingHandlerMapping extends RequestMappingHa
 
 	private final List<String> fileExtensions = new ArrayList<String>();
 
-	private String[] excludePackages = new String[]{"springfox*"}; // swagger-ui
+	private String[] excludePackages = new String[]{
+			"springfox*", // swagger-ui
+			"org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController"
+			}; 
+	
 	private AntPathMatcher antPathMatcher = new AntPathMatcher();
 	
 	
