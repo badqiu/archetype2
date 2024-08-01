@@ -9,7 +9,7 @@ import com.company.project.web.mvc.ResultResponseAdvice;
 @Configuration
 public class WebMvcGlobalReturnConfig {
 
-    @RestControllerAdvice(basePackages = "com.company.project")
+    @RestControllerAdvice
     public static class CustomResultResponseAdvice extends ResultResponseAdvice{
     }
     
