@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.StandardEnvironment;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 import com.company.project.util.EnvironmentUtil;
 
@@ -18,6 +19,7 @@ import com.company.project.util.EnvironmentUtil;
 )
 
 @ServletComponentScan // @WebServlet、@WebFilter、@WebListener等生效
+@EnableAsync // @Async 标注生效
 //@ImportResource(locations = {"classpath:demo_xxxxx.xml"})
 public class AdminApplication {
 
