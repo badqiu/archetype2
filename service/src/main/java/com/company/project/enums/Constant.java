@@ -68,7 +68,7 @@ public class Constant implements EnvironmentAware,PriorityOrdered{
 			logger.info(msg);
 			ReflectUtil.modifyAllStaticVariables(Constant.class, dev.class);
 		}else {
-			logger.warn("未知的profile:"+activeProfile+" 无法修改Constant的常量");
+			logger.error("未知的profile:"+activeProfile+" 无法修改Constant的常量");
 		}
 	}
 
