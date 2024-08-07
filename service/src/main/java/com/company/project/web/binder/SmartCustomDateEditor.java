@@ -27,8 +27,9 @@ public class SmartCustomDateEditor extends PropertyEditorSupport {
     }
     
     public static String getDateFormat(String text) {
-    	if(text == null) return null;
-    	if(text.isEmpty()) return null;
+    	if(StringUtils.isBlank(text)) {
+    		return null;
+    	}
     	
     	
     	if(text.indexOf('-') > -1) {
@@ -50,7 +51,10 @@ public class SmartCustomDateEditor extends PropertyEditorSupport {
     @Override
     public String getAsText() {
         Date value = (Date) getValue();
-        if(value == null) return null;
+        if(value == null) {
+        	return null;
+        }
+        
         return String.valueOf(value.getTime());
     }
 
