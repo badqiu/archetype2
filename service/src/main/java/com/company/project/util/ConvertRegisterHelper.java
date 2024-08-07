@@ -47,10 +47,10 @@ public class ConvertRegisterHelper implements InitializingBean {
 		convertUtils.register(new StringConverter(), String.class);
 		
 		//date 
-		convertUtils.register(ConvertRegisterHelper.setPatterns(new DateConverter(null),datePatterns),java.util.Date.class);
-		convertUtils.register(ConvertRegisterHelper.setPatterns(new SqlDateConverter(null),datePatterns),java.sql.Date.class);
-		convertUtils.register(ConvertRegisterHelper.setPatterns(new SqlTimeConverter(null),datePatterns),Time.class);
-		convertUtils.register(ConvertRegisterHelper.setPatterns(new SqlTimestampConverter(null),datePatterns),Timestamp.class);
+		convertUtils.register(setDatePatterns(new DateConverter(null),datePatterns),java.util.Date.class);
+		convertUtils.register(setDatePatterns(new SqlDateConverter(null),datePatterns),java.sql.Date.class);
+		convertUtils.register(setDatePatterns(new SqlTimeConverter(null),datePatterns),Time.class);
+		convertUtils.register(setDatePatterns(new SqlTimestampConverter(null),datePatterns),Timestamp.class);
 		
 		//number
 		convertUtils.register(new BooleanConverter(null), Boolean.class);
@@ -63,7 +63,7 @@ public class ConvertRegisterHelper implements InitializingBean {
 		convertUtils.register(new BigIntegerConverter(null), BigInteger.class);	
 	}
 	
-	public static <T extends DateTimeConverter> T setPatterns(T converter ,String... patterns) {
+	public static <T extends DateTimeConverter> T setDatePatterns(T converter ,String... patterns) {
 		converter.setPatterns(patterns);
 		return converter;
 	}
