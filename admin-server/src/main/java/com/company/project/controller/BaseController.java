@@ -1,6 +1,7 @@
 package com.company.project.controller;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -9,6 +10,7 @@ import javax.naming.event.ObjectChangeListener;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -104,16 +106,24 @@ public abstract class BaseController {
 	}
 	
 	
-	public static <T> void  writeExcel2Response(HttpServletResponse response,List<T> newItemList,Class<T> head, String fileName) throws IOException {
-		String finalFileName = fileName + ".xlsx";
-		response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-		response.setHeader("Content-disposition", "attachment;filename*=utf-8''" + finalFileName);
-
-        EasyExcel.write(response.getOutputStream(), head)
-//        .excelType(ExcelTypeEnum.CSV)
-//        .inMemory(true)
-        .sheet("sheet1")
-        .doWrite(newItemList);
+	public static <T> void  writeExcel2Response(HttpServletResponse response,List<T> newItemList,Class<T> head, String fileName)  {
+		OutputStream outputStream = null;
+		try {
+			String finalFileName = fileName + ".xlsx";
+			response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+			response.setHeader("Content-disposition", "attachment;filename*=utf-8''" + finalFileName);
+	
+	        outputStream = response.getOutputStream();
+			EasyExcel.write(outputStream, head)
+	//        .excelType(ExcelTypeEnum.CSV)
+	//        .inMemory(true)
+	        .sheet("sheet1")
+	        .doWrite(newItemList);
+		}catch(IOException e) {
+			throw new RuntimeException("writeExcel2Response error,head:"+head,e);
+		}finally {
+			IOUtils.closeQuietly(outputStream);
+		}
 	}
 	
 }
