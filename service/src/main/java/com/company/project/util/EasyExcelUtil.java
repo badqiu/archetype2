@@ -2,6 +2,7 @@ package com.company.project.util;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -9,11 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.io.IOUtils;
 
 import com.alibaba.excel.EasyExcel;
+import com.github.rapid.common.util.DateConvertUtil;
 
 public class EasyExcelUtil {
 	
 	public static <T> void  writeExcel2Response(HttpServletResponse response,List<T> newItemList,Class<T> head)  {
-		String finalFileName = head.getSimpleName() + ".xlsx";
+		String date = DateConvertUtil.format(new Date(), "yyyyMMdd_HHmmss");
+		String finalFileName = head.getSimpleName() + "_" + date + ".xlsx";
 		
 		OutputStream outputStream = null;
 		try {
