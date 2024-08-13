@@ -10,13 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.io.IOUtils;
 
 import com.alibaba.excel.EasyExcel;
+import com.alibaba.excel.support.ExcelTypeEnum;
 import com.github.rapid.common.util.DateConvertUtil;
 
 public class EasyExcelUtil {
 	
 	public static <T> void  writeExcel2Response(HttpServletResponse response,List<T> list,Class<T> head)  {
 		String date = DateConvertUtil.format(new Date(), "yyyyMMdd_HHmmss");
-		String finalFileName = head.getSimpleName() + "_" + date + ".xlsx";
+		String finalFileName = head.getSimpleName() + "_" + date + ".xls";
 		
 		OutputStream outputStream = null;
 		try {
@@ -26,7 +27,8 @@ public class EasyExcelUtil {
 	        outputStream = response.getOutputStream();
 			EasyExcel.write(outputStream, head)
 	//        .excelType(ExcelTypeEnum.CSV)
-	//        .inMemory(true)
+	        .inMemory(true)
+	        .excelType(ExcelTypeEnum.XLS)
 	        .sheet("sheet1")
 	        .doWrite(list);
 		}catch(IOException e) {
