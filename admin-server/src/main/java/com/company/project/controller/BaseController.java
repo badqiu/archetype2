@@ -103,8 +103,8 @@ public abstract class BaseController {
 	}
 	
 	
-	public static <T> void  writeExcel2Response(HttpServletResponse response,List<T> newItemList,Class<T> head)  {
-		EasyExcelUtil.writeExcel2Response(response, newItemList, head);
+	public static <T> void  writeExcel2Response(HttpServletResponse response,List<T> list,Class<T> head)  {
+		EasyExcelUtil.writeExcel2Response(response, list, head);
 	}
 	
 }

@@ -14,7 +14,7 @@ import com.github.rapid.common.util.DateConvertUtil;
 
 public class EasyExcelUtil {
 	
-	public static <T> void  writeExcel2Response(HttpServletResponse response,List<T> newItemList,Class<T> head)  {
+	public static <T> void  writeExcel2Response(HttpServletResponse response,List<T> list,Class<T> head)  {
 		String date = DateConvertUtil.format(new Date(), "yyyyMMdd_HHmmss");
 		String finalFileName = head.getSimpleName() + "_" + date + ".xlsx";
 		
@@ -28,7 +28,7 @@ public class EasyExcelUtil {
 	//        .excelType(ExcelTypeEnum.CSV)
 	//        .inMemory(true)
 	        .sheet("sheet1")
-	        .doWrite(newItemList);
+	        .doWrite(list);
 		}catch(IOException e) {
 			throw new RuntimeException("writeExcel2Response error,head:"+head,e);
 		}finally {
