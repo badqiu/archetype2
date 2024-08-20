@@ -29,8 +29,7 @@ public class LogTraceUtil {
 	 * @return traceId
 	 */
 	public static String beginTrace() {
-		String traceId = (String)MDC.get(TRACE_ID_KEY);
-		return beginTrace(traceId);
+		return beginTrace(null);
 	}
 	
 	/**
