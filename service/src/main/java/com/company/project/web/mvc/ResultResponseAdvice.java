@@ -31,7 +31,7 @@ public class ResultResponseAdvice implements ResponseBodyAdvice<Object> {
             Object r = beforeBodyWrite0(body, returnType);
             if (r instanceof RestResult) {
             	RestResult tmp = (RestResult)r;
-				tmp.setTraceId(MDC.get(LogTraceUtil.TRACE_ID_KEY));
+				tmp.setTraceId(LogTraceUtil.getTraceId());
             }
             return r;
         }
