@@ -43,6 +43,9 @@ public class LogTraceUtil {
 		}
 		if(traceId == null) {
 			traceId = newTraceId();
+		}
+		
+		if(traceId != null) {
 			MDC.put(TRACE_ID_KEY, traceId);
 		}
 		return traceId;
