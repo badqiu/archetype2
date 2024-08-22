@@ -27,8 +27,9 @@ public class EasyExcelUtil {
 	        outputStream = response.getOutputStream();
 			EasyExcel.write(outputStream, head)
 	//        .excelType(ExcelTypeEnum.CSV)
+			.excelType(ExcelTypeEnum.XLS)
 	        .inMemory(true)
-	        .excelType(ExcelTypeEnum.XLS)
+	        .autoTrim(true)
 	        .sheet("sheet1")
 	        .doWrite(list);
 		}catch(IOException e) {
