@@ -34,7 +34,9 @@ public class CacheConfig {
 	}
 	
 	public static class AutoCreateBySpecCaffeineCacheManager extends CaffeineCacheManager {
+		
 		private static Logger logger = LoggerFactory.getLogger(AutoCreateBySpecCaffeineCacheManager.class);
+		
 		protected com.github.benmanes.caffeine.cache.Cache<Object, Object> createNativeCaffeineCache(String name) {
 			logger.info("createNativeCaffeineCache() name:"+name);
 			
