@@ -20,6 +20,13 @@ public class CacheConfig {
 		CaffeineCacheManager cacheManager = new CaffeineCacheManager() {
 			protected com.github.benmanes.caffeine.cache.Cache<Object, Object> createNativeCaffeineCache(String name) {
 				logger.info("createNativeCaffeineCache() name:"+name);
+				if(name.contains(":")) {
+					String[] array = name.split(":");
+					String cacheSpec = array[1];
+					Caffeine caffeine = Caffeine.from(cacheSpec);
+					return caffeine.build();
+				}
+				
 				return super.createNativeCaffeineCache(name);
 			}
 		};
