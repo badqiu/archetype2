@@ -19,7 +19,7 @@ public class CacheConfig {
 	static int LOCAL_CACHE_MAXIMUM_SIZE = Constant.LOCAL_CACHE_MAXIMUM_SIZE;
 	
 	@Bean
-	public CaffeineCacheManager memoryCacheManager() {
+	public CaffeineCacheManager localCacheManager() {
 		CaffeineCacheManager cacheManager = new AutoCreateBySpecCaffeineCacheManager();
 		
 		Caffeine caffeine = Caffeine.newBuilder()
