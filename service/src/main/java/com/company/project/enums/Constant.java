@@ -27,7 +27,7 @@ public class Constant implements EnvironmentAware,PriorityOrdered{
 	public static String APP_NAME = "demoproject Application";
 	
 	
-	
+	public static int LOCAL_CACHE_MAXIMUM_SIZE = 10000;
 	
 	
 	
