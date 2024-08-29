@@ -20,6 +20,8 @@ public class CacheConfig {
 		CaffeineCacheManager cacheManager = new CaffeineCacheManager() {
 			protected com.github.benmanes.caffeine.cache.Cache<Object, Object> createNativeCaffeineCache(String name) {
 				logger.info("createNativeCaffeineCache() name:"+name);
+				
+				// 用于支持表达式创建Cache,示例: demo_cache_name:expireAfterWrite=10s,maximumSize=10000
 				if(name.contains(":")) {
 					String[] array = name.split(":");
 					String cacheSpec = array[1];
