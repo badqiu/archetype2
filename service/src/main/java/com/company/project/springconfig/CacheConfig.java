@@ -16,7 +16,7 @@ public class CacheConfig {
 	private static Logger logger = LoggerFactory.getLogger(CacheConfig.class);
 	
 	@Bean
-	public CaffeineCacheManager caffeineCacheManager() {
+	public CaffeineCacheManager memoryCacheManager() {
 		CaffeineCacheManager cacheManager = new CaffeineCacheManager() {
 			protected com.github.benmanes.caffeine.cache.Cache<Object, Object> createNativeCaffeineCache(String name) {
 				logger.info("createNativeCaffeineCache() name:"+name);
