@@ -20,7 +20,7 @@ public class CacheConfig {
 	
 	@Bean
 	public CaffeineCacheManager localCacheManager() {
-		CaffeineCacheManager cacheManager = new AutoCreateBySpecCaffeineCacheManager();
+		CaffeineCacheManager cacheManager = new AutoCreateByCacheNameSpecCaffeineCacheManager();
 		
 		Caffeine caffeine = Caffeine.newBuilder()
                 //maximumSize用来控制cache的最大缓存数量
@@ -33,6 +33,10 @@ public class CacheConfig {
 		return cacheManager;
 	}
 	
+	/**
+	 * cache name中编写表达式自动创建新cache,
+	 * 示例: demo_cache_name:expireAfterWrite=60s,maximumSize=10000
+	 */
 	public static class AutoCreateByCacheNameSpecCaffeineCacheManager extends CaffeineCacheManager {
 		
 		private static Logger logger = LoggerFactory.getLogger(AutoCreateByCacheNameSpecCaffeineCacheManager.class);
