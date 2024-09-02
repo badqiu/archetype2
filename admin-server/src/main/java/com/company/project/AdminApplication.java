@@ -38,7 +38,7 @@ public class AdminApplication {
 		SpringApplication app = new SpringApplication(AdminApplication.class);
 		app.setBannerMode(Banner.Mode.OFF);
 		app.setEnvironment(environment);
-		// app.setAdditionalProfiles("demo-submodule"); //附加profile激活，用于子模块添加不同配置
+		// app.setAdditionalProfiles("demo"); //附加profile激活，用于子模块添加不同配置， 可以激活application-demo.properties
 		
 		ConfigurableApplicationContext context = app.run(args);
 		System.out.println("start spring boot success: applicationName:" + context.getApplicationName() + " startupDate:"+ new Timestamp(context.getStartupDate()));
