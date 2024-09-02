@@ -1,6 +1,6 @@
 package com.company.project.web.springconfig;
 
-import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import org.springframework.context.annotation.Bean;
@@ -18,7 +18,7 @@ public class ScheduleConfig implements SchedulingConfigurer {
     }
 
     @Bean(destroyMethod="shutdown")
-    public Executor taskExecutor() {
+    public ExecutorService taskExecutor() {
         CustomizableThreadFactory threadFactory = new CustomizableThreadFactory("project-threadpool");
 		return Executors.newScheduledThreadPool(15,threadFactory); //指定线程池大小
     }
