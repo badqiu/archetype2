@@ -1,5 +1,6 @@
 package com.company.project.enums;
 
+import org.apache.commons.lang.ArrayUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.EnvironmentAware;
@@ -75,7 +76,7 @@ public class Constant implements EnvironmentAware,PriorityOrdered{
 	@Override
 	public void setEnvironment(Environment environment) {
 		String[] activeProfiles = environment.getActiveProfiles();
-		if(activeProfiles != null && activeProfiles.length >= 1) {
+		if(ArrayUtils.isNotEmpty(activeProfiles)) {
 			overrideConstantValuesByActiveProfile(activeProfiles[0]);
 		}
 	}
