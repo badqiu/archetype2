@@ -74,7 +74,10 @@ public class Constant implements EnvironmentAware,PriorityOrdered{
 
 	@Override
 	public void setEnvironment(Environment environment) {
-		overrideConstantValuesByActiveProfile(environment.getActiveProfiles()[0]);
+		String[] activeProfiles = environment.getActiveProfiles();
+		if(activeProfiles != null && activeProfiles.length >= 1) {
+			overrideConstantValuesByActiveProfile(activeProfiles[0]);
+		}
 	}
 	
 	@Override
