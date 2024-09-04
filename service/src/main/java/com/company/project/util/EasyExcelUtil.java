@@ -34,16 +34,12 @@ public class EasyExcelUtil {
 	
 	
 	public static <T> void writeExcel2OutputStream(OutputStream outputStream, List<T> itemList, Class<T> head) {
-		try {
-			EasyExcel.write(outputStream, head)
-	//        .excelType(ExcelTypeEnum.CSV)
-			.inMemory(true)
-			.autoTrim(true)
-	        .excelType(ExcelTypeEnum.XLS)
-	        .sheet("sheet1")
-	        .doWrite(itemList);
-		}finally {
-			IOUtils.closeQuietly(outputStream);
-		}
+		EasyExcel.write(outputStream, head)
+//        .excelType(ExcelTypeEnum.CSV)
+		.inMemory(true)
+		.autoTrim(true)
+        .excelType(ExcelTypeEnum.XLS)
+        .sheet("sheet1")
+        .doWrite(itemList);
 	}
 }
