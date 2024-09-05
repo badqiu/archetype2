@@ -86,30 +86,33 @@ public class EasyExcelUtil {
         // 遍历TaskLog类的所有字段  
         Field[] fields = clazz.getDeclaredFields();  
         for (Field field : fields) {  
-        	
-            // 获取字段上的ApiModelProperty注解  
-            ApiModelProperty apiModelProperty = field.getAnnotation(ApiModelProperty.class);  
-            ExcelProperty excelProperty = field.getAnnotation(ExcelProperty.class);  
-            
-            String fieldName = field.getName();
-			String fieldDesc = fieldName;
-            if (apiModelProperty != null) {  
-            	String tempFieldDesc = apiModelProperty.value();
-				if(StringUtils.isNotBlank(tempFieldDesc)) {
-            		fieldDesc = tempFieldDesc;
-            	}
-            }
-            
-            if(excelProperty != null && ArrayUtils.isNotEmpty(excelProperty.value())) {
-            	String tempFieldDesc = excelProperty.value()[0];
-            	if(StringUtils.isNotBlank(tempFieldDesc)) {
-            		fieldDesc = tempFieldDesc;
-            	}
-            }
-            
+        	String fieldName = field.getName();
+            String fieldDesc = getFieldDesc(field, fieldName);
             apiModelProperties.put(fieldName, fieldDesc);  
         } 
         return apiModelProperties;
+	}
+
+	private static String getFieldDesc(Field field, String fieldDefaultDesc) {
+		// 获取字段上的ApiModelProperty注解  
+		ApiModelProperty apiModelProperty = field.getAnnotation(ApiModelProperty.class);  
+		ExcelProperty excelProperty = field.getAnnotation(ExcelProperty.class);  
+		
+		String fieldDesc = fieldDefaultDesc;
+		if (apiModelProperty != null) {  
+			String tempFieldDesc = apiModelProperty.value();
+			if(StringUtils.isNotBlank(tempFieldDesc)) {
+				fieldDesc = tempFieldDesc;
+			}
+		}
+		
+		if(excelProperty != null && ArrayUtils.isNotEmpty(excelProperty.value())) {
+			String tempFieldDesc = excelProperty.value()[0];
+			if(StringUtils.isNotBlank(tempFieldDesc)) {
+				fieldDesc = tempFieldDesc;
+			}
+		}
+		return fieldDesc;
 	}
 	
 }
