@@ -3,6 +3,7 @@ package com.company.project.util;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -87,6 +88,10 @@ public class EasyExcelUtil {
         Field[] fields = clazz.getDeclaredFields();  
         for (Field field : fields) {  
         	String fieldName = field.getName();
+        	if(Modifier.isStatic(field.getModifiers())) {
+        		continue;
+        	}
+        	
             String fieldDesc = getFieldDesc(field, fieldName);
             apiModelProperties.put(fieldName, fieldDesc);  
         } 
