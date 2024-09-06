@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Profiler filter。
+ * 耗时性能日志打印 Profiler filter。
  *
  * @author badqiu
  */
