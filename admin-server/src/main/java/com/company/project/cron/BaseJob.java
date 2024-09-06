@@ -12,7 +12,7 @@ public abstract class BaseJob {
 	
 	public static boolean disableCronJob = true; //默认关闭定时任务，通过xxljob设置为false然后一台机器运行
 	
-	public static void sendNotifyMsg(String title,String content) {
+	public void sendNotifyMsg(String title,String content) {
 		logger.info("sendNotifyMsg() title:{} content:{}",title,content);
 		
 		//避免太多相同通知
@@ -20,6 +20,11 @@ public abstract class BaseJob {
 		if(NotifyUtil.isTooManySameNotify(notifyIntervalKey , Duration.ofMinutes(60))) {
 			return;
 		}
+		
+		sendNotifyMsg0(title,content);
+	}
+
+	private void sendNotifyMsg0(String title, String content) {
 		
 	}
 	
