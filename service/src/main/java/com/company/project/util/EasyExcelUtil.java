@@ -25,21 +25,23 @@ import com.github.rapid.common.util.DateConvertUtil;
 
 import io.swagger.annotations.ApiModelProperty;
 
+
 public class EasyExcelUtil {
 	
-	public static <T> void  writeExcel2Response(HttpServletResponse response,List<T> list,Class<T> head)  {
-		setResponseHeaders(response, head.getSimpleName());
-		
-		OutputStream outputStream = null;
+	private static ExcelTypeEnum excelType = ExcelTypeEnum.XLS;
+	private static boolean swaggerDocApiAvaiable = false;
+	static {
 		try {
-	        outputStream = response.getOutputStream();
-			LinkedHashMap<String, String> headMap = getHeadMapByClass(head);
-			buildExcelWriterSheetBuilder(outputStream,headMap).doWrite(list);
-		}catch(IOException e) {
-			throw new RuntimeException("writeExcel2Response error,head:"+head,e);
-		}finally {
-			IOUtils.closeQuietly(outputStream);
+			Class.forName("io.swagger.annotations.ApiModelProperty");
+			swaggerDocApiAvaiable = true;
+		} catch (ClassNotFoundException e) {
+			//ignore
 		}
+	}
+	
+	public static <T> void  writeExcel2Response(HttpServletResponse response,List<T> list,Class<T> head)  {
+		LinkedHashMap<String, String> headMap = getHeadMapByClass(head);
+		writeExcel2Response(response,list,head.getSimpleName(),headMap);
 	}
 
 	public static <T> void  writeExcel2Response(HttpServletResponse response,List<T> list,String filenamePrefix,LinkedHashMap<String, String> head)  {
@@ -58,19 +60,21 @@ public class EasyExcelUtil {
 	
 	private static <T> void setResponseHeaders(HttpServletResponse response, String filenamePrefix) {
 		String date = DateConvertUtil.format(new Date(), "yyyyMMdd_HHmmss");
-		String finalFileName = filenamePrefix + "_" + date + ".xls";
+		String fileExt = excelType.name().toLowerCase();
+		String finalFileName = filenamePrefix + "_" + date + "." + fileExt;
 		response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
 		response.setHeader("Content-disposition", "attachment;filename*=utf-8''" + finalFileName);
 	}
 	
 	public static <T> ExcelWriterSheetBuilder buildExcelWriterSheetBuilder(OutputStream outputStream,LinkedHashMap<String, String> head) {
 		List<List<String>> headList = getEasyExcelHeadByMap(head);
-		return EasyExcel.write(outputStream)
-		.head(headList)
-		.inMemory(true)
-		.autoTrim(true)
-        .excelType(ExcelTypeEnum.XLS)
-        .sheet("sheet1");
+		return EasyExcel
+			.write(outputStream)
+			.head(headList)
+			.inMemory(true)
+			.autoTrim(true)
+	        .excelType(excelType)
+	        .sheet("sheet1");
 	}
 	
 	
@@ -87,11 +91,11 @@ public class EasyExcelUtil {
         // 遍历TaskLog类的所有字段  
         Field[] fields = clazz.getDeclaredFields();  
         for (Field field : fields) {  
-        	String fieldName = field.getName();
         	if(Modifier.isStatic(field.getModifiers())) {
         		continue;
         	}
         	
+        	String fieldName = field.getName();
             String fieldDesc = getFieldDesc(field, fieldName);
             apiModelProperties.put(fieldName, fieldDesc);  
         } 
@@ -99,24 +103,27 @@ public class EasyExcelUtil {
 	}
 
 	private static String getFieldDesc(Field field, String fieldDefaultDesc) {
-		// 获取字段上的ApiModelProperty注解  
-		ApiModelProperty apiModelProperty = field.getAnnotation(ApiModelProperty.class);  
-		ExcelProperty excelProperty = field.getAnnotation(ExcelProperty.class);  
 		
 		String fieldDesc = fieldDefaultDesc;
-		if (apiModelProperty != null) {  
-			String tempFieldDesc = apiModelProperty.value();
-			if(StringUtils.isNotBlank(tempFieldDesc)) {
-				fieldDesc = tempFieldDesc;
+		
+		if(swaggerDocApiAvaiable) {
+			ApiModelProperty apiModelProperty = field.getAnnotation(ApiModelProperty.class);  
+			if (apiModelProperty != null) {  
+				String tempFieldDesc = apiModelProperty.value();
+				if(StringUtils.isNotBlank(tempFieldDesc)) {
+					fieldDesc = tempFieldDesc;
+				}
 			}
 		}
 		
+		ExcelProperty excelProperty = field.getAnnotation(ExcelProperty.class);  
 		if(excelProperty != null && ArrayUtils.isNotEmpty(excelProperty.value())) {
 			String tempFieldDesc = excelProperty.value()[0];
 			if(StringUtils.isNotBlank(tempFieldDesc)) {
 				fieldDesc = tempFieldDesc;
 			}
 		}
+		
 		return fieldDesc;
 	}
 	
