@@ -170,7 +170,7 @@
       	<dependency>
 		    <groupId>org.thingsboard</groupId>
 		    <artifactId>springfox-boot-starter</artifactId>
-		    <version>3.0.4</version>
+		    <version>3.0.1</version>
 		</dependency>
 
 		<dependency>
