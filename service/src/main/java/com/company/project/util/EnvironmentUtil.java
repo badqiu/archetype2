@@ -1,5 +1,6 @@
 package com.company.project.util;
 
+import org.apache.commons.lang.ArrayUtils;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.core.PriorityOrdered;
 import org.springframework.core.env.Environment;
@@ -44,7 +45,7 @@ public class EnvironmentUtil implements EnvironmentAware,PriorityOrdered{
 	public static String getActiveProfile() {
 		if(activeProfile == null) {
 			Environment environment = getEnvironment();
-			if(environment != null) {
+			if(environment != null && ArrayUtils.isNotEmpty(environment.getActiveProfiles())) {
 				activeProfile = environment.getActiveProfiles()[0];
 			}
 		}

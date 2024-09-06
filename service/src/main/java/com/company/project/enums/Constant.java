@@ -51,12 +51,16 @@ public class Constant implements EnvironmentAware,PriorityOrdered{
 		public static String APP_NAME = "dev " + Constant.APP_NAME;
 	}
 	
+	static {
+		overrideConstantValuesByActiveProfile();
+	}
+	
 	public static void overrideConstantValuesByActiveProfile() {
 		//激活环境配置，用配置Constant配置
 		String activeProfile = EnvironmentUtil.getActiveProfile();
 		overrideConstantValuesByActiveProfile(activeProfile);
 	}
-
+	
 	public static void overrideConstantValuesByActiveProfile(String activeProfile) {
 		String msg = "覆盖常量配置: ReflectUtil.modifyAllStaticVariables(Constant.class) profile:"+activeProfile;
 		if("prod".equals(activeProfile)) {
