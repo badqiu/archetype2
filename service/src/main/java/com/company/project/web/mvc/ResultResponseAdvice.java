@@ -1,6 +1,5 @@
 package com.company.project.web.mvc;
 
-import org.slf4j.MDC;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -49,11 +48,6 @@ public class ResultResponseAdvice implements ResponseBodyAdvice<Object> {
             if (body instanceof SseEmitter) {
                 return body;
             }
-            
-            //字符串，不处理会发生 ClassCastException
-//            if(returnType.getMethod().getReturnType() == String.class) {
-//            	return body;
-//            }
             
             if(body != null) {
 	            String className = body.getClass().getName();
