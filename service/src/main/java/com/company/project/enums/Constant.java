@@ -21,6 +21,10 @@ import com.github.rapid.common.util.ReflectUtil;
 public class Constant implements EnvironmentAware,PriorityOrdered{
 	private static Logger logger = LoggerFactory.getLogger(Constant.class);
 	
+	static {
+		overrideConstantValuesByActiveProfile();
+	}
+	
 	
 	//只在测试环境，开发环境,预发显示errorLog
 	public static Profiles SHOW_ERROR_LOG_FOR_HTTP_RESPONSE = Profiles.of("dev","test","pre");
@@ -29,11 +33,6 @@ public class Constant implements EnvironmentAware,PriorityOrdered{
 	
 	
 	public static int LOCAL_CACHE_MAXIMUM_SIZE = 10000;
-	
-	
-	
-	
-	
 	
 	
 	//生产环境配置,此处的配置会覆盖Constant的常量配置
@@ -51,9 +50,7 @@ public class Constant implements EnvironmentAware,PriorityOrdered{
 		public static String APP_NAME = "dev " + Constant.APP_NAME;
 	}
 	
-	static {
-		overrideConstantValuesByActiveProfile();
-	}
+
 	
 	public static void overrideConstantValuesByActiveProfile() {
 		//激活环境配置，用配置Constant配置
