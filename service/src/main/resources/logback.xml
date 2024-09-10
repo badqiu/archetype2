@@ -131,9 +131,9 @@
         <password></password>
         <to>qiubaichao@xmiles.cn</to>
         <from>bigdata-alert@xmiles.cn</from>
-        <subject>${LOG_APP_NAME}-${spring.profiles.active}-错误报警: %logger{20} - %m</subject>
+        <subject>${spring.profiles.active}-${LOG_APP_NAME}-错误报警: %logger{20} - %m</subject>
         <layout class="ch.qos.logback.classic.PatternLayout">
-            <pattern>${LOG_APP_NAME} ${COMMON_PATTERN}</pattern>
+            <pattern>${spring.profiles.active}-${LOG_APP_NAME} ${COMMON_PATTERN}</pattern>
         </layout>
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>ERROR</level>
