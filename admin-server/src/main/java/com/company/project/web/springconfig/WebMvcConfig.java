@@ -16,6 +16,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 import com.company.project.web.mvc.AutoMethod2UriRequestMappingHandlerMapping;
+import com.fasterxml.jackson.core.JsonParser.Feature;
+import com.fasterxml.jackson.core.json.JsonReadFeature;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
@@ -70,6 +74,13 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 	private ObjectMapper objectMapper() {
 //		ObjectMapper objectMapper2 = Jackson2ObjectMapperBuilder.json().build();
 	    ObjectMapper objectMapper = new ObjectMapper();
+	    objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+	    objectMapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, false);
+	    
+	    //json5
+	    objectMapper.configure(Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
+	    objectMapper.configure(Feature.ALLOW_SINGLE_QUOTES, true);
+	    objectMapper.configure(Feature.ALLOW_COMMENTS, true);
 	    
 	    // 不序列化null的属性
 //	    objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
