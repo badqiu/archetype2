@@ -25,9 +25,8 @@
 	<properties>
 		<!-- versions -->
 		<h2.version>1.4.189</h2.version>
-		<slf4j.version>2.0.9</slf4j.version>
 		<shiro.version>1.13.0</shiro.version>
-		<guava.version>18.0</guava.version>
+		<guava.version>33.1.0-jre</guava.version>
 		<powermock.version>1.6.6</powermock.version>
 		<xstream.version>1.4.20</xstream.version>
 		<mybatisplus.version>3.5.7</mybatisplus.version>
