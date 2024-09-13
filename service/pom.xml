@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <parent>
-    <artifactId>demoproject</artifactId>
-    <groupId>com.company.project</groupId>
-    <version>1.0-SNAPSHOT</version>
-  </parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+		<artifactId>demoproject</artifactId>
+		<groupId>com.company.project</groupId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
 
-  <modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.company.project</groupId>
-  <artifactId>demoproject-service</artifactId>
-  <version>1.0-SNAPSHOT</version>
+	<groupId>com.company.project</groupId>
+	<artifactId>demoproject-service</artifactId>
+	<version>1.0-SNAPSHOT</version>
 
-  <packaging>jar</packaging>
+	<packaging>jar</packaging>
 
 
 	<dependencies>
-		
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -42,13 +43,13 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-freemarker</artifactId>
-		</dependency>		
+		</dependency>
 		<!-- dataSource -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid-spring-boot-starter</artifactId>
 		</dependency>
-		
+
 		<!--
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -56,73 +57,72 @@
 		</dependency>
 		-->
 		<dependency>
-		    <groupId>jakarta.persistence</groupId>
-		    <artifactId>jakarta.persistence-api</artifactId>
-		    <version>2.2.3</version>
-		</dependency>		
+			<groupId>jakarta.persistence</groupId>
+			<artifactId>jakarta.persistence-api</artifactId>
+			<version>2.2.3</version>
+		</dependency>
 
 		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-aop</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
-		
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
-		</dependency>		
-		
-		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-validation</artifactId>
-		</dependency>
-		
-		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-cache</artifactId>
-		</dependency>		
-				
-		<dependency>
-			<groupId>org.springframework</groupId>
-  		    <artifactId>spring-context-support</artifactId>
-		</dependency>			
-		
-		
-		<dependency>
-		  <groupId>com.github.ben-manes.caffeine</groupId>
-		  <artifactId>caffeine</artifactId>
 		</dependency>
 
 		<dependency>
-		    <groupId>javax.cache</groupId>
-		    <artifactId>cache-api</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
-	
+
 		<dependency>
-		    <groupId>com.baomidou</groupId>
-		    <artifactId>mybatis-plus-boot-starter</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.github.ben-manes.caffeine</groupId>
+			<artifactId>caffeine</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.cache</groupId>
+			<artifactId>cache-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-boot-starter</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.baomidou</groupId>
 			<artifactId>mybatis-plus-generator</artifactId>
-		</dependency>		
+		</dependency>
 		<!-- 处理mybatis-plus不支持联合主键的问题 -->
 		<dependency>
-	        <groupId>com.github.jeffreyning</groupId>
-	        <artifactId>mybatisplus-plus</artifactId>
-	        <version>1.7.4-RELEASE</version>
-	    </dependency>    
-	    <!-- 
+			<groupId>com.github.jeffreyning</groupId>
+			<artifactId>mybatisplus-plus</artifactId>
+			<version>1.7.4-RELEASE</version>
+		</dependency>
+		<!-- 
 	    mybatis支持多数据源: https://baomidou.com/guides/dynamic-datasource/ 
 	    数据源配置建议在Mapper interface上 @DS("dataSourceName")
 	    -->
 		<dependency>
-		    <groupId>com.baomidou</groupId>
-		    <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
-		    <version>4.3.1</version>
-		</dependency>		    
-	    
-				
+			<groupId>com.baomidou</groupId>
+			<artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+			<version>4.3.1</version>
+		</dependency>
+
 
 		<!-- test BEGIN -->
 		<dependency>
@@ -151,26 +151,23 @@
 			<scope>test</scope>
 			<exclusions>
 				<exclusion>
-				  <groupId>org.junit.jupiter</groupId>
-				  <artifactId>junit-jupiter</artifactId>
+					<groupId>org.junit.jupiter</groupId>
+					<artifactId>junit-jupiter</artifactId>
 				</exclusion>
 				<exclusion>
 					<groupId>org.junit.jupiter</groupId>
 					<artifactId>junit-jupiter-api</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>			
+		</dependency>
 		<!-- for test HibernateValidator -->
 
 
-
-	    
-	    
-        <!-- swagger3 ui文档,访问: http://localhost:7070/swagger-ui/index.html -->
-      	<dependency>
-		    <groupId>org.thingsboard</groupId>
-		    <artifactId>springfox-boot-starter</artifactId>
-		    <version>3.0.1</version>
+		<!-- swagger3 ui文档,访问: http://localhost:7070/swagger-ui/index.html -->
+		<dependency>
+			<groupId>org.thingsboard</groupId>
+			<artifactId>springfox-boot-starter</artifactId>
+			<version>3.0.1</version>
 		</dependency>
 
 		<dependency>
@@ -191,18 +188,12 @@
 		</dependency>
 
 
-
-
-
-
-
-				
 		<dependency>
-		    <groupId>com.squareup.okhttp3</groupId>
-		    <artifactId>okhttp</artifactId>
-		    <version>4.12.0</version>
+			<groupId>com.squareup.okhttp3</groupId>
+			<artifactId>okhttp</artifactId>
+			<version>4.12.0</version>
 		</dependency>
-		
+
 
 		<!-- apache-commons BEGIN -->
 		<dependency>
@@ -251,16 +242,16 @@
 
 		<!-- excel -->
 		<dependency>
-		    <groupId>com.alibaba</groupId>
-		    <artifactId>easyexcel</artifactId>
+			<groupId>com.alibaba</groupId>
+			<artifactId>easyexcel</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
-						      
-	  <!-- 
+
+		<!-- 
 
 		spring-boot-starter-mail
 		spring-boot-starter-data-redis
@@ -276,7 +267,8 @@
 		使用Thymeleaf视图构建MVC Web应用程序
 		
 		spring-boot-starter-data-couchbase
-		Starter for using Couchbase document-oriented database and Spring Data Couchbase
+		Starter for using Couchbase document-oriented database and Spring Data
+		Couchbase
 		
 		spring-boot-starter-artemis
 		使用Apache Artemis启动JMS消息传递
@@ -411,7 +403,7 @@
 		
 		spring-boot-starter-log4j2
 		使用Log4j2进行日志记录。 spring-boot-starter-logging的替代方法	  
-	   -->	
+	   -->
 	</dependencies>
-	
+
 </project>
