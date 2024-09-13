@@ -77,7 +77,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 	    objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 	    objectMapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, false);
 	    
-	    //json5
+	    //support json5
 	    objectMapper.configure(Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
 	    objectMapper.configure(Feature.ALLOW_SINGLE_QUOTES, true);
 	    objectMapper.configure(Feature.ALLOW_COMMENTS, true);
