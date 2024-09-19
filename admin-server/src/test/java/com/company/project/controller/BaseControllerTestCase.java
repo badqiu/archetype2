@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.servlet.handler.DispatcherServletWebRequest;
 
@@ -15,6 +16,7 @@ public class BaseControllerTestCase {
 	protected static Logger logger = LoggerFactory.getLogger(BaseControllerTestCase.class);
 	
 	protected MockHttpServletRequest request = new MockHttpServletRequest();
+	protected MockHttpServletResponse response = new MockHttpServletResponse();
 	
 	public void setLoginUser() {
 		setMockRequest();
@@ -28,7 +30,7 @@ public class BaseControllerTestCase {
 	}
 
 	protected void setMockRequest() {
-		RequestContextHolder.setRequestAttributes(new DispatcherServletWebRequest(request));
+		RequestContextHolder.setRequestAttributes(new DispatcherServletWebRequest(request,response));
 	}
 	
 	@Before
