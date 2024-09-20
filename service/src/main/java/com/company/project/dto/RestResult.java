@@ -16,12 +16,11 @@ public class RestResult {
 	private String msg; //消息
 	private String errCode; //错误码
 	
-	private Object data;
+	private Object data; //返回数据
 	
-	
-	private String traceId;
-	private String errorLog;
-	private boolean success;
+	private String traceId; //跟踪ID，方便查询日志
+	private String errorLog; //错误日志，填充完整的错误堆栈信息
+	private boolean success; //是否成功，客户端更容易判断
 	
 	public RestResult() {
 		success();
