@@ -33,10 +33,13 @@ import com.github.rapid.common.beanutils.converter.StringConverter;
  */
 public class ConvertRegisterHelper implements InitializingBean {
 
-	public static String[] datePattern = new String[] {"yyyy-MM-dd",
+	public static String[] datePattern = new String[] {
+			"yyyy-MM-dd",
 			"yyyy-MM-dd HH:mm:ss",
-			"yyyy-MM-dd HH:mm:ss.SSS","HH:mm:ss",
-			"EEE MMM dd HH:mm:ss 'CST' yyyy"};
+			"yyyy-MM-dd HH:mm:ss.SSS",
+			"HH:mm:ss"
+			//"EEE MMM dd HH:mm:ss 'CST' yyyy"
+			};
 
 	static EnumConvertUtilsBean convertUtilsBean = new EnumConvertUtilsBean();
 	static BeanUtilsBean instance = new BeanUtilsBean(convertUtilsBean);
