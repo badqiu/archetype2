@@ -8,8 +8,8 @@ package com.company.project.dto;
  */
 public class RestResult {
 
-	int SUCCESS_CODE = 0;
-	int FAIL_CODE = 500;
+	static final int SUCCESS_CODE = 0;
+	static final int FAIL_CODE = 500;
 	
 	private int code; //成功，失败标识
 	
@@ -33,31 +33,38 @@ public class RestResult {
 	}
 	
 	public RestResult success() {
-		this.code = SUCCESS_CODE;
-		this.success = true;
+		code(SUCCESS_CODE);
 		return this;
 	}
 	
 	public RestResult fail(String msg) {
-		this.code = FAIL_CODE;
-		this.success = false;
+		code(FAIL_CODE);
 		this.msg = msg;
 		return this;
 	}
 	
-	public RestResult errCode(String errCode) {
-		this.errCode = errCode;
-		return this;
-	}
-	
 	public RestResult fail(Exception error) {
-		this.code = FAIL_CODE;
-		this.success = false;
+		code(FAIL_CODE);
 		errCode(error.getClass().getSimpleName());
 		this.msg = error.getMessage();
 		return this;
 	}
 
+	public RestResult errCode(String errCode) {
+		this.errCode = errCode;
+		return this;
+	}
+	
+	public RestResult code(int code) {
+		this.code = code;
+		if(code == SUCCESS_CODE) {
+			success = true;
+		}else {
+			success = false;
+		}
+		return this;
+	}
+	
 	public int getCode() {
 		return code;
 	}
@@ -72,6 +79,10 @@ public class RestResult {
 
 	public Object getData() {
 		return data;
+	}
+	
+	public void setMsg(String msg) {
+		this.msg = msg;
 	}
 
 	public String getTraceId() {
