@@ -27,6 +27,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.company.project.AdminApplication;
+import com.company.project.enums.Constant;
 import com.google.common.collect.Lists;
 
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -56,6 +57,7 @@ public class SwaggerDocConfig {
                 .globalResponseMessage(RequestMethod.PUT, responseMessageList)
                 .globalResponseMessage(RequestMethod.DELETE, responseMessageList)
 
+                .enable(Constant.SWAGGER_API_DOC_ENABLE)
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage(AdminApplication.class.getPackage().getName()))

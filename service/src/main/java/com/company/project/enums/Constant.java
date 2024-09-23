@@ -35,9 +35,13 @@ public class Constant implements EnvironmentAware,PriorityOrdered{
 	public static int LOCAL_CACHE_MAXIMUM_SIZE = 10000;
 	
 	
+	public static boolean SWAGGER_API_DOC_ENABLE = true;
+	
 	//生产环境配置,此处的配置会覆盖Constant的常量配置
 	private static class prod{
 		public static String APP_NAME = "prod " + Constant.APP_NAME;
+		
+		public static boolean SWAGGER_API_DOC_ENABLE = false;
 	}
 	
 	//测试环境配置,此处的配置会覆盖Constant的常量配置
