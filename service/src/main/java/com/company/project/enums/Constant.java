@@ -1,6 +1,7 @@
 package com.company.project.enums;
 
 import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang3.SystemUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.EnvironmentAware;
@@ -74,7 +75,14 @@ public class Constant implements EnvironmentAware,PriorityOrdered{
 			logger.info(msg);
 			ReflectUtil.modifyAllStaticVariables(Constant.class, dev.class);
 		}else {
-			logger.error("未知的profile:"+activeProfile+" 无法修改Constant的常量");
+			
+			String unknowMsg = "未知的profile:"+activeProfile+" 无法修改Constant的常量";
+			
+			if(SystemUtils.IS_OS_WINDOWS || SystemUtils.IS_OS_MAC) {
+				logger.warn(unknowMsg);
+			}else {
+				logger.error(unknowMsg);
+			}
 		}
 	}
 
