@@ -76,7 +76,7 @@ public class Constant implements EnvironmentAware,PriorityOrdered{
 			ReflectUtil.modifyAllStaticVariables(Constant.class, dev.class);
 		}else {
 			
-			String unknowMsg = "未知的profile:"+activeProfile+" 无法修改Constant的常量";
+			String unknowMsg = "未知的profile:"+activeProfile+" 无法修改Constant的常量,请设置环境变量SPRING_PROFILES_ACTIVE";
 			
 			if(SystemUtils.IS_OS_WINDOWS || SystemUtils.IS_OS_MAC) {
 				logger.warn(unknowMsg);
