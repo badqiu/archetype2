@@ -1,4 +1,4 @@
-package com.company.project.springconfig;
+package com.company.project.web.springconfig;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
