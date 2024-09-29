@@ -93,7 +93,6 @@
 			<groupId>com.github.ben-manes.caffeine</groupId>
 			<artifactId>caffeine</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>javax.cache</groupId>
 			<artifactId>cache-api</artifactId>
@@ -251,6 +250,15 @@
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 
+
+
+	    <dependency>
+	        <groupId>org.projectlombok</groupId>
+	        <artifactId>lombok</artifactId>
+	        <version>1.18.34</version>
+	        <scope>provided</scope>
+	    </dependency>
+    
 		<!-- 
 
 		spring-boot-starter-mail
