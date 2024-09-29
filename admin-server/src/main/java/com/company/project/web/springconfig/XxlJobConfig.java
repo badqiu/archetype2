@@ -16,17 +16,17 @@ public class XxlJobConfig {
     private String adminAddress;
     
     @Value("${spring.application.name}")
-    private String appName;
+    private String appname;
 
     @Value("${xxljob.accessToken")
 	private String accessToken;
 
     @Bean
     public XxlJobSpringExecutor xxlJobExecutor() {
-        logger.info(">>>>>>>>>>> xxlJobExecutor() xxl-job config init. appName:"+appName + " adminAddress:"+adminAddress);
+        logger.info(">>>>>>>>>>> xxlJobExecutor() xxl-job config init. appname:"+appname + " adminAddress:"+adminAddress);
         XxlJobSpringExecutor xxlJobSpringExecutor = new XxlJobSpringExecutor();
         xxlJobSpringExecutor.setAdminAddresses(adminAddress);
-        xxlJobSpringExecutor.setAppname(appName);
+        xxlJobSpringExecutor.setAppname(appname);
         xxlJobSpringExecutor.setAccessToken(accessToken);
         return xxlJobSpringExecutor;
     }
