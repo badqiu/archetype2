@@ -14,7 +14,7 @@ public class LoggerTest {
 		logger.debug("debug hello");
 		logger.info("info hello");
 		logger.warn("warn hello");
-		logger.error("error hello:{}","jane");
+		logger.error("error hello:{} age:{}","jane",18,new Exception());
 		
 		Thread.sleep(1000 * 3);
 	}
