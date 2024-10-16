@@ -8,7 +8,7 @@ import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
-import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter;
 
 import com.company.project.dto.RestResult;
 import com.company.project.util.LogTraceUtil;
@@ -44,8 +44,8 @@ public class ResultResponseAdvice implements ResponseBodyAdvice<Object> {
                 return body;
             }
             
-            //SSE流式响应
-            if (body instanceof SseEmitter) {
+            //SSE流式响应,SseEmitter
+            if (body instanceof ResponseBodyEmitter) {
                 return body;
             }
             
