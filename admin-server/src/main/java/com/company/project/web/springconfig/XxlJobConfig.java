@@ -12,7 +12,7 @@ import com.xxl.job.core.executor.impl.XxlJobSpringExecutor;
 public class XxlJobConfig {
     private static Logger logger = LoggerFactory.getLogger(XxlJobConfig.class);
 
-    @Value("${xxljob.adminAddress:http://test.demo.com/xxl-job-admin}")
+    @Value("${xxljob.adminAddress:http://www.baidu.com/xxl-job-admin}")
     private String adminAddress;
     
     @Value("${spring.application.name}")
