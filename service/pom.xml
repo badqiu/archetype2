@@ -169,6 +169,13 @@
 			<version>3.0.1</version>
 		</dependency>
 
+
+		<dependency>
+		    <groupId>com.alibaba.nacos</groupId>
+		    <artifactId>nacos-spring-context</artifactId>
+		    <version>1.1.2</version>
+		</dependency>
+
 		<dependency>
 			<groupId>com.github.rapid.common</groupId>
 			<artifactId>rapid-common-util</artifactId>
