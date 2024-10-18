@@ -33,6 +33,10 @@ public class Constant implements EnvironmentAware,PriorityOrdered{
 	public static String APP_NAME = "demoproject Application";
 	
 	public static final String LOGGER_MDC_CONTEXT_INFO = "contextInfo";
+
+	public static String NACOS_SERVER_ADDR = "http://www.baidu.com";
+	public static String NACOS_NAMESPACE = "public";
+	public static String NACOS_GROUP = null;
 	
 	public static int LOCAL_CACHE_MAXIMUM_SIZE = 10000;
 	
@@ -44,6 +48,10 @@ public class Constant implements EnvironmentAware,PriorityOrdered{
 		public static String APP_NAME = "prod " + Constant.APP_NAME;
 		
 		public static boolean SWAGGER_API_DOC_ENABLE = false;
+		
+		public static String NACOS_SERVER_ADDR = "http://www.baidu.com";
+		public static String NACOS_NAMESPACE = "public";
+		public static String NACOS_GROUP = null;
 	}
 	
 	//测试环境配置,此处的配置会覆盖Constant的常量配置

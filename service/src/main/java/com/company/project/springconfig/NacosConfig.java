@@ -14,9 +14,9 @@ import com.company.project.util.NacosConfigUtil;
 @Component
 public class NacosConfig implements InitializingBean{
 
-	String nacosNamespace = "public";
-	String nacosServerAddr = "http://www.baidu.com";
-	String nacosGroup = null;
+	String nacosServerAddr = Constant.NACOS_SERVER_ADDR;
+	String nacosNamespace = Constant.NACOS_NAMESPACE;
+	String nacosGroup = Constant.NACOS_GROUP;
 	
 	@Bean
 	public ConfigService configService() {
