@@ -36,7 +36,6 @@ public class Constant implements EnvironmentAware,PriorityOrdered{
 
 	public static String NACOS_SERVER_ADDR = "http://www.baidu.com";
 	public static String NACOS_NAMESPACE = "public";
-	public static String NACOS_GROUP = "DEFAULT_GROUP";
 	
 	public static int LOCAL_CACHE_MAXIMUM_SIZE = 10000;
 	
