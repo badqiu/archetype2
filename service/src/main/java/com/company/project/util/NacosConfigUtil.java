@@ -43,6 +43,15 @@ public class NacosConfigUtil {
     	autoRefreshConfigClass(clazz,getDataIdByClass(clazz),group,configService);
     }
     
+    /**
+     * 自动更新某个配置常量类的field值
+     * 
+     * @param clazz
+     * @param dataId
+     * @param group
+     * @param configService
+     * @throws NacosException
+     */
     public static void autoRefreshConfigClass(Class clazz, String dataId, String group, ConfigService configService)
 			throws NacosException {
     	
