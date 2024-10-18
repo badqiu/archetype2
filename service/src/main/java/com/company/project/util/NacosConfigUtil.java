@@ -47,7 +47,7 @@ public class NacosConfigUtil {
 			throws NacosException {
     	
 		String content = configService.getConfig(dataId, group, defaultTimeoutMs);  
-		logger.info("autoConfigClass() dateId:{} group:{}  configContent:{} ",dataId,group,content);  
+		logger.info("autoRefreshConfigClass() dateId:{} group:{}  configContent:{} ",dataId,group,content);  
         
         modifyAllStaticVariablesByConfigProperties(clazz, content);
         
