@@ -65,6 +65,8 @@ public class NacosConfigUtil {
 	private static void modifyAllStaticVariablesByConfigProperties(Class clazz, String configInfo) {
 		if(StringUtils.isBlank(configInfo)) return;
 		
+		String msg = "modifyAllStaticVariablesByConfigProperties() configInfo:"+configInfo;
+		logger.info(msg);
 		Properties props = PropertiesUtil.loadProperties(configInfo);
         ReflectUtil.modifyAllStaticVariables(clazz, (Map)props);
 	}
