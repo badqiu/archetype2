@@ -51,7 +51,7 @@ public class Constant implements EnvironmentAware,PriorityOrdered{
 		
 		public static String NACOS_SERVER_ADDR = "http://www.baidu.com";
 		public static String NACOS_NAMESPACE = "public";
-		public static String NACOS_GROUP = null;
+		public static String NACOS_GROUP = "DEFAULT_GROUP";
 	}
 	
 	//测试环境配置,此处的配置会覆盖Constant的常量配置
