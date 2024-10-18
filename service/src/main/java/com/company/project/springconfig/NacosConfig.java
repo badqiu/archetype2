@@ -10,6 +10,9 @@ import com.alibaba.nacos.api.exception.NacosException;
 import com.company.project.enums.Constant;
 import com.company.project.util.NacosConfigUtil;
 
+/**
+ * 使用nacos配置自动更新常量类 Constant的field值 
+ */
 @Configuration
 @Component
 public class NacosConfig implements InitializingBean{
