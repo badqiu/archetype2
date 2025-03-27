@@ -14,12 +14,16 @@ import maven_build.Build;
 @RestController
 @RequestMapping("/projectBuildInfo")
 public class ProjectBuildInfoController {
-
+	
+	public static Properties buildInfoProps = null;
+	
 	@GetMapping
 	public Properties buildInfo() throws Exception {
-		String buildInfoProps = ResourceUtil.getResourceAsText("/"+Build.BUILD_INFO_NAME);
-		Properties props = PropertiesUtil.loadProperties(buildInfoProps);
-		return props;
+		if(buildInfoProps == null) {
+			String buildInfoPropsText = ResourceUtil.getResourceAsText("/"+Build.BUILD_INFO_NAME);
+			buildInfoProps = PropertiesUtil.loadProperties(buildInfoPropsText);
+		}
+		return buildInfoProps;
 	}
 	
 }
