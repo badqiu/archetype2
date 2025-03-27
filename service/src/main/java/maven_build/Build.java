@@ -10,7 +10,9 @@ import org.apache.commons.lang3.time.DateFormatUtils;
 import com.github.rapid.common.util.ArgsUtil;
 
 /**
- * Build.java run on maven build you can generate some file
+ * Build.java run on maven build, 
+ * config by pom.xml plugin:exec-maven-plugin,
+ * you can generate some file.
  */
 public class Build {
 	
@@ -24,10 +26,6 @@ public class Build {
 		System.out.println("project_basedir:" + project_basedir);
 		System.out.println("args:" + params);
 		
-		System.getProperties().forEach((k,v) -> {
-			System.out.println(k+" = " + v);
-		});
-
 		Properties buildInfo = generateBuildInfo(project_version);
 		storeSaveInfoFile(project_basedir, buildInfo);
 	}
