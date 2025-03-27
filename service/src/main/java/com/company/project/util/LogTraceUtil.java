@@ -52,7 +52,7 @@ public class LogTraceUtil {
 
 	public static String newTraceId() {
 		String uuid = StringUtils.remove(UUID.randomUUID().toString(),'-');
-		String date = DateFormatUtils.format(new Date(), "yyMMddHHmmss");
+		String date = DateFormatUtils.format(new Date(), "yyyyMMddHHmmss");
 		return date + uuid + EnvironmentUtil.getActiveProfile();
 	}
 

@@ -54,6 +54,8 @@
 					<arguments>
 						<argument>--project_basedir</argument>
 						<argument>${project.basedir}</argument>
+						<argument>--project_version</argument>
+						<argument>${project.version}</argument>
 					</arguments>
 					<!-- 确保依赖在 classpath 中 -->
 					<includeProjectDependencies>true</includeProjectDependencies>

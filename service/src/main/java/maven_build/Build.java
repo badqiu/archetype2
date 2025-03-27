@@ -13,30 +13,38 @@ import com.github.rapid.common.util.ArgsUtil;
  * Build.java run on maven build you can generate some file
  */
 public class Build {
-
+	
+	public static String BUILD_INFO_NAME = "build_info.xml";
+	
 	public static void main(String[] args) throws Exception {
 		Map<String, String> params = ArgsUtil.fromArgs(args);
 		String project_basedir = params.get("project_basedir");
+		String project_version = params.get("project_version");
 		System.out.println("---------------- Build.java run on maven compile ------------------------");
 		System.out.println("project_basedir:" + project_basedir);
 		System.out.println("args:" + params);
+		
+		System.getProperties().forEach((k,v) -> {
+			System.out.println(k+" = " + v);
+		});
 
-		Properties buildInfo = generateBuildInfo();
+		Properties buildInfo = generateBuildInfo(project_version);
 		storeSaveInfoFile(project_basedir, buildInfo);
 	}
 
 	private static void storeSaveInfoFile(String project_basedir, Properties buildInfo) throws Exception {
-		File buildInfoFile = new File(project_basedir, "src/main/resources/build_info.xml");
+		File buildInfoFile = new File(project_basedir, "src/main/resources/"+BUILD_INFO_NAME);
 		FileOutputStream writer = new FileOutputStream(buildInfoFile);
-		buildInfo.storeToXML(writer, "# generate by Build.java on maven build");
+		buildInfo.storeToXML(writer, "# generate by "+Build.class.getName()+".java on maven build, config by pom.xml plugin:exec-maven-plugin");
 		writer.close();
 	}
 
-	private static Properties generateBuildInfo() throws Exception {
+	private static Properties generateBuildInfo(String projectVersion) throws Exception {
 		String buildTime = DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss");
 		Properties buildInfo = new Properties();
+		buildInfo.put("buildVersion", ""+projectVersion);
 		buildInfo.put("buildTime", buildTime);
-		buildInfo.put("buildUser", "" + System.getenv("USERNAME"));
+		buildInfo.put("buildUser", "" + System.getProperty("user.name"));
 		buildInfo.put("buildHostname", "" + InetAddress.getLocalHost().getHostName());
 		System.out.println("buildInfo:" + buildInfo);
 
