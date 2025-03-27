@@ -31,6 +31,35 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 
+			<!-- 通过运行Build.java，可以动态生成某些文件 -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<!-- 绑定到 Maven 的 generate-sources 阶段 -->
+					<execution>
+						<id>generate-files</id>
+<!-- 						<phase>generate-sources</phase> -->
+						<phase>process-classes</phase> <!-- 在编译完成后执行 -->
+						<goals>
+							<goal>java</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!-- 指定要执行的 Java 主类 -->
+					<mainClass>maven_build.Build</mainClass>
+					<!-- 可选：传递参数到 Java 程序 -->
+					<arguments>
+						<argument>--project_basedir</argument>
+						<argument>${project.basedir}</argument>
+					</arguments>
+					<!-- 确保依赖在 classpath 中 -->
+					<includeProjectDependencies>true</includeProjectDependencies>
+				</configuration>
+			</plugin>	
+			
 		</plugins>
 
 	</build>
