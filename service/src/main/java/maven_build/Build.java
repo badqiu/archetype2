@@ -38,10 +38,12 @@ public class Build {
 	}
 
 	private static Properties generateBuildInfo(String projectVersion) throws Exception {
-		String buildTime = DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss");
+		Date now = new Date();
+		String buildTime = DateFormatUtils.format(now, "yyyy-MM-dd HH:mm:ss");
 		Properties buildInfo = new Properties();
 		buildInfo.put("buildVersion", ""+projectVersion);
 		buildInfo.put("buildTime", buildTime);
+		buildInfo.put("buildTimestmap", now.getTime());
 		buildInfo.put("buildUser", "" + System.getProperty("user.name"));
 		buildInfo.put("buildHostname", "" + InetAddress.getLocalHost().getHostName());
 		System.out.println("buildInfo:" + buildInfo);
