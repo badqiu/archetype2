@@ -32,6 +32,7 @@ public class Build {
 
 	private static void storeSaveInfoFile(String project_basedir, Properties buildInfo) throws Exception {
 		File buildInfoFile = new File(project_basedir, "src/main/resources/"+BUILD_INFO_NAME);
+		System.out.println("storeSaveInfoFile() buildInfoFile:"+buildInfoFile);
 		FileOutputStream writer = new FileOutputStream(buildInfoFile);
 		buildInfo.storeToXML(writer, "# generate by "+Build.class.getName()+".java on maven build, config by pom.xml plugin:exec-maven-plugin");
 		writer.close();
