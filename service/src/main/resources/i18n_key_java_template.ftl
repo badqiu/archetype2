@@ -22,7 +22,7 @@ public class I18nKeys implements MessageSourceAware{
 		init();
 	}
 	
-	public static void init() {
+	private static void init() {
 		MessageSource ms = new I18nConfig().messageSource();
 		new I18nKeys().setMessageSource(ms);
 	}
@@ -32,7 +32,10 @@ public class I18nKeys implements MessageSourceAware{
 		messageSource = new I18nNamedMessageResolver(value);
 	}
 
-
+	private static String getNamedMessage(String code, String... keyValuePairs) {
+		return messageSource.getNamedMessage(code,keyValuePairs);
+	}
+	
 <#list i18nEnMap?keys as key>
 
 	<#assign newKey = key?replace('.', '_')?replace('-', '_')>
@@ -49,7 +52,7 @@ public class I18nKeys implements MessageSourceAware{
 	// zh_CN: ${i18nZhCNMap[key]}
 	public static String i18n_${newKey}(<#list messageParams?keys as param>String ${param}<#if param_has_next>,</#if></#list>){
 		String[] params = new String[]{<#list messageParams?keys as param>"${param}",${param}<#if param_has_next>,</#if></#list>};
-		return messageSource.getNamedMessage(i18n_${newKey},params);
+		return getNamedMessage(i18n_${newKey},params);
 	}
 </#list>
 }

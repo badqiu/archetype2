@@ -22,7 +22,7 @@ public class I18nKeys implements MessageSourceAware{
 		init();
 	}
 	
-	public static void init() {
+	private static void init() {
 		MessageSource ms = new I18nConfig().messageSource();
 		new I18nKeys().setMessageSource(ms);
 	}
@@ -32,7 +32,10 @@ public class I18nKeys implements MessageSourceAware{
 		messageSource = new I18nNamedMessageResolver(value);
 	}
 
-
+	private static String getNamedMessage(String code, String... keyValuePairs) {
+		return messageSource.getNamedMessage(code,keyValuePairs);
+	}
+	
 
 	// en: my name is {name},age:{age}
 	// zh_CN: 我的名字是{name},年龄:{age}
@@ -47,13 +50,13 @@ public class I18nKeys implements MessageSourceAware{
 	// zh_CN: 我的名字是{name},年龄:{age}
 	public static String i18n_demo_hello(String name,String age){
 		String[] params = new String[]{"name",name,"age",age};
-		return messageSource.getNamedMessage(i18n_demo_hello,params);
+		return getNamedMessage(i18n_demo_hello,params);
 	}
 
 	// en: hi:{msg}
 	// zh_CN: 你好:{msg}
 	public static String i18n_demo_echo(String msg){
 		String[] params = new String[]{"msg",msg};
-		return messageSource.getNamedMessage(i18n_demo_echo,params);
+		return getNamedMessage(i18n_demo_echo,params);
 	}
 }
