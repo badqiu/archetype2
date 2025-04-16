@@ -31,7 +31,7 @@ public class I18nJavaFileGenerator {
 		this.project_basedir = project_basedir;
 	}
 
-	public static Properties filterKeys(Properties i18nEnMap) {
+	private static Properties filterKeys(Properties i18nEnMap) {
         Properties filteredProperties = new Properties();
         for (String key : i18nEnMap.stringPropertyNames()) {
             if (key.contains("javax.validation.constraints")) {
@@ -45,12 +45,12 @@ public class I18nJavaFileGenerator {
         return filteredProperties;
     }
     
-    public static Properties loadI18nFile(String filepath) {
+    private static Properties loadI18nFile(String filepath) {
     	Properties r = PropertiesUtil.loadProperties(ResourceUtil.getResourceAsText(filepath));
     	return filterKeys(r);
     }
     
-	public void generateI18nFile() throws Exception {
+	public void generateI18nJavaFile() throws Exception {
 		
 		Properties i18nEnMap = loadI18nFile("/"+Constant.I18N_MESSAGE_SOURCE_BASENAME+".properties");
 		Properties i18nZhCNMap = loadI18nFile("/"+Constant.I18N_MESSAGE_SOURCE_BASENAME+"_zh_CN.properties");
@@ -63,13 +63,7 @@ public class I18nJavaFileGenerator {
 		Map model = new HashMap();
 		model.put("i18nEnMap", i18nEnMap);
 		model.put("i18nZhCNMap", i18nZhCNMap);
-		
-		Map i18nMessageParamMap = new HashMap();
-		i18nEnMap.forEach((key,value) -> {
-			Map params = parseI18nValueParams((String)value);
-			i18nMessageParamMap.put(key, params);
-		});
-		model.put("i18nMessageParamMap", i18nMessageParamMap);
+		model.put("i18nMessageParamMap", buildI18nMessageParamMap(i18nEnMap));
 		
 		String content = FreeMarkerTemplateUtils.processTemplateIntoString(template, model);
 		
@@ -77,8 +71,18 @@ public class I18nJavaFileGenerator {
 		System.out.println("generatei18nFile() file:"+i18nFile);
 		FileUtils.writeStringToFile(i18nFile, content,"UTF-8");
 	}
+
+
+	private Map buildI18nMessageParamMap(Properties i18nEnMap) {
+		Map i18nMessageParamMap = new HashMap();
+		i18nEnMap.forEach((key,value) -> {
+			Map params = parseI18nMessageParams((String)value);
+			i18nMessageParamMap.put(key, params);
+		});
+		return i18nMessageParamMap;
+	}
 	
-    public static Map<String, String> parseI18nValueParams(String input) {
+    public static Map<String, String> parseI18nMessageParams(String input) {
     	if(StringUtils.isBlank(input)) {
     		return new HashMap();
     	}

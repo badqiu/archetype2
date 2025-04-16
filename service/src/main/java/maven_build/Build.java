@@ -44,7 +44,7 @@ public class Build {
 	
 	public void generateAll() throws Exception {
 		generateBuildInfoFile();
-		new I18nJavaFileGenerator(project_basedir).generateI18nFile();
+		new I18nJavaFileGenerator(project_basedir).generateI18nJavaFile();
 	}
 
 	private void generateBuildInfoFile() throws Exception {
