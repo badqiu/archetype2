@@ -13,9 +13,12 @@ public class I18nKeysTest {
 	}
     
 	@Test
-	public void test_i18n_javax_validation_constraints_DecimalMax_message() {
-		String value = I18nKeys.i18n_javax_validation_constraints_DecimalMax_message("100");
-		System.out.println(value);
+	public void test_i18n_demo_hello() {
+		String i18n_demo_hello = I18nKeys.i18n_demo_hello("tiger","100");
+		System.out.println(i18n_demo_hello);
+		
+		String i18n_demo_echo = I18nKeys.i18n_demo_echo(null);
+		System.out.println(i18n_demo_echo);
 	}
 
 }

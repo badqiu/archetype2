@@ -50,10 +50,29 @@ public class Build {
 		project_version = params.get("project_version");
 	}
 
+    public static Properties filterKeys(Properties i18nEnMap) {
+        Properties filteredProperties = new Properties();
+        for (String key : i18nEnMap.stringPropertyNames()) {
+            if (key.contains("javax.validation.constraints")) {
+                continue;
+            }
+            if (key.contains("org.hibernate.validator.constraints")) {
+                continue;
+            }
+            filteredProperties.setProperty(key, i18nEnMap.getProperty(key));
+        }
+        return filteredProperties;
+    }
+    
+    public static Properties loadI18nFile(String filepath) {
+    	Properties r = PropertiesUtil.loadProperties(ResourceUtil.getResourceAsText(filepath));
+    	return filterKeys(r);
+    }
+    
 	private void generateI18nFile() throws Exception {
 		
-		Properties i18nEnMap = PropertiesUtil.loadProperties(ResourceUtil.getResourceAsText("/"+Constant.I18N_MESSAGE_SOURCE_BASENAME+".properties"));
-		Properties i18nZhCNMap = PropertiesUtil.loadProperties(ResourceUtil.getResourceAsText("/"+Constant.I18N_MESSAGE_SOURCE_BASENAME+"_zh_CN.properties"));
+		Properties i18nEnMap = loadI18nFile("/"+Constant.I18N_MESSAGE_SOURCE_BASENAME+".properties");
+		Properties i18nZhCNMap = loadI18nFile("/"+Constant.I18N_MESSAGE_SOURCE_BASENAME+"_zh_CN.properties");
 		
 //		System.out.println("i18nZhCNMap:"+i18nZhCNMap);
 		

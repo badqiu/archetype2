@@ -32,7 +32,7 @@ public class Constant implements EnvironmentAware,PriorityOrdered{
 	
 	public static String APP_NAME = "demoproject Application";
 	
-	public static final String I18N_MESSAGE_SOURCE_BASENAME = "ValidationMessages";
+	public static final String I18N_MESSAGE_SOURCE_BASENAME = "message";
 	
 	public static final String LOGGER_MDC_CONTEXT_INFO = "contextInfo";
 
