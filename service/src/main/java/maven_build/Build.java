@@ -16,6 +16,7 @@ import org.apache.commons.lang3.time.DateFormatUtils;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
+import com.company.project.enums.Constant;
 import com.github.rapid.common.util.ArgsUtil;
 import com.github.rapid.common.util.PropertiesUtil;
 import com.github.rapid.common.util.ResourceUtil;
@@ -51,8 +52,8 @@ public class Build {
 
 	private void generateI18nFile() throws Exception {
 		
-		Properties i18nEnMap = PropertiesUtil.loadProperties(ResourceUtil.getResourceAsText("/ValidationMessages.properties"));
-		Properties i18nZhCNMap = PropertiesUtil.loadProperties(ResourceUtil.getResourceAsText("/ValidationMessages_zh_CN.properties"));
+		Properties i18nEnMap = PropertiesUtil.loadProperties(ResourceUtil.getResourceAsText("/"+Constant.I18N_MESSAGE_SOURCE_BASENAME+".properties"));
+		Properties i18nZhCNMap = PropertiesUtil.loadProperties(ResourceUtil.getResourceAsText("/"+Constant.I18N_MESSAGE_SOURCE_BASENAME+"_zh_CN.properties"));
 		
 //		System.out.println("i18nZhCNMap:"+i18nZhCNMap);
 		
@@ -63,12 +64,12 @@ public class Build {
 		model.put("i18nEnMap", i18nEnMap);
 		model.put("i18nZhCNMap", i18nZhCNMap);
 		
-		Map i18nValueParams = new HashMap();
+		Map i18nMessageParamMap = new HashMap();
 		i18nEnMap.forEach((key,value) -> {
 			Map params = parseI18nValueParams((String)value);
-			i18nValueParams.put(key, params);
+			i18nMessageParamMap.put(key, params);
 		});
-		model.put("i18nValueParams", i18nValueParams);
+		model.put("i18nMessageParamMap", i18nMessageParamMap);
 		
 		String content = FreeMarkerTemplateUtils.processTemplateIntoString(template, model);
 		
