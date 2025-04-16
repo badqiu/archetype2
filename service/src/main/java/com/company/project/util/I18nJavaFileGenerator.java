@@ -74,7 +74,7 @@ public class I18nJavaFileGenerator {
 		String content = FreeMarkerTemplateUtils.processTemplateIntoString(template, model);
 		
 		File i18nFile = new File(project_basedir,outputJavaFilePath);
-		System.out.println("generatei18nFile() file:"+i18nFile);
+		System.out.println("generateI18nJavaFile() file:"+i18nFile);
 		FileUtils.writeStringToFile(i18nFile, content,"UTF-8");
 	}
 

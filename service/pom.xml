@@ -26,7 +26,7 @@
 				<artifactId>exec-maven-plugin</artifactId>
 				<version>3.1.0</version>
 				<executions>
-					<!-- 绑定到 Maven 的 generate-sources 阶段 -->
+					<!-- 绑定到 Maven 的 generate-sources 阶段   -->
 					<execution>
 						<id>generate-files</id>
 <!-- 						<phase>generate-sources</phase> -->
