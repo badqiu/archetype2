@@ -37,7 +37,7 @@ public class Build {
 	public static void main(String[] args) throws Exception {
 		Build build = new Build(args);
 		build.generateBuildInfoFile(args);
-		build.generatei18nFile();
+		build.generateI18nFile();
 	}
 	
 	public Build(String[] args) {
@@ -46,7 +46,7 @@ public class Build {
 		project_version = params.get("project_version");
 	}
 
-	private void generatei18nFile() throws Exception {
+	private void generateI18nFile() throws Exception {
 		
 		Properties i18nEnMap = PropertiesUtil.loadProperties(ResourceUtil.getResourceAsText("/ValidationMessages.properties"));
 		Properties i18nZhCNMap = PropertiesUtil.loadProperties(ResourceUtil.getResourceAsText("/ValidationMessages_zh_CN.properties"));
