@@ -21,8 +21,8 @@ import com.github.rapid.common.util.ArgsUtil;
 public class Build {
 	
 	public static String BUILD_INFO_XML_FILE = "src/main/resources/build_info.xml";
-	
-	
+	public static String I18N_KEYS_JAVA_FILE = "src/main/java/generated/I18nKeys.java";
+	private static String I18N_SOURCE_TEMPLATE_FILE = "/i18n_key_java_template.ftl";
 	String project_basedir;
 	String project_version;
 	Map<String, String> params;
@@ -44,7 +44,7 @@ public class Build {
 	
 	public void generateAll() throws Exception {
 		generateBuildInfoFile();
-		new I18nJavaFileGenerator(project_basedir).generateI18nJavaFile();
+		new I18nJavaFileGenerator(project_basedir,I18N_SOURCE_TEMPLATE_FILE,I18N_KEYS_JAVA_FILE).generateI18nJavaFile();
 	}
 
 	private void generateBuildInfoFile() throws Exception {

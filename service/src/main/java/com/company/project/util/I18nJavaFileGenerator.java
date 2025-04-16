@@ -21,14 +21,19 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 
 public class I18nJavaFileGenerator {
-	public static String I18N_KEYS_JAVA_FILE = "src/main/java/generated/I18nKeys.java";
 	
 	private String project_basedir;
+	private String outputJavaFilePath;
+	private String sourceTemplateFile;
 	
 	
-    public I18nJavaFileGenerator(String project_basedir) {
+    public I18nJavaFileGenerator(String project_basedir,String sourceTemplateFile, String outputJavaFilePath) {
     	Assert.hasText(project_basedir,"project_basedir must be not blank");
+    	Assert.hasText(sourceTemplateFile,"sourceTemplateFile must be not blank");
+    	Assert.hasText(outputJavaFilePath,"outputJavaFilePath must be not blank");
 		this.project_basedir = project_basedir;
+		this.outputJavaFilePath = outputJavaFilePath;
+		this.sourceTemplateFile  = sourceTemplateFile;
 	}
 
 	private static Properties filterKeys(Properties i18nEnMap) {
@@ -58,16 +63,17 @@ public class I18nJavaFileGenerator {
 //		System.out.println("i18nZhCNMap:"+i18nZhCNMap);
 		
 		Configuration cfg = new Configuration();
-		String templateStr = ResourceUtil.getResourceAsText("/i18n_key_java_template.ftl");
+		String templateStr = ResourceUtil.getResourceAsText(sourceTemplateFile);
 		Template template = new Template("i18n_key_java_template",new StringReader(templateStr),cfg);
 		Map model = new HashMap();
+		model.put("sourceTemplateFile", sourceTemplateFile);
 		model.put("i18nEnMap", i18nEnMap);
 		model.put("i18nZhCNMap", i18nZhCNMap);
 		model.put("i18nMessageParamMap", buildI18nMessageParamMap(i18nEnMap));
 		
 		String content = FreeMarkerTemplateUtils.processTemplateIntoString(template, model);
 		
-		File i18nFile = new File(project_basedir,I18N_KEYS_JAVA_FILE);
+		File i18nFile = new File(project_basedir,outputJavaFilePath);
 		System.out.println("generatei18nFile() file:"+i18nFile);
 		FileUtils.writeStringToFile(i18nFile, content,"UTF-8");
 	}
