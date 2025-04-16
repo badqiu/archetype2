@@ -39,17 +39,21 @@ public class I18nKeys implements MessageSourceAware{
 <#list i18nEnMap?keys as key>
 
 	<#assign newKey = key?replace('.', '_')?replace('-', '_')>
-	// en: ${i18nEnMap[key]}
-	// zh_CN: ${i18nZhCNMap[key]}
-	public static String i18n_${newKey} = "${key}";
+	/**
+	* en: ${i18nEnMap[key]} <br/>
+	* zh_CN: ${i18nZhCNMap[key]}
+	*/
+	private static String i18n_${newKey} = "${key}";
 </#list>
 
 <#list i18nEnMap?keys as key>
 
 	<#assign newKey = key?replace('.', '_')?replace('-', '_')>
 	<#assign messageParams = i18nMessageParamMap[key]>
-	// en: ${i18nEnMap[key]}
-	// zh_CN: ${i18nZhCNMap[key]}
+	/**
+	* en: ${i18nEnMap[key]} <br/>
+	* zh_CN: ${i18nZhCNMap[key]}
+	*/
 	public static String i18n_${newKey}(<#list messageParams?keys as param>String ${param}<#if param_has_next>,</#if></#list>){
 		String[] params = new String[]{<#list messageParams?keys as param>"${param}",${param}<#if param_has_next>,</#if></#list>};
 		return getNamedMessage(i18n_${newKey},params);

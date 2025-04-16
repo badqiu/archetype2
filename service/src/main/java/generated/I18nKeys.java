@@ -37,24 +37,32 @@ public class I18nKeys implements MessageSourceAware{
 	}
 	
 
-	// en: my name is {name},age:{age}
-	// zh_CN: 我的名字是{name},年龄:{age}
-	public static String i18n_demo_hello = "demo.hello";
+	/**
+	* en: my name is {name},age:{age} <br/>
+	* zh_CN: 我的名字是{name},年龄:{age}
+	*/
+	private static String i18n_demo_hello = "demo.hello";
 
-	// en: hi:{msg}
-	// zh_CN: 你好:{msg}
-	public static String i18n_demo_echo = "demo.echo";
+	/**
+	* en: hi:{msg} <br/>
+	* zh_CN: 你好:{msg}
+	*/
+	private static String i18n_demo_echo = "demo.echo";
 
 
-	// en: my name is {name},age:{age}
-	// zh_CN: 我的名字是{name},年龄:{age}
+	/**
+	* en: my name is {name},age:{age} <br/>
+	* zh_CN: 我的名字是{name},年龄:{age}
+	*/
 	public static String i18n_demo_hello(String name,String age){
 		String[] params = new String[]{"name",name,"age",age};
 		return getNamedMessage(i18n_demo_hello,params);
 	}
 
-	// en: hi:{msg}
-	// zh_CN: 你好:{msg}
+	/**
+	* en: hi:{msg} <br/>
+	* zh_CN: 你好:{msg}
+	*/
 	public static String i18n_demo_echo(String msg){
 		String[] params = new String[]{"msg",msg};
 		return getNamedMessage(i18n_demo_echo,params);

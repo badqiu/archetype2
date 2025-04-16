@@ -8,8 +8,8 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.MessageSourceAware;
 import org.springframework.context.NoSuchMessageException;
 import org.springframework.context.i18n.LocaleContextHolder;
-import org.springframework.stereotype.Component;
 
+import com.alibaba.nacos.common.utils.MapUtils;
 import com.github.rapid.common.util.MapUtil;
 
 public class I18nNamedMessageResolver implements MessageSourceAware {
@@ -47,6 +47,10 @@ public class I18nNamedMessageResolver implements MessageSourceAware {
     }
 
     private String replaceNamedParameters(String message, Map<String, Object> namedParams) {
+    	if(MapUtils.isEmpty(namedParams)) {
+    		return message;
+    	}
+    	
         Matcher matcher = PARAMETER_PATTERN.matcher(message);
         StringBuffer sb = new StringBuffer();
         while (matcher.find()) {
