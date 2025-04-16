@@ -8,11 +8,14 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.github.rapid.common.util.ArgsUtil;
 import com.github.rapid.common.util.PropertiesUtil;
 import com.github.rapid.common.util.ResourceUtil;
@@ -59,12 +62,44 @@ public class Build {
 		Map model = new HashMap();
 		model.put("i18nEnMap", i18nEnMap);
 		model.put("i18nZhCNMap", i18nZhCNMap);
+		
+		Map i18nValueParams = new HashMap();
+		i18nEnMap.forEach((key,value) -> {
+			Map params = parseI18nValueParams((String)value);
+			i18nValueParams.put(key, params);
+		});
+		model.put("i18nValueParams", i18nValueParams);
+		
 		String content = FreeMarkerTemplateUtils.processTemplateIntoString(template, model);
 		
 		File i18nFile = new File(project_basedir,I18N_KEYS_JAVA_FILE);
 		System.out.println("generatei18nFile() file:"+i18nFile);
 		FileUtils.writeStringToFile(i18nFile, content,"UTF-8");
 	}
+	
+    public static Map<String, String> parseI18nValueParams(String input) {
+    	if(StringUtils.isBlank(input)) {
+    		return new HashMap();
+    	}
+    	
+        Map<String, String> result = new HashMap<>();
+        // 定义正则表达式来匹配所有 {参数名} 格式的字符串
+        Pattern pattern = Pattern.compile("\\{([^}]+)\\}");
+        Matcher matcher = pattern.matcher(input);
+
+        while (matcher.find()) {
+            String paramName = matcher.group(1);
+            // 假设参数值紧跟在 } 后面，以空格分隔
+            int startIndex = matcher.end();
+            int endIndex = input.indexOf(" ", startIndex);
+            if (endIndex == -1) {
+                endIndex = input.length();
+            }
+            String paramValue = input.substring(startIndex, endIndex);
+            result.put(paramName, paramValue);
+        }
+        return result;
+    }
 
 	private void generateBuildInfoFile(String[] args) throws Exception {
 		System.out.println("---------------- Build.java run on maven compile ------------------------");
