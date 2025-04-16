@@ -20,7 +20,7 @@ public class ProjectBuildInfoController {
 	@GetMapping
 	public Properties buildInfo() throws Exception {
 		if(buildInfoProps == null) {
-			String buildInfoPropsText = ResourceUtil.getResourceAsText("/"+Build.BUILD_INFO_NAME);
+			String buildInfoPropsText = ResourceUtil.getResourceAsText("/"+Build.BUILD_INFO_XML_FILE);
 			buildInfoProps = PropertiesUtil.loadProperties(buildInfoPropsText);
 		}
 		return buildInfoProps;
