@@ -4,6 +4,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.MessageSourceAware;
 import org.springframework.stereotype.Component;
 
+import com.company.project.springconfig.I18nConfig;
 import com.company.project.util.I18nNamedMessageResolver;
 
 //
@@ -15,7 +16,16 @@ import com.company.project.util.I18nNamedMessageResolver;
 public class I18nKeys implements MessageSourceAware{
 
 	public static I18nNamedMessageResolver messageSource;
-
+	
+	static {
+		init();
+	}
+	
+	public static void init() {
+		MessageSource ms = new I18nConfig().messageSource();
+		new I18nKeys().setMessageSource(ms);
+	}
+	
 	@Override
 	public void setMessageSource(MessageSource value) {
 		messageSource = new I18nNamedMessageResolver(value);

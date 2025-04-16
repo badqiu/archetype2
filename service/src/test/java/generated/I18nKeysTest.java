@@ -3,13 +3,13 @@ package generated;
 import org.junit.Test;
 import org.springframework.context.MessageSource;
 
-import com.company.project.springconfig.ValidatorConfig;
+import com.company.project.springconfig.I18nConfig;
 
 public class I18nKeysTest {
 
 	public I18nKeysTest() {
-		MessageSource ms = new ValidatorConfig().validationMessageSource();
-		new I18nKeys().setMessageSource(ms);
+//		MessageSource ms = new I18nConfig().messageSource();
+//		new I18nKeys().setMessageSource(ms);
 	}
     
 	@Test
