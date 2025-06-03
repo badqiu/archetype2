@@ -147,11 +147,11 @@
 		    <version>3.5.12</version> <!-- 与主版本一致 -->
 		</dependency>		
 		<!-- 处理mybatis-plus不支持联合主键的问题 -->
-<!--		<dependency>-->
-<!--			<groupId>com.github.jeffreyning</groupId>-->
-<!--			<artifactId>mybatisplus-plus</artifactId>-->
-<!--			<version>1.7.5-RELEASE</version>-->
-<!--		</dependency>-->
+		<dependency>
+			<groupId>com.github.jeffreyning</groupId>
+			<artifactId>mybatisplus-plus</artifactId>
+			<version>1.7.5-RELEASE</version>
+		</dependency>
 		<!-- 
 	    mybatis支持多数据源: https://baomidou.com/guides/dynamic-datasource/ 
 	    数据源配置建议在Mapper interface上 @DS("dataSourceName")

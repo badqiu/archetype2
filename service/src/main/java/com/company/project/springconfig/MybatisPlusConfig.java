@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Configuration;
 
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
+import com.github.jeffreyning.mybatisplus.conf.EnableKeyGen;
+import com.github.jeffreyning.mybatisplus.conf.EnableMPP;
 //import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 //import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 //import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
@@ -37,13 +39,13 @@ import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerIntercept
 * @since 2019-11-06
 *
 */
-@MapperScan(basePackages="com.company.project.mapper")
+//@MapperScan(basePackages="com.company.project.mapper")
 //@EnableConfigurationProperties(MybatisPlusProperties.class)
 @Configuration
 
 //下面两个支持联合主键，并且需要Mapper继承 extends MppBaseMapper
-//@EnableMPP
-//@EnableKeyGen
+@EnableMPP
+@EnableKeyGen
 public class MybatisPlusConfig {
 //	
 //	@Autowired
