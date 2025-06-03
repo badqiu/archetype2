@@ -45,7 +45,7 @@ echo "----------------------------------------------"
 # 进入目录执行操作
 cd target/generated-sources/archetype
 mvn clean
-mvn install deploy
+mvn install
 cd ../../../
 
 echo "----------------------------------------------"
