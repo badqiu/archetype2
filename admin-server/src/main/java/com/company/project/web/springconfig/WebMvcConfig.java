@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import com.github.rapid.common.json.jackson.BigintToStringSerializer;
-import com.github.rapid.common.web.mvc.ConventionRequestMappingHandlerMapping;
+import com.github.rapid.common.web.mvc.annotation.AutoMethod2PathAnnotationHandlerMapping;
 
 
 /**
@@ -105,7 +105,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 	@Override
 	protected RequestMappingHandlerMapping createRequestMappingHandlerMapping() {
 		// controller映射加强, 自动映射: @RequestMapping  stop()  => /stop
-		return new ConventionRequestMappingHandlerMapping();
+		return new AutoMethod2PathAnnotationHandlerMapping();
 	}
 
 	@Override
