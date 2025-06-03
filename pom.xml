@@ -10,7 +10,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.4.1</version>
+		<version>3.2.5</version>
 		<relativePath/>
 	</parent>
 
@@ -47,14 +47,16 @@
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
-				<version>1.7.36</version>
+				<version>2.0.13</version>
 			</dependency>
 			
+			<!--
 			<dependency>
 				<groupId>com.alibaba</groupId>
 				<artifactId>druid-spring-boot-starter</artifactId>
 				<version>1.2.20</version>
 			</dependency>
+-->
 
 			<dependency>
 				<groupId>com.github.rapid.common</groupId>
@@ -105,12 +107,14 @@
 			</dependency>
 
 			<!-- rapid generator begn -->
+			<!--
 			<dependency>
 				<groupId>com.googlecode.rapid-framework</groupId>
 				<artifactId>rapid-generator</artifactId>
 				<version>4.0.2</version>
 				<scope>test</scope>
 			</dependency>
+			
 
 			<dependency>
 				<groupId>com.googlecode.rapid-framework</groupId>
@@ -118,6 +122,7 @@
 				<version>4.0.2</version>
 				<scope>test</scope>
 			</dependency>
+-->
 			<!-- rapid generator end -->
 
 
@@ -204,11 +209,13 @@
 
 
 			<!-- excel -->
+			<!--
 			<dependency>
 				<groupId>com.alibaba</groupId>
 				<artifactId>easyexcel</artifactId>
 				<version>3.3.4</version>
 			</dependency>
+			-->
 
 
 			<!-- jdbc drivers begin -->
@@ -226,6 +233,7 @@
 			<!-- jdbc drivers end -->
 
 			<!-- shiro security begin -->
+			<!--
 			<dependency>
 				<groupId>org.apache.shiro</groupId>
 				<artifactId>shiro-core</artifactId>
@@ -241,6 +249,7 @@
 				<artifactId>shiro-web</artifactId>
 				<version>${shiro.version}</version>
 			</dependency>
+			-->
 			<!-- shiro security end -->
 
 		</dependencies>

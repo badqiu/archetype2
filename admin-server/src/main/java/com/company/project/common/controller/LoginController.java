@@ -1,7 +1,5 @@
 package com.company.project.common.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +10,7 @@ import com.company.project.util.security.LoginUser;
 import com.company.project.util.security.SpringActionSecurityUtil;
 
 import io.swagger.annotations.Api;
+import jakarta.servlet.http.HttpServletRequest;
 
 @Api("登录，登出 API")
 @RestController

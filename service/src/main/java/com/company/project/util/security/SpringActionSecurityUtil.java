@@ -1,9 +1,9 @@
 package com.company.project.util.security;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 public class SpringActionSecurityUtil extends ActionSecurityUtil {
 	

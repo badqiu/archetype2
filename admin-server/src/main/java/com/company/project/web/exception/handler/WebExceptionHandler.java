@@ -4,11 +4,6 @@ import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
-
-import javax.validation.ConstraintViolation;
-import javax.validation.ConstraintViolationException;
-import javax.validation.Path;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
@@ -23,8 +18,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.company.project.dto.RestResult;
 import com.company.project.enums.Constant;
+import com.company.project.web.exception.handler.WebExceptionHandler.ConstraintViolationUtil;
 
 import io.swagger.annotations.ApiModelProperty;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolationException;
+import jakarta.validation.Path;
 
 /**
  * 统一异常处理

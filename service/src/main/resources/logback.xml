@@ -23,7 +23,7 @@
     
     <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径 -->
     <property name="LOG_APP_NAME" value="demoproject" />
-    <property name="LOG_PATH" value="/logs/${LOG_APP_NAME}" />
+    <property name="LOG_PATH" value="/data/logs/${LOG_APP_NAME}" />
     <property name="LOG_MAX_HISTORY_DAYS" value="10" />
     <property name="LOG_MAX_HISTORY_HOURS" value="96" />
     <property name="COMMON_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %X{traceId} [%thread] level_%level logger_%logger{36} %X{contextInfo} - %msg%n" />

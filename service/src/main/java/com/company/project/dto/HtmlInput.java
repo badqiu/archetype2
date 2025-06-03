@@ -2,10 +2,6 @@ package com.company.project.dto;
 
 import java.lang.reflect.Field;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-
 import io.swagger.annotations.ApiModelProperty;
 
 /**
@@ -95,8 +91,8 @@ public class HtmlInput {
 		input.setName(field.getName());
 		input.setDataType(field.getType().getSimpleName().toLowerCase());
 		
-		if(field.isAnnotationPresent(NotNull.class) || field.isAnnotationPresent(NotBlank.class) || field.isAnnotationPresent(NotEmpty.class)) {
-			input.setRequired(true);
-		}
+//		if(field.isAnnotationPresent(NotNull.class) || field.isAnnotationPresent(NotBlank.class) || field.isAnnotationPresent(NotEmpty.class)) {
+//			input.setRequired(true);
+//		}
 	}
 }
