@@ -15,15 +15,14 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
-import com.company.project.web.mvc.AutoMethod2UriRequestMappingHandlerMapping;
 import com.fasterxml.jackson.core.JsonParser.Feature;
-import com.fasterxml.jackson.core.json.JsonReadFeature;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import com.github.rapid.common.json.jackson.BigintToStringSerializer;
+import com.github.rapid.common.web.mvc.ConventionRequestMappingHandlerMapping;
 
 
 /**
@@ -40,7 +39,7 @@ import com.github.rapid.common.json.jackson.BigintToStringSerializer;
  * @date 2019年7月11日
  *
  */
-//@Configuration
+@Configuration
 public class WebMvcConfig extends WebMvcConfigurationSupport {
 
 	private static Logger logger = LoggerFactory.getLogger(WebMvcConfig.class);
@@ -106,7 +105,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 	@Override
 	protected RequestMappingHandlerMapping createRequestMappingHandlerMapping() {
 		// controller映射加强, 自动映射: @RequestMapping  stop()  => /stop
-		return new AutoMethod2UriRequestMappingHandlerMapping();
+		return new ConventionRequestMappingHandlerMapping();
 	}
 
 	@Override

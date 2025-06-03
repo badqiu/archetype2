@@ -4,6 +4,7 @@ import org.springframework.boot.validation.MessageInterpolatorFactory;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 import com.github.rapid.common.util.holder.BeanValidatorHolder;
@@ -14,6 +15,7 @@ import jakarta.validation.Validator;
 public class ValidatorConfig {
 
     @Bean
+    @Primary
     public Validator validator(MessageSource messageSource) {
         LocalValidatorFactoryBean factoryBean = new LocalValidatorFactoryBean();
         MessageInterpolatorFactory interpolatorFactory = new MessageInterpolatorFactory();

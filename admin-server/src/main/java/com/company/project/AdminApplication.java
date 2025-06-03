@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -18,8 +19,8 @@ import com.company.project.util.EnvironmentUtil;
 	// scanBasePackageClasses =
 	// scanBasePackages =
 	// exclude =
+	exclude = {DataSourceAutoConfiguration.class}
 )
-
 @ServletComponentScan // @WebServlet、@WebFilter、@WebListener等生效
 @EnableAsync // @Async 标注生效
 @EnableScheduling //@Scheduled 标注生效
