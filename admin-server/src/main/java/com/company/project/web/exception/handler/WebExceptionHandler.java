@@ -18,9 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.company.project.dto.RestResult;
 import com.company.project.enums.Constant;
-import com.company.project.web.exception.handler.WebExceptionHandler.ConstraintViolationUtil;
 
-import io.swagger.annotations.ApiModelProperty;
+//import io.swagger.annotations.ApiModelProperty;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Path;
@@ -87,41 +86,41 @@ public class WebExceptionHandler implements InitializingBean{
 //		.collect( Collectors.joining( ", " ) );
 		
 		Map errMap = new HashMap();
-		constraintViolations.forEach( row -> { 
-			errMap.put(ConstraintViolationUtil.getPropertyPathName(row), row.getPropertyPath().toString() + " " + row.getMessage());
-		});
-		
+//		constraintViolations.forEach( row -> { 
+//			errMap.put(ConstraintViolationUtil.getPropertyPathName(row), row.getPropertyPath().toString() + " " + row.getMessage());
+//		});
+//		
 		RestResult r =  errorMap(e,errMap.toString());
 		r.data(errMap);
 		return r;
     }
     
-    static class ConstraintViolationUtil {
-	    private static String getPropertyPathName(ConstraintViolation<?> row) {
-	    	ApiModelProperty amp = getFieldApiModelPropertyAnnotation(row);
-	    	if(amp == null) {
-	    		return row.getPropertyPath().toString();
-	    	}
-	    	return amp.value();
-		}
-	    
-		private static ApiModelProperty getFieldApiModelPropertyAnnotation(ConstraintViolation<?> row) {
-			Field field = null;
-			try {
-				Path propertyPath = row.getPropertyPath();
-				String fieldName = propertyPath.toString();
-				field = row.getRootBeanClass().getDeclaredField(fieldName);
-			} catch (NoSuchFieldException e1) {
-				e1.printStackTrace();
-				return null;
-			} catch (SecurityException e1) {
-				e1.printStackTrace();
-				return null;
-			}
-			ApiModelProperty amp = field.getAnnotation(ApiModelProperty.class);
-			return amp;
-		}
-    }
+//    static class ConstraintViolationUtil {
+//	    private static String getPropertyPathName(ConstraintViolation<?> row) {
+//	    	ApiModelProperty amp = getFieldApiModelPropertyAnnotation(row);
+//	    	if(amp == null) {
+//	    		return row.getPropertyPath().toString();
+//	    	}
+//	    	return amp.value();
+//		}
+//	    
+//		private static ApiModelProperty getFieldApiModelPropertyAnnotation(ConstraintViolation<?> row) {
+//			Field field = null;
+//			try {
+//				Path propertyPath = row.getPropertyPath();
+//				String fieldName = propertyPath.toString();
+//				field = row.getRootBeanClass().getDeclaredField(fieldName);
+//			} catch (NoSuchFieldException e1) {
+//				e1.printStackTrace();
+//				return null;
+//			} catch (SecurityException e1) {
+//				e1.printStackTrace();
+//				return null;
+//			}
+//			ApiModelProperty amp = field.getAnnotation(ApiModelProperty.class);
+//			return amp;
+//		}
+//    }
 
 	@Override
 	public void afterPropertiesSet() throws Exception {

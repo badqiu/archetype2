@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.company.project.util.security.LoginUser;
 import com.company.project.util.security.SpringActionSecurityUtil;
 
-import io.swagger.annotations.Api;
+//import io.swagger.annotations.Api;
 import jakarta.servlet.http.HttpServletRequest;
 
-@Api("登录，登出 API")
+//@Api("登录，登出 API")
 @RestController
 @RequestMapping("/login")
 public class LoginController {

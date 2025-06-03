@@ -30,52 +30,52 @@ import com.company.project.AdminApplication;
 import com.company.project.enums.Constant;
 import com.google.common.collect.Lists;
 
-import springfox.documentation.builders.ApiInfoBuilder;
-import springfox.documentation.builders.PathSelectors;
-import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.oas.annotations.EnableOpenApi;
-import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.ApiKey;
-import springfox.documentation.service.ResponseMessage;
-import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spring.web.plugins.Docket;
+//import springfox.documentation.builders.ApiInfoBuilder;
+//import springfox.documentation.builders.PathSelectors;
+//import springfox.documentation.builders.RequestHandlerSelectors;
+//import springfox.documentation.oas.annotations.EnableOpenApi;
+//import springfox.documentation.service.ApiInfo;
+//import springfox.documentation.service.ApiKey;
+//import springfox.documentation.service.ResponseMessage;
+//import springfox.documentation.spi.DocumentationType;
+//import springfox.documentation.spring.web.plugins.Docket;
 
 @Configuration
-@EnableOpenApi
+//@EnableOpenApi
 public class SwaggerDocConfig {
 	
-    @Bean
-    public Docket createRestApi() {
+//    @Bean
+//    public Docket createRestApi() {
+//
+//        List<ResponseMessage> responseMessageList = new ArrayList<>();
+////        responseMessageList.add(new ResponseMessageBuilder().code(HttpCodeEnum.SERVER_ERROR.getCode()).message(HttpCodeEnum.SERVER_ERROR.getMessage()).build());
+//
+//
+//        return new Docket(DocumentationType.SWAGGER_2)
+//                .globalResponseMessage(RequestMethod.GET, responseMessageList)
+//                .globalResponseMessage(RequestMethod.POST, responseMessageList)
+//                .globalResponseMessage(RequestMethod.PUT, responseMessageList)
+//                .globalResponseMessage(RequestMethod.DELETE, responseMessageList)
+//
+//                .enable(Constant.SWAGGER_API_DOC_ENABLE)
+//                .apiInfo(apiInfo())
+//                .select()
+//                .apis(RequestHandlerSelectors.basePackage(AdminApplication.class.getPackage().getName()))
+//                .paths(PathSelectors.any())
+//                .build()
+//                .securitySchemes(Lists.newArrayList(apiKey()));
+//
+//    }
+//
+//    private ApiInfo apiInfo() {
+//        return new ApiInfoBuilder()
+//                .title("demoproject api")
+//                .version("1.0")
+//                .build();
+//    }
 
-        List<ResponseMessage> responseMessageList = new ArrayList<>();
-//        responseMessageList.add(new ResponseMessageBuilder().code(HttpCodeEnum.SERVER_ERROR.getCode()).message(HttpCodeEnum.SERVER_ERROR.getMessage()).build());
-
-
-        return new Docket(DocumentationType.SWAGGER_2)
-                .globalResponseMessage(RequestMethod.GET, responseMessageList)
-                .globalResponseMessage(RequestMethod.POST, responseMessageList)
-                .globalResponseMessage(RequestMethod.PUT, responseMessageList)
-                .globalResponseMessage(RequestMethod.DELETE, responseMessageList)
-
-                .enable(Constant.SWAGGER_API_DOC_ENABLE)
-                .apiInfo(apiInfo())
-                .select()
-                .apis(RequestHandlerSelectors.basePackage(AdminApplication.class.getPackage().getName()))
-                .paths(PathSelectors.any())
-                .build()
-                .securitySchemes(Lists.newArrayList(apiKey()));
-
-    }
-
-    private ApiInfo apiInfo() {
-        return new ApiInfoBuilder()
-                .title("demoproject api")
-                .version("1.0")
-                .build();
-    }
-
-    private ApiKey apiKey() {
-        return new ApiKey("Authorization", "token_username", "header");
-    }
+//    private ApiKey apiKey() {
+//        return new ApiKey("Authorization", "token_username", "header");
+//    }
 
 }

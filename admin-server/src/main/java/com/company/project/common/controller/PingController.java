@@ -22,7 +22,7 @@ import com.company.project.util.security.LoginUser;
 import com.company.project.util.security.SpringActionSecurityUtil;
 import com.github.rapid.common.util.ThreadUtil;
 
-import io.swagger.annotations.Api;
+//import io.swagger.annotations.Api;
 
 /**
  * 检查服务是否正常
@@ -30,7 +30,7 @@ import io.swagger.annotations.Api;
  * @author dqiu
  *
  */
-@Api("系统测试 API")
+//@Api("系统测试 API")
 @RestController
 @RequestMapping("/ping")
 public class PingController extends BaseController {

@@ -40,7 +40,7 @@ import com.github.rapid.common.json.jackson.BigintToStringSerializer;
  * @date 2019年7月11日
  *
  */
-@Configuration
+//@Configuration
 public class WebMvcConfig extends WebMvcConfigurationSupport {
 
 	private static Logger logger = LoggerFactory.getLogger(WebMvcConfig.class);

@@ -2,7 +2,7 @@ package com.company.project.dto;
 
 import java.lang.reflect.Field;
 
-import io.swagger.annotations.ApiModelProperty;
+//import io.swagger.annotations.ApiModelProperty;
 
 /**
  * 返回给前端的输入字段
@@ -71,21 +71,21 @@ public class HtmlInput {
 				+ ", example=" + example + ", required=" + required + "]";
 	}
 	
-	public static HtmlInput from(ApiModelProperty mp,Field field) {
-		if(mp == null) return null;
-		
-		HtmlInput input = new HtmlInput();
-		
-		input.setLabel(mp.value());
-		input.setHelpText(mp.notes());
-		input.setExample(mp.example());
-		input.setRequired(mp.required());
-		input.setHidden(mp.hidden());
-		
-		fromField(field, input);
-		
-		return input;
-	}
+//	public static HtmlInput from(ApiModelProperty mp,Field field) {
+//		if(mp == null) return null;
+//		
+//		HtmlInput input = new HtmlInput();
+//		
+//		input.setLabel(mp.value());
+//		input.setHelpText(mp.notes());
+//		input.setExample(mp.example());
+//		input.setRequired(mp.required());
+//		input.setHidden(mp.hidden());
+//		
+//		fromField(field, input);
+//		
+//		return input;
+//	}
 	
 	private static void fromField(Field field, HtmlInput input) {
 		input.setName(field.getName());

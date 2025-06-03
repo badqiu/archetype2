@@ -16,8 +16,8 @@ import freemarker.core.Environment;
 /**
  * 使用nacos配置自动更新常量类 Constant的field值 
  */
-@Configuration
-@Component
+//@Configuration
+//@Component
 public class NacosConfig implements InitializingBean{
 
 	String nacosServerAddr = Constant.NACOS_SERVER_ADDR;
