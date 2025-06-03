@@ -108,22 +108,27 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 		return new AutoMethod2PathAnnotationHandlerMapping();
 	}
 
-	@Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		// 访问静态资源
-        registry.addResourceHandler("/**")
-				//project
-                .addResourceLocations("classpath:/resources/")
-                .addResourceLocations("classpath:/public/")
-                .addResourceLocations("classpath:/static/");
-        
-        /** swagger-ui 3 地址 */
-        registry.addResourceHandler("/swagger-ui/**")
-        .addResourceLocations("classpath:/META-INF/resources/webjars/springfox-swagger-ui/");
-        
-        super.addResourceHandlers(registry);
-    }
-	
+//	@Override
+//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//		// 访问静态资源
+//        registry.addResourceHandler("/**")
+//				//project
+//                .addResourceLocations("classpath:/resources/")
+//                .addResourceLocations("classpath:/public/")
+//                .addResourceLocations("classpath:/static/");
+//        
+//        
+//     // 修复：Springdoc 的正确资源路径（需替换版本号）
+//        registry.addResourceHandler("/swagger-ui/**")
+//                .addResourceLocations("classpath:/META-INF/resources/webjars/swagger-ui/5.17.14/"); // [!code focus]
+//        
+//        // 修复：添加 API 描述文件访问路径
+//        registry.addResourceHandler("/v3/api-docs/**") // [!code focus]
+//                .addResourceLocations("classpath:/META-INF/resources/v3/api-docs/"); //       
+//        
+//        super.addResourceHandlers(registry);
+//    }
+//	
 
 	
 }

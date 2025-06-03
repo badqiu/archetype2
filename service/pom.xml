@@ -199,14 +199,11 @@
 		</dependency>
 		<!-- for test HibernateValidator -->
 
-
-		<!-- swagger3 ui文档,访问: http://localhost:7070/swagger-ui/index.html -->
 		<dependency>
-			<groupId>org.thingsboard</groupId>
-			<artifactId>springfox-boot-starter</artifactId>
-			<version>3.0.1</version>
+		    <groupId>org.springdoc</groupId>
+		    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+		    <version>2.5.0</version>
 		</dependency>
-
 
 		<dependency>
 		    <groupId>com.alibaba.nacos</groupId>

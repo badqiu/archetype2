@@ -9,14 +9,17 @@ import org.springframework.web.bind.annotation.RestController;
 import com.company.project.util.security.LoginUser;
 import com.company.project.util.security.SpringActionSecurityUtil;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 //import io.swagger.annotations.Api;
 import jakarta.servlet.http.HttpServletRequest;
 
-//@Api("登录，登出 API")
+@Tag(name="登录")
 @RestController
 @RequestMapping("/login")
 public class LoginController {
 	
+	@Operation(summary = "登录")
 	@PostMapping
 	public boolean login(String username,String password) {
 		Assert.hasText(username,"用户名不能为空");

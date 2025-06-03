@@ -11,16 +11,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
-import com.company.project.dto.HtmlInput;
 import com.company.project.enums.Constant;
 import com.company.project.model.BaseEntity;
 import com.github.rapid.common.util.ScanClassUtil;
+
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 //import io.swagger.annotations.Api;
 //import io.swagger.annotations.ApiModel;
 //import io.swagger.annotations.ApiModelProperty;
 
-//@Api(tags={"系统枚举"})
+@Tag(name="系统枚举")
 @RequestMapping("/enum")
 @RestController
 public class EnumController {

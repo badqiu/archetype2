@@ -22,6 +22,8 @@ import com.company.project.util.security.LoginUser;
 import com.company.project.util.security.SpringActionSecurityUtil;
 import com.github.rapid.common.util.ThreadUtil;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 //import io.swagger.annotations.Api;
 
 /**
@@ -30,7 +32,7 @@ import com.github.rapid.common.util.ThreadUtil;
  * @author dqiu
  *
  */
-//@Api("系统测试 API")
+@Tag(name="系统测试 API")
 @RestController
 @RequestMapping("/ping")
 public class PingController extends BaseController {
