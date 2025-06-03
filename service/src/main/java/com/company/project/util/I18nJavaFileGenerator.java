@@ -24,16 +24,16 @@ public class I18nJavaFileGenerator {
 	
 	private String project_basedir;
 	private String outputJavaFilePath;
-	private String sourceTemplateFile;
+	private String inputTemplateFile;
 	
 	
-    public I18nJavaFileGenerator(String project_basedir,String sourceTemplateFile, String outputJavaFilePath) {
+    public I18nJavaFileGenerator(String project_basedir,String inputTemplateFile, String outputJavaFilePath) {
     	Assert.hasText(project_basedir,"project_basedir must be not blank");
-    	Assert.hasText(sourceTemplateFile,"sourceTemplateFile must be not blank");
+    	Assert.hasText(inputTemplateFile,"inputTemplateFile must be not blank");
     	Assert.hasText(outputJavaFilePath,"outputJavaFilePath must be not blank");
 		this.project_basedir = project_basedir;
 		this.outputJavaFilePath = outputJavaFilePath;
-		this.sourceTemplateFile  = sourceTemplateFile;
+		this.inputTemplateFile  = inputTemplateFile;
 	}
 
 	private static Properties filterKeys(Properties i18nEnMap) {
@@ -63,10 +63,10 @@ public class I18nJavaFileGenerator {
 //		System.out.println("i18nZhCNMap:"+i18nZhCNMap);
 		
 		Configuration cfg = new Configuration();
-		String templateStr = ResourceUtil.getResourceAsText(sourceTemplateFile);
+		String templateStr = ResourceUtil.getResourceAsText(inputTemplateFile);
 		Template template = new Template("i18n_key_java_template",new StringReader(templateStr),cfg);
 		Map model = new HashMap();
-		model.put("sourceTemplateFile", sourceTemplateFile);
+		model.put("sourceTemplateFile", inputTemplateFile);
 		model.put("i18nEnMap", i18nEnMap);
 		model.put("i18nZhCNMap", i18nZhCNMap);
 		model.put("i18nMessageParamMap", buildI18nMessageParamMap(i18nEnMap));
