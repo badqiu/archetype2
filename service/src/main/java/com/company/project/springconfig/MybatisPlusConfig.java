@@ -1,15 +1,11 @@
 package com.company.project.springconfig;
 
-import javax.sql.DataSource;
-
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
-import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 //import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 //import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 //import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
@@ -44,6 +40,8 @@ import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 @MapperScan(basePackages="com.company.project.mapper")
 //@EnableConfigurationProperties(MybatisPlusProperties.class)
 @Configuration
+
+//下面两个支持联合主键，并且需要Mapper继承 extends MppBaseMapper
 //@EnableMPP
 //@EnableKeyGen
 public class MybatisPlusConfig {
@@ -77,12 +75,6 @@ public class MybatisPlusConfig {
         return interceptor;
     }
 	
-    @Bean
-    public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
-        MybatisSqlSessionFactoryBean factoryBean = new MybatisSqlSessionFactoryBean();
-        factoryBean.setDataSource(dataSource);
-        return factoryBean.getObject();
-    }
     
 //	/**
 //	 * 这里全部使用mybatis-autoconfigure 已经自动加载的资源。不手动指定
