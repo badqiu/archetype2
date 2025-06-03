@@ -47,7 +47,8 @@ public class EnvironmentUtil implements EnvironmentAware,PriorityOrdered{
 			Environment environment = getEnvironment();
 			if(environment != null && ArrayUtils.isNotEmpty(environment.getActiveProfiles())) {
 				String[] activeProfiles = environment.getActiveProfiles();
-				activeProfile = activeProfiles[activeProfiles.length - 1];
+				int lastIndex = activeProfiles.length - 1;
+				activeProfile = activeProfiles[lastIndex];
 			}
 		}
 		return activeProfile;
