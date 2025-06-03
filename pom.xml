@@ -30,6 +30,7 @@
 		<powermock.version>1.6.6</powermock.version>
 		<xstream.version>1.4.20</xstream.version>
 		<mybatisplus.version>3.5.7</mybatisplus.version>
+		<rapid-commons.version>1.0.8-RELEASE</rapid-commons.version>
 
 		<!-- propect properties -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -58,37 +59,37 @@
 			<dependency>
 				<groupId>com.github.rapid.common</groupId>
 				<artifactId>rapid-common-util</artifactId>
-				<version>1.0.7-RELEASE</version>
+				<version>${rapid-commons.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.rapid.common</groupId>
 				<artifactId>rapid-common-web</artifactId>
-				<version>1.0.7-RELEASE</version>
+				<version>${rapid-commons.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.rapid.common</groupId>
 				<artifactId>rapid-common-jdbc</artifactId>
-				<version>1.0.7-RELEASE</version>
+				<version>${rapid-commons.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.rapid.common</groupId>
 				<artifactId>rapid-common-mvc</artifactId>
-				<version>1.0.7-RELEASE</version>
+				<version>${rapid-commons.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.rapid.common</groupId>
 				<artifactId>rapid-common-test</artifactId>
-				<version>1.0.7-RELEASE</version>
+				<version>${rapid-commons.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.rapid.common</groupId>
 				<artifactId>rapid-common-log</artifactId>
-				<version>1.0.7-RELEASE</version>
+				<version>${rapid-commons.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.github.rapid.common</groupId>
 				<artifactId>rapid-common-rest</artifactId>
-				<version>1.0.7-RELEASE</version>
+				<version>${rapid-commons.version}</version>
 			</dependency>
 
 			<dependency>

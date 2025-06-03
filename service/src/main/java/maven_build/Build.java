@@ -70,7 +70,7 @@ public class Build {
 		Properties buildInfo = new Properties();
 		buildInfo.put("buildVersion", ""+projectVersion);
 		buildInfo.put("buildTime", buildTime);
-		buildInfo.put("buildTimestmap", now.getTime());
+		buildInfo.put("buildTimestmap", ""+now.getTime());
 		buildInfo.put("buildUser", "" + System.getProperty("user.name"));
 		buildInfo.put("buildHostname", "" + InetAddress.getLocalHost().getHostName());
 		System.out.println("buildInfo:" + buildInfo);
