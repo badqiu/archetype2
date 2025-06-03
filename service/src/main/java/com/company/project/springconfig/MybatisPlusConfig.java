@@ -1,16 +1,21 @@
 package com.company.project.springconfig;
 
+import javax.sql.DataSource;
+
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
+import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
+//import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 //import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 //import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
-import com.github.jeffreyning.mybatisplus.conf.EnableKeyGen;
-import com.github.jeffreyning.mybatisplus.conf.EnableMPP;
-
+//import com.github.jeffreyning.mybatisplus.conf.EnableKeyGen;
+//import com.github.jeffreyning.mybatisplus.conf.EnableMPP;
+//
 //import org.apache.ibatis.plugin.Interceptor;
 //import org.mybatis.spring.annotation.MapperScan;
 //import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +33,7 @@ import com.github.jeffreyning.mybatisplus.conf.EnableMPP;
 //import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 //import com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor;
 //import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
-
+//import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 /**
 * 
 * Mybatis配置管理类
@@ -36,11 +41,11 @@ import com.github.jeffreyning.mybatisplus.conf.EnableMPP;
 * @since 2019-11-06
 *
 */
-//@MapperScan(basePackages="com.company.project.mapper*")
+@MapperScan(basePackages="com.company.project.mapper")
 //@EnableConfigurationProperties(MybatisPlusProperties.class)
 @Configuration
-@EnableMPP
-@EnableKeyGen
+//@EnableMPP
+//@EnableKeyGen
 public class MybatisPlusConfig {
 //	
 //	@Autowired
@@ -67,12 +72,18 @@ public class MybatisPlusConfig {
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor() {
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
-        interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));//如果配置多个插件,切记分页最后添加
+        interceptor.addInnerInterceptor(new PaginationInnerInterceptor());//如果配置多个插件,切记分页最后添加
         //interceptor.addInnerInterceptor(new PaginationInnerInterceptor()); 如果有多数据源可以不配具体类型 否则都建议配上具体的DbType
         return interceptor;
     }
 	
-	
+    @Bean
+    public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
+        MybatisSqlSessionFactoryBean factoryBean = new MybatisSqlSessionFactoryBean();
+        factoryBean.setDataSource(dataSource);
+        return factoryBean.getObject();
+    }
+    
 //	/**
 //	 * 这里全部使用mybatis-autoconfigure 已经自动加载的资源。不手动指定
 //	 * 配置文件和mybatis-boot的配置文件同步
