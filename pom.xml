@@ -33,7 +33,7 @@
 
 		<!-- propect properties -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.8</java.version>
+		<java.version>17</java.version>
 
 	</properties>
 
@@ -244,27 +244,11 @@
 		</dependencies>
 	</dependencyManagement>
 
-	<repositories>
-		<repository>
-			<name>huawei_repo</name>
-			<id>huawei</id>
-			<url>https://mirrors.huaweicloud.com/repository/maven/</url>
-		</repository>
-	</repositories>
-
-	<pluginRepositories>
-		<pluginRepository>
-			<name>huawei_plugin_repo</name>
-			<id>huawei_plugin</id>
-			<url>https://mirrors.huaweicloud.com/repository/maven/</url>
-		</pluginRepository>
-	</pluginRepositories>
-
 
 	<build>
 
-		<!-- 避免mvn eclipse:eclipse会过滤application.properties application.yaml 文件问题 -->
-		<resources>
+	<!-- 避免mvn eclipse:eclipse会过滤application.properties application.yaml 文件问题 -->
+	<resources>
              <resource>
                 <directory>src/main/resources</directory>
                 <filtering>false</filtering>
