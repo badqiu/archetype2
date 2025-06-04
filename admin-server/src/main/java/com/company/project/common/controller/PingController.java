@@ -24,7 +24,6 @@ import com.github.rapid.common.util.ThreadUtil;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 
-//import io.swagger.annotations.Api;
 
 /**
  * 检查服务是否正常

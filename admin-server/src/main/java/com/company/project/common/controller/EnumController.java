@@ -47,7 +47,7 @@ public class EnumController {
 	public Map<String,Map> getEntityAllInput() throws Exception {
 		if(entityAllInputMap == null) {
 			String basePackages = BaseEntity.class.getPackage().getName();
-//			entityAllInputMap = scanAllEntityForInput(basePackages);
+			entityAllInputMap = scanAllEntityForInput(basePackages);
 		}
 		
 		return entityAllInputMap;
@@ -57,7 +57,7 @@ public class EnumController {
 	public Map<String,Map> getAllEntity() throws Exception {
 		if(entityAllModelMap == null) {
 			String basePackages = BaseEntity.class.getPackage().getName();
-//			entityAllModelMap = scanAllEntity(basePackages);
+			entityAllModelMap = scanAllEntity(basePackages);
 		}
 		
 		return entityAllModelMap;
