@@ -11,15 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
+import com.company.project.dto.HtmlInput;
 import com.company.project.enums.Constant;
 import com.company.project.model.BaseEntity;
 import com.github.rapid.common.util.ScanClassUtil;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
-//import io.swagger.annotations.Api;
-//import io.swagger.annotations.ApiModel;
-//import io.swagger.annotations.ApiModelProperty;
 
 @Tag(name="系统枚举")
 @RequestMapping("/enum")
@@ -73,34 +72,34 @@ public class EnumController {
 		return lowerName.contains("access") || lowerName.contains("username") || lowerName.contains("password") || lowerName.contains("token");
 	}
 	
-//	private Map scanAllEntity(String basePackages) throws ClassNotFoundException {
-//		List<String> classList = ScanClassUtil.scanPackages(basePackages);
-//		Map result = new LinkedHashMap();
-//		for(String cls : classList) {
-//			Class clazz = Class.forName(cls);
-//			ApiModel am = (ApiModel)clazz.getAnnotation(ApiModel.class);
-//			if(am != null) {
-//				result.put(clazz.getSimpleName(), am.description());
-//			}
-//		}
-//		return result;
-//	}
-//
-//	private Map scanAllEntityForInput(String basePackages) throws ClassNotFoundException {
-//		List<String> classList = ScanClassUtil.scanPackages(basePackages);
-//		Map result = new LinkedHashMap();
-//		for(String cls : classList) {
-//			Class clazz = Class.forName(cls);
-//			for(Field field : clazz.getDeclaredFields()) {
-//				ApiModelProperty mp = field.getAnnotation(ApiModelProperty.class);
-//				HtmlInput input = HtmlInput.from(mp,field);
-//				if(input != null){ 
-//					result.put(field.getName(), input);
-//				}
-//			}
-//		}
-//		return result;
-//	}
+	private Map scanAllEntity(String basePackages) throws ClassNotFoundException {
+		List<String> classList = ScanClassUtil.scanPackages(basePackages);
+		Map result = new LinkedHashMap();
+		for(String cls : classList) {
+			Class clazz = Class.forName(cls);
+			Schema am = (Schema)clazz.getAnnotation(Schema.class);
+			if(am != null) {
+				result.put(clazz.getSimpleName(), am.description());
+			}
+		}
+		return result;
+	}
+
+	private Map scanAllEntityForInput(String basePackages) throws ClassNotFoundException {
+		List<String> classList = ScanClassUtil.scanPackages(basePackages);
+		Map result = new LinkedHashMap();
+		for(String cls : classList) {
+			Class clazz = Class.forName(cls);
+			for(Field field : clazz.getDeclaredFields()) {
+				Schema mp = field.getAnnotation(Schema.class);
+				HtmlInput input = HtmlInput.from(mp,field);
+				if(input != null){ 
+					result.put(field.getName(), input);
+				}
+			}
+		}
+		return result;
+	}
 
 	public static Object getStaticFieldMap(Class clazz) throws IllegalArgumentException, IllegalAccessException {
 		Field[] fields = Constant.class.getDeclaredFields();

@@ -2,7 +2,11 @@ package com.company.project.dto;
 
 import java.lang.reflect.Field;
 
-//import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+
 
 /**
  * 返回给前端的输入字段
@@ -71,28 +75,28 @@ public class HtmlInput {
 				+ ", example=" + example + ", required=" + required + "]";
 	}
 	
-//	public static HtmlInput from(ApiModelProperty mp,Field field) {
-//		if(mp == null) return null;
-//		
-//		HtmlInput input = new HtmlInput();
-//		
-//		input.setLabel(mp.value());
-//		input.setHelpText(mp.notes());
-//		input.setExample(mp.example());
-//		input.setRequired(mp.required());
-//		input.setHidden(mp.hidden());
-//		
-//		fromField(field, input);
-//		
-//		return input;
-//	}
+	public static HtmlInput from(Schema mp,Field field) {
+		if(mp == null) return null;
+		
+		HtmlInput input = new HtmlInput();
+		
+		input.setLabel(mp.title());
+		input.setHelpText(mp.description());
+		input.setExample(mp.example());
+		input.setRequired(mp.required());
+		input.setHidden(mp.hidden());
+		
+		fromField(field, input);
+		
+		return input;
+	}
 	
 	private static void fromField(Field field, HtmlInput input) {
 		input.setName(field.getName());
 		input.setDataType(field.getType().getSimpleName().toLowerCase());
 		
-//		if(field.isAnnotationPresent(NotNull.class) || field.isAnnotationPresent(NotBlank.class) || field.isAnnotationPresent(NotEmpty.class)) {
-//			input.setRequired(true);
-//		}
+		if(field.isAnnotationPresent(NotNull.class) || field.isAnnotationPresent(NotBlank.class) || field.isAnnotationPresent(NotEmpty.class)) {
+			input.setRequired(true);
+		}
 	}
 }
