@@ -13,6 +13,7 @@ import org.springframework.util.Assert;
 import com.company.project.util.I18nJavaFileGenerator;
 import com.github.rapid.common.util.ArgsUtil;
 
+
 /**
  * Build.java run on maven build, 
  * config by pom.xml plugin:exec-maven-plugin,
