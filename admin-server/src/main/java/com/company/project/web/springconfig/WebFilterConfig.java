@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
+import com.company.project.web.filter.CorsFilter;
 import com.company.project.web.filter.TraceIdFilter;
 import com.github.rapid.common.web.filter.PerformanceFilter;
 
@@ -56,6 +57,10 @@ public class WebFilterConfig {
 		return new TraceIdFilter();
 	}
 	
+	@Bean
+	public CorsFilter corsFilter() {
+		return new CorsFilter();
+	}
 	
 //	@Bean
 //    public FilterRegistrationBean<UserSideFilter> userSideFilter() {
