@@ -28,6 +28,8 @@ public class Build {
 	Map<String, String> params;
 	
 	public static void main(String[] args) throws Exception {
+		String baseDir = System.getenv("MAVEN_PROJECTBASEDIR");
+		
 		Build build = new Build(args);
 		build.generateAll();
 		
