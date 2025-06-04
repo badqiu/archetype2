@@ -43,6 +43,10 @@ public class ResultResponseAdvice implements ResponseBodyAdvice<Object> {
             if (body instanceof ResponseEntity) {
                 return body;
             }
+ 
+            if (body instanceof byte[]) {
+                return body;
+            }
             
             //SSE流式响应,SseEmitter
             if (body instanceof ResponseBodyEmitter) {
