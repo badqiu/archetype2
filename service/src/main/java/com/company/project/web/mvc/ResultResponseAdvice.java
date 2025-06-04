@@ -54,6 +54,9 @@ public class ResultResponseAdvice implements ResponseBodyAdvice<Object> {
 	            if(className.contains("springfox")) { //swagger-ui
 	            	return body;
 	            }
+	            if(className.contains("springdoc")) { //swagger-ui
+	            	return body;
+	            }
             }
             
             RestResult r = new RestResult().success().data(body);

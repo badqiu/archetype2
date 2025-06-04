@@ -40,3 +40,4 @@ archetype生成项目命令:
 		mvn archetype:generate -DarchetypeCatalog=local  --本地运行前,需mvn archetype:crawl
 
 
+mvn archetype:generate -DarchetypeCatalog=local -DgroupId=greatroute -DartifactId=laweye -Dversion=1.0.0-SNAPSHOT -Dpackage=greatroute.laweye
