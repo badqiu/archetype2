@@ -43,7 +43,7 @@ public class PingController extends BaseController {
 	public String ping() throws InterruptedException {
 		//可以添加执行，查询数据
 		testThreadStartJoin();
-		System.out.println("ping");
+		logger.info("ping");
 		return "PONG";
 	}
 	
