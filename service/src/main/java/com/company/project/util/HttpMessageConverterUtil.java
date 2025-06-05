@@ -56,13 +56,19 @@ public class HttpMessageConverterUtil {
 //	    objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 //	    objectMapper.disable(DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE);
 	    
-	    SimpleModule simpleModule = new SimpleModule();
-	    simpleModule.addSerializer(Long.class, BigintToStringSerializer.instance);
-	    simpleModule.addSerializer(Long.TYPE, BigintToStringSerializer.instance);
+	    SimpleModule simpleModule = buildBigintModule();
 	    
 	    objectMapper.registerModule(javaTimeModule).registerModule(simpleModule).registerModule(new ParameterNamesModule());
 //	    objectMapper.setDateFormat(new SimpleDateFormat(Constants.DEFAULT_DATE_TIME_FORMAT));
 	    return objectMapper;
+	}
+
+
+	private static SimpleModule buildBigintModule() {
+		SimpleModule simpleModule = new SimpleModule();
+	    simpleModule.addSerializer(Long.class, BigintToStringSerializer.instance);
+	    simpleModule.addSerializer(Long.TYPE, BigintToStringSerializer.instance);
+		return simpleModule;
 	}
 
 	public static JavaTimeModule buildJavaTimeModule() {
