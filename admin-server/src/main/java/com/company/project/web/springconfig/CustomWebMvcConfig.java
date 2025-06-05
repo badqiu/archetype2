@@ -40,6 +40,7 @@ public class CustomWebMvcConfig implements WebMvcRegistrations, WebMvcConfigurer
 		return r;
     }
     
+    //FIXME: 存在问题：不支持LocalDate LocalDateTime, Date时间是输出：1749128044130
 	@Override
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
 //		converters.clear();
@@ -76,9 +77,9 @@ public class CustomWebMvcConfig implements WebMvcRegistrations, WebMvcConfigurer
 //	    objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 //	    objectMapper.disable(DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE);
 //	    JavaTimeModule javaTimeModule = new JavaTimeModule();
-	    SimpleModule javaTimeModule = new SimpleModule();
-	    javaTimeModule.addSerializer(Long.class, BigintToStringSerializer.instance);
-	    javaTimeModule.addSerializer(Long.TYPE, BigintToStringSerializer.instance);
+	    SimpleModule simpleModule = new SimpleModule();
+	    simpleModule.addSerializer(Long.class, BigintToStringSerializer.instance);
+	    simpleModule.addSerializer(Long.TYPE, BigintToStringSerializer.instance);
 	    
 //	    javaTimeModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer(DateTimeFormatter.ofPattern(Constants.DEFAULT_DATE_TIME_FORMAT)));
 //	    javaTimeModule.addSerializer(LocalDate.class, new LocalDateSerializer(DateTimeFormatter.ofPattern(Constants.DEFAULT_DATE_FORMAT)));
@@ -86,7 +87,7 @@ public class CustomWebMvcConfig implements WebMvcRegistrations, WebMvcConfigurer
 //	    javaTimeModule.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer(DateTimeFormatter.ofPattern(Constants.DEFAULT_DATE_TIME_FORMAT)));
 //	    javaTimeModule.addDeserializer(LocalDate.class, new LocalDateDeserializer(DateTimeFormatter.ofPattern(Constants.DEFAULT_DATE_FORMAT)));
 //	    javaTimeModule.addDeserializer(LocalTime.class, new LocalTimeDeserializer(DateTimeFormatter.ofPattern(Constants.DEFAULT_TIME_FORMAT)));
-	    objectMapper.registerModule(javaTimeModule).registerModule(new ParameterNamesModule());
+	    objectMapper.registerModule(simpleModule).registerModule(new ParameterNamesModule());
 //	    objectMapper.setDateFormat(new SimpleDateFormat(Constants.DEFAULT_DATE_TIME_FORMAT));
 	    return objectMapper;
 	}
