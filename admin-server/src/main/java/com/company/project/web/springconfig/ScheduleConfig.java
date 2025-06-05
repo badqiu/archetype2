@@ -19,7 +19,7 @@ public class ScheduleConfig implements SchedulingConfigurer {
 
     @Bean(destroyMethod="shutdown")
     public ExecutorService taskExecutor() {
-        CustomizableThreadFactory threadFactory = new CustomizableThreadFactory("project-threadpool");
+        CustomizableThreadFactory threadFactory = new CustomizableThreadFactory("demoproject-taskExecutor");
 		return Executors.newScheduledThreadPool(15,threadFactory); //指定线程池大小
     }
     
