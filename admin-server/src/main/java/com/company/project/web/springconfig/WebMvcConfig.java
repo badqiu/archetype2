@@ -13,24 +13,26 @@ import com.company.project.util.HttpMessageConverterUtil;
 import com.github.rapid.common.web.mvc.annotation.AutoMethod2PathAnnotationHandlerMapping;
 
 /**
- * 主要功能:  约定大于配置的URL映射。 
- * 自动映射: 
- * @RequestMapping  stop()  => /stop
- * 
  * 
  * @author badqiu
  *
  */
 @Configuration
-public class CustomWebMvcConfig implements WebMvcRegistrations, WebMvcConfigurer{
-    
+public class WebMvcConfig implements WebMvcRegistrations, WebMvcConfigurer{
+	
+	/**
+	 * 主要功能:  约定大于配置的URL映射。 
+	 * 方法自动映射path: 
+	 * 
+	 * @RequestMapping  stop()  => /stop
+	 */    
     @Override
     public RequestMappingHandlerMapping getRequestMappingHandlerMapping() {
         AutoMethod2PathAnnotationHandlerMapping r = new AutoMethod2PathAnnotationHandlerMapping();
 		return r;
     }
     
-    //FIXME: 存在问题：不支持LocalDate LocalDateTime, Date时间是输出：1749128044130
+    //FIXME: Date时间是输出：1749128044130
 	@Override
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
 		converters.removeIf(converter -> converter instanceof StringHttpMessageConverter);
