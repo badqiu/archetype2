@@ -13,7 +13,7 @@ import io.swagger.v3.oas.models.info.Info;
     name = "Authorization",
     type = SecuritySchemeType.APIKEY,
     in = SecuritySchemeIn.HEADER,
-    paramName = "token_username"
+    paramName = "AccessToken"
 )
 public class OpenApiConfig {
 
