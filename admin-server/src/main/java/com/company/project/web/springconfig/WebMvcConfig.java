@@ -33,7 +33,6 @@ public class WebMvcConfig implements WebMvcRegistrations, WebMvcConfigurer{
 		return r;
     }
     
-    //FIXME: Date时间是输出：1749128044130
 	@Override
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
 		converters.removeIf(converter -> converter instanceof StringHttpMessageConverter);
