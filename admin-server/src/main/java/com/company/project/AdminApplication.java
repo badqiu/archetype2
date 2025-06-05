@@ -42,7 +42,9 @@ public class AdminApplication {
 		app.setAdditionalProfiles("custom"); //附加profile激活，用于子模块添加不同配置， 可以激活application-custom.properties
 		
 		ConfigurableApplicationContext context = app.run(args);
+		String appUrl = "http://localhost:"+environment.getProperty("server.port") + context.getApplicationName();
 		System.out.println("start spring boot success: applicationName:" + context.getApplicationName() + " startupDate:"+ new Timestamp(context.getStartupDate()));
+		System.out.println("visit url:"+appUrl);
 	}
 	
 }
