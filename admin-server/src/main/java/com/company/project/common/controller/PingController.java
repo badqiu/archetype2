@@ -2,8 +2,10 @@ package com.company.project.common.controller;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -112,6 +114,16 @@ public class PingController extends BaseController {
 	@GetMapping
 	public LocalDateTime returnLocalDateTime() {
 		return LocalDateTime.now();
+	}
+	
+	@GetMapping
+	public LocalTime returnLocalTime() {
+		return LocalTime.now();
+	}
+	
+	@GetMapping
+	public Timestamp returnTimestamp() {
+		return new Timestamp(System.currentTimeMillis());
 	}
 	
 	@GetMapping
