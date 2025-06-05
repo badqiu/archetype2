@@ -41,7 +41,7 @@ public class WebMvcConfig implements WebMvcRegistrations, WebMvcConfigurer{
 		 
 		//converters.clear();
 		converters.add(HttpMessageConverterUtil.jsonMessageConverter());
-//		converters.add(0,new ByteArrayHttpMessageConverter());
+//		converters.add(0,new ByteArrayHttpMessageConverter()); //add first
 	}
 	
 	
