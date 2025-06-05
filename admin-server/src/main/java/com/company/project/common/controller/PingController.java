@@ -2,7 +2,10 @@ package com.company.project.common.controller;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -89,6 +92,26 @@ public class PingController extends BaseController {
 	@ResponseBody
 	public String returnBody() {
 		return "body";
+	}
+	
+	@GetMapping
+	public long returnBigint() {
+		return Long.MAX_VALUE;
+	}
+	
+	@GetMapping
+	public Date returnDate() {
+		return new Date();
+	}
+	
+	@GetMapping
+	public LocalDate returnLocalDate() {
+		return LocalDate.now();
+	}
+	
+	@GetMapping
+	public LocalDateTime returnLocalDateTime() {
+		return LocalDateTime.now();
 	}
 	
 	@GetMapping

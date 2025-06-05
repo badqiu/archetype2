@@ -43,8 +43,8 @@ public class CustomWebMvcConfig implements WebMvcRegistrations, WebMvcConfigurer
 	@Override
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
 //		converters.clear();
-//		converters.addFirst(responseJsonBodyConverter());
-//		converters.addFirst(new ByteArrayHttpMessageConverter());
+		converters.addFirst(responseJsonBodyConverter());
+		converters.addFirst(new ByteArrayHttpMessageConverter());
 		
         converters.removeIf(converter -> converter instanceof StringHttpMessageConverter);
 	        
