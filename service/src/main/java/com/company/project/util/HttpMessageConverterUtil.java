@@ -15,6 +15,7 @@ import com.fasterxml.jackson.core.JsonParser.Feature;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
@@ -53,7 +54,7 @@ public class HttpMessageConverterUtil {
 	    //不序列化null的属性
 	    objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 	    
-//	    objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+	    objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 //	    objectMapper.disable(DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE);
 	    
 	    SimpleModule simpleModule = buildBigintModule();
@@ -74,7 +75,7 @@ public class HttpMessageConverterUtil {
 	public static JavaTimeModule buildJavaTimeModule() {
 	    JavaTimeModule javaTimeModule = new JavaTimeModule();
 	    
-	    DateTimeFormatter localDateTimeFormater = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+	    DateTimeFormatter localDateTimeFormater = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 	    DateTimeFormatter localDateFormater = DateTimeFormatter.ISO_LOCAL_DATE;
 	    DateTimeFormatter localTimeFormater = DateTimeFormatter.ISO_LOCAL_TIME;
 	    
