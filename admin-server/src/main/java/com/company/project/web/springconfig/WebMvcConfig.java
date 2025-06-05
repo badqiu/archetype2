@@ -3,6 +3,7 @@ import java.util.List;
 
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcRegistrations;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -40,8 +41,8 @@ public class WebMvcConfig implements WebMvcRegistrations, WebMvcConfigurer{
 		converters.removeIf(c -> c instanceof MappingJackson2HttpMessageConverter);
 		 
 		//converters.clear();
-		converters.addLast(HttpMessageConverterUtil.jsonMessageConverter());
-//		converters.addFirst(new ByteArrayHttpMessageConverter());
+		converters.add(HttpMessageConverterUtil.jsonMessageConverter());
+//		converters.add(0,new ByteArrayHttpMessageConverter());
 	}
 	
 	
