@@ -63,7 +63,7 @@ public class ResultResponseAdvice implements ResponseBodyAdvice<Object> {
 	            }
             }
             
-            RestResult r = new RestResult().success().data(body);
+            RestResult r = RestResult.success(body);
             
 			return r;
 		}
