@@ -42,9 +42,13 @@ public class EnvironmentUtil implements EnvironmentAware,PriorityOrdered{
 	}
 
 	private static String activeProfile = null;
+	
 	public static String getActiveProfile() {
+		return getActiveProfile(getEnvironment());
+	}
+	
+	public static String getActiveProfile(Environment environment) {
 		if(activeProfile == null) {
-			Environment environment = getEnvironment();
 			if(environment != null && ArrayUtils.isNotEmpty(environment.getActiveProfiles())) {
 				String[] activeProfiles = environment.getActiveProfiles();
 				int lastIndex = activeProfiles.length - 1;
