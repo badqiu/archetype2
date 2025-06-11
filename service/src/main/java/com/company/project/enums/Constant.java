@@ -1,6 +1,7 @@
 package com.company.project.enums;
 
 import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.SystemUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +31,7 @@ public class Constant implements EnvironmentAware,PriorityOrdered{
 	//只在测试环境，开发环境,预发显示errorLog
 	public static Profiles SHOW_ERROR_LOG_FOR_HTTP_RESPONSE = Profiles.of("dev","test","pre");
 	
-	public static String APP_NAME = "demoproject Application";
+	public static String APP_NAME = "laweye Application";
 	
 	public static final String I18N_MESSAGE_SOURCE_BASENAME = "message";
 	
@@ -68,11 +69,15 @@ public class Constant implements EnvironmentAware,PriorityOrdered{
 	
 	public static void overrideConstantValuesByActiveProfile() {
 		//激活环境配置，用配置Constant配置
-		String activeProfile = EnvironmentUtil.getActiveProfile();
-		overrideConstantValuesByActiveProfile(activeProfile);
+		String[] activeProfiles = EnvironmentUtil.getEnvironment().getActiveProfiles();
+		overrideConstantValuesByActiveProfiles(activeProfiles);
 	}
 	
 	public static void overrideConstantValuesByActiveProfile(String activeProfile) {
+		if(StringUtils.isBlank(activeProfile)) {
+			return;
+		}
+		
 		String msg = "覆盖常量配置: ReflectUtil.modifyAllStaticVariables(Constant.class) profile:"+activeProfile;
 		if("prod".equals(activeProfile)) {
 			logger.info(msg);
@@ -94,15 +99,20 @@ public class Constant implements EnvironmentAware,PriorityOrdered{
 			}
 		}
 	}
-
+	
+	private static void overrideConstantValuesByActiveProfiles(String[] activeProfiles) {
+		if(ArrayUtils.isEmpty(activeProfiles)) {
+			return;
+		}
+		for(String activeProfile : activeProfiles) {
+			overrideConstantValuesByActiveProfile(activeProfile);
+		}
+	}
+	
 	@Override
 	public void setEnvironment(Environment environment) {
 		String[] activeProfiles = environment.getActiveProfiles();
-		if(ArrayUtils.isNotEmpty(activeProfiles)) {
-			for(String activeProfile : activeProfiles) {
-				overrideConstantValuesByActiveProfile(activeProfile);
-			}
-		}
+		overrideConstantValuesByActiveProfiles(activeProfiles);
 	}
 	
 	@Override
