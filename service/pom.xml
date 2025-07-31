@@ -126,6 +126,11 @@
 			<artifactId>spring-context-support</artifactId>
 		</dependency>
 
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-devtools</artifactId>
+		    <optional>true</optional> <!-- 避免依赖传递到生产环境 -->
+		</dependency>
 
 		<dependency>
 			<groupId>com.github.ben-manes.caffeine</groupId>
