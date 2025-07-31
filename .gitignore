@@ -1,9 +1,14 @@
 .classpath
 .project
 .settings
+.idea
+
 target
 bin
 node_modules
+
+
 build_info.xml
 DemoTable*
 Demo*
+
