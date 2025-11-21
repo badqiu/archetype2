@@ -23,7 +23,7 @@ public class ThreadPoolConfig {
                 1000,
                 10,
                 TimeUnit.SECONDS,
-                new LinkedBlockingDeque<>(100000),
+                new LinkedBlockingDeque<>(10000),
                 Executors.defaultThreadFactory(),
                 //直接自己调用
                 new ThreadPoolExecutor.CallerRunsPolicy());
