@@ -4,7 +4,7 @@ import org.apache.commons.lang.StringUtils;
 
 import com.github.rapid.common.util.page.PageQuery;
 
-public class BaseQuery extends PageQuery{
+public class BaseQuery extends PageQuery implements Cloneable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -61,5 +61,14 @@ public class BaseQuery extends PageQuery{
 		}
 		
 		throw new RuntimeException("invalid sortColumns:"+sortColumns);
+	}
+	
+	@Override
+	public Object clone() {
+		try {
+			return super.clone();
+		} catch (CloneNotSupportedException e) {
+			throw new RuntimeException("clone() error:"+e,e);
+		}
 	}
 }
