@@ -1,4 +1,4 @@
-package com.company.project.cron;
+package com.company.project.job;
 
 import java.time.Duration;
 

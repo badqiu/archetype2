@@ -122,6 +122,10 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
         registry.addResourceHandler("/swagger-ui/**")
         .addResourceLocations("classpath:/META-INF/resources/webjars/springfox-swagger-ui/");
         
+        // 其他WebJars资源
+        registry.addResourceHandler("/webjars/**")
+                .addResourceLocations("classpath:/META-INF/resources/webjars/");
+        
         super.addResourceHandlers(registry);
     }
 	

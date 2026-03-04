@@ -22,8 +22,12 @@ package com.company.project.web.springconfig;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.company.project.AdminApplication;
@@ -40,42 +44,57 @@ import springfox.documentation.service.ResponseMessage;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
+/**
+ * 文档默认访问地址: http://localhost:8080/demoproject-api/swagger-ui/index.html
+ * 
+ * http://localhost:8080/demoproject-api/swagger-ui.html
+ */
 @Configuration
 @EnableOpenApi
+@Profile({"dev","test","local"})  //只在特定环境激活文档
 public class SwaggerDocConfig {
-	
-    @Bean
-    public Docket createRestApi() {
-
-        List<ResponseMessage> responseMessageList = new ArrayList<>();
-//        responseMessageList.add(new ResponseMessageBuilder().code(HttpCodeEnum.SERVER_ERROR.getCode()).message(HttpCodeEnum.SERVER_ERROR.getMessage()).build());
-
-
-        return new Docket(DocumentationType.SWAGGER_2)
-                .globalResponseMessage(RequestMethod.GET, responseMessageList)
-                .globalResponseMessage(RequestMethod.POST, responseMessageList)
-                .globalResponseMessage(RequestMethod.PUT, responseMessageList)
-                .globalResponseMessage(RequestMethod.DELETE, responseMessageList)
-
-                .enable(Constant.SWAGGER_API_DOC_ENABLE)
-                .apiInfo(apiInfo())
-                .select()
-                .apis(RequestHandlerSelectors.basePackage(AdminApplication.class.getPackage().getName()))
-                .paths(PathSelectors.any())
-                .build()
-                .securitySchemes(Lists.newArrayList(apiKey()));
-
-    }
-
-    private ApiInfo apiInfo() {
-        return new ApiInfoBuilder()
-                .title("demoproject api")
-                .version("1.0")
-                .build();
-    }
-
-    private ApiKey apiKey() {
-        return new ApiKey("Authorization", "token_username", "header");
-    }
+//	protected static final Logger log = LoggerFactory.getLogger(SwaggerDocConfig.class);
+//    @Value("${server.port:8080}")
+//    private String serverPort;
+//    
+//	@Value("${server.servlet.context-path:}")
+//    private String serverServletContextPath;
+//	
+//    @Bean
+//    public Docket createRestApiDoc() {
+//
+//    	log.info("createRestApiDoc serverServletContextPath:"+serverServletContextPath+ " serverPort:"+serverPort);
+//        List<ResponseMessage> responseMessageList = new ArrayList<>();
+////        responseMessageList.add(new ResponseMessageBuilder().code(HttpCodeEnum.SERVER_ERROR.getCode()).message(HttpCodeEnum.SERVER_ERROR.getMessage()).build());
+//
+//
+//        return new Docket(DocumentationType.SWAGGER_2)
+//                .globalResponseMessage(RequestMethod.GET, responseMessageList)
+//                .globalResponseMessage(RequestMethod.POST, responseMessageList)
+//                .globalResponseMessage(RequestMethod.PUT, responseMessageList)
+//                .globalResponseMessage(RequestMethod.DELETE, responseMessageList)
+//                
+////                .host("localhost:" + serverPort)
+////                .pathMapping(serverServletContextPath)         // 设置上下文路径
+//                .enable(Constant.SWAGGER_API_DOC_ENABLE)
+//                .apiInfo(apiInfo())
+//                .select()
+//                .apis(RequestHandlerSelectors.basePackage(AdminApplication.class.getPackage().getName()))
+//                .paths(PathSelectors.any())
+//                .build()
+//                .securitySchemes(Lists.newArrayList(apiKey()));
+//
+//    }
+//
+//    private ApiInfo apiInfo() {
+//        return new ApiInfoBuilder()
+//                .title("demoproject api")
+//                .version("1.0")
+//                .build();
+//    }
+//
+//    private ApiKey apiKey() {
+//        return new ApiKey("Authorization", "token_username", "header");
+//    }
 
 }
